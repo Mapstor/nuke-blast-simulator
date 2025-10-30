@@ -1,0 +1,23 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background circle -->
+  <circle cx="16" cy="16" r="16" fill="#0a0a0a"/>
+  
+  <!-- Outer ring -->
+  <circle cx="16" cy="16" r="14" fill="none" stroke="#00ff41" stroke-width="1"/>
+  
+  <!-- Atom nucleus - bright yellow center -->
+  <circle cx="16" cy="16" r="2.5" fill="#ffff00"/>
+  
+  <!-- Three electron orbits at different angles -->
+  <ellipse cx="16" cy="16" rx="10" ry="5" fill="none" stroke="#00ff41" stroke-width="1.2" opacity="0.9"/>
+  <ellipse cx="16" cy="16" rx="10" ry="5" fill="none" stroke="#00ff41" stroke-width="1.2" opacity="0.9" transform="rotate(60 16 16)"/>
+  <ellipse cx="16" cy="16" rx="10" ry="5" fill="none" stroke="#00ff41" stroke-width="1.2" opacity="0.9" transform="rotate(120 16 16)"/>
+  
+  <!-- Electrons positioned on orbits -->
+  <circle cx="26" cy="16" r="1.2" fill="#00ff41"/>
+  <circle cx="6" cy="16" r="1.2" fill="#00ff41"/>
+  <circle cx="20.5" cy="8.5" r="1.2" fill="#00ff41"/>
+  <circle cx="11.5" cy="23.5" r="1.2" fill="#00ff41"/>
+  <circle cx="20.5" cy="23.5" r="1.2" fill="#00ff41"/>
+  <circle cx="11.5" cy="8.5" r="1.2" fill="#00ff41"/>
+</svg>

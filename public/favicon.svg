@@ -1,0 +1,20 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Nuclear symbol background -->
+  <circle cx="16" cy="16" r="15" fill="#1a1a1a" stroke="#00ff00" stroke-width="1"/>
+  
+  <!-- Atom nucleus -->
+  <circle cx="16" cy="16" r="3" fill="#ffff00"/>
+  
+  <!-- Electron orbits -->
+  <ellipse cx="16" cy="16" rx="12" ry="6" fill="none" stroke="#00ff00" stroke-width="1.5" opacity="0.8"/>
+  <ellipse cx="16" cy="16" rx="12" ry="6" fill="none" stroke="#00ff00" stroke-width="1.5" opacity="0.8" transform="rotate(60 16 16)"/>
+  <ellipse cx="16" cy="16" rx="12" ry="6" fill="none" stroke="#00ff00" stroke-width="1.5" opacity="0.8" transform="rotate(120 16 16)"/>
+  
+  <!-- Electrons -->
+  <circle cx="28" cy="16" r="1.5" fill="#00ff00"/>
+  <circle cx="4" cy="16" r="1.5" fill="#00ff00"/>
+  <circle cx="24" cy="8" r="1.5" fill="#00ff00"/>
+  <circle cx="8" cy="24" r="1.5" fill="#00ff00"/>
+  <circle cx="24" cy="24" r="1.5" fill="#00ff00"/>
+  <circle cx="8" cy="8" r="1.5" fill="#00ff00"/>
+</svg>

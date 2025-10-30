@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Leaflet styles */
+@import 'leaflet/dist/leaflet.css';
+
+/* Fix for Leaflet icons in Next.js */
+.leaflet-default-icon-path {
+  background-image: url(https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Blast animation styles */
+@keyframes blast-expand {
+  from {
+    r: 0;
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+.blast-animation-fireball {
+  animation: blast-expand 0.5s ease-out;
+}
+
+.blast-animation-severe {
+  animation: blast-expand 0.7s ease-out;
+}
+
+.blast-animation-moderate {
+  animation: blast-expand 0.9s ease-out;
+}
+
+.blast-animation-light {
+  animation: blast-expand 1.1s ease-out;
+}
+
+/* Pulse animation for detonation point */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.detonation-marker {
+  animation: pulse 2s infinite;
+}

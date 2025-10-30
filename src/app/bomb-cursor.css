@@ -1,0 +1,115 @@
+/* Animated Bomb Cursor Styles */
+
+/* Hide default cursor when over map and weapon is selected */
+.has-weapon-selected .leaflet-container {
+  cursor: none !important;
+}
+
+.has-weapon-selected .leaflet-container * {
+  cursor: none !important;
+}
+
+/* Bomb icon animations */
+.bomb-icon {
+  animation: bombFloat 2s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes bombFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+/* Pulsing glow effect */
+.bomb-pulse {
+  animation: bombPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes bombPulse {
+  0%, 100% {
+    opacity: 0.3;
+    stroke-width: 1;
+  }
+  50% {
+    opacity: 0.6;
+    stroke-width: 2;
+  }
+}
+
+/* Rotating targeting reticle */
+.reticle-spin {
+  animation: reticleSpin 4s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes reticleSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Targeting reticle container */
+.targeting-reticle {
+  animation: reticlePulse 2s ease-in-out infinite;
+}
+
+@keyframes reticlePulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Dropping animation when clicking */
+.bomb-dropping {
+  animation: bombDrop 0.5s ease-in forwards;
+}
+
+@keyframes bombDrop {
+  0% {
+    transform: translate(-50%, -100%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 0) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Add shadow trail effect */
+.bomb-cursor::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgba(255, 0, 0, 0.6), transparent);
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: shadowPulse 1s ease-in-out infinite;
+}
+
+@keyframes shadowPulse {
+  0%, 100% {
+    width: 8px;
+    height: 8px;
+    opacity: 0.6;
+  }
+  50% {
+    width: 16px;
+    height: 16px;
+    opacity: 0.3;
+  }
+}
