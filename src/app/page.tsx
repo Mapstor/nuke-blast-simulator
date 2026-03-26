@@ -15,7 +15,7 @@ import { useSimulatorStore } from '@/store/simulatorStore'
 import { bombs } from '@/lib/data/bombs'
 
 export default function Home() {
-  const { selectedBomb, setSelectedBomb, setDetonationPoint } = useSimulatorStore()
+  const { selectedBomb, setSelectedBomb, setEpicenter } = useSimulatorStore()
   
   useEffect(() => {
     // Check for shared parameters in URL
@@ -29,14 +29,14 @@ export default function Home() {
         const bomb = bombs.find(b => b.id === bombId)
         if (bomb) {
           setSelectedBomb(bomb)
-          setDetonationPoint({ 
+          setEpicenter({ 
             lat: parseFloat(lat), 
             lng: parseFloat(lng) 
           })
         }
       }
     }
-  }, [setSelectedBomb, setDetonationPoint])
+  }, [setSelectedBomb, setEpicenter])
   
   return (
     <main className={`min-h-screen flex flex-col bg-black ${selectedBomb ? 'has-weapon-selected' : ''}`}>
