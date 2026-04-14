@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
+import Script from 'next/script'
 import './globals.css'
 import './military-theme.css'
 import './explosion.css'
 import './bomb-cursor.css'
 import './blast-animation.css'
 import { MilitaryHeader } from '@/components/layout/MilitaryHeader'
-import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nukeblastsimulator.com'),
@@ -96,7 +96,18 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-gray-900 min-h-screen">
-        <GoogleAnalytics />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XDZQYKGTE2"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XDZQYKGTE2');
+          `}
+        </Script>
         <MilitaryHeader />
         {children}
       </body>
