@@ -5,6 +5,7 @@ import './explosion.css'
 import './bomb-cursor.css'
 import './blast-animation.css'
 import { MilitaryHeader } from '@/components/layout/MilitaryHeader'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nukeblastsimulator.com'),
@@ -66,19 +67,6 @@ export default function RootLayout({
         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
         
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XDZQYKGTE2"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XDZQYKGTE2');
-            `
-          }}
-        />
-        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -108,6 +96,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-gray-900 min-h-screen">
+        <GoogleAnalytics />
         <MilitaryHeader />
         {children}
       </body>
