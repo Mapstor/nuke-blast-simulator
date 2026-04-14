@@ -19,6 +19,10 @@ interface SimulatorState {
   // Calculated blast effects (derived from epicenter + weapon)
   blastCircles: BlastResults | null
   
+  // Comparison mode
+  comparisonMode: boolean
+  comparisonResults: BlastResults | null
+  
   // Animation state
   animationPhase: 'idle' | 'exploding' | 'showing-fireball' | 'showing-heavy-blast' | 'showing-moderate-blast' | 'showing-light-blast' | 'showing-thermal' | 'showing-fallout' | 'complete'
   isAnimating: boolean
@@ -61,6 +65,10 @@ export const useSimulatorStore = create<SimulatorState>((set, get) => ({
   
   // Calculated blast effects
   blastCircles: null,
+  
+  // Comparison mode
+  comparisonMode: false,
+  comparisonResults: null,
   
   // Animation state
   animationPhase: 'idle',

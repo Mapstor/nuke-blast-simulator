@@ -237,7 +237,7 @@ export function Map() {
             <Marker 
               position={[epicenter.lat, epicenter.lng]}
               key={`marker-${epicenter.lat}-${epicenter.lng}`}
-              icon={createNukeIcon()}
+              icon={createNukeIcon() ?? undefined}
             />
             
             {/* Test circle - exactly 5km radius for verification */}
