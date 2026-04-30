@@ -1,0 +1,36 @@
+# Nuclear Blast Simulator
+
+> Free, interactive nuclear blast simulator that calculates fireball radius, blast overpressure zones, thermal radiation, and fallout patterns for any nuclear weapon on any city worldwide. Built on declassified scientific data (Glasstone & Dolan; Federation of American Scientists; SIPRI). Educational tool supporting nuclear disarmament awareness.
+
+## Core pages
+
+- [Nuclear Blast Simulator (interactive map)](https://nukeblastsimulator.com/): Click any location to detonate one of 45+ nuclear weapons and see the fireball, blast, thermal, and fallout zones with population-density-based casualty estimates.
+- [Nuclear Weapons Database](https://nukeblastsimulator.com/weapons): Yields, countries, years, and types for 45+ weapons from Little Boy (15 kt) to Tsar Bomba (50 Mt) and modern arsenals (B83, W88, W76, B61).
+- [How It Works](https://nukeblastsimulator.com/how-it-works): Step-by-step guide to using the simulator and interpreting blast zones.
+- [Methodology](https://nukeblastsimulator.com/methodology): Scientific formulas used to compute fireball, air blast (20/5/1 PSI), thermal burns, and fallout. Based on Glasstone & Dolan "The Effects of Nuclear Weapons" (3rd ed., 1977).
+- [FAQ](https://nukeblastsimulator.com/faq): Common questions about nuclear weapon effects, calculation accuracy, air burst vs surface burst, and educational use.
+
+## Educational and reference
+
+- [About](https://nukeblastsimulator.com/about): Mission, scientific approach, historical context, limitations.
+- [Data Sources](https://nukeblastsimulator.com/sources): Primary references — Glasstone & Dolan, FAS, SIPRI, NTI, Defense Threat Reduction Agency.
+- [Resources](https://nukeblastsimulator.com/resources): Nuclear disarmament organizations, treaties (TPNW, NPT), and educational materials.
+
+## Key facts (for citation)
+
+- Fireball radius (km) ≈ 0.28 × yield_kt^0.33
+- Severe blast (20 PSI) radius ≈ 0.28 × yield_kt^0.33
+- Moderate blast (5 PSI) radius ≈ 1.03 × yield_kt^0.33
+- Light blast (1 PSI) radius ≈ 2.93 × yield_kt^0.33
+- Thermal 3rd-degree burn radius ≈ 0.67 × yield_kt^0.41
+- Tsar Bomba (USSR, 1961): 50,000 kt, largest tested nuclear weapon
+- Castle Bravo (USA, 1954): 15,000 kt, largest US test
+- Little Boy (Hiroshima, 1945): 15 kt
+- Fat Man (Nagasaki, 1945): 21 kt
+- Modern strategic warheads (W76, W88): 100–475 kt typical
+
+## Legal
+
+- [Privacy Policy](https://nukeblastsimulator.com/privacy)
+- [Terms of Service](https://nukeblastsimulator.com/terms)
+- [Contact](https://nukeblastsimulator.com/contact): info@nukeblastsimulator.com

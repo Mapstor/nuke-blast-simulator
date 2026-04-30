@@ -1,13 +1,26 @@
 import { Metadata } from 'next'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { aboutPageSchema, breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
   title: 'About - Educational Nuclear Blast Simulator',
-  description: 'Learn about the educational purpose and scientific mission behind our nuclear blast effects simulator. Promoting nuclear awareness and disarmament through education.'
+  description: 'Learn about the educational purpose and scientific mission behind our nuclear blast effects simulator. Promoting nuclear awareness and disarmament through education.',
+  alternates: { canonical: '/about' }
 }
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
+      <JsonLd
+        id="ld-about"
+        schema={[
+          aboutPageSchema('/about'),
+          breadcrumbSchema([
+            { name: 'Home', url: SITE_URL },
+            { name: 'About', url: '/about' },
+          ]),
+        ]}
+      />
       <main className="max-w-4xl mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-green-400">About Nuclear Blast Simulator</h1>
         

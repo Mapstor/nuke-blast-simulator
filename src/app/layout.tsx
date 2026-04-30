@@ -5,7 +5,14 @@ import './explosion.css'
 import './bomb-cursor.css'
 import './blast-animation.css'
 import { MilitaryHeader } from '@/components/layout/MilitaryHeader'
+import { Footer } from '@/components/layout/Footer'
 import Analytics from '@/components/Analytics'
+import { JsonLd } from '@/components/seo/JsonLd'
+import {
+  organizationSchema,
+  websiteSchema,
+  softwareApplicationSchema,
+} from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nukeblastsimulator.com'),
@@ -49,9 +56,9 @@ export const metadata: Metadata = {
       'max-snippet': -1
     }
   },
-  verification: {
-    google: 'ADD_AFTER_GSC_SETUP'
-  }
+  verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
+    : undefined,
 }
 
 export default function RootLayout({
@@ -62,43 +69,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
         
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebApplication",
-              "name": "Nuclear Blast Simulator",
-              "url": "https://nukeblastsimulator.com",
-              "description": "Interactive nuclear blast simulator. Calculate blast radius, casualties, and fallout zones for any location worldwide with real scientific data.",
-              "applicationCategory": "EducationalApplication",
-              "operatingSystem": "Web Browser",
-              "author": {
-                "@type": "Organization",
-                "name": "NukeBlastSimulator.com",
-                "email": "info@nukeblastsimulator.com"
-              },
-              "keywords": "nuclear blast simulator, blast radius calculator, atomic bomb simulator, nuclear weapon effects, educational tool",
-              "inLanguage": "en-US",
-              "isAccessibleForFree": true,
-              "educationalUse": "Nuclear disarmament education and awareness",
-              "audience": {
-                "@type": "EducationalAudience",
-                "educationalRole": "student"
-              }
-            })
-          }}
+        <JsonLd
+          id="ld-graph-root"
+          schema={[organizationSchema, websiteSchema, softwareApplicationSchema]}
         />
       </head>
-      <body className="bg-gray-900 min-h-screen">
+      <body className="bg-gray-900 min-h-screen flex flex-col">
         <Analytics />
         <MilitaryHeader />
-        {children}
+        <div className="flex-1">{children}</div>
+        <Footer />
       </body>
     </html>
   )

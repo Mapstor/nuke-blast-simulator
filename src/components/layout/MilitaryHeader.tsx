@@ -38,10 +38,10 @@ export function MilitaryHeader() {
             
             {/* Centered title */}
             <div className="flex flex-col items-center text-center">
-              <Link href="/" className="hover:opacity-80 transition">
-                <h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-green-400 terminal-font">
+              <Link href="/" aria-label="Nuke Blast Simulator — home" className="hover:opacity-80 transition">
+                <p className="text-lg md:text-2xl lg:text-3xl font-bold text-green-400 terminal-font">
                   Nuke Blast Simulator
-                </h1>
+                </p>
                 <p className="hidden md:block text-green-300 text-xs md:text-sm">Interactive nuclear blast effects calculator</p>
               </Link>
             </div>

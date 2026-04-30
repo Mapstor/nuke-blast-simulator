@@ -1,13 +1,26 @@
 import { Metadata } from 'next'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { contactPageSchema, breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
   title: 'Contact - Feedback, Concerns, and Support',
-  description: 'Contact information for the nuclear blast simulator. Report concerns, provide feedback, or request support.'
+  description: 'Contact information for the nuclear blast simulator. Report concerns, provide feedback, or request support.',
+  alternates: { canonical: '/contact' }
 }
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
+      <JsonLd
+        id="ld-contact"
+        schema={[
+          contactPageSchema('/contact'),
+          breadcrumbSchema([
+            { name: 'Home', url: SITE_URL },
+            { name: 'Contact', url: '/contact' },
+          ]),
+        ]}
+      />
       <main className="max-w-4xl mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-green-400">Contact Us</h1>
         

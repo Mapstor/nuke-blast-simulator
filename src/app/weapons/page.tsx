@@ -1,13 +1,62 @@
 import { Metadata } from 'next'
+import { JsonLd } from '@/components/seo/JsonLd'
+import {
+  datasetSchema,
+  itemListSchema,
+  breadcrumbSchema,
+  SITE_URL,
+} from '@/lib/seo/schemas'
+import { bombs } from '@/lib/data/bombs'
 
 export const metadata: Metadata = {
-  title: 'Nuclear Weapons Database - Historical Arsenal Data',
-  description: 'Comprehensive database of nuclear weapons from 1945 to present. Historical yields, countries, and technical specifications for educational purposes.'
+  title: 'Nuclear Weapons Database — 45+ Historical Bombs, Yields & Countries',
+  description: 'Searchable database of 45+ nuclear weapons from 1945 to present, including Tsar Bomba (50 Mt), Castle Bravo (15 Mt), Little Boy, Fat Man, B83, W88, W76, B61, and modern arsenals. Yields, countries, years, and technical specs.',
+  alternates: { canonical: '/weapons' }
 }
+
+const weaponItems = bombs
+  .filter((b) => b.id !== 'custom')
+  .map((b) => ({
+    name: `${b.name} (${b.country}, ${b.yield.toLocaleString()} kt)`,
+    url: `/weapons/${b.id}`,
+    description: b.description,
+  }))
 
 export default function WeaponsPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
+      <JsonLd
+        id="ld-weapons"
+        schema={[
+          datasetSchema({
+            url: '/weapons',
+            name: 'Nuclear Weapons Database',
+            description:
+              'Catalog of 45+ historical and modern nuclear weapons with yields, countries of origin, year first deployed/tested, and weapon type (fission, fusion, thermonuclear). Sources include declassified DOE/DOD records, FAS, and SIPRI.',
+            numberOfItems: weaponItems.length,
+            keywords: [
+              'nuclear weapons',
+              'Tsar Bomba',
+              'Castle Bravo',
+              'Little Boy',
+              'Fat Man',
+              'B83',
+              'W88',
+              'thermonuclear',
+              'kiloton',
+              'megaton',
+              'Hiroshima',
+              'Nagasaki',
+              'nuclear arsenal',
+            ],
+          }),
+          itemListSchema(weaponItems, 'Nuclear Weapons'),
+          breadcrumbSchema([
+            { name: 'Home', url: SITE_URL },
+            { name: 'Weapons Database', url: '/weapons' },
+          ]),
+        ]}
+      />
       <main className="max-w-6xl mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-green-400">Nuclear Weapons Database</h1>
         

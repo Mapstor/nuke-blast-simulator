@@ -231,12 +231,11 @@ export function MapboxMap() {
       minZoom={2}
       scrollZoom={{
         speed: 1.5,
-        smooth: true
-      }}
+        smooth: true,
+      } as unknown as boolean}
       touchZoomRotate={{
-        enableRotate: false
-      }}
-      touchAction="pan-y"
+        enableRotate: false,
+      } as unknown as boolean}
       dragRotate={false}
       keyboard={true}
       doubleClickZoom={true}

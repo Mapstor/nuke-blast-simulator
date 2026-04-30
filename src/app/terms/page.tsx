@@ -1,13 +1,23 @@
 import { Metadata } from 'next'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
   title: 'Terms of Service - Educational Use Only',
-  description: 'Terms of service for the nuclear blast simulator. Educational purposes only, not for planning or targeting.'
+  description: 'Terms of service for the nuclear blast simulator. Educational purposes only, not for planning or targeting.',
+  alternates: { canonical: '/terms' }
 }
 
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
+      <JsonLd
+        id="ld-terms"
+        schema={breadcrumbSchema([
+          { name: 'Home', url: SITE_URL },
+          { name: 'Terms of Service', url: '/terms' },
+        ])}
+      />
       <main className="max-w-4xl mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-green-400">Terms of Service</h1>
         

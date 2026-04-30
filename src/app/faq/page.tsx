@@ -1,13 +1,98 @@
 import { Metadata } from 'next'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { faqPageSchema, breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
   title: 'FAQ - Frequently Asked Questions About Nuclear Effects',
-  description: 'Common questions about nuclear weapons effects, blast calculations, and the educational purpose of our simulator.'
+  description: 'Common questions about nuclear weapons effects, blast calculations, and the educational purpose of our simulator.',
+  alternates: { canonical: '/faq' }
 }
+
+// Source of truth for the FAQPage schema. Keep entries in sync with the
+// visible Q&A blocks below. Each answer is plain text — Google strips inline
+// HTML from FAQ schema answers, so prefer prose here and use the JSX for
+// formatting in the visible page.
+const faqEntries = [
+  {
+    question: 'What is the purpose of this simulator?',
+    answer:
+      'Nuclear Blast Simulator is an educational tool designed to promote understanding of nuclear weapons effects and support nuclear disarmament efforts. By visualizing the devastating consequences, it fosters informed discussions about nuclear policy and the urgent need for a nuclear-weapon-free world. It is not intended for planning attacks, targeting, or any military purposes.',
+  },
+  {
+    question: 'How accurate are the nuclear blast calculations?',
+    answer:
+      'Calculations are based on scientifically validated formulas from "The Effects of Nuclear Weapons" by Glasstone & Dolan and other declassified research. They provide estimates based on idealized conditions. Real-world effects vary significantly due to terrain, weather, building construction, and many other factors. These are educational approximations, not precise predictions.',
+  },
+  {
+    question: 'Who can use this nuclear blast simulator?',
+    answer:
+      'The simulator is intended for educators and students (recommended 16+ with supervision), researchers and academics, journalists and documentary makers, peace advocates and policy makers, and anyone seeking to understand nuclear weapons consequences. It is free, requires no account, and is suitable for classroom use.',
+  },
+  {
+    question: 'What is the difference between an air burst and a surface burst?',
+    answer:
+      'An air burst is detonated above ground at optimal altitude, producing maximum blast damage over a wide area with minimal radioactive fallout — this is how Hiroshima and Nagasaki were attacked. A surface burst is detonated at ground level; it has roughly 40-50% smaller blast radius but creates massive radioactive fallout, a large crater, and long-term contamination of the surrounding area.',
+  },
+  {
+    question: 'What do the colored circles on the map represent?',
+    answer:
+      'Each colored circle is a nuclear weapon effect zone. The fireball (yellow) is the complete vaporization zone with 100% fatalities. Severe blast (red) is the 20 PSI overpressure zone where reinforced concrete is destroyed. Moderate blast (orange) is the 5 PSI zone where most buildings collapse. Light blast (gray) is the 1 PSI zone where windows shatter. Magenta and pink show third-degree and second-degree thermal burn radii.',
+  },
+  {
+    question: 'How do nuclear weapons cause damage?',
+    answer:
+      'Nuclear weapons cause damage through multiple mechanisms. Immediate effects (seconds to minutes) include the fireball, thermal radiation that causes burns and fires, initial nuclear radiation, and an electromagnetic pulse that destroys electronics. Delayed effects (minutes to years) include the blast wave that destroys buildings, radioactive fallout, climate effects from soot and dust ("nuclear winter"), and long-term radiation that causes cancer and genetic damage.',
+  },
+  {
+    question: 'How long do nuclear weapon effects last?',
+    answer:
+      'Effects last across multiple time scales. Immediate effects (0-1 hour): fireball, thermal radiation, initial nuclear radiation, EMP. Short-term (hours to weeks): blast wave damage, radioactive fallout, acute radiation sickness. Long-term (months to decades): residual radiation, cancer, genetic effects, environmental damage. Generational (decades to centuries): soil contamination, hereditary genetic damage, psychological trauma in affected populations.',
+  },
+  {
+    question: 'What does "yield" mean for a nuclear weapon?',
+    answer:
+      'Yield is the amount of energy released by a nuclear weapon, measured in TNT-equivalent tons. 1 kiloton (kt) equals 1,000 tons of TNT. 1 megaton (Mt) equals 1,000,000 tons of TNT. The Hiroshima bomb was about 15 kt. Modern strategic warheads are typically 100-500 kt. The largest weapon ever tested, the Soviet Tsar Bomba, was 50 Mt.',
+  },
+  {
+    question: 'How are nuclear blast radii calculated?',
+    answer:
+      'The simulator uses scientifically validated scaling laws based on weapon yield. Fireball radius (km) ≈ 0.28 × yield_kt^0.33. Severe blast (20 PSI) ≈ 0.28 × yield_kt^0.33. Moderate blast (5 PSI) ≈ 1.03 × yield_kt^0.33. Light blast (1 PSI) ≈ 2.93 × yield_kt^0.33. Thermal third-degree burns ≈ 0.67 × yield_kt^0.41. These formulas come from extensive nuclear testing data (Glasstone & Dolan, 1977) and have been validated against historical detonations.',
+  },
+  {
+    question: 'Why does the simulator focus on physical effects rather than casualty totals?',
+    answer:
+      'Population density varies enormously by location and time of day. Casualty rates depend on warning time, available shelter, and medical care. The simulator emphasizes humanitarian consequences conceptually rather than producing potentially misused or misinterpreted casualty totals. The focus is on prevention and education, not body counts.',
+  },
+  {
+    question: 'Is this nuclear blast simulator dangerous or illegal?',
+    answer:
+      'No. The simulator is completely legal and safe. All information is based on publicly available, declassified sources. No classified or sensitive information is disclosed. It cannot be used to build weapons or plan attacks. Educational use of nuclear effects data is protected speech, and similar tools are used in academic and policy research. Misuse for threats, targeting, or planning violence is strictly prohibited.',
+  },
+  {
+    question: 'Does the simulator collect data about my simulations?',
+    answer:
+      'No. All blast calculations run locally in your browser. Weapon selections and target locations are never transmitted to our servers. There is no tracking of what you simulate or where you place weapons. There are no user accounts or registration. Only standard web server logs are collected (IP addresses), not simulation data.',
+  },
+  {
+    question: 'Can I use this nuclear blast simulator for research or classroom teaching?',
+    answer:
+      'Yes — educational and research use is encouraged. The simulator is free for educational purposes, requires no registration or permission, and screenshots and data may be used in academic work. Please cite the methodology page and listed data sources. Adult supervision is recommended for users under 18 due to the mature subject matter.',
+  },
+]
 
 export default function FAQPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
+      <JsonLd
+        id="ld-faq"
+        schema={[
+          faqPageSchema(faqEntries),
+          breadcrumbSchema([
+            { name: 'Home', url: SITE_URL },
+            { name: 'FAQ', url: '/faq' },
+          ]),
+        ]}
+      />
       <main className="max-w-4xl mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-green-400">Frequently Asked Questions</h1>
         

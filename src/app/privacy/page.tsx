@@ -1,13 +1,23 @@
 import { Metadata } from 'next'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy - Data Collection and Protection',
-  description: 'Privacy policy for the nuclear blast simulator. Learn how we protect your privacy and what data we collect.'
+  description: 'Privacy policy for the nuclear blast simulator. Learn how we protect your privacy and what data we collect.',
+  alternates: { canonical: '/privacy' }
 }
 
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
+      <JsonLd
+        id="ld-privacy"
+        schema={breadcrumbSchema([
+          { name: 'Home', url: SITE_URL },
+          { name: 'Privacy Policy', url: '/privacy' },
+        ])}
+      />
       <main className="max-w-4xl mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-green-400">Privacy Policy</h1>
         

@@ -93,13 +93,10 @@ async function getLocationInfo(lat: number, lng: number): Promise<{name: string,
 }
 
 // WorldPop API endpoint for population density
-async function getWorldPopDensity(lat: number, lng: number): Promise<number> {
-  // WorldPop API seems to have issues, let's use a simpler approach
-  // We'll estimate based on location type from Nominatim
-  console.log(`Attempting to get population density for: ${lat}, ${lng}`)
-  
-  // For now, return null to trigger the fallback estimation
-  // The WorldPop API requires proper authentication and might have CORS issues
+async function getWorldPopDensity(lat: number, lng: number): Promise<number | null> {
+  // WorldPop API requires proper authentication and has CORS issues, so we
+  // return null to trigger fallback estimation in the caller.
+  void lat; void lng
   return null
 }
 

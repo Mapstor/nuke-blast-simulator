@@ -1,13 +1,23 @@
 import { Metadata } from 'next'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
   title: 'Data Sources - Nuclear Effects Research References',
-  description: 'Scientific references, declassified studies, and authoritative sources used in our nuclear blast effects calculations and methodology.'
+  description: 'Scientific references, declassified studies, and authoritative sources used in our nuclear blast effects calculations and methodology.',
+  alternates: { canonical: '/sources' }
 }
 
 export default function SourcesPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
+      <JsonLd
+        id="ld-sources"
+        schema={breadcrumbSchema([
+          { name: 'Home', url: SITE_URL },
+          { name: 'Data Sources', url: '/sources' },
+        ])}
+      />
       <main className="max-w-6xl mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-green-400">Data Sources & References</h1>
         

@@ -1,13 +1,23 @@
 import { Metadata } from 'next'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
   title: 'Peace & Education Resources - Nuclear Disarmament Organizations',
-  description: 'Educational resources and organizations working toward nuclear disarmament and peace. Links to advocacy groups, research institutes, and educational materials.'
+  description: 'Educational resources and organizations working toward nuclear disarmament and peace. Links to advocacy groups, research institutes, and educational materials.',
+  alternates: { canonical: '/resources' }
 }
 
 export default function ResourcesPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
+      <JsonLd
+        id="ld-resources"
+        schema={breadcrumbSchema([
+          { name: 'Home', url: SITE_URL },
+          { name: 'Resources', url: '/resources' },
+        ])}
+      />
       <main className="max-w-6xl mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-green-400">Peace & Education Resources</h1>
         

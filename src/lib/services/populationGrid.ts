@@ -115,7 +115,7 @@ function getGridDensity(lat: number, lng: number): number {
   const gridLng = (Math.round(lng / resolution) * resolution).toFixed(2)
   
   // Look up in grid
-  const latBand = populationGrid.data[gridLat]
+  const latBand = (populationGrid.data as Record<string, Record<string, number>>)[gridLat]
   if (latBand && latBand[gridLng]) {
     return latBand[gridLng]
   }
@@ -134,7 +134,7 @@ function getGridDensity(lat: number, lng: number): number {
   for (const [dLat, dLng] of nearbyOffsets) {
     const checkLat = (parseFloat(gridLat) + dLat).toFixed(2)
     const checkLng = (parseFloat(gridLng) + dLng).toFixed(2)
-    const checkBand = populationGrid.data[checkLat]
+    const checkBand = (populationGrid.data as Record<string, Record<string, number>>)[checkLat]
     
     if (checkBand && checkBand[checkLng]) {
       totalDensity += checkBand[checkLng]
@@ -156,7 +156,7 @@ function getGridDensity(lat: number, lng: number): number {
   const hasNearbyPopulation = nearbyOffsets.some(([dLat, dLng]) => {
     const checkLat = (parseFloat(gridLat) + dLat * 5).toFixed(2)
     const checkLng = (parseFloat(gridLng) + dLng * 5).toFixed(2)
-    const checkBand = populationGrid.data[checkLat]
+    const checkBand = (populationGrid.data as Record<string, Record<string, number>>)[checkLat]
     return checkBand && checkBand[checkLng] && checkBand[checkLng] > 0
   })
   
