@@ -92,7 +92,7 @@ export default function ScenariosIndexPage() {
         </section>
 
         {featuredBombs.map((bomb) => (
-          <section key={bomb.id} className="mb-10">
+          <section key={bomb.id} id={bomb.id} className="mb-10 scroll-mt-24">
             <h2 className="text-2xl font-semibold mb-2 text-green-400">
               <Link href={`/weapons/${bomb.id}`} className="hover:underline">
                 {bomb.name}

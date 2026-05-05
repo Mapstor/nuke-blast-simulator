@@ -95,7 +95,11 @@ export default function ExamplesIndexPage() {
           const cities = groupedByRegion[region]
           if (!cities || cities.length === 0) return null
           return (
-            <section key={region} className="mb-10">
+            <section
+              key={region}
+              id={region.toLowerCase().replace(/\s+/g, '-')}
+              className="mb-10 scroll-mt-24"
+            >
               <h2 className="text-2xl font-semibold mb-4 text-green-400">{region}</h2>
               <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
                 {cities.map((c) => (

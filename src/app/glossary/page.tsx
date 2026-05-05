@@ -64,7 +64,7 @@ export default function GlossaryIndexPage() {
           const entries = groupedByCategory.get(cat)
           if (!entries || entries.length === 0) return null
           return (
-            <section key={cat} className="mb-10">
+            <section key={cat} id={cat} className="mb-10 scroll-mt-24">
               <h2 className="text-2xl font-semibold mb-4 text-green-400">{categoryLabel(cat)}</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {entries.map((e) => (
