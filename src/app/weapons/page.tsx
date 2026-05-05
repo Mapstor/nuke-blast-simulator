@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import { JsonLd } from '@/components/seo/JsonLd'
 import {
   datasetSchema,
@@ -7,6 +8,7 @@ import {
   SITE_URL,
 } from '@/lib/seo/schemas'
 import { bombs } from '@/lib/data/bombs'
+import type { Bomb } from '@/lib/types'
 
 export const metadata: Metadata = {
   title: 'Nuclear Weapons Database — 45+ Historical Bombs, Yields & Countries',
@@ -14,13 +16,36 @@ export const metadata: Metadata = {
   alternates: { canonical: '/weapons' }
 }
 
-const weaponItems = bombs
-  .filter((b) => b.id !== 'custom')
-  .map((b) => ({
-    name: `${b.name} (${b.country}, ${b.yield.toLocaleString()} kt)`,
-    url: `/weapons/${b.id}`,
-    description: b.description,
-  }))
+const indexedBombs = bombs.filter((b) => b.id !== 'custom')
+
+const weaponItems = indexedBombs.map((b) => ({
+  name: `${b.name} (${b.country}, ${b.yield.toLocaleString()} kt)`,
+  url: `/weapons/${b.id}`,
+  description: b.description,
+}))
+
+function formatYieldShort(y: number): string {
+  if (y >= 1000) return `${(y / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })} Mt`
+  if (y >= 1) return `${y.toLocaleString()} kt`
+  return `${(y * 1000).toLocaleString()} t`
+}
+
+type YieldGroup = { heading: string; min: number; max: number; bombs: Bomb[] }
+
+const yieldGroups: YieldGroup[] = [
+  { heading: 'Multi-megaton (≥ 5 Mt)',         min: 5000,  max: Infinity, bombs: [] },
+  { heading: 'Megaton class (1–5 Mt)',         min: 1000,  max: 5000,     bombs: [] },
+  { heading: 'High strategic (300–1000 kt)',   min: 300,   max: 1000,     bombs: [] },
+  { heading: 'Strategic (50–300 kt)',          min: 50,    max: 300,      bombs: [] },
+  { heading: 'Tactical (1–50 kt)',             min: 1,     max: 50,       bombs: [] },
+  { heading: 'Sub-kiloton & conventional',     min: 0,     max: 1,        bombs: [] },
+]
+
+for (const b of indexedBombs) {
+  const g = yieldGroups.find((gg) => b.yield >= gg.min && b.yield < gg.max)
+  if (g) g.bombs.push(b)
+}
+for (const g of yieldGroups) g.bombs.sort((a, c) => c.yield - a.yield)
 
 export default function WeaponsPage() {
   return (
@@ -63,10 +88,53 @@ export default function WeaponsPage() {
         <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4 text-red-400">Historical Educational Data</h2>
           <p className="text-red-300 text-lg">
-            This database contains historical information about nuclear weapons for educational purposes only. 
+            This database contains historical information about nuclear weapons for educational purposes only.
             Data is compiled from declassified sources and public research.
           </p>
         </div>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-6 text-green-400">Browse All {indexedBombs.length} Weapons</h2>
+          <p className="text-green-300 mb-6">
+            Click any weapon for its detailed profile, including computed blast radius, thermal radiation effects,
+            historical context, and a one-click simulator preset. Browse below by yield class — from sub-kiloton
+            tactical devices to the 50-megaton Tsar Bomba.
+          </p>
+
+          {yieldGroups.map((group) => {
+            if (group.bombs.length === 0) return null
+            return (
+              <div key={group.heading} className="mb-8">
+                <h3 className="text-lg font-semibold text-yellow-400 mb-3">
+                  {group.heading} <span className="text-xs text-green-300/70 font-normal">({group.bombs.length})</span>
+                </h3>
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                  {group.bombs.map((b) => (
+                    <Link
+                      key={b.id}
+                      href={`/weapons/${b.id}`}
+                      className="block bg-black/50 border border-green-500/30 rounded-lg p-3 hover:border-green-400 transition"
+                    >
+                      <div className="font-semibold text-yellow-400 text-sm">{b.name}</div>
+                      <div className="text-xs text-green-300 mt-0.5">{formatYieldShort(b.yield)}</div>
+                      <div className="text-[11px] text-green-300/70 mt-0.5">
+                        {b.country}{b.year ? ` · ${b.year}` : ''}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
+
+          <p className="text-sm text-green-300/70 mt-4">
+            Want to compare two weapons head-to-head? See{' '}
+            <Link href="/compare" className="text-yellow-400 hover:underline">all comparison pages</Link>{' '}
+            (Tsar Bomba vs Castle Bravo, Little Boy vs Fat Man, etc.). Want to drop a specific weapon
+            on a specific city? See{' '}
+            <Link href="/scenarios" className="text-yellow-400 hover:underline">200 bomb-on-city scenarios</Link>.
+          </p>
+        </section>
 
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6 text-green-400">Nuclear Powers Timeline</h2>

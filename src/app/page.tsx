@@ -5,6 +5,10 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { faqPageSchema } from '@/lib/seo/schemas'
 import { bombs } from '@/lib/data/bombs'
 import { presetLocations } from '@/lib/data/cities'
+import { COMPARISONS, encodeComparisonSlug } from '@/lib/data/comparisons'
+import { encodeScenarioSlug } from '@/lib/data/scenarios'
+import { articles } from '@/lib/blog/articles'
+import { glossary } from '@/lib/data/glossary'
 
 export const metadata: Metadata = {
   title: 'Nuclear Blast Simulator — Interactive Nuke Map & Blast Radius Calculator',
@@ -62,6 +66,44 @@ const homepageFaq = [
 const featuredWeapons = ['tsar-bomba', 'castle-bravo', 'little-boy', 'fat-man', 'b83', 'w88']
   .map((id) => bombs.find((b) => b.id === id))
   .filter((b): b is NonNullable<typeof b> => Boolean(b))
+
+const featuredCities = presetLocations.slice(0, 8)
+
+const featuredScenarios = [
+  { bomb: 'tsar-bomba',    city: 'new-york'  },
+  { bomb: 'little-boy',    city: 'tokyo'     },
+  { bomb: 'castle-bravo',  city: 'london'    },
+  { bomb: 'b83',           city: 'moscow'    },
+  { bomb: 'w88',           city: 'beijing'   },
+  { bomb: 'fat-man',       city: 'paris'     },
+]
+  .map(({ bomb, city }) => {
+    const b = bombs.find((bb) => bb.id === bomb)
+    const c = presetLocations.find((cc) => cc.slug === city)
+    if (!b || !c) return null
+    return { bomb: b, city: c, slug: encodeScenarioSlug(bomb, city) }
+  })
+  .filter((x): x is NonNullable<typeof x> => Boolean(x))
+
+const featuredComparisons = COMPARISONS.slice(0, 6)
+  .map(([a, b]) => {
+    const ba = bombs.find((bb) => bb.id === a)
+    const bb = bombs.find((bbb) => bbb.id === b)
+    if (!ba || !bb) return null
+    return { a: ba, b: bb, slug: encodeComparisonSlug(a, b) }
+  })
+  .filter((x): x is NonNullable<typeof x> => Boolean(x))
+
+const latestArticles = [...articles]
+  .sort((a, b) => (a.datePublished < b.datePublished ? 1 : -1))
+  .slice(0, 4)
+
+const featuredGlossaryTerms = glossary.slice(0, 6)
+
+function shortYield(y: number): string {
+  if (y >= 1000) return `${(y / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })} Mt`
+  return `${y.toLocaleString()} kt`
+}
 
 export default function HomePage() {
   return (
@@ -150,11 +192,11 @@ export default function HomePage() {
           <section>
             <h2 className="text-3xl font-bold mb-4 text-green-400">Featured City Scenarios</h2>
             <p className="mb-4">
-              See pre-computed nuclear blast scenarios for major world cities — including computed casualty
-              estimates from population density data.
+              Pre-computed nuclear blast scenarios for major world cities, with casualty estimates from
+              local population density.
             </p>
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
-              {presetLocations.map((c) => (
+              {featuredCities.map((c) => (
                 <Link
                   key={c.slug}
                   href={`/examples/${c.slug}`}
@@ -167,6 +209,121 @@ export default function HomePage() {
                 </Link>
               ))}
             </div>
+            <p className="mt-4">
+              <Link href="/examples" className="text-yellow-400 hover:underline">
+                Browse all {presetLocations.length} city scenarios →
+              </Link>
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-3xl font-bold mb-4 text-green-400">Featured Bomb-on-City Scenarios</h2>
+            <p className="mb-4">
+              200 pre-computed scenarios pairing iconic weapons with major cities — each calculates blast
+              radii, thermal effects, and casualty estimates for that exact combination.
+            </p>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+              {featuredScenarios.map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`/scenarios/${s.slug}`}
+                  className="block bg-black/50 border border-green-500/30 rounded-lg p-3 hover:border-green-400 transition"
+                >
+                  <div className="font-semibold text-yellow-400 text-sm">
+                    {s.bomb.name} on {s.city.name}
+                  </div>
+                  <div className="text-xs text-green-300/70 mt-1">
+                    {shortYield(s.bomb.yield)} · {s.city.country}
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <p className="mt-4">
+              <Link href="/scenarios" className="text-yellow-400 hover:underline">
+                Browse all 200 bomb-on-city scenarios →
+              </Link>
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-3xl font-bold mb-4 text-green-400">Weapon Comparisons</h2>
+            <p className="mb-4">
+              Head-to-head comparisons of nuclear weapons, side-by-side. Yields, blast radii, casualties,
+              and which is bigger.
+            </p>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+              {featuredComparisons.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/compare/${c.slug}`}
+                  className="block bg-black/50 border border-green-500/30 rounded-lg p-3 hover:border-green-400 transition"
+                >
+                  <div className="font-semibold text-yellow-400 text-sm">
+                    {c.a.name} vs {c.b.name}
+                  </div>
+                  <div className="text-xs text-green-300/70 mt-1">
+                    {shortYield(c.a.yield)} vs {shortYield(c.b.yield)}
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <p className="mt-4">
+              <Link href="/compare" className="text-yellow-400 hover:underline">
+                Browse all weapon comparisons →
+              </Link>
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-3xl font-bold mb-4 text-green-400">From the Blog</h2>
+            <p className="mb-4">
+              Long-form articles on nuclear weapon physics, history, doctrine, and effects.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {latestArticles.map((a) => (
+                <Link
+                  key={a.slug}
+                  href={`/blog/${a.slug}`}
+                  className="block bg-black/50 border border-green-500/30 rounded-lg p-4 hover:border-green-400 transition"
+                >
+                  <div className="text-xs uppercase tracking-wider text-green-300/70 mb-1">
+                    {a.readingMinutes} min read
+                  </div>
+                  <div className="font-semibold text-yellow-400">{a.title}</div>
+                  <div className="text-xs text-green-300/80 mt-1">{a.description}</div>
+                </Link>
+              ))}
+            </div>
+            <p className="mt-4">
+              <Link href="/blog" className="text-yellow-400 hover:underline">
+                Read all articles →
+              </Link>
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-3xl font-bold mb-4 text-green-400">Glossary</h2>
+            <p className="mb-4">
+              {glossary.length} defined terms covering nuclear weapon effects, physics, doctrine, and arms
+              control. Each term has a one-sentence answer and an expanded explanation.
+            </p>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+              {featuredGlossaryTerms.map((g) => (
+                <Link
+                  key={g.slug}
+                  href={`/glossary/${g.slug}`}
+                  className="block bg-black/50 border border-green-500/30 rounded p-3 hover:border-green-400 transition text-sm"
+                >
+                  <div className="font-semibold text-yellow-400">{g.term}</div>
+                  <div className="text-xs text-green-300/70 mt-0.5 line-clamp-2">{g.short}</div>
+                </Link>
+              ))}
+            </div>
+            <p className="mt-4">
+              <Link href="/glossary" className="text-yellow-400 hover:underline">
+                Browse the full glossary →
+              </Link>
+            </p>
           </section>
 
           <section>
