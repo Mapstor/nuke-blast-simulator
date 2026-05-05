@@ -23,7 +23,44 @@ export default function AboutPage() {
       />
       <main className="max-w-4xl mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-green-400">About Nuclear Blast Simulator</h1>
-        
+
+        <section id="editorial" className="mb-12 scroll-mt-24">
+          <h2 className="text-2xl font-semibold mb-6 text-green-400">Editorial Team</h2>
+          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
+            <div className="flex items-start gap-4 mb-4">
+              <div className="shrink-0 w-12 h-12 bg-green-500/20 border border-green-500/40 rounded-full flex items-center justify-center text-2xl">
+                ☢️
+              </div>
+              <div>
+                <p className="font-semibold text-yellow-400">NukeBlastSimulator Editorial</p>
+                <p className="text-sm text-green-300/70">Editorial team · Last reviewed {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</p>
+              </div>
+            </div>
+            <p className="text-green-300 mb-3">
+              Articles, weapon profiles, and methodology pages on this site are written and reviewed by the
+              NukeBlastSimulator Editorial team, working from declassified U.S. Department of Defense and
+              Department of Energy publications, peer-reviewed nuclear-physics literature, and arms-control
+              reporting.
+            </p>
+            <p className="text-green-300 mb-3">
+              Every numerical claim is paraphrased from a primary source: <em>The Effects of Nuclear Weapons</em>
+              (Glasstone &amp; Dolan, 1977) for blast scaling, the Federation of American Scientists for arsenal
+              data, SIPRI and the Bulletin of the Atomic Scientists for current stockpiles, NTI for nonproliferation
+              context, and RERF for radiation health effects. We do not reproduce classified information.
+            </p>
+            <p className="text-sm text-green-300/80">
+              Subject expertise: nuclear weapons effects · blast scaling laws · weapon design · weapon history ·
+              nuclear arms control · deterrence theory · radiation health effects.
+            </p>
+            <p className="text-sm text-green-300/60 mt-4">
+              Contact:{' '}
+              <a href="mailto:info@nukeblastsimulator.com" className="text-yellow-400 hover:underline">
+                info@nukeblastsimulator.com
+              </a>
+            </p>
+          </div>
+        </section>
+
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6 text-green-400">Educational Mission</h2>
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 mb-6">

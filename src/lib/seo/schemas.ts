@@ -8,6 +8,7 @@ export const ORG_LEGAL_NAME = 'NukeBlastSimulator.com'
 export const ORG_ID = `${SITE_URL}/#organization`
 export const WEBSITE_ID = `${SITE_URL}/#website`
 export const SOFTWARE_ID = `${SITE_URL}/#software`
+export const EDITORIAL_PERSON_ID = `${SITE_URL}/about#editorial`
 
 export type SchemaObject = Record<string, unknown>
 
@@ -100,6 +101,36 @@ export const softwareApplicationSchema: SchemaObject = {
   educationalUse: ['Nuclear disarmament education', 'Physics education', 'History education'],
 }
 
+// Editorial Person — represented as a collective Person entity for E-E-A-T
+// signal and to give articles a citable author. Contributors with verifiable
+// credentials can be added as additional Person entries linking to this one
+// via `colleague` once the team is named publicly.
+export const editorialPersonSchema: SchemaObject = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': EDITORIAL_PERSON_ID,
+  name: 'NukeBlastSimulator Editorial',
+  alternateName: 'NBS Editorial',
+  url: `${SITE_URL}/about`,
+  jobTitle: 'Editorial Team',
+  description:
+    'The editorial team behind Nuclear Blast Simulator. We translate declassified DoD and DoE research, peer-reviewed literature, and arms-control reporting into educational tools for nuclear-disarmament awareness. Every article is reviewed against primary sources before publication.',
+  knowsAbout: [
+    'Nuclear weapons effects',
+    'Nuclear weapons physics',
+    'Blast scaling laws (Glasstone & Dolan)',
+    'Nuclear weapon design',
+    'Nuclear weapon history',
+    'Nuclear arms control',
+    'Nuclear disarmament policy',
+    'Nuclear deterrence theory',
+    'Nuclear weapons treaties (NPT, TPNW, CTBT, New START)',
+    'Radiation health effects',
+  ],
+  affiliation: { '@id': ORG_ID },
+  worksFor: { '@id': ORG_ID },
+}
+
 // ─────────────────────────────────────────────────────────────────────────
 // Per-page schema builders
 // ─────────────────────────────────────────────────────────────────────────
@@ -179,11 +210,8 @@ export function articleSchema(input: {
     image: input.imageUrl ?? `${SITE_URL}/og-image.png`,
     datePublished: input.datePublished ?? '2025-10-22',
     dateModified: input.dateModified ?? new Date().toISOString().slice(0, 10),
-    author: {
-      '@type': 'Organization',
-      '@id': ORG_ID,
-      name: input.authorName ?? ORG_LEGAL_NAME,
-    },
+    // Reference the editorial Person by @id for a connected E-E-A-T graph.
+    author: { '@id': EDITORIAL_PERSON_ID },
     publisher: { '@id': ORG_ID },
   }
 }

@@ -35,6 +35,12 @@ export const FEATURED_CITY_SLUGS = [
   'istanbul',
   'sydney',
   'sao-paulo',
+  // 25-city expansion (April 2026)
+  'madrid',
+  'hong-kong',
+  'jakarta',
+  'dubai',
+  'melbourne',
 ] as const
 
 export type FeaturedBombId = (typeof FEATURED_BOMB_IDS)[number]

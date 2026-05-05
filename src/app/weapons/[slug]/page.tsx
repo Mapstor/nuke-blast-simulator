@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { PrevNext, type PrevNextItem } from '@/components/nav/PrevNext'
 import {
   articleSchema,
   breadcrumbSchema,
@@ -18,6 +19,26 @@ import {
 import type { Bomb } from '@/lib/types'
 
 const HIROSHIMA_YIELD_KT = 15
+
+// Linearize the weapons list by yield ascending so prev/next moves through
+// the database from smallest to largest.
+const sequencedBombs = bombs
+  .filter((b) => b.id !== 'custom')
+  .slice()
+  .sort((a, b) => a.yield - b.yield)
+
+function pageNeighbors(slug: string): { prev: PrevNextItem; next: PrevNextItem } {
+  const i = sequencedBombs.findIndex((b) => b.id === slug)
+  const fmt = (b: Bomb): PrevNextItem => ({
+    label: b.name,
+    href: `/weapons/${b.id}`,
+    sublabel: `${b.yield >= 1000 ? `${(b.yield / 1000).toFixed(1)} Mt` : `${b.yield} kt`} · ${b.country}`,
+  })
+  return {
+    prev: i > 0 ? fmt(sequencedBombs[i - 1]) : null,
+    next: i >= 0 && i < sequencedBombs.length - 1 ? fmt(sequencedBombs[i + 1]) : null,
+  }
+}
 
 export function generateStaticParams() {
   return bombs
@@ -319,6 +340,8 @@ export default async function WeaponDetailPage({
           See the full <Link href="/weapons" className="text-yellow-400 hover:underline">Weapons Database</Link> or learn about
           the <Link href="/methodology" className="text-yellow-400 hover:underline">scientific methodology</Link>.
         </section>
+
+        <PrevNext {...pageNeighbors(bomb.id)} label="Previous and next weapon by yield" />
       </main>
     </div>
   )

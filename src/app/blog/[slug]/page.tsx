@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { ArticleBody } from '@/components/blog/ArticleBody'
+import { PrevNext, type PrevNextItem } from '@/components/nav/PrevNext'
 import {
   articleSchema,
   breadcrumbSchema,
@@ -12,6 +13,24 @@ import { articles, findArticle, categoryLabel } from '@/lib/blog/articles'
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }))
+}
+
+// Newest-first ordering for prev/next: prev = older, next = newer.
+const articleSequence = [...articles].sort((a, b) =>
+  a.datePublished < b.datePublished ? 1 : -1,
+)
+
+function articleNeighbors(slug: string): { prev: PrevNextItem; next: PrevNextItem } {
+  const i = articleSequence.findIndex((a) => a.slug === slug)
+  const fmt = (a: typeof articleSequence[number]): PrevNextItem => ({
+    label: a.title,
+    href: `/blog/${a.slug}`,
+    sublabel: `${a.readingMinutes} min read`,
+  })
+  return {
+    prev: i >= 0 && i < articleSequence.length - 1 ? fmt(articleSequence[i + 1]) : null,
+    next: i > 0 ? fmt(articleSequence[i - 1]) : null,
+  }
 }
 
 export async function generateMetadata({
@@ -131,6 +150,8 @@ export default async function BlogArticlePage({
           <Link href="/glossary" className="text-yellow-400 hover:underline">glossary</Link>, or the{' '}
           <Link href="/" className="text-yellow-400 hover:underline">interactive simulator</Link>.
         </section>
+
+        <PrevNext {...articleNeighbors(article.slug)} label="Previous and next article" />
       </main>
     </div>
   )

@@ -9,10 +9,12 @@ import {
   SITE_URL,
 } from '@/lib/seo/schemas'
 import { bombs } from '@/lib/data/bombs'
+import { PrevNext, type PrevNextItem } from '@/components/nav/PrevNext'
 import {
   COMPARISONS,
   decodeComparisonSlug,
   allComparisonSlugs,
+  encodeComparisonSlug,
 } from '@/lib/data/comparisons'
 import {
   calculateFireball,
@@ -26,6 +28,24 @@ const REFERENCE_DENSITY = 8000 // representative dense urban density per km²
 
 export function generateStaticParams() {
   return allComparisonSlugs().map((slug) => ({ slug }))
+}
+
+const compareSequence = COMPARISONS.map(([a, b]) => encodeComparisonSlug(a, b))
+
+function compareNeighbors(slug: string): { prev: PrevNextItem; next: PrevNextItem } {
+  const i = compareSequence.indexOf(slug)
+  function fmt(s: string): PrevNextItem {
+    const d = decodeComparisonSlug(s)
+    if (!d) return null
+    const ba = bombs.find((x) => x.id === d.a)
+    const bb = bombs.find((x) => x.id === d.b)
+    if (!ba || !bb) return null
+    return { label: `${ba.name} vs ${bb.name}`, href: `/compare/${s}` }
+  }
+  return {
+    prev: i > 0 ? fmt(compareSequence[i - 1]) : null,
+    next: i >= 0 && i < compareSequence.length - 1 ? fmt(compareSequence[i + 1]) : null,
+  }
 }
 
 function loadComparison(slug: string): { a: Bomb; b: Bomb } | null {
@@ -349,6 +369,8 @@ export default async function ComparePage({
           <Link href={`/weapons/${b.id}`} className="text-yellow-400 hover:underline">{b.name} details</Link>, or
           browse <Link href="/compare" className="text-yellow-400 hover:underline">all comparisons</Link>.
         </section>
+
+        <PrevNext {...compareNeighbors(slug)} label="Previous and next comparison" />
       </main>
     </div>
   )

@@ -12,6 +12,7 @@ import {
   organizationSchema,
   websiteSchema,
   softwareApplicationSchema,
+  editorialPersonSchema,
 } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
@@ -76,7 +77,7 @@ export default function RootLayout({
         
         <JsonLd
           id="ld-graph-root"
-          schema={[organizationSchema, websiteSchema, softwareApplicationSchema]}
+          schema={[organizationSchema, websiteSchema, softwareApplicationSchema, editorialPersonSchema]}
         />
       </head>
       <body className="bg-gray-900 min-h-screen flex flex-col">

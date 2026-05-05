@@ -8,6 +8,29 @@ import {
   SITE_URL,
 } from '@/lib/seo/schemas'
 import { findGlossaryEntry, glossary, categoryLabel } from '@/lib/data/glossary'
+import { PrevNext, type PrevNextItem } from '@/components/nav/PrevNext'
+
+const CATEGORY_ORDER = ['effects', 'weapons', 'physics', 'doctrine', 'treaty'] as const
+
+const sequencedGlossary = [...glossary].sort((a, b) => {
+  const ai = CATEGORY_ORDER.indexOf(a.category)
+  const bi = CATEGORY_ORDER.indexOf(b.category)
+  if (ai !== bi) return ai - bi
+  return a.term.localeCompare(b.term)
+})
+
+function termNeighbors(slug: string): { prev: PrevNextItem; next: PrevNextItem } {
+  const i = sequencedGlossary.findIndex((g) => g.slug === slug)
+  const fmt = (g: typeof sequencedGlossary[number]): PrevNextItem => ({
+    label: g.term,
+    href: `/glossary/${g.slug}`,
+    sublabel: categoryLabel(g.category),
+  })
+  return {
+    prev: i > 0 ? fmt(sequencedGlossary[i - 1]) : null,
+    next: i >= 0 && i < sequencedGlossary.length - 1 ? fmt(sequencedGlossary[i + 1]) : null,
+  }
+}
 
 export function generateStaticParams() {
   return glossary.map((g) => ({ slug: g.slug }))
@@ -106,6 +129,8 @@ export default async function GlossaryTermPage({
         <section className="text-sm text-green-300/70">
           See the full <Link href="/glossary" className="text-yellow-400 hover:underline">Nuclear Weapons Glossary</Link>.
         </section>
+
+        <PrevNext {...termNeighbors(entry.slug)} label="Previous and next term" />
       </main>
     </div>
   )

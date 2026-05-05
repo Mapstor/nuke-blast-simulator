@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { PrevNext, type PrevNextItem } from '@/components/nav/PrevNext'
 import {
   articleSchema,
   breadcrumbSchema,
@@ -18,6 +19,34 @@ import {
 
 // The 4 representative weapons we run for each city scenario.
 const SCENARIO_BOMB_IDS = ['little-boy', 'w76', 'castle-bravo', 'tsar-bomba'] as const
+
+const REGION_SEQUENCE: PresetLocation['region'][] = [
+  'North America', 'Europe', 'Asia', 'Middle East', 'South America', 'Africa', 'Oceania',
+]
+
+// Linearize cities by region order then population descending — matches the
+// ordering on /examples and gives prev/next a coherent geographic walk.
+const sequencedCities = (() => {
+  const groups: Record<string, PresetLocation[]> = {}
+  for (const c of presetLocations) (groups[c.region] ??= []).push(c)
+  for (const k of Object.keys(groups)) groups[k].sort((a, b) => b.population - a.population)
+  const out: PresetLocation[] = []
+  for (const r of REGION_SEQUENCE) if (groups[r]) out.push(...groups[r])
+  return out
+})()
+
+function cityNeighbors(slug: string): { prev: PrevNextItem; next: PrevNextItem } {
+  const i = sequencedCities.findIndex((c) => c.slug === slug)
+  const fmt = (c: PresetLocation): PrevNextItem => ({
+    label: c.name,
+    href: `/examples/${c.slug}`,
+    sublabel: `${c.country} · ${(c.population / 1_000_000).toFixed(1)}M`,
+  })
+  return {
+    prev: i > 0 ? fmt(sequencedCities[i - 1]) : null,
+    next: i >= 0 && i < sequencedCities.length - 1 ? fmt(sequencedCities[i + 1]) : null,
+  }
+}
 
 export function generateStaticParams() {
   return presetLocations.map((c) => ({ slug: c.slug }))
@@ -314,6 +343,8 @@ export default async function CityExamplePage({
           (45+ entries) · <Link href="/methodology" className="text-yellow-400 hover:underline">Scientific methodology</Link>{' '}
           · <Link href="/sources" className="text-yellow-400 hover:underline">Data sources</Link>.
         </section>
+
+        <PrevNext {...cityNeighbors(city.slug)} label="Previous and next city" />
       </main>
     </div>
   )

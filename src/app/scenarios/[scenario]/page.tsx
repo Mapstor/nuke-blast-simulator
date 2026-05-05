@@ -10,6 +10,7 @@ import {
 } from '@/lib/seo/schemas'
 import { bombs } from '@/lib/data/bombs'
 import { presetLocations } from '@/lib/data/cities'
+import { PrevNext, type PrevNextItem } from '@/components/nav/PrevNext'
 import {
   FEATURED_BOMB_IDS,
   FEATURED_CITY_SLUGS,
@@ -28,6 +29,29 @@ const HIROSHIMA_YIELD_KT = 15
 
 export function generateStaticParams() {
   return allScenarioSlugs().map((scenario) => ({ scenario }))
+}
+
+// Linear sequence: for each featured bomb, all featured cities in order.
+const scenarioSequence = allScenarioSlugs()
+
+function scenarioNeighbors(slug: string): { prev: PrevNextItem; next: PrevNextItem } {
+  const i = scenarioSequence.indexOf(slug)
+  function fmt(s: string): PrevNextItem {
+    const decoded = decodeScenarioSlug(s)
+    if (!decoded) return null
+    const b = bombs.find((x) => x.id === decoded.bombId)
+    const c = presetLocations.find((x) => x.slug === decoded.citySlug)
+    if (!b || !c) return null
+    return {
+      label: `${b.name} on ${c.name}`,
+      href: `/scenarios/${s}`,
+      sublabel: `${b.yield >= 1000 ? `${(b.yield / 1000).toFixed(1)} Mt` : `${b.yield} kt`} · ${c.country}`,
+    }
+  }
+  return {
+    prev: i > 0 ? fmt(scenarioSequence[i - 1]) : null,
+    next: i >= 0 && i < scenarioSequence.length - 1 ? fmt(scenarioSequence[i + 1]) : null,
+  }
 }
 
 function loadScenario(slug: string) {
@@ -360,6 +384,8 @@ export default async function ScenarioPage({
           the <Link href={`/examples/${city.slug}`} className="text-yellow-400 hover:underline">{city.name} scenario overview</Link>,
           or browse <Link href="/scenarios" className="text-yellow-400 hover:underline">all scenarios</Link>.
         </section>
+
+        <PrevNext {...scenarioNeighbors(scenario)} label="Previous and next scenario" />
       </main>
     </div>
   )

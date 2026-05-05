@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { MAIN_MENU, SIMULATOR_HREF, type MenuItem, type MenuPanel } from '@/lib/menu/main-menu'
+import { SearchPalette } from '@/components/search/SearchPalette'
 
 const HOVER_CLOSE_DELAY_MS = 150
+const SCROLL_THRESHOLD_PX = 80
 
 export function MilitaryHeader() {
   // Desktop dropdown state — id of the currently open panel, or null.
@@ -12,11 +14,15 @@ export function MilitaryHeader() {
   // Mobile drawer + accordion state.
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileExpandedId, setMobileExpandedId] = useState<string | null>(null)
+  // Search palette state.
+  const [searchOpen, setSearchOpen] = useState(false)
+  // Scroll-direction-driven hide state (mobile only via CSS).
+  const [scrolledHidden, setScrolledHidden] = useState(false)
 
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const headerRef = useRef<HTMLElement>(null)
 
-  // ESC closes any open menu.
+  // ESC closes any open menu (search has its own internal handler).
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') {
@@ -26,6 +32,45 @@ export function MilitaryHeader() {
     }
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
+  }, [])
+
+  // ⌘K / Ctrl+K opens the search palette.
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+        e.preventDefault()
+        setSearchOpen(true)
+      }
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [])
+
+  // Hide-on-scroll-down (mobile-only via responsive class). Closes any open
+  // dropdown on scroll so the user gets a clean reading view.
+  useEffect(() => {
+    let lastY = window.scrollY
+    let ticking = false
+    function onScroll() {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const y = window.scrollY
+        const dy = y - lastY
+        if (y < SCROLL_THRESHOLD_PX) {
+          setScrolledHidden(false)
+        } else if (dy > 6) {
+          setScrolledHidden(true)
+          setOpenId(null)
+        } else if (dy < -6) {
+          setScrolledHidden(false)
+        }
+        lastY = y
+        ticking = false
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   // Click outside the header closes the desktop dropdown.
@@ -63,7 +108,9 @@ export function MilitaryHeader() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 bg-gradient-to-b from-gray-900 to-black border-b border-green-500/30"
+      className={`sticky top-0 z-50 bg-gradient-to-b from-gray-900 to-black border-b border-green-500/30 transition-transform duration-200 ${
+        scrolledHidden && !mobileOpen && !searchOpen ? '-translate-y-full lg:translate-y-0' : 'translate-y-0'
+      }`}
     >
       {/* ── Desktop top bar ──────────────────────────────────────────── */}
       <div className="hidden lg:flex items-center justify-between gap-4 px-6 py-3 max-w-[1400px] mx-auto">
@@ -108,6 +155,22 @@ export function MilitaryHeader() {
             )
           })}
         </nav>
+
+        {/* Search trigger */}
+        <button
+          type="button"
+          onClick={() => setSearchOpen(true)}
+          aria-label="Search"
+          className="shrink-0 inline-flex items-center gap-2 px-3 py-2 text-sm rounded-md border border-green-500/30 bg-black/30 text-green-300 hover:bg-green-400/10 hover:text-green-200 transition"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
+          </svg>
+          <span>Search</span>
+          <kbd className="ml-1 inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono bg-green-500/10 border border-green-500/30 rounded">
+            ⌘K
+          </kbd>
+        </button>
 
         {/* CTA */}
         <Link
@@ -160,7 +223,17 @@ export function MilitaryHeader() {
             Nuke Blast Simulator
           </span>
         </Link>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Search"
+            className="p-2 text-green-400 hover:bg-green-400/10 rounded transition"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
+            </svg>
+          </button>
           <Link
             href={SIMULATOR_HREF}
             className="bg-green-500 text-black px-3 py-1.5 rounded text-xs font-semibold hover:bg-green-400 transition"
@@ -257,6 +330,8 @@ export function MilitaryHeader() {
           </div>
         </div>
       ) : null}
+
+      <SearchPalette open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   )
 }
