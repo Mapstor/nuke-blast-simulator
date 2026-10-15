@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/app/weapons/[slug]/page.tsx"
+        ],
+        "createdAt": "2026-10-15T14:15:58.008Z",
+        "reason": "chat (not user): matches incumbent callout pattern bg-yellow-900/20 border-l-4 used site-wide (examples Limitations, methodology, how-it-works); NBS-003 added a consistent 'effect radii not shown' notice — integrity wave, not a design wave"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/app/compare/[slug]/page.tsx"
+        ],
+        "createdAt": "2026-10-15T14:15:58.013Z",
+        "reason": "chat (not user): same incumbent border-l-4 callout convention; NBS-003 'effect-radius comparison unavailable' notice for conventional pairings"
+      }
+    ]
+  }
+}
