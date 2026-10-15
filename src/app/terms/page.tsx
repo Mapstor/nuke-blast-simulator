@@ -113,14 +113,13 @@ export default function TermsPage() {
           <h2 className="text-2xl font-semibold mb-6 text-green-400">Privacy and Data Collection</h2>
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
             <p className="mb-4 text-green-300">
-              We are committed to protecting user privacy:
+              In brief (see the <a href="/privacy" className="text-yellow-400 hover:underline">Privacy Policy</a> for details):
             </p>
             <ul className="list-disc list-inside space-y-2 text-green-300">
-              <li>We do not collect personal information or user accounts</li>
-              <li>No location tracking or personal data storage</li>
-              <li>Simulation parameters are processed locally in your browser</li>
-              <li>Standard web server logs may record access patterns</li>
-              <li>No data is shared with third parties</li>
+              <li>No user accounts; we do not collect names, emails, or payment data</li>
+              <li>Your weapon selections and map detonation points are processed in your browser and are not stored</li>
+              <li>We use Google Analytics (consent-gated in the EEA/UK/CH), Mapbox for map tiles, and Vercel for hosting</li>
+              <li>Standard server logs (IP, request time) are kept for security and performance</li>
             </ul>
           </div>
         </section>

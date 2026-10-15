@@ -5,8 +5,8 @@ import { breadcrumbSchema, itemListSchema, SITE_URL } from '@/lib/seo/schemas'
 import { presetLocations, type PresetLocation } from '@/lib/data/cities'
 
 export const metadata: Metadata = {
-  title: 'Nuclear Blast City Scenarios — 52 Cities Worldwide',
-  description: 'Pre-computed nuclear blast scenarios for 52 major world cities. See casualty estimates and blast effects for Hiroshima-class and modern strategic warheads detonated over New York, London, Tokyo, Moscow, Beijing, and 47 more.',
+  title: 'Nuclear Blast City Scenarios — 100 Cities Worldwide',
+  description: 'Pre-computed nuclear blast effect radii for 100 major world cities. See the fireball, blast, and thermal burn zones (air burst) for Hiroshima-class and modern strategic warheads over New York, London, Tokyo, Moscow, Beijing, and 95 more.',
   alternates: { canonical: '/examples' },
 }
 
@@ -70,8 +70,8 @@ export default function ExamplesIndexPage() {
           <h1 className="text-4xl font-bold mb-3 text-green-400">Nuclear Blast City Scenarios</h1>
           <p className="text-lg text-green-300">
             {presetLocations.length} pre-computed scenarios for major world cities. Each page calculates the
-            fireball, blast zones, thermal radiation, and population impact for four representative weapons
-            (Little Boy 15 kt, W76 100 kt, Castle Bravo 15 Mt, Tsar Bomba 50 Mt) detonated over the city.
+            fireball, blast overpressure, and thermal burn radii (air burst at optimum height) for four
+            representative weapons (Little Boy 15 kt, W76 100 kt, Castle Bravo 15 Mt, Tsar Bomba 50 Mt) over the city.
           </p>
         </header>
 

@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { useSimulatorStore } from '@/store/simulatorStore'
-import { formatNumber } from '@/lib/utils/format'
 
 export function ShareButton() {
   const selectedBomb = useSimulatorStore(state => state.selectedBomb)
@@ -23,8 +22,8 @@ export function ShareButton() {
     const url = `${window.location.origin}?${params.toString()}`
     
     // Create share text
-    const shareText = `Nuclear Blast Simulation: ${selectedBomb.name} (${selectedBomb.yield} kt) 
-Estimated casualties: ${formatNumber(blastCircles.totalCasualties)}
+    const shareText = `Nuclear Blast Simulation: ${selectedBomb.name} (${selectedBomb.yield} kt)
+Air burst at optimum height · effect radii
 Location: ${epicenter.lat.toFixed(2)}°, ${epicenter.lng.toFixed(2)}°
 
 Simulate at: ${url}`

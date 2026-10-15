@@ -24,7 +24,7 @@ export default function BlogIndexPage() {
               url: `/blog/${a.slug}`,
               description: a.description,
             })),
-            'Nuclear Blast Simulator — Editorial Articles',
+            'Nuke Blast Simulator — Articles',
           ),
           breadcrumbSchema([
             { name: 'Home', url: SITE_URL },
@@ -43,9 +43,9 @@ export default function BlogIndexPage() {
         <header className="mb-10">
           <h1 className="text-4xl font-bold mb-3 text-green-400">Nuclear Blast Simulator Blog</h1>
           <p className="text-lg text-green-300">
-            Long-form, sourced editorial on nuclear weapons physics, history, effects, and doctrine. Each
-            article is written for general educated audiences, cites authoritative sources, and links
-            to relevant simulator pages and glossary entries.
+            Long-form, sourced articles on nuclear weapons physics, history, effects, and doctrine, written by
+            Marko Visic. Each article is written for general educated audiences, cites authoritative sources,
+            and links to relevant simulator pages and glossary entries.
           </p>
         </header>
 

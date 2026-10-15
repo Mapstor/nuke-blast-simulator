@@ -3,12 +3,16 @@
 // Reference: https://schema.org, https://developers.google.com/search/docs/appearance/structured-data
 
 export const SITE_URL = 'https://nukeblastsimulator.com'
-export const SITE_NAME = 'Nuclear Blast Simulator'
-export const ORG_LEGAL_NAME = 'NukeBlastSimulator.com'
+export const SITE_NAME = 'Nuclear Blast Simulator' // product / software name
+export const WEBSITE_NAME = 'Nuke Blast Simulator' // brand / WebSite name
+export const PUBLISHER_NAME = 'Moving Data Systems d.o.o.'
+export const AUTHOR_NAME = 'Marko Visic'
+export const AUTHOR_CREDENTIAL = 'BSc Physics'
+export const AUTHOR_LINKEDIN = 'https://www.linkedin.com/in/marko-visic/'
 export const ORG_ID = `${SITE_URL}/#organization`
 export const WEBSITE_ID = `${SITE_URL}/#website`
 export const SOFTWARE_ID = `${SITE_URL}/#software`
-export const EDITORIAL_PERSON_ID = `${SITE_URL}/about#editorial`
+export const AUTHOR_PERSON_ID = `${SITE_URL}/about#marko-visic`
 
 export type SchemaObject = Record<string, unknown>
 
@@ -20,8 +24,7 @@ export const organizationSchema: SchemaObject = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   '@id': ORG_ID,
-  name: ORG_LEGAL_NAME,
-  alternateName: SITE_NAME,
+  name: PUBLISHER_NAME,
   url: SITE_URL,
   logo: {
     '@type': 'ImageObject',
@@ -30,13 +33,20 @@ export const organizationSchema: SchemaObject = {
     height: 512,
   },
   email: 'info@nukeblastsimulator.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Smolnik 62',
+    postalCode: '2342',
+    addressLocality: 'Ruše',
+    addressCountry: 'SI',
+  },
+  founder: { '@id': AUTHOR_PERSON_ID },
+  brand: { '@type': 'Brand', name: WEBSITE_NAME },
   description:
-    'Educational resource publishing the Nuclear Blast Simulator, a free interactive tool that visualizes nuclear weapon effects to support disarmament education.',
+    'Publisher of the Nuclear Blast Simulator, a free interactive tool that visualizes nuclear weapon effects for educational purposes.',
   knowsAbout: [
-    'Nuclear weapons',
+    'Nuclear weapons effects',
     'Blast radius calculations',
-    'Nuclear weapon effects',
-    'Nuclear disarmament',
     'Nuclear physics',
     'Atomic bomb history',
   ],
@@ -47,8 +57,8 @@ export const websiteSchema: SchemaObject = {
   '@type': 'WebSite',
   '@id': WEBSITE_ID,
   url: SITE_URL,
-  name: SITE_NAME,
-  alternateName: 'NukeBlastSimulator.com',
+  name: WEBSITE_NAME,
+  alternateName: ['Nuclear Blast Simulator', 'NukeBlastSimulator.com'],
   description:
     'Free interactive nuclear blast simulator. Calculate blast radius, casualties, fireball, thermal burn zones, and fallout for any city worldwide using 45+ historical and modern nuclear weapons.',
   publisher: { '@id': ORG_ID },
@@ -78,6 +88,7 @@ export const softwareApplicationSchema: SchemaObject = {
   inLanguage: 'en-US',
   isAccessibleForFree: true,
   publisher: { '@id': ORG_ID },
+  author: { '@id': AUTHOR_PERSON_ID },
   featureList: [
     'Click-to-detonate interactive map',
     '45+ historical and modern nuclear weapons',
@@ -101,34 +112,33 @@ export const softwareApplicationSchema: SchemaObject = {
   educationalUse: ['Nuclear disarmament education', 'Physics education', 'History education'],
 }
 
-// Editorial Person — represented as a collective Person entity for E-E-A-T
-// signal and to give articles a citable author. Contributors with verifiable
-// credentials can be added as additional Person entries linking to this one
-// via `colleague` once the team is named publicly.
-export const editorialPersonSchema: SchemaObject = {
+// Author — a real, named human (site owner). Replaces the former collective
+// "Editorial" persona (NBS-003). Credentials are the author's actual standing;
+// never upgraded to "registered"/"licensed".
+export const authorPersonSchema: SchemaObject = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  '@id': EDITORIAL_PERSON_ID,
-  name: 'NukeBlastSimulator Editorial',
-  alternateName: 'NBS Editorial',
+  '@id': AUTHOR_PERSON_ID,
+  name: AUTHOR_NAME,
   url: `${SITE_URL}/about`,
-  jobTitle: 'Editorial Team',
+  image: `${SITE_URL}/images/marko-visic.jpeg`,
+  jobTitle: 'Founder & author',
   description:
-    'The editorial team behind Nuclear Blast Simulator. We translate declassified DoD and DoE research, peer-reviewed literature, and arms-control reporting into educational tools for nuclear-disarmament awareness. Every article is reviewed against primary sources before publication.',
+    'Marko Visic builds and writes Nuke Blast Simulator. Content is AI-assisted in drafting and checked against primary sources (Glasstone & Dolan 1977 and the sources page) before publication.',
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'University of Ljubljana' },
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    credentialCategory: 'degree',
+    name: AUTHOR_CREDENTIAL,
+  },
   knowsAbout: [
     'Nuclear weapons effects',
     'Nuclear weapons physics',
     'Blast scaling laws (Glasstone & Dolan)',
-    'Nuclear weapon design',
     'Nuclear weapon history',
-    'Nuclear arms control',
-    'Nuclear disarmament policy',
-    'Nuclear deterrence theory',
-    'Nuclear weapons treaties (NPT, TPNW, CTBT, New START)',
-    'Radiation health effects',
   ],
-  affiliation: { '@id': ORG_ID },
   worksFor: { '@id': ORG_ID },
+  sameAs: [AUTHOR_LINKEDIN],
 }
 
 // ─────────────────────────────────────────────────────────────────────────
@@ -210,8 +220,8 @@ export function articleSchema(input: {
     image: input.imageUrl ?? `${SITE_URL}/og-image.png`,
     datePublished: input.datePublished ?? '2025-10-22',
     dateModified: input.dateModified ?? new Date().toISOString().slice(0, 10),
-    // Reference the editorial Person by @id for a connected E-E-A-T graph.
-    author: { '@id': EDITORIAL_PERSON_ID },
+    // Reference the named author Person by @id for a connected E-E-A-T graph.
+    author: { '@id': AUTHOR_PERSON_ID },
     publisher: { '@id': ORG_ID },
   }
 }

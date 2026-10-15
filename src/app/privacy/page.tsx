@@ -3,9 +3,9 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - Data Collection and Protection',
-  description: 'Privacy policy for the nuclear blast simulator. Learn how we protect your privacy and what data we collect.',
-  alternates: { canonical: '/privacy' }
+  title: 'Privacy Policy - Nuke Blast Simulator',
+  description: 'What data Nuke Blast Simulator collects and the third parties involved: Google Analytics, Mapbox, and Vercel. Controller: Moving Data Systems d.o.o.',
+  alternates: { canonical: '/privacy' },
 }
 
 export default function PrivacyPage() {
@@ -20,193 +20,117 @@ export default function PrivacyPage() {
       />
       <main className="max-w-4xl mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-green-400">Privacy Policy</h1>
-        
-        <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4 text-green-400">Privacy Commitment</h2>
-          <p className="text-green-300 text-lg">
-            We are committed to protecting your privacy. This simulator operates with minimal data collection 
-            and maximum user privacy protection.
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold mb-4 text-green-400">Data controller</h2>
+          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 text-green-300 space-y-1">
+            <p><strong className="text-yellow-400">Moving Data Systems d.o.o.</strong></p>
+            <p>Smolnik 62, 2342 Ruše, Slovenia</p>
+            <p>
+              Contact:{' '}
+              <a href="mailto:info@nukeblastsimulator.com" className="text-yellow-400 hover:underline">
+                info@nukeblastsimulator.com
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold mb-4 text-green-400">What we collect, and who processes it</h2>
+          <p className="text-green-300 mb-4">
+            These are the only third-party services this site loads. We do not run advertising, and we do not
+            sell data.
           </p>
-        </div>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-green-400">What Data We Collect</h2>
           <div className="space-y-6">
             <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3 text-yellow-400">Personal Information</h3>
-              <p className="text-green-300 mb-3 font-semibold">We do NOT collect:</p>
+              <h3 className="text-xl font-semibold mb-3 text-yellow-400">Google Analytics 4 (GA4)</h3>
               <ul className="list-disc list-inside space-y-2 text-green-300">
-                <li>Names, email addresses, or contact information</li>
-                <li>User accounts or registration data</li>
-                <li>Location tracking or GPS coordinates</li>
-                <li>Personal preferences or settings</li>
-                <li>Social media profiles or connections</li>
-                <li>Payment or financial information</li>
+                <li>Measurement ID <code className="text-green-200">G-XDZQYKGTE2</code>, provided by Google.</li>
+                <li>Collects pseudonymous usage data: pages viewed, referrer, device and browser type, and an approximate location derived from your IP address.</li>
+                <li>Sets analytics cookies (for example <code className="text-green-200">_ga</code> and <code className="text-green-200">_ga_*</code>) to measure returning visits — only after you accept (see Consent below).</li>
+                <li>Purpose: understand overall traffic and which pages are useful. Legal basis: your consent (EEA/UK/CH) or legitimate interest elsewhere.</li>
+                <li>Opt out any time via the <em>Cookie settings</em> link in the footer, or Google&apos;s{' '}
+                  <a href="https://tools.google.com/dlpage/gaoptout" className="text-yellow-400 hover:underline" rel="nofollow">opt-out browser add-on</a>.
+                </li>
               </ul>
             </div>
 
             <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3 text-yellow-400">Technical Data</h3>
-              <p className="text-green-300 mb-3">We may collect minimal technical information:</p>
+              <h3 className="text-xl font-semibold mb-3 text-yellow-400">Mapbox (interactive map)</h3>
               <ul className="list-disc list-inside space-y-2 text-green-300">
-                <li>IP addresses (automatically anonymized)</li>
-                <li>Browser type and version (for compatibility)</li>
-                <li>Device type (desktop/mobile) for responsive design</li>
-                <li>Page access times (for performance monitoring)</li>
-                <li>Error logs (for technical troubleshooting)</li>
-              </ul>
-              <p className="text-green-300 mt-3 text-sm">
-                This data is collected automatically by standard web servers and is not linked to individual users.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-green-400">How Data is Processed</h2>
-          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-            <h3 className="text-xl font-semibold mb-3 text-yellow-400">Client-Side Processing</h3>
-            <p className="mb-4 text-green-300">
-              All simulation calculations are performed locally in your browser:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-green-300">
-              <li>Weapon selections and map coordinates are processed on your device</li>
-              <li>Blast calculations run entirely in your browser</li>
-              <li>No simulation data is transmitted to our servers</li>
-              <li>No tracking of what weapons or locations you select</li>
-              <li>Your simulation choices remain completely private</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-green-400">Third-Party Services</h2>
-          <div className="space-y-6">
-            <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3 text-yellow-400">Mapbox Maps</h3>
-              <p className="mb-3 text-green-300">
-                We use Mapbox for interactive mapping functionality:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-green-300">
-                <li>Map tiles are loaded from Mapbox servers</li>
-                <li>Mapbox may collect standard analytics data</li>
-                <li>No personal simulation data is shared with Mapbox</li>
-                <li>Mapbox Privacy Policy: <a href="https://www.mapbox.com/privacy" className="text-blue-400 hover:underline">mapbox.com/privacy</a></li>
+                <li>Map tiles on the simulator are served by Mapbox. Loading them sends your IP address and map requests to Mapbox.</li>
+                <li>Your weapon selections and detonation points are computed in your browser and are not sent to Mapbox or to us.</li>
+                <li>Mapbox privacy policy:{' '}
+                  <a href="https://www.mapbox.com/legal/privacy" className="text-yellow-400 hover:underline" rel="nofollow">mapbox.com/legal/privacy</a>.
+                </li>
               </ul>
             </div>
 
             <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-3 text-yellow-400">Web Hosting</h3>
-              <p className="mb-3 text-green-300">
-                Standard hosting infrastructure may collect:
-              </p>
+              <h3 className="text-xl font-semibold mb-3 text-yellow-400">Vercel (hosting)</h3>
               <ul className="list-disc list-inside space-y-2 text-green-300">
-                <li>Server access logs (IP addresses, request times)</li>
-                <li>Error logs for troubleshooting</li>
-                <li>Basic performance metrics</li>
-                <li>No personal or simulation data is stored</li>
+                <li>The site is hosted on Vercel, which keeps standard server and edge logs (IP address, request time, user agent) for security and performance.</li>
+                <li>Legal basis: legitimate interest in operating and securing the site.</li>
+                <li>Vercel privacy policy:{' '}
+                  <a href="https://vercel.com/legal/privacy-policy" className="text-yellow-400 hover:underline" rel="nofollow">vercel.com/legal/privacy-policy</a>.
+                </li>
               </ul>
             </div>
           </div>
+          <p className="text-green-300 mt-4">
+            Fonts are system/CSS fonts served from the site itself; no third-party font service is used. There
+            are no user accounts, and we do not collect names, email addresses, or payment information.
+          </p>
         </section>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-green-400">Cookies and Local Storage</h2>
-          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-            <p className="mb-4 text-green-300">
-              We use minimal browser storage for functionality:
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold mb-4 text-green-400">Cookies &amp; consent</h2>
+          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 text-green-300 space-y-2">
+            <p>
+              We use Google Consent Mode v2. For visitors in the EEA, UK and Switzerland, analytics storage is
+              <strong className="text-yellow-400"> denied by default</strong> and GA4 is only enabled after you
+              choose <em>Accept</em> in the cookie banner. Elsewhere, analytics is enabled by default and you can
+              opt out with <em>Reject</em>.
             </p>
-            <ul className="list-disc list-inside space-y-2 text-green-300">
-              <li>No tracking cookies or advertising cookies</li>
-              <li>Essential technical cookies only (session management)</li>
-              <li>Local storage for temporary map state (zoom, position)</li>
-              <li>All data is cleared when you close the browser</li>
-              <li>No persistent user tracking across sessions</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-green-400">Data Sharing and Disclosure</h2>
-          <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-6">
-            <h3 className="text-xl font-semibold mb-3 text-red-400">We DO NOT Share Data</h3>
-            <p className="mb-4 text-red-300">
-              We do not sell, rent, or share any user data with third parties, except:
+            <p>
+              You can change your choice any time via the <em>Cookie settings</em> link in the footer. We also
+              use a small amount of browser local storage to remember your consent choice and the map view state.
+              There are no advertising cookies.
             </p>
-            <ul className="list-disc list-inside space-y-2 text-red-300">
-              <li>When required by law or legal process</li>
-              <li>To protect against misuse or illegal activities</li>
-              <li>In case of suspected terrorism or security threats</li>
-              <li>To comply with national security requirements</li>
-            </ul>
-            <p className="mt-4 text-red-300 font-semibold">
-              Any disclosure would be limited to the minimum necessary information.
+            <p className="text-green-300/70 text-sm">
+              Interim note: this consent banner is a temporary implementation. If the site joins an ad network,
+              that network&apos;s consent management platform will replace it.
             </p>
           </div>
         </section>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-green-400">Your Rights</h2>
-          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-            <p className="mb-4 text-green-300">
-              Since we collect minimal data, your privacy rights are inherently protected:
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold mb-4 text-green-400">Your rights (GDPR)</h2>
+          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 text-green-300">
+            <p className="mb-3">
+              If you are in the EEA, UK or Switzerland, you have the right to access, rectify, erase, restrict,
+              and port your personal data, and to object to processing. To exercise any of these, email{' '}
+              <a href="mailto:info@nukeblastsimulator.com" className="text-yellow-400 hover:underline">info@nukeblastsimulator.com</a>.
             </p>
-            <ul className="list-disc list-inside space-y-2 text-green-300">
-              <li>No personal data to access, correct, or delete</li>
-              <li>No user profiles to modify or remove</li>
-              <li>Anonymous usage by design</li>
-              <li>You can clear browser data at any time</li>
-              <li>No opt-out required since there's no tracking</li>
-            </ul>
+            <p>
+              You may also lodge a complaint with your supervisory authority — in Slovenia, the Information
+              Commissioner (Informacijski pooblaščenec).
+            </p>
           </div>
         </section>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-green-400">Security Measures</h2>
-          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-            <p className="mb-4 text-green-300">
-              We implement security measures to protect any technical data:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-green-300">
-              <li>HTTPS encryption for all communications</li>
-              <li>Secure server configurations</li>
-              <li>Regular security updates and monitoring</li>
-              <li>Access controls and logging</li>
-              <li>No persistent storage of sensitive information</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-green-400">International Users</h2>
-          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-            <p className="mb-4 text-green-300">
-              This service is designed to comply with international privacy standards:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-green-300">
-              <li>GDPR compliant (minimal data collection)</li>
-              <li>CCPA compliant (no personal data sales)</li>
-              <li>Privacy by design principles</li>
-              <li>No cross-border data transfers of personal information</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-6 text-green-400">Contact Us</h2>
-          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-            <p className="text-green-300 mb-4">
-              For privacy questions or concerns:
-            </p>
-            <div className="text-center">
-              <p className="text-green-400 font-semibold text-lg">info@nukeblastsimulator.com</p>
-              <p className="text-green-300 text-sm mt-2">Privacy-First • Educational Use • Nuclear Awareness</p>
-            </div>
-          </div>
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold mb-4 text-green-400">International transfers</h2>
+          <p className="text-green-300">
+            Google, Mapbox and Vercel may process data on servers outside your country, including the United
+            States, under their respective safeguards (such as Standard Contractual Clauses). See each
+            provider&apos;s privacy policy linked above.
+          </p>
         </section>
 
         <div className="text-center text-green-400/50 text-sm">
-          <p>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          <p>Last updated: 15 October 2026</p>
         </div>
       </main>
     </div>

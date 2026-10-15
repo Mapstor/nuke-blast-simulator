@@ -1,5 +1,12 @@
 // lib/calculations/casualties.ts
+//
+// NBS-003 INTEGRITY: casualty output is WITHDRAWN (EFFECTS_FLAGS.CASUALTIES).
+// The functions below are retained for the record but are NOT rendered by any
+// page or the tool. The live tool reaches the engine via calculateBlastResults,
+// which now delegates to the shared engine and returns radii only (casualties
+// zeroed, no fallout). Radius numbers live only in ./effects.
 import { calculateFireball, calculateAirBlast, calculateThermalRadiation, calculateFallout } from './blast'
+import { buildClientBlastResults } from './effects'
 
 export interface CasualtyZone {
   name: string
@@ -155,83 +162,10 @@ export function calculateNuclearCasualties(
   return calculateDensityBasedCasualties(density, zones)
 }
 
-// Main blast results calculation for the app
-export function calculateBlastResults(yield_kt: number, burstType: 'air' | 'surface' = 'air') {
-  const fireballRadius = calculateFireball(yield_kt, burstType)
-  const airBlast = calculateAirBlast(yield_kt, burstType)
-  const thermal = calculateThermalRadiation(yield_kt, burstType)
-  const falloutRadius = calculateFallout(yield_kt, burstType)
-  
-  // Return structure that matches BlastResults interface
-  return {
-    fireball: {
-      radius: fireballRadius,
-      casualties: 0,
-      fatalities: 0,
-      survivorsWithInjuries: 0,
-      totalPopulation: 0,
-      averageDensity: 0,
-      description: burstType === 'air' ? 'Complete vaporization zone' : 'Ground zero destruction'
-    },
-    airBlast: {
-      severe: {
-        radius: airBlast.severe,
-        casualties: 0,
-        fatalities: 0,
-        survivorsWithInjuries: 0,
-        totalPopulation: 0,
-        averageDensity: 0
-      },
-      moderate: {
-        radius: airBlast.moderate,
-        casualties: 0,
-        fatalities: 0,
-        survivorsWithInjuries: 0,
-        totalPopulation: 0,
-        averageDensity: 0
-      },
-      light: {
-        radius: airBlast.light,
-        casualties: 0,
-        fatalities: 0,
-        survivorsWithInjuries: 0,
-        totalPopulation: 0,
-        averageDensity: 0
-      }
-    },
-    thermalRadiation: {
-      thirdDegree: {
-        radius: thermal.thirdDegree,
-        casualties: 0,
-        fatalities: 0,
-        survivorsWithInjuries: 0,
-        totalPopulation: 0,
-        averageDensity: 0
-      },
-      secondDegree: {
-        radius: thermal.secondDegree,
-        casualties: 0,
-        fatalities: 0,
-        survivorsWithInjuries: 0,
-        totalPopulation: 0,
-        averageDensity: 0
-      }
-    },
-    fallout: falloutRadius > 0.1 ? {
-      radius: falloutRadius,
-      casualties: 0,
-      fatalities: 0,
-      survivorsWithInjuries: 0,
-      totalPopulation: 0,
-      averageDensity: 0,
-      affectedPopulation: 0
-    } : undefined,
-    totalCasualties: 0,
-    totalFatalities: 0,
-    totalSurvivorsWithInjuries: 0,
-    affectedPopulation: 0,
-    casualtyZones: []
-  }
+// Main blast results for the interactive tool. Delegates to the shared engine:
+// radii only, casualties zeroed, fallout omitted while EFFECTS_FLAGS are off.
+export function calculateBlastResults(yield_kt: number, _burstType: 'air' | 'surface' = 'air') {
+  return buildClientBlastResults(yield_kt)
 }
 
 // Mortality rates by blast type (legacy)

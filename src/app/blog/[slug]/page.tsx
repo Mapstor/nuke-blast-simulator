@@ -115,7 +115,7 @@ export default async function BlogArticlePage({
           </h1>
           <p className="text-lg text-yellow-400 mb-4">{article.description}</p>
           <p className="text-sm text-green-300/70">
-            By <span className="text-green-300">{article.author}</span> ·{' '}
+            By <Link href="/about" className="text-green-300 hover:underline">{article.author}, BSc Physics</Link> ·{' '}
             <time dateTime={article.datePublished}>
               {new Date(article.datePublished).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </time>

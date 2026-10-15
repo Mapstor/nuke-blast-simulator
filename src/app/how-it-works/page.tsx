@@ -2,34 +2,33 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd } from '@/components/seo/JsonLd'
 import {
-  howToSchema,
   faqPageSchema,
   breadcrumbSchema,
   SITE_URL,
 } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
-  title: 'How It Works - Nuclear Blast Simulator Guide',
-  description: 'Learn how to use the nuclear blast simulator to understand the devastating effects of nuclear weapons on any location worldwide.',
-  alternates: { canonical: '/how-it-works' }
+  title: 'How It Works - Nuke Blast Simulator Guide',
+  description: 'How to use the nuclear blast simulator to see the fireball, blast and thermal radii of nuclear weapons on any location worldwide.',
+  alternates: { canonical: '/how-it-works' },
 }
 
 const steps = [
   {
     name: 'Select a Nuclear Weapon',
-    text: 'Choose from the database of 45+ historical and modern nuclear weapons, ranging from the 15-kiloton Little Boy (Hiroshima) to the 50-megaton Tsar Bomba (largest test ever). You can also pick "Custom Yield" to set any explosive power between 1 and 100,000 kilotons.',
+    text: 'Choose from the database of historical and modern nuclear weapons, from the 15-kiloton Little Boy (Hiroshima) to the 50-megaton Tsar Bomba (largest test ever). You can also pick "Custom Yield" to set any explosive power between 1 and 100,000 kilotons.',
   },
   {
     name: 'Click on the Map',
-    text: 'Click anywhere on the interactive world map to set your detonation point. Pan and zoom to any location worldwide; the map covers every populated area on Earth.',
+    text: 'Click anywhere on the interactive world map to set your detonation point. Pan and zoom to any location worldwide.',
   },
   {
-    name: 'View Blast Effects',
-    text: 'Color-coded blast zones appear instantly: yellow fireball, red 20 PSI severe blast, orange 5 PSI moderate blast, gray 1 PSI light blast, magenta 3rd-degree thermal burn radius, pink 2nd-degree burn radius.',
+    name: 'View Effect Radii',
+    text: 'Color-coded effect zones appear instantly: yellow fireball, red 20 psi severe blast, orange 5 psi moderate blast, gray 1 psi light blast, magenta 3rd-degree thermal burn radius, pink 2nd-degree burn radius.',
   },
   {
-    name: 'Analyze Results',
-    text: 'Review casualty estimates and damage assessments in the results panel. Numbers are calculated from local population density and scientifically validated damage models (Glasstone & Dolan, "The Effects of Nuclear Weapons").',
+    name: 'Read the Results Panel',
+    text: 'The results panel lists each effect radius for an air burst at optimum height. Radii are computed from published scaling laws (Glasstone & Dolan, "The Effects of Nuclear Weapons"). Casualty and fallout figures are not shown pending a verified model.',
   },
 ]
 
@@ -37,12 +36,12 @@ const faqEntries = [
   {
     question: 'How accurate are the nuclear blast calculations in this simulator?',
     answer:
-      'Calculations are based on declassified nuclear testing data and peer-reviewed scientific studies. They are simplified for public use but provide reasonable estimates of blast effects. They should not be used for operational or emergency planning.',
+      'Radii are computed from declassified nuclear testing data and published scaling laws (Glasstone & Dolan 1977 and the effects scaling table). They are simplified for public use and assume an air burst at optimum height. They should not be used for operational or emergency planning.',
   },
   {
-    question: 'Why does the simulator not show full radioactive fallout patterns?',
+    question: 'Why does the simulator not show radioactive fallout patterns?',
     answer:
-      'Fallout patterns depend heavily on weather, wind direction, and altitude of detonation, making accurate predictions extremely complex. The simulator shows a simplified fallout radius for reference only — real fallout plumes are elongated downwind and asymmetric.',
+      'Fallout is not shown at present. Accurate fallout depends heavily on weather, wind direction and burst height, and the previous simplified fallout radius was unverified. Fallout will return only once a validated model is in place.',
   },
   {
     question: 'Can I use this nuclear blast simulator for emergency planning?',
@@ -57,13 +56,6 @@ export default function HowItWorksPage() {
       <JsonLd
         id="ld-howto"
         schema={[
-          howToSchema({
-            name: 'How to Use the Nuclear Blast Simulator',
-            description:
-              'A step-by-step guide to running a nuclear blast simulation, including weapon selection, target placement, and interpreting the resulting effect zones.',
-            totalTime: 'PT2M',
-            steps,
-          }),
           faqPageSchema(faqEntries),
           breadcrumbSchema([
             { name: 'Home', url: SITE_URL },
@@ -96,42 +88,42 @@ export default function HowItWorksPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-green-400">Understanding the Blast Zones</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-green-400">Understanding the Effect Zones</h2>
 
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 space-y-4">
             <div className="flex items-center">
               <div className="w-6 h-6 rounded-full mr-3 shrink-0" style={{ backgroundColor: '#ffff00' }} />
               <div>
                 <span className="font-semibold text-yellow-400">Fireball:</span>
-                <span className="text-green-300 ml-2">Complete vaporization. Temperatures over 10 million°C. 100% fatalities.</span>
+                <span className="text-green-300 ml-2">Complete vaporization zone.</span>
               </div>
             </div>
             <div className="flex items-center">
               <div className="w-6 h-6 rounded-full mr-3 shrink-0" style={{ backgroundColor: '#ff0000' }} />
               <div>
-                <span className="font-semibold text-red-400">Severe Blast (20 PSI):</span>
-                <span className="text-green-300 ml-2">Reinforced concrete buildings destroyed. 50–90% fatalities.</span>
+                <span className="font-semibold text-red-400">Severe Blast (20 psi):</span>
+                <span className="text-green-300 ml-2">Reinforced concrete buildings destroyed.</span>
               </div>
             </div>
             <div className="flex items-center">
               <div className="w-6 h-6 rounded-full mr-3 shrink-0" style={{ backgroundColor: '#ff8800' }} />
               <div>
-                <span className="font-semibold text-orange-400">Moderate Blast (5 PSI):</span>
-                <span className="text-green-300 ml-2">Most residential buildings collapse. 5–50% fatalities.</span>
+                <span className="font-semibold text-orange-400">Moderate Blast (5 psi):</span>
+                <span className="text-green-300 ml-2">Most residential buildings collapse.</span>
               </div>
             </div>
             <div className="flex items-center">
               <div className="w-6 h-6 rounded-full mr-3 shrink-0" style={{ backgroundColor: '#808080' }} />
               <div>
-                <span className="font-semibold text-gray-300">Light Blast (1 PSI):</span>
-                <span className="text-green-300 ml-2">Windows shatter, debris injuries. 0–5% fatalities.</span>
+                <span className="font-semibold text-gray-300">Light Blast (1 psi):</span>
+                <span className="text-green-300 ml-2">Windows shatter; debris injuries.</span>
               </div>
             </div>
             <div className="flex items-center">
               <div className="w-6 h-6 rounded-full mr-3 shrink-0" style={{ backgroundColor: '#ff00ff' }} />
               <div>
                 <span className="font-semibold text-pink-400">3rd Degree Burns:</span>
-                <span className="text-green-300 ml-2">Severe burns through clothing. 50–90% fatalities without immediate medical care.</span>
+                <span className="text-green-300 ml-2">Severe thermal burns requiring immediate medical care.</span>
               </div>
             </div>
           </div>
@@ -141,14 +133,12 @@ export default function HowItWorksPage() {
           <h2 className="text-2xl font-semibold mb-6 text-green-400">Key Features</h2>
 
           <ul className="bg-black/50 border border-green-500/30 rounded-lg p-6 list-disc list-inside space-y-2 text-green-300">
-            <li>Real-time calculations based on weapon yield</li>
-            <li>Interactive map with global coverage (OpenStreetMap and Mapbox)</li>
-            <li>Scientifically accurate blast effect modeling</li>
-            <li>Population-based casualty estimates</li>
-            <li>Mobile-responsive design for phones, tablets, and desktops</li>
-            <li>Database of 45+ historical and modern nuclear weapons</li>
+            <li>Effect radii computed from published scaling laws</li>
+            <li>Interactive map with global coverage (Mapbox)</li>
+            <li>Fireball, blast overpressure and thermal burn zones (air burst at optimum height)</li>
+            <li>Database of historical and modern nuclear weapons</li>
             <li>Custom yield input for hypothetical scenarios</li>
-            <li>Air burst vs. surface burst toggle</li>
+            <li>Mobile-responsive design for phones, tablets, and desktops</li>
             <li>Shareable URLs that re-create your simulation</li>
           </ul>
         </section>
@@ -158,12 +148,12 @@ export default function HowItWorksPage() {
 
           <div className="bg-green-900/20 border-l-4 border-green-400 p-6 rounded-r">
             <p className="text-green-300">
-              This simulator is designed for educational purposes to help people understand the devastating
-              humanitarian consequences of nuclear weapons. By visualizing the scale of destruction, we hope
-              to contribute to informed discussions about nuclear disarmament and international security.
-              See the <Link href="/methodology" className="text-yellow-400 hover:underline">methodology</Link> page
-              for the scientific formulas, and the <Link href="/sources" className="text-yellow-400 hover:underline">data sources</Link> page
-              for primary references.
+              This simulator is an educational tool. It helps people understand the physical scale of nuclear
+              weapon effects by visualizing the radii on a map. See the{' '}
+              <Link href="/methodology" className="text-yellow-400 hover:underline">methodology</Link> page for
+              the scaling-law formulas, and the{' '}
+              <Link href="/sources" className="text-yellow-400 hover:underline">data sources</Link> page for
+              primary references.
             </p>
           </div>
         </section>

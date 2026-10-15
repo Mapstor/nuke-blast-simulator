@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { CookieSettingsButton } from '@/components/consent/ConsentManager'
 
 const FOOTER_GROUPS: Array<{ heading: string; links: Array<{ href: string; label: string }> }> = [
   {
@@ -71,11 +72,14 @@ export function Footer() {
             educational awareness about nuclear weapons effects. Not intended for planning actual attacks.
           </p>
           <p>
-            Data based on declassified research and published scientific studies (Glasstone &amp; Dolan, FAS, SIPRI, NTI). Created
-            to promote understanding of nuclear weapons consequences and support nuclear disarmament education.
+            Data based on declassified research and published scientific studies (Glasstone &amp; Dolan, FAS, SIPRI).
+            Built to make the physical scale of nuclear weapon effects clear.
           </p>
-          <p className="text-gray-500 mt-3">
-            © {year} NukeBlastSimulator.com · 400+ pages · Free to use for educational and research purposes.
+          <p className="text-gray-400 mt-3">
+            <CookieSettingsButton />
+          </p>
+          <p className="text-gray-500 mt-2">
+            © {year} Moving Data Systems d.o.o. · Nuke Blast Simulator · Free to use for educational and research purposes.
           </p>
         </div>
       </div>

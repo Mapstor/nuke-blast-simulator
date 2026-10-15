@@ -16,11 +16,11 @@ import {
 
 export const metadata: Metadata = {
   title: 'Nuclear Blast Scenarios — Bomb-on-City Impact Calculations',
-  description: 'Browse 200 pre-computed nuclear blast scenarios. See the calculated fireball, blast radius, and casualty estimates for Tsar Bomba, Little Boy, Castle Bravo, and other weapons detonated over major world cities.',
+  description: 'Browse 250 pre-computed nuclear blast scenarios. See the calculated fireball, blast overpressure, and thermal burn radii (air burst) for Tsar Bomba, Little Boy, Castle Bravo, and other weapons over major world cities.',
   alternates: { canonical: '/scenarios' },
   openGraph: {
     title: 'Nuclear Blast Scenarios — Bomb-on-City Impact Calculations',
-    description: 'Browse 200 pre-computed nuclear blast scenarios with casualty estimates.',
+    description: 'Browse 250 pre-computed nuclear blast scenarios (air burst effect radii).',
     url: '/scenarios',
     type: 'website',
   },
@@ -72,8 +72,8 @@ export default function ScenariosIndexPage() {
           <h1 className="text-4xl font-bold mb-3 text-green-400">Nuclear Blast Scenarios</h1>
           <p className="text-lg text-green-300">
             {allItems.length} pre-computed bomb-on-city impact calculations. Each scenario page shows the
-            fireball, blast zones, thermal radiation, and estimated casualties for a specific weapon over
-            a specific city, using local population density and validated scaling-law formulas.
+            fireball, blast overpressure, and thermal burn radii for a specific weapon over a specific city
+            (air burst at optimum height), using published scaling-law formulas.
           </p>
         </header>
 

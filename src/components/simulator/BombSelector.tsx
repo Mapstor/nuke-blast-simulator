@@ -6,11 +6,11 @@ import { getCountryFlag } from '@/lib/data/flags'
 
 export function BombSelector() {
   const { selectedBomb, setSelectedBomb, customYield, setCustomYield } = useSimulatorStore()
-  
-  // Group bombs by type
+
+  // NBS-003: conventional (non-nuclear) weapons are excluded from the tool —
+  // nuclear scaling laws do not apply to chemical explosives.
   const nuclearBombs = bombs.filter(bomb => bomb.type !== 'conventional')
-  const conventionalBombs = bombs.filter(bomb => bomb.type === 'conventional')
-  
+
   return (
     <div className="space-y-4">
       <label className="hidden lg:block text-sm font-semibold text-green-400 mb-2">Select Weapon</label>
@@ -28,14 +28,6 @@ export function BombSelector() {
           {nuclearBombs.map(bomb => (
             <option key={bomb.id} value={bomb.id}>
               {getCountryFlag(bomb.country)} {bomb.name} ({bomb.yield.toLocaleString()} kt)
-            </option>
-          ))}
-        </optgroup>
-        
-        <optgroup label="🔥 Conventional Weapons">
-          {conventionalBombs.map(bomb => (
-            <option key={bomb.id} value={bomb.id}>
-              {getCountryFlag(bomb.country)} {bomb.name} ({bomb.yield < 0.001 ? `${(bomb.yield * 1000).toFixed(0)}t` : `${bomb.yield.toFixed(3)}kt`})
             </option>
           ))}
         </optgroup>

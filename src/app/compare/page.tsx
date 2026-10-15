@@ -7,7 +7,7 @@ import { COMPARISONS, encodeComparisonSlug } from '@/lib/data/comparisons'
 
 export const metadata: Metadata = {
   title: 'Nuclear Weapon Comparisons — Side-by-Side Yield, Blast Radius, Effects',
-  description: 'Browse 30 head-to-head nuclear weapon comparisons. Tsar Bomba vs Castle Bravo, Little Boy vs Fat Man, modern strategic vs Hiroshima — yields, blast radii, casualties, and historical context.',
+  description: 'Browse 30 head-to-head nuclear weapon comparisons. Tsar Bomba vs Castle Bravo, Little Boy vs Fat Man, modern strategic vs Hiroshima — yields, blast and thermal radii (air burst), and historical context.',
   alternates: { canonical: '/compare' },
 }
 
@@ -58,8 +58,8 @@ export default function CompareIndexPage() {
           <h1 className="text-4xl font-bold mb-3 text-green-400">Nuclear Weapon Comparisons</h1>
           <p className="text-lg text-green-300">
             {items.length} head-to-head comparisons between historical and modern nuclear weapons. Each
-            page shows yields side-by-side, blast and thermal radii, casualty estimates at a reference
-            urban density, and a clear answer to &quot;which weapon is bigger?&quot;.
+            page shows yields side-by-side, blast and thermal radii (air burst at optimum height), and a
+            clear answer to &quot;which weapon is bigger?&quot;.
           </p>
         </header>
 

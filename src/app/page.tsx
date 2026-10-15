@@ -13,12 +13,12 @@ import { glossary } from '@/lib/data/glossary'
 export const metadata: Metadata = {
   title: 'Nuclear Blast Simulator — Interactive Nuke Map & Blast Radius Calculator',
   description:
-    'Free interactive nuclear blast simulator. Click any city to see the fireball, blast radius, thermal burn zone, and fallout for Tsar Bomba, Little Boy, Castle Bravo, and 40+ other nuclear weapons. Real scientific data, no signup.',
+    'Free interactive nuclear blast simulator. Click any city to see the fireball, blast radius, and thermal burn zones for Tsar Bomba, Little Boy, Castle Bravo, and 40+ other nuclear weapons (air burst). Real scientific data, no signup.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Nuclear Blast Simulator — Interactive Nuke Map',
     description:
-      'See the blast radius, casualties, and fallout for any nuclear weapon on any city. Free, instant, scientifically accurate.',
+      'See the fireball, blast radius, and thermal burn zones for any nuclear weapon on any city. Free, instant, air burst at optimum height.',
     url: '/',
     type: 'website',
   },
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Nuclear Blast Simulator — Interactive Nuke Map',
     description:
-      'See the blast radius, casualties, and fallout for any nuclear weapon on any city. Free, instant, scientifically accurate.',
+      'See the fireball, blast radius, and thermal burn zones for any nuclear weapon on any city. Free, instant, air burst at optimum height.',
   },
 }
 
@@ -34,7 +34,7 @@ const homepageFaq = [
   {
     question: 'What is the Nuclear Blast Simulator?',
     answer:
-      'Nuclear Blast Simulator is a free interactive web tool that visualizes the effects of nuclear weapons on any location worldwide. Pick from 45+ historical and modern nuclear weapons (or set a custom yield), click anywhere on the map, and see the fireball, blast overpressure zones, thermal radiation burn radii, and fallout patterns calculated from declassified scientific data.',
+      'Nuke Blast Simulator is a free interactive web tool that visualizes the effects of nuclear weapons on any location worldwide. Pick from the database of historical and modern nuclear weapons (or set a custom yield), click anywhere on the map, and see the fireball, blast overpressure zones, and thermal radiation burn radii, computed from published scaling laws for an air burst at optimum height.',
   },
   {
     question: 'Is the Nuclear Blast Simulator free to use?',
@@ -131,16 +131,17 @@ export default function HomePage() {
               nuclear weapon ever tested.
             </p>
             <p className="mb-4">
-              The simulator instantly displays color-coded zones for the fireball, severe blast (20 PSI), moderate
-              blast (5 PSI), light blast (1 PSI), thermal radiation burn radii, and fallout. Casualty estimates are
-              calculated from local population density. All math runs in your browser using scaling-law formulas
-              from <em>The Effects of Nuclear Weapons</em> (Glasstone &amp; Dolan, 1977) — the canonical
-              declassified U.S. Department of Defense reference.
+              The simulator instantly displays color-coded zones for the fireball, severe blast (20 psi), moderate
+              blast (5 psi), light blast (1 psi), and thermal radiation burn radii — all for an air burst at
+              optimum height, using scaling-law formulas from <em>The Effects of Nuclear Weapons</em>
+              (Glasstone &amp; Dolan, 1977) and the published effects scaling table. Casualty and fallout figures
+              are not shown pending a verified model.
             </p>
             <p>
-              The tool is built as an educational resource to support nuclear-disarmament awareness. It is{' '}
-              <strong className="text-yellow-400">free</strong>, requires <strong className="text-yellow-400">no signup</strong>,
-              and <strong className="text-yellow-400">never transmits your simulations</strong> to a server.
+              The tool is an educational resource for understanding the physical scale of nuclear weapon effects.
+              It is <strong className="text-yellow-400">free</strong>, requires{' '}
+              <strong className="text-yellow-400">no signup</strong>, and{' '}
+              <strong className="text-yellow-400">never stores your simulations</strong>.
             </p>
           </section>
 
@@ -150,7 +151,7 @@ export default function HomePage() {
               <li><strong className="text-yellow-400">Select a weapon</strong> from the dropdown — Tsar Bomba, Little Boy, Castle Bravo, modern warheads, or a custom yield.</li>
               <li><strong className="text-yellow-400">Click anywhere on the map</strong> to choose your detonation point. Pan and zoom freely; the map covers the entire planet.</li>
               <li><strong className="text-yellow-400">Watch the blast zones appear</strong>. Yellow is the fireball, red is severe blast, orange is moderate blast, gray is light blast, magenta and pink are thermal burn radii.</li>
-              <li><strong className="text-yellow-400">Read the casualty estimates</strong> in the results panel — they update based on local population density.</li>
+              <li><strong className="text-yellow-400">Read the effect radii</strong> in the results panel — each zone&apos;s radius for an air burst at optimum height.</li>
             </ol>
             <p>
               <Link href="/how-it-works" className="text-yellow-400 hover:underline">Read the full step-by-step guide →</Link>
@@ -192,8 +193,7 @@ export default function HomePage() {
           <section>
             <h2 className="text-3xl font-bold mb-4 text-green-400">Featured City Scenarios</h2>
             <p className="mb-4">
-              Pre-computed nuclear blast scenarios for major world cities, with casualty estimates from
-              local population density.
+              Pre-computed nuclear blast effect radii for major world cities.
             </p>
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
               {featuredCities.map((c) => (
@@ -219,8 +219,8 @@ export default function HomePage() {
           <section>
             <h2 className="text-3xl font-bold mb-4 text-green-400">Featured Bomb-on-City Scenarios</h2>
             <p className="mb-4">
-              200 pre-computed scenarios pairing iconic weapons with major cities — each calculates blast
-              radii, thermal effects, and casualty estimates for that exact combination.
+              250 pre-computed scenarios pairing iconic weapons with major cities — each calculates the blast
+              and thermal effect radii for that exact combination (air burst at optimum height).
             </p>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
               {featuredScenarios.map((s) => (
@@ -240,7 +240,7 @@ export default function HomePage() {
             </div>
             <p className="mt-4">
               <Link href="/scenarios" className="text-yellow-400 hover:underline">
-                Browse all 200 bomb-on-city scenarios →
+                Browse all 250 bomb-on-city scenarios →
               </Link>
             </p>
           </section>
@@ -248,7 +248,7 @@ export default function HomePage() {
           <section>
             <h2 className="text-3xl font-bold mb-4 text-green-400">Weapon Comparisons</h2>
             <p className="mb-4">
-              Head-to-head comparisons of nuclear weapons, side-by-side. Yields, blast radii, casualties,
+              Head-to-head comparisons of nuclear weapons, side-by-side. Yields, blast and thermal radii,
               and which is bigger.
             </p>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">

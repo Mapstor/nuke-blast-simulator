@@ -1,5 +1,4 @@
-// lib/calculations/thermal.ts
-
-import { calculateThermalRadiation } from './blast'
+// lib/calculations/thermal.ts — compatibility shim (engine: ./effects)
+import { calculateThermalRadiation } from './effects'
 
 export { calculateThermalRadiation }

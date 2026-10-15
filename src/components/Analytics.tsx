@@ -34,6 +34,25 @@ function PageviewTracker() {
 export default function Analytics() {
   return (
     <>
+      {/* Consent Mode v2 default — must run before gtag.js. analytics_storage
+          starts 'denied' for EEA/UK/CH (Europe/* timezone heuristic) or any
+          returning visitor who rejected; 'granted' elsewhere. No ads storage. */}
+      <Script id="consent-default" strategy="beforeInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          (function(){
+            var tz=''; try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}
+            var eea=/^Europe\\//.test(tz);
+            var stored=null; try{stored=localStorage.getItem('nbs-consent')}catch(e){}
+            var analytics = stored ? (stored==='granted'?'granted':'denied') : (eea?'denied':'granted');
+            gtag('consent','default',{
+              ad_storage:'denied', ad_user_data:'denied', ad_personalization:'denied',
+              analytics_storage: analytics
+            });
+          })();
+        `}
+      </Script>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
         strategy="afterInteractive"

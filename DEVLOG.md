@@ -2,24 +2,24 @@
 > Handoff file. Read §0–§5 and the last 10 entries of §6 before any work. Rules: devlog skill (.claude/skills/devlog/SKILL.md). NOTE: the skills live at /workspace/.claude/skills (OUTSIDE this repo).
 
 ## §0 Resume here
-_last update: 2026-10-15 · NBS-002_
-- Phase: **Audit complete, fixing not started.** Full read-only audit (NBS-002) done; findings in `reports/audit/`.
-- Last confirmed: NBS-002 AUDIT — full read-only site audit (Phases 0–2) + DEVLOG bootstrap — done (commit: see §6)
-- In flight (handed, NOT confirmed): none. (NBS-001 RAPTIVEPREP was handed 2026-10-14 but never run; superseded by NBS-002.)
-- Next action: chat writes fix waves from `reports/audit/SUMMARY.md` in site-audit Phase-3 order (P0 integrity → consolidation+redirects → trust frame → technical SEO → mobile → prose). First CC prompt will be NBS-003.
-- Waiting on owner: (1) confirm the deployed Vercel commit = origin/master (can't be checked from the box); (2) grant Raptive view-only GA4 access when applying; (3) phone test on the top templates; (4) confirm author identity — real name (Marko Visic), credentials and sameAs to replace the "Editorial" persona; (5) decide AdSense pub-id vs Raptive on ads.txt.
-- Open questions: Vercel production branch name; Bing Webmaster set up? author credentials + sameAs URL; keep or remove the 5 sensitive city pages (see §5); nuke-blast-simulator-backup/ — safe to delete?
+_last update: 2026-10-15 · NBS-003_
+- Phase: **Fixing — wave 1 (integrity) done, unpushed.** Audit (NBS-002) + integrity fixes (NBS-003) committed, not pushed.
+- Last confirmed: NBS-003 INTEGRITY — effects engine corrected, casualty/fallout/surface/conventional outputs withdrawn behind flags, methodology/FAQ rewritten, author = Marko Visic sitewide, privacy+consent, robots /_next/ unblocked, ads.txt removed — done (commit: see §6; build exit 0, 11 tests pass).
+- In flight (handed, NOT confirmed): none. (NBS-001 RAPTIVEPREP never run; superseded by NBS-002.)
+- Next action: **NBS-004** — facts corrections (chat verifies `reports/audit/facts.csv`, 306 uncited claims) + /scenarios→city 308 consolidation. Also chat: KWP keyword universe into research/.
+- Waiting on owner: (1) push NBS-002+NBS-003 and confirm the deployed Vercel commit = this one; (2) confirm `info@nukeblastsimulator.com` receives mail; (3) grant Raptive view-only GA4 access when applying; (4) phone test on the top templates; (5) replace the interim consent banner with a CMP on ad-network acceptance.
+- Open questions: Vercel production branch name; Bing Webmaster set up? nuke-blast-simulator-backup/ — safe to delete?
 
 ## §1 Site card
 - Domain · status · Raptive: nukeblastsimulator.com · live · NOT on Raptive yet (goal: apply after remediation)
 - Owner (pushes, runs account steps) · machine: Marko Visic · owner's Mac (?)
-- Author (byline · credentials · sameAs): Marko Visic — **but the live site currently bylines a collective "NukeBlastSimulator Editorial" Person persona, not Marko; no credentials or sameAs anywhere** (fix in trust-frame wave). Credentials/sameAs: ?
-- Repo origin · branch: https://github.com/Mapstor/nuke-blast-simulator.git · master (HEAD eaf0b664, 2026-05-05; in sync with origin/master; default branch is master, not main)
-- Project folder · box project · preview port: /workspace/nuke-blast-simulator · (box) · .devcontainer/port = 3019 (audit server was run on 4317)
-- Stack · Node in box: Next.js 15.5.14 (App Router) · React 18.3.1 · TypeScript 5.3.3 · Tailwind 3.4 · zustand · framer-motion · Leaflet + react-leaflet AND Mapbox-gl + react-map-gl (both present) · next-seo · Node v20.20.2
-- Commands (dev / build / test / lint): `npm run dev` / `npm run build` / (no tests) / `npm run lint`
+- Author (byline · credentials · sameAs): **Marko Visic** · BSc Physics (schema `hasCredential`), MPharm shown on /about prose only — never "registered/licensed" · sameAs https://www.linkedin.com/in/marko-visic/ · headshot /images/marko-visic.jpeg. Set sitewide by NBS-003 (Person schema in layout + visible bylines). Publisher Organization = Moving Data Systems d.o.o., Smolnik 62, 2342 Ruše, Slovenia.
+- Repo origin · branch: https://github.com/Mapstor/nuke-blast-simulator.git · master (default branch is master, not main)
+- Project folder · box project · preview port: /workspace/nuke-blast-simulator · (box) · .devcontainer/port = 3019 (verify servers run on 4317+)
+- Stack · Node in box: Next.js 15.5.14 (App Router) · React 18.3.1 · TypeScript 5.3.3 · Tailwind 3.4 · zustand · framer-motion · Leaflet + react-leaflet AND Mapbox-gl + react-map-gl (both present) · next-seo · vitest (tests) · Node v20.20.2
+- Commands (dev / build / test / lint): `npm run dev` / `npm run build` / `npm test` (vitest; tests/effects.test.ts) / `npm run lint`
 - Deploy (host, project, trigger; owner pushes): Vercel · project "nukeblastsimulator" (prj_eqDUXhm4bA1x8GWHm8Ld3swOrzAt, org team_B6kyDt6yzHNCsWX1yIciKcY6) · trigger: owner pushes to GitHub; deployed commit NOT verifiable from box (owner check)
-- Analytics / Search Console / Bing: GA4 G-XDZQYKGTE2 (single gtag.js install, NEXT_PUBLIC_GA_ID override; no GTM) · GSC verified (public/google12f8c2f9c03913a3.html + NEXT_PUBLIC_GSC_VERIFICATION) · Bing: ?
+- Analytics / Search Console / Bing: GA4 G-XDZQYKGTE2 (single gtag.js, NEXT_PUBLIC_GA_ID override; no GTM) · **Consent Mode v2 interim** (analytics_storage denied by default for EEA/UK/CH via Europe/* timezone heuristic; banner + footer "Cookie settings"; src/components/consent/ConsentManager.tsx — replace with CMP on ad acceptance) · GSC verified (public/google12f8c2f9c03913a3.html + NEXT_PUBLIC_GSC_VERIFICATION) · Bing: ?
 - Data sources (or registry path): src/lib/data/*.ts (bombs, cities, comparisons, scenarios, glossary, constants) · src/lib/calculations/* (effects engine) · population grids in src/lib/data/*.json. No data-sourcing registry yet; most figures uncited (see reports/audit/facts.csv).
 - Key paths: routes src/app/** · tool+map src/components/simulator/** (MapWrapper = next/dynamic ssr:false) · engine src/lib/calculations/{blast,casualties,fallout,thermal}.ts · SEO src/lib/seo/{schemas.ts,og.tsx} · blog src/lib/blog/articles.ts · nav src/lib/menu/main-menu.ts
 - Skills in repo: none inside the repo. Portfolio skills are at /workspace/.claude/skills (anti-slop-prose, content-page, data-sourcing, devlog, google-ai-content-policy, impeccable, kw-research, raptive-ready, seo-visibility, site-audit, site-launch). The repo's own .claude/ holds only settings.local.json.
@@ -32,26 +32,33 @@ _last update: 2026-10-15 · NBS-002_
 - D-02 · 2026-10-15 · Owner is committed to fully improving the site: Google SEO + AI-assistant visibility + a Raptive application. Why: defines the goal set for all upcoming waves.
 - D-03 · 2026-10-14 · Effects benchmarks fixed: Glasstone & Dolan 1977 §2.127 (fireball) + Wikipedia "Effects of nuclear explosions" scaling table (blast, thermal). Chat-verified the live radii run ~1.6–2.4× high and fireball ~2.4× high. Why: need an authoritative yardstick before correcting the formulas.
 - D-04 · 2026-10-15 · Keyword-research outputs live in research/ (keyword-ledger.csv, page-map.csv). Why: kw-research convention.
+- D-05 · 2026-10-15 · Casualty, fallout, radiation, crater, surface-burst and conventional-weapon effects are WITHDRAWN until verified in chat (owner: "off until verified"). Toggled by EFFECTS_FLAGS in src/lib/calculations/config.ts (all false). Why: the old casualty model double-counted and the fireball/blast radii were unverified; show only what's benchmarked.
+- D-06 · 2026-10-15 · Effects engine = one module (src/lib/calculations/effects.ts): fireball 0.061·W^0.4 (G&D §2.127 max air-burst), blast/thermal by log-log interpolation of the Wikipedia scaling table, air burst at optimum height only. Why: single source of truth; no hard-coded radii elsewhere.
+- D-07 · 2026-10-15 · Author = Marko Visic (BSc Physics) sitewide; publisher = Moving Data Systems d.o.o. Why: replace the fabricated "Editorial" persona (Raptive decline trigger).
+- D-08 · 2026-10-15 · /about uses neutral education framing; TPNW endorsement removed (Peace Resources page kept). Why: brand-safety / avoid uncredentialed advocacy.
+- D-09 · 2026-10-15 · /scenarios weapon×city matrix (250 pages) → 308 into the city pages; executed next wave (NBS-004).
 
 ## §3 Rejected — don't re-propose
-- (none yet)
+- 2026-10-15 · Removing the tehran, tel-aviv, kyiv, moscow and pyongyang city pages — owner keeps them (was an audit proposal; decided against).
 
 ## §4 Gotchas & hard rules
 - /workspace is NOT a git repo; the repo root is /workspace/nuke-blast-simulator (origin Mapstor/nuke-blast-simulator, branch master). Skills at /workspace/.claude/skills are OUTSIDE the repo and cannot be committed to it.
 - Deployed commit cannot be checked from the box — owner must confirm Vercel production = origin/master before trusting any audit of "live" behaviour.
-- Casualty zones are overlapping concentric rings each computed and summed independently → systematic double/triple counting (src/lib/calculations/casualties.ts).
-- Freshness is cosmetic: sitemap `lastModified = new Date()` (src/app/sitemap.ts:37) and articleSchema `dateModified = new Date()` (src/lib/seo/schemas.ts) both = build date; datePublished is hardcoded '2025-10-22' for all 425 content pages. Never present these as real dates.
-- robots.ts:31 disallows /_next/ for userAgent '*' → can block Googlebot's render resources (AI bots are exempted).
-- No vercel.json rules, no middleware, no redirects in next.config.js — all redirect/canonical logic must be added deliberately.
+- Effect radii live ONLY in `src/lib/calculations/effects.ts`; never hard-code a radius elsewhere. Everything assumes an air burst at optimum height. Surface/fallout/radiation/crater/casualty/conventional outputs are flag-gated OFF (config.ts) — do not render them or re-enable a flag without a verified model + a DEVLOG decision.
+- Casualty model (casualties.ts) double-counts overlapping rings; it is retained but disabled and not imported by any rendered path. Do not resurrect it; a verified gridded-population model is the prerequisite (NBS-004+).
+- Still cosmetic (deferred to a later wave): sitemap `lastModified = new Date()` (sitemap.ts:37) and articleSchema `dateModified = new Date()` (schemas.ts) = build date; datePublished default '2025-10-22'. Not real dates.
+- No vercel.json rules, no middleware, no redirects in next.config.js — the /scenarios→city 308s (NBS-004) need deliberate redirect wiring.
+- The box mounts the parent folder; the repo is /workspace/nuke-blast-simulator (branch master); nuke-blast-simulator-backup/ is a stale copy — never edit it.
 - Backup tree nuke-blast-simulator-backup/ is a stale pre-April copy (missing blog/compare/examples/scenarios/glossary) — do not edit or audit it.
 
 ## §5 Backlog (priority order)
-Proposed in chat, **owner OK pending** (not yet decided/rejected):
-- [P1] Hold casualties/fallout OUTPUT off the pages until a gridded population source is verified (current model uses a flat city density; double-counts).
-- [P1] Consolidate the /scenarios matrix (250 pages) → 308-redirect into the city pages.
-- [P1] Remove the 5 geopolitically sensitive city pages: tehran, tel-aviv, kyiv, moscow, pyongyang (all present in src/lib/data/cities.ts).
-- [P1] About-page sentence about the TPNW treaty — keep or neutralize (decision pending; see reports/audit/trust.md).
-- [P1+] Everything ranked in reports/audit/SUMMARY.md (P0/P1/P2) feeds the fix waves.
+- [P0→NBS-004] Chat verifies every figure in `reports/audit/facts.csv` (306 uncited) against primary sources; correct or remove. Then re-enable casualties/fallout only with a verified model.
+- [P1→NBS-004] /scenarios (250) → 308-redirect into city pages (D-09); needs redirect wiring (no middleware today).
+- [P1] Near-duplicate city pages (61/100 have a ≥0.8 twin) + 50 very thin glossary pages: consolidate/upgrade (reports/audit/duplicates.md).
+- [P1] Titles: 492/498 >60 chars (brand-suffix bloat); descriptions 428/498 >160. 15 hub/legal pages have 0 in-content inlinks.
+- [P1] Cosmetic dates (sitemap + articleSchema = build date; datePublished '2025-10-22') → real per-entity dates.
+- [P2] Mobile/impeccable P1s (reports/audit/impeccable.md): duplicate viewport meta, MapWrapper catches all errors, home CTA href="#", sr-only H1; web manifest; custom-404 nav; og-image.png 127 KB; Bing Webmaster.
+- Everything ranked in `reports/audit/SUMMARY.md` feeds the remaining waves.
 
 ## §6 Log (append-only, newest at bottom)
 ### 2026-10-15 · NBS-002 AUDIT · CC · done
@@ -60,6 +67,13 @@ Proposed in chat, **owner OK pending** (not yet decided/rejected):
 - Verified: production build `npm run build` exit 0 (504 static pages); prod server `next start -p 4317` served HTTP 200; crawl = 498 URLs = sitemap (all HTTP 200, 0 internal 404s); inventory data rows = 498; `ls reports/audit` shows all 15 report files; `git status --short` showed only DEVLOG.md, CLAUDE.md, reports/, .claude/.
 - Commit: d5659870 (reports+bootstrap); DEVLOG hash-record follow-up after. (pushed: no)
 - Notes: Key P0/P1 signals — effect radii ~1.6–2.4× over benchmark + overlapping-zone casualty double-count (engine.md); fabricated "Editorial" Person persona on all 498 pages + no real author (trust.md); uniform cosmetic dates; robots /_next/ block; near-duplicate city pages (61/100 have a ≥0.8 twin) and 250 thin templated scenario pages; 50 very thin glossary pages; AdSense pub-id in ads.txt with no AdSense running. See reports/audit/SUMMARY.md for the ranked list and evidence files.
+
+### 2026-10-15 · NBS-003 INTEGRITY · CC · done
+- What: Fix wave 1 (code-side P0s). New single effects engine (effects.ts): fireball 0.061·W^0.4, blast/thermal by log-log interpolation of the Wikipedia scaling table, air burst at optimum height. Withdrawal flags (config.ts, all false) hide casualties/fallout/radiation/crater/surface/conventional effects across the 4 templates + tool + FAQ/meta/JSON-LD/OG. 15 conventional weapons removed from the picker (specs kept). /methodology + /faq rewritten to the real formulas; HowTo schema removed; fictional "population grid" claim deleted. Fabricated "Editorial" persona → Marko Visic (Person schema + bylines + rel=me + headshot); publisher Moving Data Systems d.o.o.; /about neutral framing (TPNW endorsement removed) + how-made; /contact + /privacy rewritten (GA4/Mapbox/Vercel named; Consent Mode v2 interim banner); robots /_next/ unblocked; ads.txt (pub-3093026304369835) removed → /ads.txt 404.
+- Files: new effects.ts, config.ts, Byline.tsx, consent/ConsentManager.tsx, tests/effects.test.ts; deleted public/ads.txt, api/ads.txt.js, src/app/ads.txt/route.ts; modified the 4 effect templates + hubs, home, about, contact, privacy, terms, methodology, how-it-works, faq, blog (index+article), layout, robots, Analytics, HomeClient, BombSelector, ResultsPanel, ShareButton, Footer, blog/articles.ts, schemas.ts, blast/thermal/fallout/casualties.ts, package.json (+vitest). Full report: reports/NBS-003-report.md.
+- Verified: `npm run build` exit 0 (503 routes); `npm test` (vitest) 11 passed, 0 skipped; built HTML 0 "Editorial", 499/499 pages "Marko Visic", 0 withdrawn casualty/fallout strings; /weapons/little-boy shows 0.54/1.54/4.26 km + 0.18 fireball; /weapons/tsar-bomba shows 8.64/23.1/64.1 km + 4.62 fireball; robots.txt no /_next/ (check_robots.py OK); /ads.txt → 404. UI behaviour (consent banner interaction, mobile) UNVERIFIED (no browser).
+- Commit: <pending> (pushed: no)
+- Notes: Tsar 1 psi displays 64.1 km (brief listed 64.2 — same value, different rounding; not a formula error). Dates still cosmetic (NBS-004). .DS_Store untracked (was tracked but gitignored).
 
 ## §7 History & archive
 - 2025-10 · Initial commit: Nuclear Blast Simulator (tool + 12 pages).

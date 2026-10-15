@@ -16,7 +16,7 @@ const faqEntries = [
   {
     question: 'What is the purpose of this simulator?',
     answer:
-      'Nuclear Blast Simulator is an educational tool designed to promote understanding of nuclear weapons effects and support nuclear disarmament efforts. By visualizing the devastating consequences, it fosters informed discussions about nuclear policy and the urgent need for a nuclear-weapon-free world. It is not intended for planning attacks, targeting, or any military purposes.',
+      'Nuke Blast Simulator is an educational tool for understanding the physical scale of nuclear weapon effects. It visualizes fireball, blast and thermal radii on a map so the numbers are concrete. It is not intended for planning attacks, targeting, or any military purposes.',
   },
   {
     question: 'How accurate are the nuclear blast calculations?',
@@ -36,7 +36,7 @@ const faqEntries = [
   {
     question: 'What do the colored circles on the map represent?',
     answer:
-      'Each colored circle is a nuclear weapon effect zone. The fireball (yellow) is the complete vaporization zone with 100% fatalities. Severe blast (red) is the 20 PSI overpressure zone where reinforced concrete is destroyed. Moderate blast (orange) is the 5 PSI zone where most buildings collapse. Light blast (gray) is the 1 PSI zone where windows shatter. Magenta and pink show third-degree and second-degree thermal burn radii.',
+      'Each colored circle is a nuclear weapon effect zone. The fireball (yellow) is the complete vaporization zone. Severe blast (red) is the 20 psi overpressure zone where reinforced concrete is destroyed. Moderate blast (orange) is the 5 psi zone where most buildings collapse. Light blast (gray) is the 1 psi zone where windows shatter. Magenta and pink show third-degree and second-degree thermal burn radii. All radii assume an air burst at optimum height.',
   },
   {
     question: 'How do nuclear weapons cause damage?',
@@ -56,12 +56,12 @@ const faqEntries = [
   {
     question: 'How are nuclear blast radii calculated?',
     answer:
-      'The simulator uses scientifically validated scaling laws based on weapon yield. Fireball radius (km) ≈ 0.28 × yield_kt^0.33. Severe blast (20 PSI) ≈ 0.28 × yield_kt^0.33. Moderate blast (5 PSI) ≈ 1.03 × yield_kt^0.33. Light blast (1 PSI) ≈ 2.93 × yield_kt^0.33. Thermal third-degree burns ≈ 0.67 × yield_kt^0.41. These formulas come from extensive nuclear testing data (Glasstone & Dolan, 1977) and have been validated against historical detonations.',
+      'Fireball radius (km) ≈ 0.061 × yield_kt^0.4 — the maximum air-burst fireball from Glasstone & Dolan 1977 §2.127. Blast overpressure (20/5/1 psi) and thermal burn radii are read from the published effects scaling table and log-log interpolated for intermediate yields, so they are not single power laws. For example, a 100 kt air burst gives roughly 1.06 km (20 psi), 2.89 km (5 psi), 7.98 km (1 psi) and 4.77 km (3rd-degree burns). All radii assume an air burst at optimum height. See the methodology page for the full table and sources.',
   },
   {
     question: 'Why does the simulator focus on physical effects rather than casualty totals?',
     answer:
-      'Population density varies enormously by location and time of day. Casualty rates depend on warning time, available shelter, and medical care. The simulator emphasizes humanitarian consequences conceptually rather than producing potentially misused or misinterpreted casualty totals. The focus is on prevention and education, not body counts.',
+      'Casualty, fallout and radiation outputs are currently withdrawn. The earlier model estimated deaths from a single flat population density summed over overlapping damage rings, which double-counted people and produced unreliable numbers. Those figures stay off until a verified gridded-population and fallout model is in place. The site shows physical effect radii only.',
   },
   {
     question: 'Is this nuclear blast simulator dangerous or illegal?',
@@ -71,7 +71,7 @@ const faqEntries = [
   {
     question: 'Does the simulator collect data about my simulations?',
     answer:
-      'No. All blast calculations run locally in your browser. Weapon selections and target locations are never transmitted to our servers. There is no tracking of what you simulate or where you place weapons. There are no user accounts or registration. Only standard web server logs are collected (IP addresses), not simulation data.',
+      'Your map clicks, weapon selections and target locations are not stored or sent to our servers. The pre-built weapon, city and scenario pages compute their radii at build time; detonations you place on the interactive map are computed in your browser. We do use Google Analytics to understand overall site traffic, and map tiles are served by Mapbox — both are described on the Privacy page. There are no user accounts.',
   },
   {
     question: 'Can I use this nuclear blast simulator for research or classroom teaching?',
@@ -114,9 +114,9 @@ export default function FAQPage() {
               <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-3 text-yellow-400">What is the purpose of this simulator?</h3>
                 <p className="text-green-300 mb-3">
-                  This simulator is an educational tool designed to promote understanding of nuclear weapons effects 
-                  and support nuclear disarmament efforts. By visualizing the devastating consequences, we aim to 
-                  foster informed discussions about nuclear policy and the urgent need for a nuclear-weapon-free world.
+                  This is an educational tool for understanding the physical scale of nuclear weapon effects. It
+                  visualizes the fireball, blast and thermal radii on a map so the numbers are concrete and easy
+                  to compare.
                 </p>
                 <p className="text-green-300">
                   It is <strong className="text-red-400">not</strong> intended for planning attacks, targeting, 
@@ -191,42 +191,42 @@ export default function FAQPage() {
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#ffff00' }}></div>
                     <div>
                       <span className="font-semibold text-yellow-400">Fireball (Yellow):</span>
-                      <span className="text-green-300 ml-2">Complete vaporization zone. 100% fatalities. Temperature exceeds 10 million°C.</span>
+                      <span className="text-green-300 ml-2">Complete vaporization zone. Everything within is destroyed.</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#ff0000' }}></div>
                     <div>
                       <span className="font-semibold text-red-400">Severe Blast (Red):</span>
-                      <span className="text-green-300 ml-2">20 PSI overpressure. Reinforced concrete destroyed. 50-90% fatalities.</span>
+                      <span className="text-green-300 ml-2">20 psi overpressure. Reinforced concrete buildings destroyed.</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#ff8800' }}></div>
                     <div>
                       <span className="font-semibold text-orange-400">Moderate Blast (Orange):</span>
-                      <span className="text-green-300 ml-2">5 PSI overpressure. Most buildings collapse. 5-50% fatalities.</span>
+                      <span className="text-green-300 ml-2">5 psi overpressure. Most residential buildings collapse.</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#808080' }}></div>
                     <div>
                       <span className="font-semibold text-gray-400">Light Blast (Gray):</span>
-                      <span className="text-green-300 ml-2">1 PSI overpressure. Windows shatter. 0-5% fatalities.</span>
+                      <span className="text-green-300 ml-2">1 psi overpressure. Windows shatter; debris injuries.</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#ff00ff' }}></div>
                     <div>
                       <span className="font-semibold text-purple-400">3rd Degree Burns (Magenta):</span>
-                      <span className="text-green-300 ml-2">Severe burns requiring immediate medical care. 50-90% fatalities if untreated.</span>
+                      <span className="text-green-300 ml-2">Severe burns requiring immediate medical care.</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#ff99ff' }}></div>
                     <div>
                       <span className="font-semibold text-pink-400">2nd Degree Burns (Pink):</span>
-                      <span className="text-green-300 ml-2">Painful blistering burns. 0-5% fatalities.</span>
+                      <span className="text-green-300 ml-2">Painful blistering burns.</span>
                     </div>
                   </div>
                 </div>
@@ -304,32 +304,32 @@ export default function FAQPage() {
               <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-3 text-yellow-400">How are blast radii calculated?</h3>
                 <p className="text-green-300 mb-3">
-                  We use scientifically validated scaling laws based on weapon yield:
+                  All radii assume an air burst at optimum height. The fireball uses a single relation; blast
+                  and thermal radii are read from a published scaling table and log-log interpolated:
                 </p>
                 <div className="bg-gray-800 rounded p-4 font-mono text-sm">
-                  <div className="text-yellow-400">Fireball radius = 0.145 × Yield^0.4 km</div>
-                  <div className="text-red-400">Severe blast = 0.482 × Yield^0.33 km</div>
-                  <div className="text-orange-400">Moderate blast = 1.03 × Yield^0.33 km</div>
-                  <div className="text-gray-400">Light blast = 2.93 × Yield^0.33 km</div>
-                  <div className="text-purple-400">Thermal burns = 0.67 × Yield^0.41 km</div>
+                  <div className="text-yellow-400">Fireball radius = 0.061 × Yield^0.4 km</div>
+                  <div className="text-green-300">Blast (20/5/1 psi) &amp; thermal burns: interpolated from the effects scaling table</div>
+                  <div className="text-gray-400">e.g. 100 kt → 1.06 / 2.89 / 7.98 km (20/5/1 psi), 4.77 km (3rd-degree)</div>
                 </div>
                 <p className="text-green-300 mt-3 text-sm">
-                  These formulas are derived from extensive nuclear testing data and validated against 
-                  historical weapons.
+                  The fireball relation is from Glasstone &amp; Dolan 1977 §2.127; the scaling table is the
+                  published &ldquo;Effects of nuclear explosions&rdquo; data. Full table on the{' '}
+                  <a href="/methodology" className="text-yellow-400 hover:underline">methodology page</a>.
                 </p>
               </div>
 
               <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-3 text-yellow-400">Why don't you show casualty numbers?</h3>
+                <h3 className="text-xl font-semibold mb-3 text-yellow-400">Why don&apos;t you show casualty numbers?</h3>
                 <p className="text-green-300 mb-3">
-                  We focus on physical effects rather than specific casualty estimates because:
+                  Casualty, fallout and radiation figures are currently withdrawn. The earlier model
+                  estimated deaths from a single flat population density summed over overlapping damage rings,
+                  which double-counted people and produced unreliable numbers.
                 </p>
                 <ul className="list-disc list-inside space-y-1 text-green-300">
-                  <li>Population density varies enormously by location and time</li>
-                  <li>Casualty rates depend on warning time, shelter, medical care</li>
-                  <li>We want to emphasize the humanitarian consequences conceptually</li>
-                  <li>Specific numbers might be misused or misinterpreted</li>
-                  <li>The focus should be on prevention, not casualty counting</li>
+                  <li>Those figures stay off until a verified gridded-population and fallout model is in place</li>
+                  <li>The site shows physical effect radii only (air burst at optimum height)</li>
+                  <li>See the methodology page for exactly what is and isn&apos;t computed</li>
                 </ul>
               </div>
             </div>
@@ -361,14 +361,14 @@ export default function FAQPage() {
               <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-3 text-yellow-400">Do you collect data about my simulations?</h3>
                 <p className="text-green-300 mb-3">
-                  <strong>No.</strong> We prioritize your privacy:
+                  Your simulations are not stored:
                 </p>
                 <ul className="list-disc list-inside space-y-1 text-green-300">
-                  <li>All calculations run locally in your browser</li>
-                  <li>No weapon selections or locations are transmitted to our servers</li>
-                  <li>We don't track what you simulate or where you place weapons</li>
-                  <li>No user accounts, registration, or personal data collection</li>
-                  <li>Standard web server logs only (IP addresses, not simulation data)</li>
+                  <li>Your map clicks, weapon selections and target locations are never stored or sent to our servers</li>
+                  <li>Pre-built pages compute radii at build time; map detonations compute in your browser</li>
+                  <li>No user accounts or registration</li>
+                  <li>We use Google Analytics for overall traffic and Mapbox for map tiles — see the{' '}
+                    <a href="/privacy" className="text-yellow-400 hover:underline">Privacy page</a></li>
                 </ul>
               </div>
 

@@ -25,7 +25,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
       <OgFrame
         eyebrow="Comparison"
         title={`${a.name} vs ${b.name}`}
-        subtitle="Yield, blast radius, casualties — side by side"
+        subtitle="Yield, blast radius, thermal effects — side by side"
         metric={{ label: a.name, value: formatYieldShort(a.yield) }}
         metricSecondary={{ label: b.name, value: formatYieldShort(b.yield) }}
       />

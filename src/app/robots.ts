@@ -24,11 +24,13 @@ const AI_BOTS = [
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      // Default rule for all crawlers (Googlebot, Bingbot, etc.)
+      // Default rule for all crawlers (Googlebot, Bingbot, etc.). NBS-003:
+      // do NOT disallow /_next/ — Googlebot needs the JS/CSS under
+      // /_next/static to render the page.
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/admin/'],
+        disallow: ['/api/', '/admin/'],
       },
       // Explicit allow for each AI search/training bot
       ...AI_BOTS.map((bot) => ({

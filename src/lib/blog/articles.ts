@@ -1,6 +1,6 @@
 import type { Article } from './types'
 
-// Editorial articles. Authored for general educated audiences. Every claim
+// Blog articles by Marko Visic. Authored for general educated audiences. Every claim
 // is paraphrased from authoritative public-domain sources (Glasstone & Dolan,
 // FAS, SIPRI, NTI, Defense Threat Reduction Agency, Robock et al.). Each
 // article is structured for AI citation: the first sentence of each section
@@ -13,7 +13,7 @@ export const articles: Article[] = [
     title: 'How Nuclear Weapons Work: A Plain-English Guide',
     description: 'A clear walkthrough of how atomic and hydrogen bombs actually work — fission, fusion, gun-type vs implosion designs, and the two-stage Teller-Ulam configuration that powers all modern thermonuclear weapons.',
     datePublished: '2026-04-29',
-    author: 'NukeBlastSimulator Editorial',
+    author: 'Marko Visic',
     category: 'physics',
     readingMinutes: 9,
     body: [
@@ -77,7 +77,7 @@ export const articles: Article[] = [
     title: 'The Physics of Nuclear Blast: Yield, Scaling Laws, and Why Doubling Yield Doesn\'t Double the Radius',
     description: 'A walkthrough of the cube-root scaling law that governs nuclear blast effects — why a weapon ten times more powerful is only about twice as wide, and how that math shapes nuclear strategy.',
     datePublished: '2026-04-29',
-    author: 'NukeBlastSimulator Editorial',
+    author: 'Marko Visic',
     category: 'physics',
     readingMinutes: 8,
     body: [
@@ -138,7 +138,7 @@ export const articles: Article[] = [
     title: 'The Four Kill Mechanisms: Fireball, Blast, Thermal, Fallout',
     description: 'Nuclear weapons kill through four distinct mechanisms, each with different ranges, timings, and survival windows. Here is what each mechanism does and how to think about them in combination.',
     datePublished: '2026-04-29',
-    author: 'NukeBlastSimulator Editorial',
+    author: 'Marko Visic',
     category: 'effects',
     readingMinutes: 8,
     body: [
@@ -202,7 +202,7 @@ export const articles: Article[] = [
     title: 'Tsar Bomba: Inside the Largest Nuclear Test Ever',
     description: 'On October 30, 1961, the Soviet Union detonated a 50-megaton hydrogen bomb over the Arctic — a weapon so powerful it broke windows 900 km away and circled the Earth\'s atmosphere three times.',
     datePublished: '2026-04-29',
-    author: 'NukeBlastSimulator Editorial',
+    author: 'Marko Visic',
     category: 'history',
     readingMinutes: 8,
     body: [
@@ -265,7 +265,7 @@ export const articles: Article[] = [
     title: 'Hiroshima and Nagasaki: What 80 Years of Data Tell Us',
     description: 'The atomic bombings of August 1945 produced the only large datasets we have on real nuclear-weapon effects in real cities. Eight decades of follow-up studies have shaped almost everything we now know about radiation safety.',
     datePublished: '2026-04-29',
-    author: 'NukeBlastSimulator Editorial',
+    author: 'Marko Visic',
     category: 'history',
     readingMinutes: 8,
     body: [
@@ -329,7 +329,7 @@ export const articles: Article[] = [
     title: 'Modern Nuclear Arsenals: By the Numbers (2026 Update)',
     description: 'Nine states currently possess nuclear weapons, with a combined inventory of roughly 12,500 warheads. Here is the breakdown by country, delivery system, and yield.',
     datePublished: '2026-04-29',
-    author: 'NukeBlastSimulator Editorial',
+    author: 'Marko Visic',
     category: 'doctrine',
     readingMinutes: 8,
     body: [
@@ -396,7 +396,7 @@ export const articles: Article[] = [
     title: 'Nuclear Winter: How a Regional War Could Cool the Earth',
     description: 'A 1980s climate hypothesis turned out to be more robust than originally thought — and recent modeling shows that even a regional nuclear war could cause global crop failures.',
     datePublished: '2026-04-29',
-    author: 'NukeBlastSimulator Editorial',
+    author: 'Marko Visic',
     category: 'effects',
     readingMinutes: 8,
     body: [
@@ -457,7 +457,7 @@ export const articles: Article[] = [
     title: 'EMP: How a High-Altitude Nuclear Burst Could Disable a Continent',
     description: 'A single nuclear weapon detonated above the atmosphere could disable unprotected electronics across an area larger than the continental United States. Here is how the effect works and how seriously experts take the threat.',
     datePublished: '2026-04-29',
-    author: 'NukeBlastSimulator Editorial',
+    author: 'Marko Visic',
     category: 'effects',
     readingMinutes: 7,
     body: [

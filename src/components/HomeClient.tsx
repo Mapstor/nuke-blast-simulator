@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react'
 import { BombSelector } from '@/components/simulator/BombSelector'
-import { BurstTypeSelector } from '@/components/simulator/BurstTypeSelector'
 import { ResultsPanel } from '@/components/simulator/ResultsPanel'
 import { SimulatorCore } from '@/components/simulator/SimulatorCore'
 import { MapWrapper } from '@/components/simulator/MapWrapper'
@@ -24,7 +23,8 @@ export default function HomeClient() {
     const lng = params.get('lng')
 
     if (bombId && lat && lng) {
-      const bomb = bombs.find(b => b.id === bombId)
+      // NBS-003: conventional weapons are excluded from the tool.
+      const bomb = bombs.find(b => b.id === bombId && b.type !== 'conventional')
       if (bomb) {
         setSelectedBomb(bomb)
         setEpicenter({ lat: parseFloat(lat), lng: parseFloat(lng) })
@@ -66,13 +66,12 @@ export default function HomeClient() {
         <aside className="w-96 bg-gray-900 border-r border-green-500/30 p-6 overflow-y-auto space-y-6">
           <BombSelector />
 
-          <div className="border-t border-green-500/30 pt-6">
-            <BurstTypeSelector />
-          </div>
-
           <div className="p-4 bg-black border border-green-500/30 rounded">
             <p className="text-sm text-green-400">
               📍 Click anywhere on the map to simulate detonation
+            </p>
+            <p className="text-xs text-green-300/60 mt-2">
+              Air burst at optimum height. Radii are scaling-law estimates.
             </p>
           </div>
         </aside>

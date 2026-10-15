@@ -10,21 +10,17 @@ import {
 } from '@/lib/seo/schemas'
 import { bombs } from '@/lib/data/bombs'
 import { PrevNext, type PrevNextItem } from '@/components/nav/PrevNext'
+import { Byline } from '@/components/Byline'
 import {
   COMPARISONS,
   decodeComparisonSlug,
   allComparisonSlugs,
   encodeComparisonSlug,
 } from '@/lib/data/comparisons'
-import {
-  calculateFireball,
-  calculateAirBlast,
-  calculateThermalRadiation,
-} from '@/lib/calculations/blast'
+import { effectRadiiKm, formatRadiusKm, EFFECTS_FLAGS, type EffectRadiiKm } from '@/lib/calculations/effects'
 import type { Bomb } from '@/lib/types'
 
 const HIROSHIMA_YIELD_KT = 15
-const REFERENCE_DENSITY = 8000 // representative dense urban density per km²
 
 export function generateStaticParams() {
   return allComparisonSlugs().map((slug) => ({ slug }))
@@ -72,11 +68,6 @@ function describeType(t: Bomb['type']): string {
   }
 }
 
-function fatalitiesIn(radiusKm: number, density: number, mortality: number): number {
-  const area = Math.PI * radiusKm * radiusKm
-  return Math.round(area * density * mortality)
-}
-
 export async function generateMetadata({
   params,
 }: {
@@ -88,7 +79,7 @@ export async function generateMetadata({
   const { a, b } = data
 
   const title = `${a.name} vs ${b.name}: Nuclear Weapon Comparison`
-  const description = `Side-by-side comparison of the ${a.name} (${formatYield(a.yield)}) and ${b.name} (${formatYield(b.yield)}). Yields, blast radii, thermal effects, historical context, and which weapon is more powerful.`
+  const description = `Side-by-side comparison of the ${a.name} (${formatYield(a.yield)}) and ${b.name} (${formatYield(b.yield)}). Yields, blast and thermal radii (air burst), historical context, and which weapon is more powerful.`
 
   return {
     title,
@@ -114,22 +105,12 @@ export default async function ComparePage({
   const lessP = ratio >= 1 ? b : a
   const factor = ratio >= 1 ? ratio : 1 / ratio
 
-  const aFB = calculateFireball(a.yield, 'air')
-  const bFB = calculateFireball(b.yield, 'air')
-  const aBL = calculateAirBlast(a.yield, 'air')
-  const bBL = calculateAirBlast(b.yield, 'air')
-  const aTH = calculateThermalRadiation(a.yield, 'air')
-  const bTH = calculateThermalRadiation(b.yield, 'air')
-
-  // Casualty comparison at a reference urban density
-  const aDeaths =
-    fatalitiesIn(aFB, REFERENCE_DENSITY, 1.0) +
-    Math.max(0, fatalitiesIn(aBL.severe, REFERENCE_DENSITY, 0.98) - fatalitiesIn(aFB, REFERENCE_DENSITY, 1.0)) +
-    Math.max(0, fatalitiesIn(aBL.moderate, REFERENCE_DENSITY, 0.5) - fatalitiesIn(aBL.severe, REFERENCE_DENSITY, 0.5))
-  const bDeaths =
-    fatalitiesIn(bFB, REFERENCE_DENSITY, 1.0) +
-    Math.max(0, fatalitiesIn(bBL.severe, REFERENCE_DENSITY, 0.98) - fatalitiesIn(bFB, REFERENCE_DENSITY, 1.0)) +
-    Math.max(0, fatalitiesIn(bBL.moderate, REFERENCE_DENSITY, 0.5) - fatalitiesIn(bBL.severe, REFERENCE_DENSITY, 0.5))
+  // Effect radii apply only when BOTH weapons are nuclear. If either is a
+  // conventional weapon, the radii table is withdrawn (EFFECTS_FLAGS).
+  const bothNuclear = a.type !== 'conventional' && b.type !== 'conventional'
+  const showEffects = bothNuclear || EFFECTS_FLAGS.CONVENTIONAL_EFFECTS
+  const rA: EffectRadiiKm | null = showEffects ? effectRadiiKm(a.yield) : null
+  const rB: EffectRadiiKm | null = showEffects ? effectRadiiKm(b.yield) : null
 
   const hiroshimaA = a.yield / HIROSHIMA_YIELD_KT
   const hiroshimaB = b.yield / HIROSHIMA_YIELD_KT
@@ -144,23 +125,20 @@ export default async function ComparePage({
       question: `Is the ${a.name} bigger than the ${b.name}?`,
       answer:
         ratio >= 1
-          ? `Yes. The ${a.name} (${formatYield(a.yield)}) is ${factor.toLocaleString(undefined, { maximumFractionDigits: 1 })}× more powerful than the ${b.name} (${formatYield(b.yield)}).`
-          : `No. The ${b.name} (${formatYield(b.yield)}) is ${factor.toLocaleString(undefined, { maximumFractionDigits: 1 })}× more powerful than the ${a.name} (${formatYield(a.yield)}).`,
+          ? `Yes. The ${a.name} (${formatYield(a.yield)}) is ${factor.toLocaleString(undefined, { maximumFractionDigits: 1 })}× more powerful than the ${b.name} (${formatYield(b.yield)}) by yield.`
+          : `No. The ${b.name} (${formatYield(b.yield)}) is ${factor.toLocaleString(undefined, { maximumFractionDigits: 1 })}× more powerful than the ${a.name} (${formatYield(a.yield)}) by yield.`,
     },
-    {
-      question: `What is the blast radius of the ${a.name} compared to the ${b.name}?`,
-      answer:
-        `For an air burst, the ${a.name} produces a 5 PSI moderate-blast radius of ${aBL.moderate.toFixed(2)} km, versus ${bBL.moderate.toFixed(2)} km for the ${b.name}. ` +
-        `Severe blast (20 PSI): ${aBL.severe.toFixed(2)} km vs ${bBL.severe.toFixed(2)} km. ` +
-        `3rd-degree thermal burns: ${aTH.thirdDegree.toFixed(2)} km vs ${bTH.thirdDegree.toFixed(2)} km.`,
-    },
-    {
-      question: `How many people would die from a ${a.name} compared to a ${b.name}?`,
-      answer:
-        `Detonated over a typical dense city center (${REFERENCE_DENSITY.toLocaleString()} people/km²), the ${a.name} would cause an estimated ${aDeaths.toLocaleString()} immediate fatalities. ` +
-        `The ${b.name} would cause an estimated ${bDeaths.toLocaleString()}. ` +
-        `Real numbers depend on time of day, sheltering, weather, and altitude of detonation.`,
-    },
+    ...(rA && rB
+      ? [
+          {
+            question: `What is the blast radius of the ${a.name} compared to the ${b.name}?`,
+            answer:
+              `For an air burst at optimum height, the ${a.name} produces a 5 psi moderate-blast radius of ${formatRadiusKm(rA.overpressure5psi)} km, versus ${formatRadiusKm(rB.overpressure5psi)} km for the ${b.name}. ` +
+              `Severe blast (20 psi): ${formatRadiusKm(rA.overpressure20psi)} km vs ${formatRadiusKm(rB.overpressure20psi)} km. ` +
+              `3rd-degree thermal burns: ${formatRadiusKm(rA.thermal3rdDegree)} km vs ${formatRadiusKm(rB.thermal3rdDegree)} km.`,
+          },
+        ]
+      : []),
     {
       question: `How do the ${a.name} and ${b.name} compare to the Hiroshima bomb?`,
       answer:
@@ -190,7 +168,7 @@ export default async function ComparePage({
           articleSchema({
             url: `/compare/${slug}`,
             headline: `${a.name} vs ${b.name}: Nuclear Weapon Comparison`,
-            description: `Side-by-side comparison of the ${a.name} and the ${b.name} — yields, blast radii, thermal effects, and historical context.`,
+            description: `Side-by-side comparison of the ${a.name} and the ${b.name} — yields, blast and thermal radii (air burst), and historical context.`,
           }),
           faqPageSchema(faqEntries),
           breadcrumbSchema(breadcrumbs),
@@ -211,6 +189,7 @@ export default async function ComparePage({
             {a.name} vs {b.name}
           </h1>
           <p className="text-lg text-green-300">Nuclear weapon side-by-side comparison</p>
+          <Byline className="mt-2" />
         </header>
 
         <section className="mb-10 grid md:grid-cols-2 gap-4">
@@ -239,63 +218,49 @@ export default async function ComparePage({
             <strong className="text-red-400">
               {factor.toLocaleString(undefined, { maximumFractionDigits: factor < 10 ? 1 : 0 })}× more powerful
             </strong>{' '}
-            than the <strong className="text-yellow-400">{lessP.name}</strong> by yield. {moreP.name === a.name
-              ? `Both weapons are described in detail below, with side-by-side blast and thermal radii, casualty estimates at a reference urban density, and historical context.`
-              : `Both weapons are described in detail below, with side-by-side blast and thermal radii, casualty estimates at a reference urban density, and historical context.`}
+            than the <strong className="text-yellow-400">{lessP.name}</strong> by yield. Both weapons are
+            described below with {showEffects ? 'side-by-side blast and thermal radii (air burst) and ' : ''}
+            historical context.
           </p>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-green-400">Blast & thermal effects (air burst)</h2>
-          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 overflow-x-auto">
-            <table className="w-full text-green-300 text-sm md:text-base">
-              <thead>
-                <tr className="border-b border-green-500/30">
-                  <th className="text-left py-2 text-yellow-400">Effect zone</th>
-                  <th className="text-right py-2 text-yellow-400">{a.name}</th>
-                  <th className="text-right py-2 text-yellow-400">{b.name}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-green-500/10"><td className="py-2">Yield</td><td className="text-right">{formatYield(a.yield)}</td><td className="text-right">{formatYield(b.yield)}</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">Fireball radius</td><td className="text-right">{aFB.toFixed(2)} km</td><td className="text-right">{bFB.toFixed(2)} km</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">Severe blast (20 PSI)</td><td className="text-right">{aBL.severe.toFixed(2)} km</td><td className="text-right">{bBL.severe.toFixed(2)} km</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">Moderate blast (5 PSI)</td><td className="text-right">{aBL.moderate.toFixed(2)} km</td><td className="text-right">{bBL.moderate.toFixed(2)} km</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">Light blast (1 PSI)</td><td className="text-right">{aBL.light.toFixed(2)} km</td><td className="text-right">{bBL.light.toFixed(2)} km</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">3rd-degree thermal burns</td><td className="text-right">{aTH.thirdDegree.toFixed(2)} km</td><td className="text-right">{bTH.thirdDegree.toFixed(2)} km</td></tr>
-                <tr><td className="py-2">2nd-degree thermal burns</td><td className="text-right">{aTH.secondDegree.toFixed(2)} km</td><td className="text-right">{bTH.secondDegree.toFixed(2)} km</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-green-400">Casualty estimate (dense urban target)</h2>
-          <p className="text-green-300 mb-4">
-            Estimated immediate fatalities if each weapon air-bursts over a city center with a population
-            density of about {REFERENCE_DENSITY.toLocaleString()} per km² (representative of dense urban
-            cores like Manhattan or central Paris):
-          </p>
-          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-            <div className="grid sm:grid-cols-2 gap-6 text-center">
-              <div>
-                <div className="text-sm text-green-300/70">{a.name}</div>
-                <div className="text-3xl font-bold text-red-400">~{aDeaths.toLocaleString()}</div>
-                <div className="text-xs text-green-300/70 mt-1">immediate fatalities</div>
-              </div>
-              <div>
-                <div className="text-sm text-green-300/70">{b.name}</div>
-                <div className="text-3xl font-bold text-red-400">~{bDeaths.toLocaleString()}</div>
-                <div className="text-xs text-green-300/70 mt-1">immediate fatalities</div>
-              </div>
+        {rA && rB ? (
+          <section className="mb-10">
+            <h2 className="text-2xl font-semibold mb-4 text-green-400">Blast &amp; thermal radii (air burst)</h2>
+            <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 overflow-x-auto">
+              <table className="w-full text-green-300 text-sm md:text-base">
+                <thead>
+                  <tr className="border-b border-green-500/30">
+                    <th className="text-left py-2 text-yellow-400">Effect zone</th>
+                    <th className="text-right py-2 text-yellow-400">{a.name}</th>
+                    <th className="text-right py-2 text-yellow-400">{b.name}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-green-500/10"><td className="py-2">Yield</td><td className="text-right">{formatYield(a.yield)}</td><td className="text-right">{formatYield(b.yield)}</td></tr>
+                  <tr className="border-b border-green-500/10"><td className="py-2">Fireball radius</td><td className="text-right">{formatRadiusKm(rA.fireball) + ' km'}</td><td className="text-right">{formatRadiusKm(rB.fireball) + ' km'}</td></tr>
+                  <tr className="border-b border-green-500/10"><td className="py-2">Severe blast (20 psi)</td><td className="text-right">{formatRadiusKm(rA.overpressure20psi) + ' km'}</td><td className="text-right">{formatRadiusKm(rB.overpressure20psi) + ' km'}</td></tr>
+                  <tr className="border-b border-green-500/10"><td className="py-2">Moderate blast (5 psi)</td><td className="text-right">{formatRadiusKm(rA.overpressure5psi) + ' km'}</td><td className="text-right">{formatRadiusKm(rB.overpressure5psi) + ' km'}</td></tr>
+                  <tr className="border-b border-green-500/10"><td className="py-2">Light blast (1 psi)</td><td className="text-right">{formatRadiusKm(rA.overpressure1psi) + ' km'}</td><td className="text-right">{formatRadiusKm(rB.overpressure1psi) + ' km'}</td></tr>
+                  <tr className="border-b border-green-500/10"><td className="py-2">3rd-degree thermal burns</td><td className="text-right">{formatRadiusKm(rA.thermal3rdDegree) + ' km'}</td><td className="text-right">{formatRadiusKm(rB.thermal3rdDegree) + ' km'}</td></tr>
+                  <tr><td className="py-2">2nd-degree thermal burns</td><td className="text-right">{formatRadiusKm(rA.thermal2ndDegree) + ' km'}</td><td className="text-right">{formatRadiusKm(rB.thermal2ndDegree) + ' km'}</td></tr>
+                </tbody>
+              </table>
             </div>
-          </div>
-          <p className="text-sm text-green-300/70 mt-3">
-            Real casualties depend strongly on time of day, sheltering, weather, and altitude of detonation.
-            See the <Link href="/methodology" className="text-yellow-400 hover:underline">methodology</Link> page
-            for the underlying formulas.
-          </p>
-        </section>
+            <p className="text-sm text-green-300/70 mt-3">
+              Air burst at optimum height. Casualty and fallout estimates are withdrawn pending a verified model.
+            </p>
+          </section>
+        ) : (
+          <section className="mb-10 bg-yellow-900/20 border-l-4 border-yellow-400 p-6 rounded-r">
+            <h2 className="text-xl font-semibold mb-3 text-yellow-400">Effect-radius comparison unavailable</h2>
+            <p className="text-green-300">
+              One of these is a conventional (non-nuclear) weapon, so a blast-radius comparison would mix two
+              incompatible physical models. This page compares yields and historical context only. See the{' '}
+              <Link href="/methodology" className="text-yellow-400 hover:underline">methodology</Link> page.
+            </p>
+          </section>
+        )}
 
         <section className="mb-10">
           <h2 className="text-2xl font-semibold mb-4 text-green-400">Hiroshima reference</h2>
@@ -318,12 +283,16 @@ export default async function ComparePage({
         <section className="mb-10">
           <h2 className="text-2xl font-semibold mb-4 text-green-400">Run them on the simulator</h2>
           <div className="flex flex-wrap gap-3">
-            <Link href={`/?bomb=${a.id}`} className="inline-block bg-green-500 text-black px-5 py-3 rounded font-semibold hover:bg-green-600 transition">
-              🎯 Simulate {a.name}
-            </Link>
-            <Link href={`/?bomb=${b.id}`} className="inline-block bg-green-500 text-black px-5 py-3 rounded font-semibold hover:bg-green-600 transition">
-              🎯 Simulate {b.name}
-            </Link>
+            {a.type !== 'conventional' && (
+              <Link href={`/?bomb=${a.id}`} className="inline-block bg-green-500 text-black px-5 py-3 rounded font-semibold hover:bg-green-600 transition">
+                🎯 Simulate {a.name}
+              </Link>
+            )}
+            {b.type !== 'conventional' && (
+              <Link href={`/?bomb=${b.id}`} className="inline-block bg-green-500 text-black px-5 py-3 rounded font-semibold hover:bg-green-600 transition">
+                🎯 Simulate {b.name}
+              </Link>
+            )}
           </div>
         </section>
 

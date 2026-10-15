@@ -1,40 +1,40 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { Byline } from '@/components/Byline'
 import {
   articleSchema,
-  howToSchema,
   breadcrumbSchema,
   SITE_URL,
 } from '@/lib/seo/schemas'
+import {
+  FIREBALL_COEFFICIENT,
+  FIREBALL_EXPONENT,
+  YIELD_KNOTS_KT,
+  SCALING_TABLE_KM,
+  EFFECT_LABELS,
+  type EffectKey,
+} from '@/lib/calculations/effects'
 
 export const metadata: Metadata = {
   title: 'Methodology - How We Calculate Nuclear Blast Effects',
-  description: 'Learn about the scientific formulas and data sources used to calculate nuclear blast effects, casualties, and damage zones in our simulator.',
-  alternates: { canonical: '/methodology' }
+  description:
+    'The scaling-law formulas and data sources used to calculate nuclear blast and thermal effect radii in the simulator — the Glasstone & Dolan fireball relation and the published effects scaling table.',
+  alternates: { canonical: '/methodology' },
 }
 
-const calculationSteps = [
-  {
-    name: 'Compute the fireball radius',
-    text: 'Fireball radius (km) = 0.28 × Yield_kt^0.33. Within this radius, temperatures exceed 10 million°C and everything is vaporized.',
-  },
-  {
-    name: 'Compute the air blast zones',
-    text: 'Severe (20 PSI) = 0.28 × Yield_kt^0.33 km. Moderate (5 PSI) = 1.03 × Yield_kt^0.33 km. Light (1 PSI) = 2.93 × Yield_kt^0.33 km. The 5 PSI radius is the canonical "city-killing" boundary for residential buildings.',
-  },
-  {
-    name: 'Compute thermal radiation zones',
-    text: '3rd degree burns = 0.67 × Yield_kt^0.41 km. 2nd degree burns = 1.2 × Yield_kt^0.41 km. Thermal radius scales with a higher exponent (0.41 vs 0.33) because thermal energy propagates more efficiently than blast pressure.',
-  },
-  {
-    name: 'Apply mortality rates per zone',
-    text: 'Fireball 100%, 20 PSI 98%, 5 PSI 50%, 1 PSI 5%, 3rd degree burn 95%, 2nd degree burn 20%, fallout 30%. These rates are derived from Glasstone & Dolan and post-Hiroshima/Nagasaki epidemiological data.',
-  },
-  {
-    name: 'Multiply by local population density',
-    text: 'Casualties per zone = π × radius² × density × mortality_rate. Density is sampled from a precomputed global population grid for the detonation point and surrounding area.',
-  },
+// Column labels for the scaling-table knots.
+function knotLabel(kt: number): string {
+  return kt >= 1000 ? `${kt / 1000} Mt` : `${kt} kt`
+}
+
+const EFFECT_ORDER: EffectKey[] = [
+  'overpressure20psi',
+  'overpressure5psi',
+  'overpressure1psi',
+  'thermal3rdDegree',
+  'thermal2ndDegree',
+  'thermal1stDegree',
 ]
 
 export default function MethodologyPage() {
@@ -45,15 +45,9 @@ export default function MethodologyPage() {
         schema={[
           articleSchema({
             url: '/methodology',
-            headline: 'Nuclear Blast Simulator — Scientific Methodology',
+            headline: 'Nuke Blast Simulator — Scientific Methodology',
             description:
-              'Scaling-law formulas and mortality assumptions used to calculate nuclear weapon effects, derived from Glasstone & Dolan and declassified test data.',
-          }),
-          howToSchema({
-            name: 'How nuclear blast effects are calculated',
-            description:
-              'Scaling-law procedure used by Nuclear Blast Simulator to compute fireball, air blast, thermal radiation, and casualties from yield and population density.',
-            steps: calculationSteps,
+              'Scaling-law formulas used to calculate nuclear weapon blast and thermal effect radii, from Glasstone & Dolan 1977 and the published effects scaling table.',
           }),
           breadcrumbSchema([
             { name: 'Home', url: SITE_URL },
@@ -63,115 +57,135 @@ export default function MethodologyPage() {
       />
 
       <main className="max-w-4xl mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-8 text-green-400">Scientific Methodology</h1>
+        <h1 className="text-4xl font-bold mb-3 text-green-400">Scientific Methodology</h1>
+        <Byline className="mb-8" />
 
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4 text-green-400">Blast Effect Calculations</h2>
           <p className="mb-6 text-green-300">
-            The simulator uses scientifically validated scaling-law formulas derived from nuclear weapons
-            testing data and the seminal work <em>The Effects of Nuclear Weapons</em> by Glasstone & Dolan
-            (3rd edition, 1977). All formulas express radius as a function of weapon yield in kilotons.
+            Every effect radius on this site is computed from published scaling laws for an{' '}
+            <strong className="text-yellow-400">air burst at optimum height</strong>. Radius is a function of
+            weapon yield in kilotons (W). The two primary sources are{' '}
+            <em>The Effects of Nuclear Weapons</em> (Glasstone &amp; Dolan, 3rd ed., 1977) and the published
+            effects scaling table. These are the exact relations the code runs — the constants below are read
+            directly from the calculation engine.
           </p>
 
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 mb-6">
-            <h3 className="text-xl font-semibold mb-3 text-yellow-400">Fireball Radius</h3>
+            <h2 className="text-xl font-semibold mb-3 text-yellow-400">Fireball radius</h2>
             <code className="block bg-gray-950 border border-green-500/20 text-green-300 p-3 rounded font-mono text-sm">
-              Radius (km) = 0.28 × Yield<sup>0.33</sup>
+              Radius (km) = {FIREBALL_COEFFICIENT} × W<sup>{FIREBALL_EXPONENT}</sup>
             </code>
             <p className="mt-3 text-green-300">
-              The fireball vaporizes everything within this radius. Temperatures exceed 10 million°C —
-              hotter than the surface of the Sun.
+              This is the maximum fireball radius of an air burst. Glasstone &amp; Dolan §2.127 gives the
+              breakaway radius as roughly 100·W<sup>0.4</sup> feet; the maximum air-burst fireball is about
+              twice breakaway, which converts to {FIREBALL_COEFFICIENT}·W<sup>{FIREBALL_EXPONENT}</sup> km.
+              (Checks: 15 kt → {(FIREBALL_COEFFICIENT * Math.pow(15, FIREBALL_EXPONENT)).toFixed(2)} km;
+              50 Mt → {(FIREBALL_COEFFICIENT * Math.pow(50000, FIREBALL_EXPONENT)).toFixed(1)} km.)
             </p>
           </div>
 
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 mb-6">
-            <h3 className="text-xl font-semibold mb-3 text-yellow-400">Air Blast Zones</h3>
-            <ul className="space-y-2 text-green-300">
-              <li>
-                <span className="font-semibold text-red-400">20 PSI (Severe):</span>{' '}
-                <span className="text-green-300">0.28 × Yield<sup>0.33</sup> km — reinforced concrete buildings destroyed.</span>
-              </li>
-              <li>
-                <span className="font-semibold text-orange-400">5 PSI (Moderate):</span>{' '}
-                <span className="text-green-300">1.03 × Yield<sup>0.33</sup> km — most residential buildings collapse.</span>
-              </li>
-              <li>
-                <span className="font-semibold text-gray-300">1 PSI (Light):</span>{' '}
-                <span className="text-green-300">2.93 × Yield<sup>0.33</sup> km — windows shatter, debris injuries.</span>
-              </li>
-            </ul>
+            <h2 className="text-xl font-semibold mb-3 text-yellow-400">Blast &amp; thermal scaling table</h2>
+            <p className="text-green-300 mb-4">
+              Blast overpressure and thermal burn radii are read from this scaling table (optimum-height air
+              bursts) and interpolated for intermediate yields. Radii are in kilometres.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-green-300 text-sm md:text-base">
+                <thead>
+                  <tr className="border-b border-green-500/30">
+                    <th className="text-left py-2 text-yellow-400">Effect</th>
+                    {YIELD_KNOTS_KT.map((kt) => (
+                      <th key={kt} className="text-right py-2 text-yellow-400">{knotLabel(kt)}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {EFFECT_ORDER.map((key) => (
+                    <tr key={key} className="border-b border-green-500/10">
+                      <td className="py-2">{EFFECT_LABELS[key]}</td>
+                      {SCALING_TABLE_KM[key].map((v, i) => (
+                        <td key={i} className="text-right">{v}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-            <h3 className="text-xl font-semibold mb-3 text-yellow-400">Thermal Radiation</h3>
-            <ul className="space-y-2 text-green-300">
-              <li>
-                <span className="font-semibold text-pink-400">3rd Degree Burns:</span>{' '}
-                <span className="text-green-300">0.67 × Yield<sup>0.41</sup> km — severe burns requiring immediate medical care.</span>
-              </li>
-              <li>
-                <span className="font-semibold text-pink-300">2nd Degree Burns:</span>{' '}
-                <span className="text-green-300">1.2 × Yield<sup>0.41</sup> km — painful burns, potential scarring.</span>
-              </li>
-            </ul>
+            <h2 className="text-xl font-semibold mb-3 text-yellow-400">Interpolation</h2>
+            <p className="text-green-300">
+              For a yield between two table columns, the radius is interpolated on a log–log scale (log of
+              radius is linear in log of yield between the two bracketing points). Beyond the tabulated range
+              (1 kt … 20 Mt), the nearest segment&apos;s log–log slope is extended. This reproduces the table
+              values exactly at the knots and gives physically reasonable radii in between — for example a
+              15 kt weapon&apos;s 5 psi radius of about 1.54 km, a 100 kt weapon&apos;s 2.89 km, and a 50 Mt
+              weapon&apos;s 23.1 km.
+            </p>
           </div>
         </section>
 
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4 text-green-400">Casualty Estimates</h2>
-          <p className="mb-4 text-green-300">
-            Casualties are calculated by combining each zone&apos;s area, the local population density at
-            the detonation point, and an empirically-derived mortality rate per zone:
-          </p>
-          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-            <table className="w-full text-green-300">
-              <thead>
-                <tr className="border-b border-green-500/30">
-                  <th className="text-left py-2 text-yellow-400">Zone</th>
-                  <th className="text-right py-2 text-yellow-400">Mortality Rate</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-green-500/10"><td className="py-2">Fireball</td><td className="text-right">100%</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">20 PSI overpressure</td><td className="text-right">98%</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">5 PSI overpressure</td><td className="text-right">50%</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">1 PSI overpressure</td><td className="text-right">5%</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">3rd-degree thermal burns</td><td className="text-right">95%</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">2nd-degree thermal burns</td><td className="text-right">20%</td></tr>
-                <tr><td className="py-2">Fallout (24–48h)</td><td className="text-right">30%</td></tr>
-              </tbody>
-            </table>
+          <h2 className="text-2xl font-semibold mb-4 text-green-400">What is not shown</h2>
+          <div className="bg-yellow-900/20 border-l-4 border-yellow-400 p-6 rounded-r text-green-300 space-y-3">
+            <p>
+              Casualty and fatality counts, fallout plumes, prompt-radiation doses, crater dimensions, and
+              surface-burst radii are <strong className="text-yellow-400">not shown</strong>. The site
+              previously estimated casualties from a single flat population density summed over overlapping
+              damage rings, which double-counted people and produced unreliable numbers.
+            </p>
+            <p>
+              Those outputs stay off until each has a verified model — a gridded population source for
+              casualties and a validated fallout model for downwind contamination. No population grid is used
+              at present.
+            </p>
           </div>
         </section>
 
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4 text-green-400">Data Sources</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-green-400">Data sources</h2>
           <ul className="bg-black/50 border border-green-500/30 rounded-lg p-6 list-disc list-inside space-y-2 text-green-300">
-            <li>Glasstone, S., &amp; Dolan, P. J. (1977). <em>The Effects of Nuclear Weapons</em> (3rd ed.).</li>
-            <li>Federation of American Scientists — Nuclear Weapons Effects Calculator.</li>
-            <li>NUKEMAP by Alex Wellerstein — validation data.</li>
-            <li>Defense Threat Reduction Agency publications.</li>
-            <li>Oak Ridge National Laboratory — Nuclear Weapons FAQ.</li>
+            <li>
+              Glasstone, S., &amp; Dolan, P. J. (1977). <em>The Effects of Nuclear Weapons</em> (3rd ed.) —{' '}
+              <a
+                href="https://atomicarchive.com/resources/documents/effects/glasstone-dolan/chapter2.html"
+                className="text-yellow-400 hover:underline"
+                rel="nofollow"
+              >
+                Chapter 2 (fireball &amp; scaling), atomicarchive.com
+              </a>
+            </li>
+            <li>
+              &ldquo;Effects of nuclear explosions&rdquo; scaling table —{' '}
+              <a
+                href="https://en.wikipedia.org/wiki/Effects_of_nuclear_explosions"
+                className="text-yellow-400 hover:underline"
+                rel="nofollow"
+              >
+                en.wikipedia.org/wiki/Effects_of_nuclear_explosions
+              </a>
+            </li>
+            <li>Federation of American Scientists — Nuclear Weapons effects references.</li>
           </ul>
           <p className="mt-4 text-sm text-green-300/70">
             See the full <Link href="/sources" className="text-yellow-400 hover:underline">data sources</Link> page for
-            complete references and citation links.
+            complete references.
           </p>
         </section>
 
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4 text-green-400">Important Disclaimers</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-green-400">Important disclaimers</h2>
           <div className="bg-yellow-900/20 border-l-4 border-yellow-400 p-6 rounded-r">
             <p className="text-green-300 mb-3">
-              The simulator provides estimates based on idealized conditions. Actual effects would vary based on:
+              The simulator provides radius estimates for idealized conditions. Actual effects vary with:
             </p>
             <ul className="list-disc list-inside space-y-1 text-green-300">
               <li>Terrain and geographic features</li>
               <li>Weather conditions and atmospheric density</li>
               <li>Building construction standards</li>
-              <li>Time of day (population distribution)</li>
-              <li>Altitude of detonation (air burst vs. surface burst)</li>
-              <li>Emergency response capabilities</li>
+              <li>Burst height and detonation type</li>
             </ul>
           </div>
         </section>

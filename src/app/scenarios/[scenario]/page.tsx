@@ -18,12 +18,7 @@ import {
   decodeScenarioSlug,
   encodeScenarioSlug,
 } from '@/lib/data/scenarios'
-import {
-  calculateFireball,
-  calculateAirBlast,
-  calculateThermalRadiation,
-  calculateFallout,
-} from '@/lib/calculations/blast'
+import { effectRadiiKm, formatRadiusKm } from '@/lib/calculations/effects'
 
 const HIROSHIMA_YIELD_KT = 15
 
@@ -75,11 +70,6 @@ function compareToHiroshima(yieldKt: number): string {
   return `${r.toLocaleString(undefined, { maximumFractionDigits: 0 })}× more powerful than the Hiroshima bomb`
 }
 
-function fatalitiesIn(radiusKm: number, density: number, mortality: number): number {
-  const area = Math.PI * radiusKm * radiusKm
-  return Math.round(area * density * mortality)
-}
-
 export async function generateMetadata({
   params,
 }: {
@@ -90,8 +80,8 @@ export async function generateMetadata({
   if (!data) return { title: 'Scenario Not Found' }
   const { bomb, city } = data
 
-  const title = `${bomb.name} on ${city.name}: Blast Radius, Casualties & Effects`
-  const description = `What if a ${formatYield(bomb.yield)} ${bomb.name} detonated over ${city.name}, ${city.country}? See the calculated fireball, blast zones, thermal radiation, and estimated casualties using ${city.name}'s population density of ${city.density.toLocaleString()}/km².`
+  const title = `${bomb.name} on ${city.name}: Blast Radius & Effects`
+  const description = `What if a ${formatYield(bomb.yield)} ${bomb.name} air-burst over ${city.name}, ${city.country}? See the calculated fireball, blast overpressure, and thermal burn radii (air burst at optimum height).`
 
   return {
     title,
@@ -112,28 +102,8 @@ export default async function ScenarioPage({
   if (!data) notFound()
   const { bomb, city } = data
 
-  // Calculate effects for both burst types
-  const fireballAir = calculateFireball(bomb.yield, 'air')
-  const fireballSurface = calculateFireball(bomb.yield, 'surface')
-  const blastAir = calculateAirBlast(bomb.yield, 'air')
-  const blastSurface = calculateAirBlast(bomb.yield, 'surface')
-  const thermalAir = calculateThermalRadiation(bomb.yield, 'air')
-  const thermalSurface = calculateThermalRadiation(bomb.yield, 'surface')
-  const falloutSurface = calculateFallout(bomb.yield, 'surface')
-
-  // Casualty estimates (air burst, since that's the optimization target for max blast)
-  const fireballDeaths = fatalitiesIn(fireballAir, city.density, 1.0)
-  const severeDeaths = Math.max(0, fatalitiesIn(blastAir.severe, city.density, 0.98) - fireballDeaths)
-  const moderateDeaths = Math.max(
-    0,
-    fatalitiesIn(blastAir.moderate, city.density, 0.5) - fatalitiesIn(blastAir.severe, city.density, 0.5),
-  )
-  const lightInjured = Math.max(
-    0,
-    fatalitiesIn(blastAir.light, city.density, 0.05) - fatalitiesIn(blastAir.moderate, city.density, 0.05),
-  )
-  const totalAffected = fatalitiesIn(blastAir.light, city.density, 1.0)
-  const fatalitiesTotal = fireballDeaths + severeDeaths + moderateDeaths
+  // Effect radii — air burst at optimum height (the engine's only mode).
+  const r = effectRadiiKm(bomb.yield)
 
   const yieldText = formatYield(bomb.yield)
   const comparison = compareToHiroshima(bomb.yield)
@@ -155,23 +125,14 @@ export default async function ScenarioPage({
     {
       question: `What would happen if the ${bomb.name} detonated over ${city.name}?`,
       answer:
-        `In an air burst over ${city.name}, the ${bomb.name} (${yieldText}) would produce a fireball about ${fireballAir.toFixed(2)} km in radius. ` +
-        `The 5 PSI moderate-blast zone — where most residential buildings collapse — would extend to ${blastAir.moderate.toFixed(2)} km. ` +
-        `Light blast damage and shattered windows would reach ${blastAir.light.toFixed(2)} km. ` +
-        `Given ${city.name}'s urban density (~${city.density.toLocaleString()}/km²), this scenario yields an estimated ${fatalitiesTotal.toLocaleString()} immediate fatalities and about ${lightInjured.toLocaleString()} additional injured.`,
-    },
-    {
-      question: `How many people would die in ${city.name} from a ${bomb.name} strike?`,
-      answer:
-        `An air burst of the ${bomb.name} over ${city.name} could cause an estimated ${fatalitiesTotal.toLocaleString()} immediate fatalities and ${lightInjured.toLocaleString()} additional injuries. ` +
-        `The fireball alone (radius ${fireballAir.toFixed(2)} km) would kill approximately ${fireballDeaths.toLocaleString()} people; the severe-blast zone (20 PSI, radius ${blastAir.severe.toFixed(2)} km) would add ${severeDeaths.toLocaleString()}; the moderate-blast zone (5 PSI, radius ${blastAir.moderate.toFixed(2)} km) would add ${moderateDeaths.toLocaleString()} more. ` +
-        `Real numbers depend heavily on time of day, sheltering, weather, and altitude of detonation.`,
+        `In an air burst at optimum height over ${city.name}, the ${bomb.name} (${yieldText}) would produce a fireball about ${formatRadiusKm(r.fireball)} km in radius. ` +
+        `The 5 psi moderate-blast zone — where most residential buildings collapse — would extend to ${formatRadiusKm(r.overpressure5psi)} km. ` +
+        `Light blast damage and shattered windows would reach ${formatRadiusKm(r.overpressure1psi)} km, and 3rd-degree thermal burns ${formatRadiusKm(r.thermal3rdDegree)} km.`,
     },
     {
       question: `What is the blast radius of the ${bomb.name} on ${city.name}?`,
       answer:
-        `For an air burst over ${city.name}: fireball ${fireballAir.toFixed(2)} km, severe blast (20 PSI) ${blastAir.severe.toFixed(2)} km, moderate blast (5 PSI) ${blastAir.moderate.toFixed(2)} km, light blast (1 PSI) ${blastAir.light.toFixed(2)} km. Thermal radiation causes 3rd-degree burns out to ${thermalAir.thirdDegree.toFixed(2)} km. ` +
-        `A surface burst would shrink the blast radii by roughly 40 percent but generate massive radioactive fallout extending ~${falloutSurface.toFixed(0)} km from ground zero.`,
+        `For an air burst at optimum height over ${city.name}: fireball ${formatRadiusKm(r.fireball)} km, severe blast (20 psi) ${formatRadiusKm(r.overpressure20psi)} km, moderate blast (5 psi) ${formatRadiusKm(r.overpressure5psi)} km, light blast (1 psi) ${formatRadiusKm(r.overpressure1psi)} km. Thermal radiation causes 3rd-degree burns out to ${formatRadiusKm(r.thermal3rdDegree)} km.`,
     },
     {
       question: `Is the ${bomb.name} bigger than the bomb that hit Hiroshima?`,
@@ -192,8 +153,8 @@ export default async function ScenarioPage({
         schema={[
           articleSchema({
             url: `/scenarios/${scenario}`,
-            headline: `${bomb.name} on ${city.name}: Blast Radius, Casualties & Effects`,
-            description: `Detailed nuclear blast scenario for ${bomb.name} (${yieldText}) detonated over ${city.name}, ${city.country}. Calculated effects, casualties, and comparison context.`,
+            headline: `${bomb.name} on ${city.name}: Blast Radius & Effects`,
+            description: `Nuclear blast scenario for ${bomb.name} (${yieldText}) air-burst over ${city.name}, ${city.country}. Calculated effect radii and comparison context.`,
           }),
           faqPageSchema(faqEntries),
           breadcrumbSchema(breadcrumbs),
@@ -221,109 +182,54 @@ export default async function ScenarioPage({
         <section className="mb-10 bg-black/50 border border-green-500/30 rounded-lg p-6">
           <h2 className="text-2xl font-semibold mb-4 text-green-400">About this scenario</h2>
           <p className="text-green-300 mb-4">
-            This page calculates what would happen if the <strong className="text-yellow-400">{bomb.name}</strong>{' '}
-            ({bomb.country}{bomb.year ? `, ${bomb.year}` : ''}) detonated over <strong className="text-yellow-400">{city.name}</strong>{' '}
+            This page calculates the effect radii if the <strong className="text-yellow-400">{bomb.name}</strong>{' '}
+            ({bomb.country}{bomb.year ? `, ${bomb.year}` : ''}) air-burst over <strong className="text-yellow-400">{city.name}</strong>{' '}
             ({city.country}). {bomb.description}.
           </p>
           <p className="text-green-300 mb-4">
-            {city.description} With an urban-core density of about{' '}
-            <strong className="text-yellow-400">{city.density.toLocaleString()} people per km²</strong>, even a
-            relatively small detonation over the city center would affect a large population.
+            {city.description}
           </p>
           <p className="text-green-300">
             The {bomb.name} delivers <strong className="text-yellow-400">{yieldText}</strong> of explosive yield —{' '}
-            <strong className="text-yellow-400">{comparison}</strong>. The tables below show calculated effect
-            radii for an air burst (optimized for blast spread) and a surface burst (which produces
-            massive fallout).
+            <strong className="text-yellow-400">{comparison}</strong>. The table below shows calculated effect
+            radii for an <strong className="text-yellow-400">air burst at optimum height</strong>. Casualty and
+            fallout estimates are not shown pending a verified population and fallout model.
           </p>
         </section>
 
         <section className="mb-10">
           <h2 className="text-2xl font-semibold mb-4 text-green-400">
-            Air-burst effects ({bomb.name} over {city.name})
+            Air-burst effect radii ({bomb.name} over {city.name})
           </h2>
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 overflow-x-auto">
             <table className="w-full text-green-300 text-sm md:text-base">
               <thead>
                 <tr className="border-b border-green-500/30">
                   <th className="text-left py-2 text-yellow-400">Effect zone</th>
-                  <th className="text-right py-2 text-yellow-400">Radius</th>
-                  <th className="text-right py-2 text-yellow-400">Est. affected</th>
+                  <th className="text-right py-2 text-yellow-400">Radius (air burst)</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-green-500/10">
-                  <td className="py-2">Fireball (vaporization, 100% fatal)</td>
-                  <td className="text-right">{fireballAir.toFixed(2)} km</td>
-                  <td className="text-right">~{fireballDeaths.toLocaleString()}</td>
-                </tr>
-                <tr className="border-b border-green-500/10">
-                  <td className="py-2">Severe blast (20 PSI, ~98% fatal)</td>
-                  <td className="text-right">{blastAir.severe.toFixed(2)} km</td>
-                  <td className="text-right">~{severeDeaths.toLocaleString()}</td>
-                </tr>
-                <tr className="border-b border-green-500/10">
-                  <td className="py-2">Moderate blast (5 PSI, ~50% fatal)</td>
-                  <td className="text-right">{blastAir.moderate.toFixed(2)} km</td>
-                  <td className="text-right">~{moderateDeaths.toLocaleString()}</td>
-                </tr>
-                <tr className="border-b border-green-500/10">
-                  <td className="py-2">Light blast (1 PSI, glass injuries)</td>
-                  <td className="text-right">{blastAir.light.toFixed(2)} km</td>
-                  <td className="text-right">~{lightInjured.toLocaleString()}</td>
-                </tr>
-                <tr className="border-b border-green-500/10">
-                  <td className="py-2">3rd-degree thermal burns</td>
-                  <td className="text-right">{thermalAir.thirdDegree.toFixed(2)} km</td>
-                  <td className="text-right text-green-300/70">—</td>
-                </tr>
-                <tr>
-                  <td className="py-2">2nd-degree thermal burns</td>
-                  <td className="text-right">{thermalAir.secondDegree.toFixed(2)} km</td>
-                  <td className="text-right text-green-300/70">—</td>
-                </tr>
+                <tr className="border-b border-green-500/10"><td className="py-2">Fireball</td><td className="text-right">{formatRadiusKm(r.fireball) + ' km'}</td></tr>
+                <tr className="border-b border-green-500/10"><td className="py-2">Severe blast (20 psi)</td><td className="text-right">{formatRadiusKm(r.overpressure20psi) + ' km'}</td></tr>
+                <tr className="border-b border-green-500/10"><td className="py-2">Moderate blast (5 psi)</td><td className="text-right">{formatRadiusKm(r.overpressure5psi) + ' km'}</td></tr>
+                <tr className="border-b border-green-500/10"><td className="py-2">Light blast (1 psi)</td><td className="text-right">{formatRadiusKm(r.overpressure1psi) + ' km'}</td></tr>
+                <tr className="border-b border-green-500/10"><td className="py-2">3rd-degree thermal burns</td><td className="text-right">{formatRadiusKm(r.thermal3rdDegree) + ' km'}</td></tr>
+                <tr><td className="py-2">2nd-degree thermal burns</td><td className="text-right">{formatRadiusKm(r.thermal2ndDegree) + ' km'}</td></tr>
               </tbody>
             </table>
           </div>
           <p className="text-sm text-green-300/70 mt-3">
-            Estimated total fatalities: <strong className="text-red-400">~{fatalitiesTotal.toLocaleString()}</strong>{' '}
-            · Estimated total affected (inside 1 PSI light-blast radius):{' '}
-            <strong className="text-yellow-400">~{totalAffected.toLocaleString()}</strong>.
+            All radii assume an air burst at optimum height. Surface-burst, fallout, radiation and casualty
+            outputs are withdrawn until verified against a primary-source model.
           </p>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-green-400">Surface-burst effects (with fallout)</h2>
-          <p className="text-green-300 mb-4">
-            A surface burst trades blast spread for radioactive fallout — much smaller blast radii but a
-            large lethal fallout plume drifting downwind. This is what would happen if the {bomb.name} struck
-            ground level rather than detonating optimally above {city.name}.
-          </p>
-          <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 overflow-x-auto">
-            <table className="w-full text-green-300 text-sm md:text-base">
-              <thead>
-                <tr className="border-b border-green-500/30">
-                  <th className="text-left py-2 text-yellow-400">Effect zone</th>
-                  <th className="text-right py-2 text-yellow-400">Radius (surface burst)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-green-500/10"><td className="py-2">Fireball</td><td className="text-right">{fireballSurface.toFixed(2)} km</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">Severe blast (20 PSI)</td><td className="text-right">{blastSurface.severe.toFixed(2)} km</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">Moderate blast (5 PSI)</td><td className="text-right">{blastSurface.moderate.toFixed(2)} km</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">Light blast (1 PSI)</td><td className="text-right">{blastSurface.light.toFixed(2)} km</td></tr>
-                <tr className="border-b border-green-500/10"><td className="py-2">3rd-degree thermal burns</td><td className="text-right">{thermalSurface.thirdDegree.toFixed(2)} km</td></tr>
-                <tr><td className="py-2">Lethal fallout zone</td><td className="text-right">~{falloutSurface.toFixed(1)} km</td></tr>
-              </tbody>
-            </table>
-          </div>
         </section>
 
         <section className="mb-10">
           <h2 className="text-2xl font-semibold mb-4 text-green-400">Run this scenario in the simulator</h2>
           <p className="text-green-300 mb-4">
-            See the actual blast zones overlaid on a map of {city.name} with population-density-based
-            casualty estimates updated in real time as you move the detonation point.
+            See the blast zones overlaid on a map of {city.name}, updated in real time as you move the
+            detonation point.
           </p>
           <Link
             href={`/?bomb=${bomb.id}&lat=${city.lat}&lng=${city.lng}`}
@@ -378,7 +284,7 @@ export default async function ScenarioPage({
         </section>
 
         <section className="text-sm text-green-300/70">
-          Casualty math uses {city.name}&apos;s urban-core density and the scaling laws on the{' '}
+          Radii use the scaling laws on the{' '}
           <Link href="/methodology" className="text-yellow-400 hover:underline">methodology</Link> page.
           See <Link href={`/weapons/${bomb.id}`} className="text-yellow-400 hover:underline">{bomb.name} weapon details</Link>,
           the <Link href={`/examples/${city.slug}`} className="text-yellow-400 hover:underline">{city.name} scenario overview</Link>,

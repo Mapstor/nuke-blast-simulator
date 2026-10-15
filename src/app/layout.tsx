@@ -7,12 +7,13 @@ import './blast-animation.css'
 import { MilitaryHeader } from '@/components/layout/MilitaryHeader'
 import { Footer } from '@/components/layout/Footer'
 import Analytics from '@/components/Analytics'
+import { ConsentManager } from '@/components/consent/ConsentManager'
 import { JsonLd } from '@/components/seo/JsonLd'
 import {
   organizationSchema,
   websiteSchema,
   softwareApplicationSchema,
-  editorialPersonSchema,
+  authorPersonSchema,
 } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
@@ -21,9 +22,9 @@ export const metadata: Metadata = {
     default: 'Nuclear Blast Simulator - Interactive Nuke Map | NukeBlastSimulator.com',
     template: '%s | NukeBlastSimulator.com'
   },
-  description: 'Interactive nuclear blast simulator. Calculate blast radius, casualties, and fallout zones for any location worldwide. Explore effects of Tsar Bomba, Little Boy, and modern nuclear weapons with real scientific data.',
+  description: 'Interactive nuclear blast simulator. Calculate the fireball, blast radius, and thermal burn zones (air burst) for any location worldwide. Explore effects of Tsar Bomba, Little Boy, and modern nuclear weapons with real scientific data.',
   keywords: ['nuclear blast simulator', 'nuke simulator', 'blast radius calculator', 'atomic bomb simulator', 'nuclear weapon effects', 'tsar bomba simulator', 'nukemap alternative'],
-  authors: [{ name: 'NukeBlastSimulator.com' }],
+  authors: [{ name: 'Marko Visic', url: 'https://nukeblastsimulator.com/about' }],
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -77,11 +78,12 @@ export default function RootLayout({
         
         <JsonLd
           id="ld-graph-root"
-          schema={[organizationSchema, websiteSchema, softwareApplicationSchema, editorialPersonSchema]}
+          schema={[organizationSchema, websiteSchema, softwareApplicationSchema, authorPersonSchema]}
         />
       </head>
       <body className="bg-gray-900 min-h-screen flex flex-col">
         <Analytics />
+        <ConsentManager />
         <MilitaryHeader />
         <div className="flex-1">{children}</div>
         <Footer />
