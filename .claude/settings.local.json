@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(vercel deploy --prod)",
+      "Bash(vercel deploy --prod --yes)",
+      "Bash(vercel --prod --yes)",
+      "Bash(vercel pull --environment=production --yes)",
+      "Bash(vercel --prod --skip-build --yes)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

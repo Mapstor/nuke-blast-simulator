@@ -1,0 +1,206 @@
+{
+  "totalPages": 498,
+  "dupTitles": [],
+  "dupTitleGroups": 0,
+  "dupDescs": [],
+  "dupDescGroups": 0,
+  "missingH1": [],
+  "multiH1": [],
+  "missingDesc": [],
+  "noindex": [],
+  "canonMismatch": [],
+  "orphans": [
+    "/about [legal]",
+    "/methodology [legal]",
+    "/blog [hub]",
+    "/how-it-works [legal]",
+    "/compare [hub]",
+    "/glossary [hub]",
+    "/faq [legal]",
+    "/weapons [hub]",
+    "/examples [hub]",
+    "/scenarios [hub]",
+    "/privacy [legal]",
+    "/contact [legal]",
+    "/terms [legal]",
+    "/resources [legal]",
+    "/sources [legal]"
+  ],
+  "titleLen": {
+    "over60": 492,
+    "over70": 448,
+    "total": 498
+  },
+  "descLen": {
+    "over160": 428,
+    "under70": 0,
+    "missing": 0
+  },
+  "wcStats": {
+    "home": {
+      "n": 1,
+      "min": 1721,
+      "median": 1721,
+      "max": 1721,
+      "under300": 0,
+      "under500": 0
+    },
+    "legal": {
+      "n": 9,
+      "min": 249,
+      "median": 417,
+      "max": 872,
+      "under300": 2,
+      "under500": 5
+    },
+    "hub": {
+      "n": 6,
+      "min": 244,
+      "median": 628,
+      "max": 918,
+      "under300": 1,
+      "under500": 2
+    },
+    "weapon": {
+      "n": 44,
+      "min": 331,
+      "median": 375,
+      "max": 405,
+      "under300": 0,
+      "under500": 44
+    },
+    "city": {
+      "n": 100,
+      "min": 907,
+      "median": 916,
+      "max": 954,
+      "under300": 0,
+      "under500": 0
+    },
+    "scenario": {
+      "n": 250,
+      "min": 537,
+      "median": 556,
+      "max": 579,
+      "under300": 0,
+      "under500": 0
+    },
+    "compare": {
+      "n": 30,
+      "min": 343,
+      "median": 395,
+      "max": 464,
+      "under300": 0,
+      "under500": 30
+    },
+    "glossary": {
+      "n": 50,
+      "min": 63,
+      "median": 104,
+      "max": 149,
+      "under300": 50,
+      "under500": 50
+    },
+    "blog": {
+      "n": 8,
+      "min": 765,
+      "median": 971,
+      "max": 1036,
+      "under300": 0,
+      "under500": 0
+    }
+  },
+  "modDates": {
+    "(none)": 65,
+    "2026-10-15": 425,
+    "2026-04-29": 8
+  },
+  "pubDates": {
+    "(none)": 65,
+    "2025-10-22": 425,
+    "2026-04-29": 8
+  },
+  "schemaByTemplate": {
+    "home": [
+      "FAQPage",
+      "Organization",
+      "Person",
+      "SoftwareApplication",
+      "WebSite"
+    ],
+    "legal": [
+      "AboutPage",
+      "Article",
+      "BreadcrumbList",
+      "ContactPage",
+      "FAQPage",
+      "HowTo",
+      "Organization",
+      "Person",
+      "SoftwareApplication",
+      "WebSite"
+    ],
+    "hub": [
+      "BreadcrumbList",
+      "Dataset",
+      "DefinedTermSet",
+      "ItemList",
+      "Organization",
+      "Person",
+      "SoftwareApplication",
+      "WebSite"
+    ],
+    "weapon": [
+      "Article",
+      "BreadcrumbList",
+      "FAQPage",
+      "Organization",
+      "Person",
+      "SoftwareApplication",
+      "WebSite"
+    ],
+    "city": [
+      "Article",
+      "BreadcrumbList",
+      "FAQPage",
+      "Organization",
+      "Person",
+      "SoftwareApplication",
+      "WebSite"
+    ],
+    "scenario": [
+      "Article",
+      "BreadcrumbList",
+      "FAQPage",
+      "Organization",
+      "Person",
+      "SoftwareApplication",
+      "WebSite"
+    ],
+    "compare": [
+      "Article",
+      "BreadcrumbList",
+      "FAQPage",
+      "Organization",
+      "Person",
+      "SoftwareApplication",
+      "WebSite"
+    ],
+    "glossary": [
+      "BreadcrumbList",
+      "DefinedTerm",
+      "Organization",
+      "Person",
+      "SoftwareApplication",
+      "WebSite"
+    ],
+    "blog": [
+      "Article",
+      "BreadcrumbList",
+      "Organization",
+      "Person",
+      "SoftwareApplication",
+      "WebSite"
+    ]
+  }
+}
