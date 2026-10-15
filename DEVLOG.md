@@ -57,8 +57,8 @@ Proposed in chat, **owner OK pending** (not yet decided/rejected):
 ### 2026-10-15 · NBS-002 AUDIT · CC · done
 - What: Full read-only audit of nukeblastsimulator.com (site-audit Phases 0–2) + bootstrapped this DEVLOG.md and the CLAUDE.md DEVLOG block. No source/content/config/dependency files changed.
 - Files (writes only): DEVLOG.md, CLAUDE.md, reports/audit/** (inventory.csv, links.csv, weapons.csv, cities.csv, analysis.json, build.txt, engine.md, js-off.md, technical.md, trust.md, duplicates.md, facts.csv, prose.md, impeccable.md, SUMMARY.md, tools/*.js + tools/.gitignore).
-- Verified: production build `npm run build` exit 0 (504 static pages); prod server `next start -p 4317` served 200; crawl = 498 URLs = sitemap (all HTTP 200, 0 internal 404s); inventory rows = 498; all report files present. (commit hash: SEE git log below — finalized at commit time.)
-- Commit: <pending> (pushed: no)
+- Verified: production build `npm run build` exit 0 (504 static pages); prod server `next start -p 4317` served HTTP 200; crawl = 498 URLs = sitemap (all HTTP 200, 0 internal 404s); inventory data rows = 498; `ls reports/audit` shows all 15 report files; `git status --short` showed only DEVLOG.md, CLAUDE.md, reports/, .claude/.
+- Commit: d5659870 (reports+bootstrap); DEVLOG hash-record follow-up after. (pushed: no)
 - Notes: Key P0/P1 signals — effect radii ~1.6–2.4× over benchmark + overlapping-zone casualty double-count (engine.md); fabricated "Editorial" Person persona on all 498 pages + no real author (trust.md); uniform cosmetic dates; robots /_next/ block; near-duplicate city pages (61/100 have a ≥0.8 twin) and 250 thin templated scenario pages; 50 very thin glossary pages; AdSense pub-id in ads.txt with no AdSense running. See reports/audit/SUMMARY.md for the ranked list and evidence files.
 
 ## §7 History & archive
