@@ -71,7 +71,7 @@ const faqEntries = [
   {
     question: 'Does the simulator collect data about my simulations?',
     answer:
-      'Your map clicks, weapon selections and target locations are not stored or sent to our servers. The pre-built weapon, city and scenario pages compute their radii at build time; detonations you place on the interactive map are computed in your browser. We do use Google Analytics to understand overall site traffic, and map tiles are served by Mapbox — both are described on the Privacy page. There are no user accounts.',
+      'Your map clicks, weapon selections and target locations are not stored or sent to our servers. The pre-built weapon and city pages compute their radii at build time; detonations you place on the interactive map are computed in your browser. We do use Google Analytics to understand overall site traffic, and map tiles are served by Mapbox — both are described on the Privacy page. There are no user accounts.',
   },
   {
     question: 'Can I use this nuclear blast simulator for research or classroom teaching?',

@@ -6,7 +6,6 @@ import { faqPageSchema } from '@/lib/seo/schemas'
 import { bombs } from '@/lib/data/bombs'
 import { presetLocations } from '@/lib/data/cities'
 import { COMPARISONS, encodeComparisonSlug } from '@/lib/data/comparisons'
-import { encodeScenarioSlug } from '@/lib/data/scenarios'
 import { articles } from '@/lib/blog/articles'
 import { glossary } from '@/lib/data/glossary'
 
@@ -68,22 +67,6 @@ const featuredWeapons = ['tsar-bomba', 'castle-bravo', 'little-boy', 'fat-man', 
   .filter((b): b is NonNullable<typeof b> => Boolean(b))
 
 const featuredCities = presetLocations.slice(0, 8)
-
-const featuredScenarios = [
-  { bomb: 'tsar-bomba',    city: 'new-york'  },
-  { bomb: 'little-boy',    city: 'tokyo'     },
-  { bomb: 'castle-bravo',  city: 'london'    },
-  { bomb: 'b83',           city: 'moscow'    },
-  { bomb: 'w88',           city: 'beijing'   },
-  { bomb: 'fat-man',       city: 'paris'     },
-]
-  .map(({ bomb, city }) => {
-    const b = bombs.find((bb) => bb.id === bomb)
-    const c = presetLocations.find((cc) => cc.slug === city)
-    if (!b || !c) return null
-    return { bomb: b, city: c, slug: encodeScenarioSlug(bomb, city) }
-  })
-  .filter((x): x is NonNullable<typeof x> => Boolean(x))
 
 const featuredComparisons = COMPARISONS.slice(0, 6)
   .map(([a, b]) => {
@@ -212,35 +195,6 @@ export default function HomePage() {
             <p className="mt-4">
               <Link href="/examples" className="text-yellow-400 hover:underline">
                 Browse all {presetLocations.length} city scenarios →
-              </Link>
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold mb-4 text-green-400">Featured Bomb-on-City Scenarios</h2>
-            <p className="mb-4">
-              250 pre-computed scenarios pairing iconic weapons with major cities — each calculates the blast
-              and thermal effect radii for that exact combination (air burst at optimum height).
-            </p>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
-              {featuredScenarios.map((s) => (
-                <Link
-                  key={s.slug}
-                  href={`/scenarios/${s.slug}`}
-                  className="block bg-black/50 border border-green-500/30 rounded-lg p-3 hover:border-green-400 transition"
-                >
-                  <div className="font-semibold text-yellow-400 text-sm">
-                    {s.bomb.name} on {s.city.name}
-                  </div>
-                  <div className="text-xs text-green-300/70 mt-1">
-                    {shortYield(s.bomb.yield)} · {s.city.country}
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <p className="mt-4">
-              <Link href="/scenarios" className="text-yellow-400 hover:underline">
-                Browse all 250 bomb-on-city scenarios →
               </Link>
             </p>
           </section>

@@ -1,5 +1,7 @@
-// Featured bomb × city combinations rendered as static /scenarios pages.
-// 10 bombs × 20 cities = 200 scenario pages.
+// Featured bomb × city combinations. The /scenarios routes were RETIRED in
+// NBS-004 and 308-redirected into /examples; this data is kept only so
+// scripts/generate-scenario-redirects.mjs can enumerate every old URL. No app
+// route imports it. 10 bombs × 25 cities = 250 former scenario pages.
 
 export const FEATURED_BOMB_IDS = [
   'tsar-bomba',

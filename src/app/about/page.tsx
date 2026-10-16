@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { aboutPageSchema, authorPersonSchema, breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 
@@ -31,8 +32,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-semibold mb-6 text-green-400">Author</h2>
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
             <div className="flex items-start gap-4 mb-4">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/marko-visic.jpeg"
                 alt="Marko Visic"
                 width={72}

@@ -10,7 +10,6 @@ const FOOTER_GROUPS: Array<{ heading: string; links: Array<{ href: string; label
       { href: '/',          label: 'Simulator' },
       { href: '/weapons',   label: 'Weapons Database' },
       { href: '/examples',  label: 'City Scenarios' },
-      { href: '/scenarios', label: 'Bomb-on-City Scenarios' },
       { href: '/compare',   label: 'Weapon Comparisons' },
     ],
   },

@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
+// NBS-004: the /scenarios routes were consolidated into /examples. Serve a
+// permanent 308 for every retired URL (generated from the scenario data by
+// scripts/generate-scenario-redirects.mjs).
+const scenarioRedirects = require('./data/scenario-redirects.json')
+
 const nextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    return scenarioRedirects
+  },
   typescript: {
     ignoreBuildErrors: false,
   },

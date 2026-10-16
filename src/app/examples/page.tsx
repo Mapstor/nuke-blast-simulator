@@ -79,15 +79,13 @@ export default function ExamplesIndexPage() {
           <h2 className="text-xl font-semibold mb-3 text-green-400">How this section is organized</h2>
           <p className="text-green-300 mb-2">
             Cities are grouped by region and sorted by metropolitan population. Click any city to see its
-            full scenario page, or use the <Link href="/" className="text-yellow-400 hover:underline">interactive simulator</Link> to
+            scenario page, or use the <Link href="/" className="text-yellow-400 hover:underline">interactive simulator</Link> to
             place any weapon over any location worldwide.
           </p>
           <p className="text-green-300/80 text-sm">
-            For per-bomb-per-city pages (e.g.{' '}
-            <Link href="/scenarios/tsar-bomba-on-new-york" className="text-yellow-400 hover:underline">
-              Tsar Bomba on New York
-            </Link>
-            ), see the <Link href="/scenarios" className="text-yellow-400 hover:underline">scenarios catalog</Link>.
+            Each city page runs four representative weapons (Little Boy, W76, Castle Bravo, Tsar Bomba). To
+            drop any other weapon on a city, use the{' '}
+            <Link href="/" className="text-yellow-400 hover:underline">interactive map</Link>.
           </p>
         </section>
 
@@ -121,7 +119,6 @@ export default function ExamplesIndexPage() {
 
         <section className="text-sm text-green-300/70">
           See also: <Link href="/weapons" className="text-yellow-400 hover:underline">Weapons Database</Link> ·{' '}
-          <Link href="/scenarios" className="text-yellow-400 hover:underline">Bomb-on-city scenarios</Link> ·{' '}
           <Link href="/compare" className="text-yellow-400 hover:underline">Weapon comparisons</Link> ·{' '}
           <Link href="/methodology" className="text-yellow-400 hover:underline">Methodology</Link>.
         </section>

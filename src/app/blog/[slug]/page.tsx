@@ -9,6 +9,7 @@ import {
   breadcrumbSchema,
   SITE_URL,
 } from '@/lib/seo/schemas'
+import { getContentDates } from '@/lib/seo/contentDates'
 import { articles, findArticle, categoryLabel } from '@/lib/blog/articles'
 
 export function generateStaticParams() {
@@ -41,9 +42,10 @@ export async function generateMetadata({
   const { slug } = await params
   const article = findArticle(slug)
   if (!article) return { title: 'Article Not Found' }
+  const dates = getContentDates(`/blog/${article.slug}`)
 
   return {
-    title: `${article.title} | Nuclear Blast Simulator Blog`,
+    title: `${article.title} | Nuke Blast Simulator Blog`,
     description: article.description,
     alternates: { canonical: `/blog/${article.slug}` },
     openGraph: {
@@ -51,8 +53,8 @@ export async function generateMetadata({
       description: article.description,
       url: `/blog/${article.slug}`,
       type: 'article',
-      publishedTime: article.datePublished,
-      modifiedTime: article.dateModified ?? article.datePublished,
+      publishedTime: dates.datePublished,
+      modifiedTime: dates.dateModified,
       authors: [article.author],
     },
     twitter: {
@@ -76,6 +78,8 @@ export default async function BlogArticlePage({
     .filter((a) => a.slug !== article.slug && a.category === article.category)
     .slice(0, 3)
 
+  const dates = getContentDates(`/blog/${article.slug}`)
+
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
       <JsonLd
@@ -85,8 +89,6 @@ export default async function BlogArticlePage({
             url: `/blog/${article.slug}`,
             headline: article.title,
             description: article.description,
-            datePublished: article.datePublished,
-            dateModified: article.dateModified ?? article.datePublished,
             authorName: article.author,
           }),
           breadcrumbSchema([
@@ -116,11 +118,11 @@ export default async function BlogArticlePage({
           <p className="text-lg text-yellow-400 mb-4">{article.description}</p>
           <p className="text-sm text-green-300/70">
             By <Link href="/about" className="text-green-300 hover:underline">{article.author}, BSc Physics</Link> ·{' '}
-            <time dateTime={article.datePublished}>
-              {new Date(article.datePublished).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            <time dateTime={dates.datePublished}>
+              {new Date(dates.datePublished).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </time>
-            {article.dateModified && article.dateModified !== article.datePublished ? (
-              <> · Updated <time dateTime={article.dateModified}>{new Date(article.dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time></>
+            {dates.dateModified && dates.dateModified !== dates.datePublished ? (
+              <> · Updated <time dateTime={dates.dateModified}>{new Date(dates.dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time></>
             ) : null}
           </p>
         </header>

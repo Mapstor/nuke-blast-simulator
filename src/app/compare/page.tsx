@@ -85,7 +85,7 @@ export default function CompareIndexPage() {
         <section className="text-sm text-green-300/70">
           See also: <Link href="/weapons" className="text-yellow-400 hover:underline">full Weapons Database</Link>{' '}
           (45+ entries) ·{' '}
-          <Link href="/scenarios" className="text-yellow-400 hover:underline">scenarios on cities</Link> ·{' '}
+          <Link href="/examples" className="text-yellow-400 hover:underline">city scenarios</Link> ·{' '}
           <Link href="/methodology" className="text-yellow-400 hover:underline">methodology</Link>.
         </section>
       </main>

@@ -7,17 +7,11 @@ import { presetLocations } from '@/lib/data/cities'
 import { glossary } from '@/lib/data/glossary'
 import { articles } from '@/lib/blog/articles'
 import { COMPARISONS, encodeComparisonSlug } from '@/lib/data/comparisons'
-import {
-  FEATURED_BOMB_IDS,
-  FEATURED_CITY_SLUGS,
-  encodeScenarioSlug,
-} from '@/lib/data/scenarios'
 
 export type SearchSection =
   | 'page'
   | 'weapon'
   | 'city'
-  | 'scenario'
   | 'compare'
   | 'glossary'
   | 'article'
@@ -36,8 +30,7 @@ const basePages: SearchEntry[] = [
   { title: 'How It Works',             description: 'Step-by-step guide to using the nuclear blast simulator.',                                                                url: '/how-it-works', section: 'page' },
   { title: 'Methodology',              description: 'Scaling-law formulas used to compute fireball, blast, thermal radiation, and fallout zones.',                             url: '/methodology',  section: 'page' },
   { title: 'Weapons Database',         description: 'Browse 44 nuclear weapons by yield class and country.',                                                                   url: '/weapons',      section: 'page' },
-  { title: 'City Scenarios',           description: 'Browse city scenarios for major world cities — what if a nuclear bomb hit each city.',                                    url: '/examples',     section: 'page' },
-  { title: 'Bomb-on-City Scenarios',   description: 'Browse pre-computed scenarios pairing weapons with cities.',                                                              url: '/scenarios',    section: 'page' },
+  { title: 'City Scenarios',           description: 'Browse nuclear blast scenarios for major world cities — what if a nuclear bomb hit each city.',                           url: '/examples',     section: 'page' },
   { title: 'Weapon Comparisons',       description: 'Browse head-to-head nuclear weapon comparisons.',                                                                         url: '/compare',      section: 'page' },
   { title: 'Nuclear Weapons Glossary', description: 'Defined terms in nuclear weapons effects, physics, doctrine, and arms control.',                                          url: '/glossary',     section: 'page' },
   { title: 'Blog',                     description: 'Long-form articles on nuclear weapon physics, history, doctrine, effects.',                                               url: '/blog',         section: 'page' },
@@ -64,25 +57,6 @@ const cityPages: SearchEntry[] = presetLocations.map((c) => ({
   section: 'city' as const,
 }))
 
-const scenarioPages: SearchEntry[] = (() => {
-  const out: SearchEntry[] = []
-  for (const bombId of FEATURED_BOMB_IDS) {
-    const b = bombs.find((x) => x.id === bombId)
-    if (!b) continue
-    for (const citySlug of FEATURED_CITY_SLUGS) {
-      const c = presetLocations.find((x) => x.slug === citySlug)
-      if (!c) continue
-      out.push({
-        title: `${b.name} on ${c.name}`,
-        description: `What if a ${b.yield.toLocaleString()} kt ${b.name} detonated over ${c.name}, ${c.country}? Casualty estimates and blast radii.`,
-        url: `/scenarios/${encodeScenarioSlug(bombId, citySlug)}`,
-        section: 'scenario' as const,
-      })
-    }
-  }
-  return out
-})()
-
 const comparisonPages: SearchEntry[] = (() => {
   const out: SearchEntry[] = []
   for (const [a, bId] of COMPARISONS) {
@@ -91,7 +65,7 @@ const comparisonPages: SearchEntry[] = (() => {
     if (!ba || !bb) continue
     out.push({
       title: `${ba.name} vs ${bb.name}`,
-      description: `Side-by-side comparison: ${ba.yield.toLocaleString()} kt vs ${bb.yield.toLocaleString()} kt. Yields, blast radii, casualties.`,
+      description: `Side-by-side comparison: ${ba.yield.toLocaleString()} kt vs ${bb.yield.toLocaleString()} kt. Yields, blast and thermal radii.`,
       url: `/compare/${encodeComparisonSlug(a, bId)}`,
       section: 'compare',
     })
@@ -117,7 +91,6 @@ export const SEARCH_INDEX: SearchEntry[] = [
   ...basePages,
   ...weaponPages,
   ...cityPages,
-  ...scenarioPages,
   ...comparisonPages,
   ...glossaryPages,
   ...articlePages,
@@ -152,7 +125,6 @@ function scoreEntry(entry: SearchEntry, words: string[], rawQuery: string): numb
   if (entry.section === 'page') score += 8
   if (entry.section === 'weapon') score += 5
   if (entry.section === 'city') score += 4
-  if (entry.section === 'scenario') score += 3
   if (entry.section === 'compare') score += 3
   if (entry.section === 'article') score += 2
   if (entry.section === 'glossary') score += 1

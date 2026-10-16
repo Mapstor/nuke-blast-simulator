@@ -131,8 +131,9 @@ export default function WeaponsPage() {
             Want to compare two weapons head-to-head? See{' '}
             <Link href="/compare" className="text-yellow-400 hover:underline">all comparison pages</Link>{' '}
             (Tsar Bomba vs Castle Bravo, Little Boy vs Fat Man, etc.). Want to drop a specific weapon
-            on a specific city? See{' '}
-            <Link href="/scenarios" className="text-yellow-400 hover:underline">200 bomb-on-city scenarios</Link>.
+            on a specific city? Open the{' '}
+            <Link href="/examples" className="text-yellow-400 hover:underline">city scenarios</Link> or run it on the{' '}
+            <Link href="/" className="text-yellow-400 hover:underline">interactive map</Link>.
           </p>
         </section>
 

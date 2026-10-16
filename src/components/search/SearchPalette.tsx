@@ -8,7 +8,6 @@ const SECTION_LABEL: Record<SearchEntry['section'], string> = {
   page: 'Page',
   weapon: 'Weapon',
   city: 'City',
-  scenario: 'Scenario',
   compare: 'Compare',
   glossary: 'Glossary',
   article: 'Article',

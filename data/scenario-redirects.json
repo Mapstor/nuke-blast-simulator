@@ -1,0 +1,1257 @@
+[
+  {
+    "source": "/scenarios/tsar-bomba-on-new-york",
+    "destination": "/examples/new-york",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-london",
+    "destination": "/examples/london",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-tokyo",
+    "destination": "/examples/tokyo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-moscow",
+    "destination": "/examples/moscow",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-beijing",
+    "destination": "/examples/beijing",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-los-angeles",
+    "destination": "/examples/los-angeles",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-paris",
+    "destination": "/examples/paris",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-washington-dc",
+    "destination": "/examples/washington-dc",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-shanghai",
+    "destination": "/examples/shanghai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-mumbai",
+    "destination": "/examples/mumbai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-delhi",
+    "destination": "/examples/delhi",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-seoul",
+    "destination": "/examples/seoul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-mexico-city",
+    "destination": "/examples/mexico-city",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-san-francisco",
+    "destination": "/examples/san-francisco",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-chicago",
+    "destination": "/examples/chicago",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-berlin",
+    "destination": "/examples/berlin",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-cairo",
+    "destination": "/examples/cairo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-istanbul",
+    "destination": "/examples/istanbul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-sydney",
+    "destination": "/examples/sydney",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-sao-paulo",
+    "destination": "/examples/sao-paulo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-madrid",
+    "destination": "/examples/madrid",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-hong-kong",
+    "destination": "/examples/hong-kong",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-jakarta",
+    "destination": "/examples/jakarta",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-dubai",
+    "destination": "/examples/dubai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/tsar-bomba-on-melbourne",
+    "destination": "/examples/melbourne",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-new-york",
+    "destination": "/examples/new-york",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-london",
+    "destination": "/examples/london",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-tokyo",
+    "destination": "/examples/tokyo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-moscow",
+    "destination": "/examples/moscow",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-beijing",
+    "destination": "/examples/beijing",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-los-angeles",
+    "destination": "/examples/los-angeles",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-paris",
+    "destination": "/examples/paris",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-washington-dc",
+    "destination": "/examples/washington-dc",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-shanghai",
+    "destination": "/examples/shanghai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-mumbai",
+    "destination": "/examples/mumbai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-delhi",
+    "destination": "/examples/delhi",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-seoul",
+    "destination": "/examples/seoul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-mexico-city",
+    "destination": "/examples/mexico-city",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-san-francisco",
+    "destination": "/examples/san-francisco",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-chicago",
+    "destination": "/examples/chicago",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-berlin",
+    "destination": "/examples/berlin",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-cairo",
+    "destination": "/examples/cairo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-istanbul",
+    "destination": "/examples/istanbul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-sydney",
+    "destination": "/examples/sydney",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-sao-paulo",
+    "destination": "/examples/sao-paulo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-madrid",
+    "destination": "/examples/madrid",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-hong-kong",
+    "destination": "/examples/hong-kong",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-jakarta",
+    "destination": "/examples/jakarta",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-dubai",
+    "destination": "/examples/dubai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/little-boy-on-melbourne",
+    "destination": "/examples/melbourne",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-new-york",
+    "destination": "/examples/new-york",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-london",
+    "destination": "/examples/london",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-tokyo",
+    "destination": "/examples/tokyo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-moscow",
+    "destination": "/examples/moscow",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-beijing",
+    "destination": "/examples/beijing",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-los-angeles",
+    "destination": "/examples/los-angeles",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-paris",
+    "destination": "/examples/paris",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-washington-dc",
+    "destination": "/examples/washington-dc",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-shanghai",
+    "destination": "/examples/shanghai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-mumbai",
+    "destination": "/examples/mumbai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-delhi",
+    "destination": "/examples/delhi",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-seoul",
+    "destination": "/examples/seoul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-mexico-city",
+    "destination": "/examples/mexico-city",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-san-francisco",
+    "destination": "/examples/san-francisco",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-chicago",
+    "destination": "/examples/chicago",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-berlin",
+    "destination": "/examples/berlin",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-cairo",
+    "destination": "/examples/cairo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-istanbul",
+    "destination": "/examples/istanbul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-sydney",
+    "destination": "/examples/sydney",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-sao-paulo",
+    "destination": "/examples/sao-paulo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-madrid",
+    "destination": "/examples/madrid",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-hong-kong",
+    "destination": "/examples/hong-kong",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-jakarta",
+    "destination": "/examples/jakarta",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-dubai",
+    "destination": "/examples/dubai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/fat-man-on-melbourne",
+    "destination": "/examples/melbourne",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-new-york",
+    "destination": "/examples/new-york",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-london",
+    "destination": "/examples/london",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-tokyo",
+    "destination": "/examples/tokyo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-moscow",
+    "destination": "/examples/moscow",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-beijing",
+    "destination": "/examples/beijing",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-los-angeles",
+    "destination": "/examples/los-angeles",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-paris",
+    "destination": "/examples/paris",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-washington-dc",
+    "destination": "/examples/washington-dc",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-shanghai",
+    "destination": "/examples/shanghai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-mumbai",
+    "destination": "/examples/mumbai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-delhi",
+    "destination": "/examples/delhi",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-seoul",
+    "destination": "/examples/seoul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-mexico-city",
+    "destination": "/examples/mexico-city",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-san-francisco",
+    "destination": "/examples/san-francisco",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-chicago",
+    "destination": "/examples/chicago",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-berlin",
+    "destination": "/examples/berlin",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-cairo",
+    "destination": "/examples/cairo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-istanbul",
+    "destination": "/examples/istanbul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-sydney",
+    "destination": "/examples/sydney",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-sao-paulo",
+    "destination": "/examples/sao-paulo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-madrid",
+    "destination": "/examples/madrid",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-hong-kong",
+    "destination": "/examples/hong-kong",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-jakarta",
+    "destination": "/examples/jakarta",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-dubai",
+    "destination": "/examples/dubai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/castle-bravo-on-melbourne",
+    "destination": "/examples/melbourne",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-new-york",
+    "destination": "/examples/new-york",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-london",
+    "destination": "/examples/london",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-tokyo",
+    "destination": "/examples/tokyo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-moscow",
+    "destination": "/examples/moscow",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-beijing",
+    "destination": "/examples/beijing",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-los-angeles",
+    "destination": "/examples/los-angeles",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-paris",
+    "destination": "/examples/paris",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-washington-dc",
+    "destination": "/examples/washington-dc",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-shanghai",
+    "destination": "/examples/shanghai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-mumbai",
+    "destination": "/examples/mumbai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-delhi",
+    "destination": "/examples/delhi",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-seoul",
+    "destination": "/examples/seoul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-mexico-city",
+    "destination": "/examples/mexico-city",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-san-francisco",
+    "destination": "/examples/san-francisco",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-chicago",
+    "destination": "/examples/chicago",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-berlin",
+    "destination": "/examples/berlin",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-cairo",
+    "destination": "/examples/cairo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-istanbul",
+    "destination": "/examples/istanbul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-sydney",
+    "destination": "/examples/sydney",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-sao-paulo",
+    "destination": "/examples/sao-paulo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-madrid",
+    "destination": "/examples/madrid",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-hong-kong",
+    "destination": "/examples/hong-kong",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-jakarta",
+    "destination": "/examples/jakarta",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-dubai",
+    "destination": "/examples/dubai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/ivy-mike-on-melbourne",
+    "destination": "/examples/melbourne",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-new-york",
+    "destination": "/examples/new-york",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-london",
+    "destination": "/examples/london",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-tokyo",
+    "destination": "/examples/tokyo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-moscow",
+    "destination": "/examples/moscow",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-beijing",
+    "destination": "/examples/beijing",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-los-angeles",
+    "destination": "/examples/los-angeles",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-paris",
+    "destination": "/examples/paris",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-washington-dc",
+    "destination": "/examples/washington-dc",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-shanghai",
+    "destination": "/examples/shanghai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-mumbai",
+    "destination": "/examples/mumbai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-delhi",
+    "destination": "/examples/delhi",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-seoul",
+    "destination": "/examples/seoul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-mexico-city",
+    "destination": "/examples/mexico-city",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-san-francisco",
+    "destination": "/examples/san-francisco",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-chicago",
+    "destination": "/examples/chicago",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-berlin",
+    "destination": "/examples/berlin",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-cairo",
+    "destination": "/examples/cairo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-istanbul",
+    "destination": "/examples/istanbul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-sydney",
+    "destination": "/examples/sydney",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-sao-paulo",
+    "destination": "/examples/sao-paulo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-madrid",
+    "destination": "/examples/madrid",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-hong-kong",
+    "destination": "/examples/hong-kong",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-jakarta",
+    "destination": "/examples/jakarta",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-dubai",
+    "destination": "/examples/dubai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/trinity-on-melbourne",
+    "destination": "/examples/melbourne",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-new-york",
+    "destination": "/examples/new-york",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-london",
+    "destination": "/examples/london",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-tokyo",
+    "destination": "/examples/tokyo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-moscow",
+    "destination": "/examples/moscow",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-beijing",
+    "destination": "/examples/beijing",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-los-angeles",
+    "destination": "/examples/los-angeles",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-paris",
+    "destination": "/examples/paris",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-washington-dc",
+    "destination": "/examples/washington-dc",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-shanghai",
+    "destination": "/examples/shanghai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-mumbai",
+    "destination": "/examples/mumbai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-delhi",
+    "destination": "/examples/delhi",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-seoul",
+    "destination": "/examples/seoul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-mexico-city",
+    "destination": "/examples/mexico-city",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-san-francisco",
+    "destination": "/examples/san-francisco",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-chicago",
+    "destination": "/examples/chicago",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-berlin",
+    "destination": "/examples/berlin",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-cairo",
+    "destination": "/examples/cairo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-istanbul",
+    "destination": "/examples/istanbul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-sydney",
+    "destination": "/examples/sydney",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-sao-paulo",
+    "destination": "/examples/sao-paulo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-madrid",
+    "destination": "/examples/madrid",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-hong-kong",
+    "destination": "/examples/hong-kong",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-jakarta",
+    "destination": "/examples/jakarta",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-dubai",
+    "destination": "/examples/dubai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b83-on-melbourne",
+    "destination": "/examples/melbourne",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-new-york",
+    "destination": "/examples/new-york",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-london",
+    "destination": "/examples/london",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-tokyo",
+    "destination": "/examples/tokyo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-moscow",
+    "destination": "/examples/moscow",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-beijing",
+    "destination": "/examples/beijing",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-los-angeles",
+    "destination": "/examples/los-angeles",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-paris",
+    "destination": "/examples/paris",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-washington-dc",
+    "destination": "/examples/washington-dc",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-shanghai",
+    "destination": "/examples/shanghai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-mumbai",
+    "destination": "/examples/mumbai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-delhi",
+    "destination": "/examples/delhi",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-seoul",
+    "destination": "/examples/seoul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-mexico-city",
+    "destination": "/examples/mexico-city",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-san-francisco",
+    "destination": "/examples/san-francisco",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-chicago",
+    "destination": "/examples/chicago",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-berlin",
+    "destination": "/examples/berlin",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-cairo",
+    "destination": "/examples/cairo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-istanbul",
+    "destination": "/examples/istanbul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-sydney",
+    "destination": "/examples/sydney",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-sao-paulo",
+    "destination": "/examples/sao-paulo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-madrid",
+    "destination": "/examples/madrid",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-hong-kong",
+    "destination": "/examples/hong-kong",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-jakarta",
+    "destination": "/examples/jakarta",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-dubai",
+    "destination": "/examples/dubai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w88-on-melbourne",
+    "destination": "/examples/melbourne",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-new-york",
+    "destination": "/examples/new-york",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-london",
+    "destination": "/examples/london",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-tokyo",
+    "destination": "/examples/tokyo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-moscow",
+    "destination": "/examples/moscow",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-beijing",
+    "destination": "/examples/beijing",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-los-angeles",
+    "destination": "/examples/los-angeles",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-paris",
+    "destination": "/examples/paris",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-washington-dc",
+    "destination": "/examples/washington-dc",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-shanghai",
+    "destination": "/examples/shanghai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-mumbai",
+    "destination": "/examples/mumbai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-delhi",
+    "destination": "/examples/delhi",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-seoul",
+    "destination": "/examples/seoul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-mexico-city",
+    "destination": "/examples/mexico-city",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-san-francisco",
+    "destination": "/examples/san-francisco",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-chicago",
+    "destination": "/examples/chicago",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-berlin",
+    "destination": "/examples/berlin",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-cairo",
+    "destination": "/examples/cairo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-istanbul",
+    "destination": "/examples/istanbul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-sydney",
+    "destination": "/examples/sydney",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-sao-paulo",
+    "destination": "/examples/sao-paulo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-madrid",
+    "destination": "/examples/madrid",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-hong-kong",
+    "destination": "/examples/hong-kong",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-jakarta",
+    "destination": "/examples/jakarta",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-dubai",
+    "destination": "/examples/dubai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/w76-on-melbourne",
+    "destination": "/examples/melbourne",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-new-york",
+    "destination": "/examples/new-york",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-london",
+    "destination": "/examples/london",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-tokyo",
+    "destination": "/examples/tokyo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-moscow",
+    "destination": "/examples/moscow",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-beijing",
+    "destination": "/examples/beijing",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-los-angeles",
+    "destination": "/examples/los-angeles",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-paris",
+    "destination": "/examples/paris",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-washington-dc",
+    "destination": "/examples/washington-dc",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-shanghai",
+    "destination": "/examples/shanghai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-mumbai",
+    "destination": "/examples/mumbai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-delhi",
+    "destination": "/examples/delhi",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-seoul",
+    "destination": "/examples/seoul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-mexico-city",
+    "destination": "/examples/mexico-city",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-san-francisco",
+    "destination": "/examples/san-francisco",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-chicago",
+    "destination": "/examples/chicago",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-berlin",
+    "destination": "/examples/berlin",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-cairo",
+    "destination": "/examples/cairo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-istanbul",
+    "destination": "/examples/istanbul",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-sydney",
+    "destination": "/examples/sydney",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-sao-paulo",
+    "destination": "/examples/sao-paulo",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-madrid",
+    "destination": "/examples/madrid",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-hong-kong",
+    "destination": "/examples/hong-kong",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-jakarta",
+    "destination": "/examples/jakarta",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-dubai",
+    "destination": "/examples/dubai",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios/b61-on-melbourne",
+    "destination": "/examples/melbourne",
+    "permanent": true
+  },
+  {
+    "source": "/scenarios",
+    "destination": "/examples",
+    "permanent": true
+  }
+]

@@ -4,7 +4,6 @@
 import { bombs } from '@/lib/data/bombs'
 import { presetLocations, type PresetLocation } from '@/lib/data/cities'
 import { COMPARISONS, encodeComparisonSlug } from '@/lib/data/comparisons'
-import { encodeScenarioSlug, FEATURED_BOMB_IDS } from '@/lib/data/scenarios'
 import { glossary } from '@/lib/data/glossary'
 import { articles } from '@/lib/blog/articles'
 
@@ -56,17 +55,6 @@ function cityItem(slug: string): MenuItem | null {
   return { label: c.name, href: `/examples/${c.slug}`, meta: c.country }
 }
 
-function scenarioItem(bombId: string, citySlug: string): MenuItem | null {
-  const b = bombs.find((x) => x.id === bombId)
-  const c = presetLocations.find((x) => x.slug === citySlug)
-  if (!b || !c) return null
-  return {
-    label: `${b.name} on ${c.name}`,
-    href: `/scenarios/${encodeScenarioSlug(bombId, citySlug)}`,
-    meta: shortYield(b.yield),
-  }
-}
-
 function compareItem(a: string, b: string): MenuItem | null {
   const ba = bombs.find((x) => x.id === a)
   const bb = bombs.find((x) => x.id === b)
@@ -85,7 +73,6 @@ function compact(items: Array<MenuItem | null>): MenuItem[] {
 // Counts for badges
 const TOTAL_WEAPONS = indexedBombs.length
 const TOTAL_CITIES = presetLocations.length
-const TOTAL_SCENARIOS = FEATURED_BOMB_IDS.length * 20 // 10 × 20 = 200
 const TOTAL_COMPARISONS = COMPARISONS.length
 const TOTAL_GLOSSARY = glossary.length
 const TOTAL_ARTICLES = articles.length
@@ -192,46 +179,7 @@ const citiesPanel: MenuPanel = {
       heading: 'Browse',
       items: [
         { label: `All ${TOTAL_CITIES} cities`, href: '/examples' },
-        { label: `${TOTAL_SCENARIOS} bomb-on-city scenarios`, href: '/scenarios' },
         { label: 'Run on map', href: '/' },
-      ],
-    },
-  ],
-}
-
-const scenariosPanel: MenuPanel = {
-  id: 'scenarios',
-  label: 'Scenarios',
-  panelFooter: { label: `Browse all ${TOTAL_SCENARIOS} scenarios →`, href: '/scenarios' },
-  columns: [
-    {
-      heading: 'Featured scenarios',
-      items: compact([
-        scenarioItem('tsar-bomba', 'new-york'),
-        scenarioItem('little-boy', 'tokyo'),
-        scenarioItem('castle-bravo', 'london'),
-        scenarioItem('b83', 'moscow'),
-        scenarioItem('w88', 'beijing'),
-        scenarioItem('tsar-bomba', 'washington-dc'),
-      ]),
-    },
-    {
-      heading: 'By weapon',
-      items: compact(
-        FEATURED_BOMB_IDS.slice(0, 8).map((id) => {
-          const b = bombs.find((x) => x.id === id)
-          if (!b) return null
-          return { label: `${b.name} scenarios`, href: `/scenarios#${b.id}`, meta: '20' }
-        }),
-      ),
-    },
-    {
-      heading: 'Browse',
-      items: [
-        { label: `All ${TOTAL_SCENARIOS} scenarios`, href: '/scenarios' },
-        { label: 'City scenarios', href: '/examples' },
-        { label: 'Weapons database', href: '/weapons' },
-        { label: 'Run any scenario on map', href: '/' },
       ],
     },
   ],
@@ -321,7 +269,6 @@ const learnPanel: MenuPanel = {
 export const MAIN_MENU: MenuPanel[] = [
   weaponsPanel,
   citiesPanel,
-  scenariosPanel,
   comparePanel,
   learnPanel,
 ]

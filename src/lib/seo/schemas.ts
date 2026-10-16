@@ -2,6 +2,8 @@
 // All schemas use stable `@id` URIs so they reference each other as a graph.
 // Reference: https://schema.org, https://developers.google.com/search/docs/appearance/structured-data
 
+import { getContentDates } from './contentDates'
+
 export const SITE_URL = 'https://nukeblastsimulator.com'
 export const SITE_NAME = 'Nuclear Blast Simulator' // product / software name
 export const WEBSITE_NAME = 'Nuke Blast Simulator' // brand / WebSite name
@@ -211,6 +213,8 @@ export function articleSchema(input: {
   imageUrl?: string
 }): SchemaObject {
   const url = input.url.startsWith('http') ? input.url : `${SITE_URL}${input.url}`
+  // Dates come from the committed content-date manifest (never build time).
+  const dates = getContentDates(input.url)
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -218,8 +222,8 @@ export function articleSchema(input: {
     headline: input.headline,
     description: input.description,
     image: input.imageUrl ?? `${SITE_URL}/og-image.png`,
-    datePublished: input.datePublished ?? '2025-10-22',
-    dateModified: input.dateModified ?? new Date().toISOString().slice(0, 10),
+    datePublished: input.datePublished ?? dates.datePublished,
+    dateModified: input.dateModified ?? dates.dateModified,
     // Reference the named author Person by @id for a connected E-E-A-T graph.
     author: { '@id': AUTHOR_PERSON_ID },
     publisher: { '@id': ORG_ID },
