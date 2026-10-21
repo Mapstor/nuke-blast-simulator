@@ -241,7 +241,7 @@ export default function FAQPage() {
                   <div>
                     <h4 className="font-semibold text-orange-400 mb-2">Immediate Effects (seconds to about a minute)<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2" /></h4>
                     <ul className="text-sm text-green-300 space-y-1">
-                      <li>• <strong>Fireball:</strong> Extreme heat vaporizes everything nearby</li>
+                      <li>• <strong>Fireball:</strong> Extreme heat vaporizes nearby material</li>
                       <li>• <strong>Thermal radiation:</strong> Intense heat causes burns and fires</li>
                       <li>• <strong>Blast wave:</strong> Destroys buildings and causes injuries</li>
                       <li>• <strong>Nuclear radiation:</strong> Immediate lethal doses</li>

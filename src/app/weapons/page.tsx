@@ -10,9 +10,11 @@ import {
 import { bombs } from '@/lib/data/bombs'
 import type { Bomb } from '@/lib/types'
 
+const NUCLEAR_WEAPON_COUNT = bombs.filter((b) => b.type !== 'conventional' && b.id !== 'custom').length
+
 export const metadata: Metadata = {
-  title: 'Nuclear Weapons Database — 45+ Historical Bombs, Yields & Countries',
-  description: 'Searchable database of 45+ nuclear weapons from 1945 to present, including Tsar Bomba (50 Mt), Castle Bravo (15 Mt), Little Boy, Fat Man, B83, W88, W76, B61, and modern arsenals. Yields, countries, years, and technical specs.',
+  title: 'Nuclear Weapons Database — Yields, Countries & Specifications',
+  description: `Searchable database of ${NUCLEAR_WEAPON_COUNT} nuclear weapons from 1945 to the present, with conventional comparison bombs, including Tsar Bomba (50 Mt), Castle Bravo (15 Mt), Little Boy, Fat Man, B83, W88, W76 and B61. Yields, countries, years and technical specs.`,
   alternates: { canonical: '/weapons' }
 }
 
@@ -57,7 +59,7 @@ export default function WeaponsPage() {
             url: '/weapons',
             name: 'Nuclear Weapons Database',
             description:
-              'Catalog of 45+ historical and modern nuclear weapons with yields, countries of origin, year first deployed/tested, and weapon type (fission, fusion, thermonuclear). Sources include declassified DOE/DOD records, FAS, and SIPRI.',
+              `Catalog of ${NUCLEAR_WEAPON_COUNT} historical and modern nuclear weapons with yields, countries of origin, year first deployed or tested, and weapon type. Each entry cites its primary source.`,
             numberOfItems: weaponItems.length,
             keywords: [
               'nuclear weapons',

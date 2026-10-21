@@ -3,6 +3,12 @@
 // Reference: https://schema.org, https://developers.google.com/search/docs/appearance/structured-data
 
 import { getContentDates } from './contentDates'
+import { bombs } from '@/lib/data/bombs'
+
+// Count of nuclear weapons in the simulator picker (conventional comparison
+// bombs and the custom-yield slot excluded). Rendered from data so schema text
+// can never drift from the weapon list.
+const NUCLEAR_WEAPON_COUNT = bombs.filter((b) => b.type !== 'conventional' && b.id !== 'custom').length
 
 export const SITE_URL = 'https://nukeblastsimulator.com'
 export const SITE_NAME = 'Nuclear Blast Simulator' // product / software name
@@ -62,7 +68,7 @@ export const websiteSchema: SchemaObject = {
   name: WEBSITE_NAME,
   alternateName: ['Nuclear Blast Simulator', 'NukeBlastSimulator.com'],
   description:
-    'Free interactive nuclear blast simulator. Calculate blast radius, casualties, fireball, thermal burn zones, and fallout for any city worldwide using 45+ historical and modern nuclear weapons.',
+    `Free interactive nuclear blast simulator. See the fireball, blast overpressure zones and thermal burn radii for any city worldwide using ${NUCLEAR_WEAPON_COUNT} historical and modern nuclear weapons, for an air burst at optimum height.`,
   publisher: { '@id': ORG_ID },
   inLanguage: 'en-US',
   potentialAction: {
@@ -86,17 +92,16 @@ export const softwareApplicationSchema: SchemaObject = {
   operatingSystem: 'Web Browser',
   browserRequirements: 'Requires JavaScript and modern browser (Chrome 90+, Safari 14+, Firefox 88+)',
   description:
-    'Interactive simulator that calculates the fireball radius, blast overpressure zones, thermal radiation, and fallout patterns for nuclear weapons of any yield, on any location worldwide.',
+    'Interactive simulator that computes the fireball radius, blast overpressure zones and thermal radiation radii for nuclear weapons of any yield, on any location worldwide, for an air burst at optimum height.',
   inLanguage: 'en-US',
   isAccessibleForFree: true,
   publisher: { '@id': ORG_ID },
   author: { '@id': AUTHOR_PERSON_ID },
   featureList: [
     'Click-to-detonate interactive map',
-    '45+ historical and modern nuclear weapons',
-    'Air burst and surface burst modes',
-    'Fireball, blast, thermal, and fallout zones',
-    'Population-density-based casualty estimates',
+    `${NUCLEAR_WEAPON_COUNT} historical and modern nuclear weapons`,
+    'Air burst at optimum height',
+    'Fireball, blast and thermal radiation zones',
     'Custom yield (1 to 100,000 kilotons)',
     'Shareable simulation URLs',
     'Mobile and desktop responsive',

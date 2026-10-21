@@ -107,10 +107,10 @@ export default async function CityExamplePage({
       answer:
         `${city.name} has a population of about ${city.population.toLocaleString()} (${city.populationYear}, ${city.populationDefinition})${city.density !== undefined ? ` and an urban density around ${city.density.toLocaleString()} per km²` : ''}. ` +
         (littleBoyScenario
-          ? `A Hiroshima-yield warhead (15 kt Little Boy), air-burst at optimum height, would produce a 5 psi moderate-blast radius of about ${formatRadiusKm(littleBoyScenario.r.overpressure5psi)} km — the zone in which most residential buildings collapse. `
+          ? `A Hiroshima-yield warhead (15 kt Little Boy), air-burst at optimum height, would produce a 5 psi moderate-blast radius of about ${formatRadiusKm(littleBoyScenario.r.overpressure5psi)} km — the zone in which typical homes and lightly built commercial buildings are destroyed. `
           : '') +
         (w76Scenario
-          ? `A modern strategic warhead (W76, 100 kt) would extend that moderate-damage zone to roughly ${formatRadiusKm(w76Scenario.r.overpressure5psi)} km, with 3rd-degree thermal burns reaching ${formatRadiusKm(w76Scenario.r.thermal3rdDegree)} km. `
+          ? `A modern strategic warhead (W76, ${w76Scenario.bomb.yield} kt) would extend that moderate-damage zone to roughly ${formatRadiusKm(w76Scenario.r.overpressure5psi)} km, with 3rd-degree thermal burns reaching ${formatRadiusKm(w76Scenario.r.thermal3rdDegree)} km. `
           : '') +
         `Run the interactive simulator above to see the exact zones overlaid on the map.`,
     },

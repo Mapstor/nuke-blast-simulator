@@ -55,3 +55,36 @@ Re-ran `scripts/update-content-dates.mjs`: 246 pages, earliest datePublished 202
 - The distinctive-string VERIFY test over **all 95** wrong/outdated/unverifiable/fabricated rows (only the arsenal gate strings are confirmed removed so far).
 - Then re-run build-sources/update-content-dates, and `/sources` will expand to the newly-cited arsenal/treaty/history/winter/glossary ids.
 - Rows not located: none attempted beyond the applied set; the remaining rows are deferred, not lost.
+
+---
+
+# NBS-005 FACTS — report (part 2 of 2)
+
+_Date: 2026-10-21 · continues part 1 above. Part 2 applies every remaining row of `research/facts-verified.csv`, adds the radius-prose helper, rebuilds `/resources`, extends engine citations, and lands four regression gates. All building and tested green._
+
+## 8. Batches (committed in order)
+
+- **Batch A — radius helper + engine citations + regenerate rows** (`cfdd81a1`). Added `src/lib/calculations/radius.ts` (`radiusKm(yield, effect)` + `formatRadiusProse` 2-sig-fig + `radiusText`, over `effects.ts`) and `src/components/seo/citeText.tsx` (`renderCited` parsing `{{c:ids}}` and `{{r:yield:effect}}` tokens in data-string prose). Wired blog, glossary, compare, home and methodology to the citation collector so their Sources lists include `effects-fireball` + `effects-blast-thermal`. Methodology's hand-written source list → generated `<Sources>`, interpolation-example radii computed via `radiusKm()`. Applied regenerate row 31 (home thermal: 3rd-degree ~4.8 km @100 kt, ~12 km @1 Mt).
+- **Batch B — blog (108 rows)** (`202a7db5`). Every `/blog/*` row in `articles.ts`: 103 inline `{{c}}` citation tokens + 9 `{{r}}` radius tokens (e.g. 100 kt 5 psi → 2.9 km; W88 475→**455 kt** prose → 4.8 km). Corrected the five regenerate rows, the arsenal/treaty figures ("as of early 2026" + FAS/SIPRI), and removed the fabricated reference / unsourced mortality bands.
+- **Batch C — glossary (46 rows)** (`9ef22c46`). 49 inline `{{c}}` tokens in `long`; regenerate row 239 via `{{r:15:burn2}}` / `{{r:1000:burn2}}` (2.8 km / 15 km). `short` kept plain (used in metadata/JSON-LD).
+- **Batch D — core pages** (`bcc99acc`). home, `/faq`, `/how-it-works`, `/about`, compare template, weapon template (contact + methodology were already clean from NBS-003). Counts render from data (29 nuclear weapons = `bombs.filter(b => b.type!=='conventional' && b.id!=='custom').length`; glossary/city counts already data-driven); custom-yield range kept at 1–100,000 kt (matches the input); map stack stated as **Mapbox** (credit Mapbox + OpenStreetMap); removed every fatality-% band, surface-burst "40–50% smaller", the old power-law formulas/mortality table, "10 million °C / everything vaporized", and the `/faq` response-time promise; fixed strategic yields to "100–800 kt (a few exceed 1 Mt)" and the blast wave as an immediate effect.
+- **Batch E — `/resources` rebuild** (`02d4192f`). Three treaty cards (NPT, CTBT, TPNW) with the verified group-B figures + inline `<Cite>` and links to the issuing authority; an "Official data sources" list (FAS, SIPRI, CTBTO, UN ODA) each linked to a URL already in `sources.ts`; removed the Einstein quote and every documentary/museum/textbook/advocacy entry (Peace Action, Mayors for Peace, ICAN) and every unsourced number. Contains the exact string **"188 states have signed and 179 have ratified"**.
+- **Batch F — tests + gate fixes** (this commit). Four new regression gates + the content fixes they surfaced.
+
+## 9. Regression gates (new)
+
+- `tests/removed-strings.test.ts` — scans every prerendered HTML file (normalized: comments + tags stripped, entities decoded, en-dash/× canonicalized, lowercased, whitespace collapsed) against all 162 forbidden strings in `research/removed-strings.csv` (142 global + 20 path-scoped). **0 survive.**
+- `tests/expected-weapons.test.ts` — `bombs.ts` vs `research/expected-weapons.csv` (43 records): yield/type/country/year per row; OFAB-5000 absent; mark-84 / mk-82 not dated 1956; 29 nuclear + 14 conventional, custom excluded.
+- `tests/cities.test.ts` — 100 cities vs `research/cities-verified.csv`: population, year, definition, lat, lng.
+- `tests/engine-sources.test.ts` — every radii page (home, methodology, each nuclear weapon, each city example, each both-nuclear comparison) lists both engine source URLs; a conventional weapon page lists neither (radii withdrawn).
+
+The gate caught real misses, now fixed: "most residential buildings collapse" + stale "W76, 100 kt" on the `/examples` template; "can extend hundreds of kilometers" (physics blog); "everything is vaporized" (glossary fireball); "vaporizes everything" (`/faq`); and "45+"/withdrawn casualty+fallout+surface-burst claims in `/weapons` metadata, `/compare`, the `/weapons` dataset schema, and `src/lib/seo/schemas.ts` (WebSite + SoftwareApplication). `removed-strings.csv` and `expected-weapons.csv` were never edited to pass.
+
+## 10. VERIFY (part 2)
+
+- `npm run build` exit 0. `npx vitest run` → **42 passed, 0 skipped** across 7 files (effects 11, sources 15, content-dates 4, removed-strings 3, expected-weapons 4, cities 2, engine-sources 3).
+- Curl (`next start`): `/weapons/w88` → **455 kilotons**; `/weapons/w76` → **90 kilotons**; `/weapons/halifax-explosion` → **2.9 kilotons** + **Canada**; `/blog/four-kill-mechanisms` → "5 PSI radius of about **2.9 km**"; `/blog/physics-of-nuclear-blast` → **455 kt** and **4.8 km**; `/resources` contains "**188 states have signed and 179 have ratified**" and **0** "Peace Action"; `/contact` → **0** "business days", **0** "Within 24 hours". (Weapon pages render yields as "kilotons"; the verified values 455 / 90 / 2.9 are correct — the VERIFY shorthand "kt" differs only in unit abbreviation.)
+- Every facts row accounted for: 424 rows = part-1 data (bombs 380–424, footer 378–379, cities, data-sources) + part-2 blog (108) + glossary (46) + core/home/faq/how-it-works/methodology/about/compare/weapon-template (161) + `/resources` (27) + `/sources` (35, generated in part 1). `obsolete`/`rebuild`/`internal` "confirm-gone" rows are enforced by the removed-strings gate. Row 44 (`/about` "13,000 warheads") was already removed in NBS-003 (confirmed absent).
+
+## 11. Content dates
+Re-ran `scripts/update-content-dates.mjs` (`NBS_DATE=2026-10-21`) after the final build. Drift test green.

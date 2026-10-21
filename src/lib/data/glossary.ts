@@ -23,7 +23,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Fireball',
     category: 'effects',
     short: 'The sphere of extremely hot gas created by a nuclear detonation, which at the first instant reaches tens of millions of degrees, similar to the center of the Sun.',
-    long: 'The sphere of extremely hot gas created by a nuclear detonation; at the first instant it reaches tens of millions of degrees, similar to the center of the Sun. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3}} The fireball forms within microseconds as the X-ray flux from the bomb superheats the surrounding air into plasma. Within the fireball radius, everything is vaporized; the plasma sphere also acts as the source of the thermal radiation pulse and the initial blast wave. Fireball radius scales roughly with yield to the 0.4 power. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3}}',
+    long: 'The sphere of extremely hot gas created by a nuclear detonation; at the first instant it reaches tens of millions of degrees, similar to the center of the Sun. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3}} The fireball forms within microseconds as the X-ray flux from the bomb superheats the surrounding air into plasma. Within the fireball radius, exposed material is vaporized; the plasma sphere also acts as the source of the thermal radiation pulse and the initial blast wave. Fireball radius scales roughly with yield to the 0.4 power. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3}}',
     related: ['thermal-radiation', 'overpressure', 'air-burst'],
   },
   {
