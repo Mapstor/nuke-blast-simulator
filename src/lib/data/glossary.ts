@@ -22,8 +22,8 @@ export const glossary: GlossaryEntry[] = [
     slug: 'fireball',
     term: 'Fireball',
     category: 'effects',
-    short: 'The sphere of plasma created by a nuclear detonation, with internal temperatures exceeding 10 million °C — hotter than the surface of the Sun.',
-    long: 'The fireball forms within microseconds of a nuclear detonation as the X-ray flux from the bomb superheats the surrounding air into plasma. Within the fireball radius, everything is vaporized; the plasma sphere also acts as the source of the thermal radiation pulse and the initial blast wave. Fireball radius scales roughly with yield to the 0.4 power.',
+    short: 'The sphere of extremely hot gas created by a nuclear detonation, which at the first instant reaches tens of millions of degrees, similar to the center of the Sun.',
+    long: 'The sphere of extremely hot gas created by a nuclear detonation; at the first instant it reaches tens of millions of degrees, similar to the center of the Sun. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3}} The fireball forms within microseconds as the X-ray flux from the bomb superheats the surrounding air into plasma. Within the fireball radius, everything is vaporized; the plasma sphere also acts as the source of the thermal radiation pulse and the initial blast wave. Fireball radius scales roughly with yield to the 0.4 power. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3}}',
     related: ['thermal-radiation', 'overpressure', 'air-burst'],
   },
   {
@@ -31,7 +31,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Overpressure',
     category: 'effects',
     short: 'The pressure above atmospheric pressure produced by the blast wave of a nuclear detonation, measured in pounds per square inch (PSI).',
-    long: 'Nuclear blast damage is conventionally categorized by overpressure. 20 PSI destroys reinforced concrete buildings; 5 PSI collapses most residential structures and is the canonical "city killing" threshold; 1 PSI shatters windows and causes light injuries. Overpressure radius scales with yield to the 1/3 power.',
+    long: 'Nuclear blast damage is conventionally categorized by overpressure. 20 PSI levels reinforced concrete structures; 5 PSI destroys typical homes and lightly built commercial buildings; 1 PSI shatters windows and endangers people with flying glass. {{c:us-congress-office-of-technology-assessment-via}} Overpressure radius scales with yield to the 1/3 power. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2}}',
     related: ['psi', 'fireball', 'air-burst', 'surface-burst'],
   },
   {
@@ -39,7 +39,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'PSI (Pounds per Square Inch)',
     category: 'effects',
     short: 'The unit used to measure blast overpressure from a nuclear detonation.',
-    long: '1 PSI is a small overpressure that breaks windows. 5 PSI collapses most residential buildings and is the standard measurement for nuclear-blast damage zones. 20 PSI destroys reinforced concrete. By comparison, normal atmospheric pressure at sea level is about 14.7 PSI.',
+    long: '1 PSI is a small overpressure that breaks windows. 5 PSI collapses most residential buildings and is the standard measurement for nuclear-blast damage zones. 20 PSI destroys reinforced concrete. {{c:us-congress-office-of-technology-assessment-via}} By comparison, normal atmospheric pressure at sea level is about 14.7 PSI. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2}}',
     related: ['overpressure', 'blast-wave'],
   },
   {
@@ -47,7 +47,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Thermal Radiation',
     category: 'effects',
     short: 'The intense pulse of light and infrared radiation emitted by the fireball of a nuclear detonation, capable of causing burns and igniting fires at long distances.',
-    long: 'Thermal radiation accounts for roughly 35% of the energy released by a nuclear weapon. It travels at the speed of light and arrives before the blast wave. Third-degree burns can occur out to several kilometers for strategic-yield weapons. Thermal-radiation radius scales with yield to the 0.41 power, faster than blast.',
+    long: 'Thermal radiation accounts for roughly 35% of the energy released in an air burst, and less (about 18% effective) in a surface burst. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-8}} It travels at the speed of light and arrives before the blast wave. Third-degree burns can occur out to several kilometers for strategic-yield weapons. Thermal-radiation radius grows roughly as yield to the 0.4 power, faster than blast (yield to the 1/3 power). {{c:wikipedia-effects-of-nuclear-explosions-scaling}}',
     related: ['fireball', 'air-burst', 'second-degree-burns'],
   },
   {
@@ -55,7 +55,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Fallout',
     category: 'effects',
     short: 'Radioactive material thrown into the atmosphere by a surface-burst nuclear detonation, which then settles back to earth over hours to weeks.',
-    long: 'Surface bursts produce massive fallout because the fireball touches the ground, vaporizing soil and irradiating it with neutron flux. The radioactive debris is lofted into the upper atmosphere and drifts downwind, depositing as a long elliptical plume. Air bursts produce minimal fallout because the fireball does not interact with the ground. The lethal fallout zone of a 1 Mt surface burst can extend hundreds of kilometers downwind.',
+    long: 'Surface bursts produce massive fallout because the fireball touches the ground, vaporizing soil and irradiating it with neutron flux. The radioactive debris is lofted into the upper atmosphere and drifts downwind, depositing as a long elliptical plume. Air bursts produce minimal fallout because the fireball does not interact with the ground. The lethal fallout zone of a large surface burst can stretch far downwind: after the Bravo test it was a belt about 270 km long. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e}}',
     related: ['surface-burst', 'air-burst', 'half-life', 'acute-radiation-syndrome'],
   },
   {
@@ -63,15 +63,15 @@ export const glossary: GlossaryEntry[] = [
     term: 'Air Burst',
     category: 'effects',
     short: 'A nuclear detonation above the ground at optimal altitude, maximizing the area affected by blast and thermal radiation while producing minimal fallout.',
-    long: 'In an air burst the fireball does not reach the ground, so the bomb cannot vaporize and irradiate soil. This minimizes local fallout but maximizes blast spread because the shock wave reflects off the ground and reinforces the direct wave. Hiroshima and Nagasaki were both air bursts — the optimal altitudes were 580 m and 503 m respectively.',
+    long: 'In an air burst the fireball does not reach the ground, so the bomb cannot vaporize and irradiate soil. This minimizes local fallout but maximizes blast spread because the shock wave reflects off the ground and reinforces the direct wave. Hiroshima and Nagasaki were both air bursts, detonating about 600 m and 503 m above the cities. {{c:radiation-effects-research-foundation-frequently}}',
     related: ['surface-burst', 'fallout', 'fireball'],
   },
   {
     slug: 'surface-burst',
     term: 'Surface Burst',
     category: 'effects',
-    short: 'A nuclear detonation at ground level, producing roughly 40-50% smaller blast radius than an air burst but creating massive radioactive fallout.',
-    long: 'A surface burst is used when the target is hardened (silos, command bunkers) or when the attacker wants to maximize fallout. The fireball touches the ground, vaporizing soil and creating a large crater. Roughly half the bomb energy goes into the crater and ground shock instead of blast and thermal effects. The radioactive plume can render hundreds of square kilometers uninhabitable for years.',
+    short: 'A nuclear detonation at ground level, whose blast reaches less far than an optimum-height air burst but which creates heavy local fallout.',
+    long: 'A nuclear detonation at ground level. Its blast reaches less far than an optimum-height air burst, and it creates heavy local fallout. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2}} A surface burst is used when the target is hardened (silos, command bunkers) or when the attacker wants to maximize fallout. The fireball touches the ground, vaporizing soil and creating a large crater. Part of the energy goes into forming a crater and ground shock, and less thermal radiation reaches a given distance than from an air burst. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-7}} The radioactive plume can render hundreds of square kilometers uninhabitable for years.',
     related: ['air-burst', 'fallout', 'crater'],
   },
   {
@@ -79,7 +79,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'EMP (Electromagnetic Pulse)',
     category: 'effects',
     short: 'A burst of electromagnetic energy released by a nuclear detonation, capable of damaging or destroying unhardened electronics over a wide area.',
-    long: 'A high-altitude nuclear detonation (above 30 km) produces a particularly strong EMP because gamma rays from the bomb interact with the upper atmosphere to generate a downward-directed electromagnetic wave covering thousands of kilometers. A single high-altitude burst over the central US could disable power grids and unhardened electronics across most of the continent.',
+    long: 'A high-altitude nuclear detonation (above 30 km) produces a particularly strong EMP because gamma rays from the bomb interact with the upper atmosphere to generate a downward-directed electromagnetic wave covering thousands of kilometers. A single high-altitude burst over the central US could disable power grids and unhardened electronics across most of the continent. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-4}}',
     related: ['high-altitude-burst', 'gamma-radiation'],
   },
   {
@@ -87,7 +87,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Nuclear Winter',
     category: 'effects',
     short: 'A hypothesized severe global cooling caused by soot from urban firestorms following a large-scale nuclear war.',
-    long: 'Nuclear-winter models project that hundreds of city-burning detonations would loft millions of tons of soot into the stratosphere, blocking sunlight for years and dropping global temperatures by 5–10 °C. The result would be widespread crop failure and famine. Even a regional nuclear war (e.g., India–Pakistan) is modeled to cause significant cooling.',
+    long: 'A 2019 study found that a war in which India and Pakistan used 250 weapons on cities could release 16-36 million tonnes of soot, cut sunlight at the surface by 20-35% and cool the planet by 2-5 °C, with recovery taking more than 10 years. {{c:science-advances-toon-et-al-rapidly-expanding-nu}} The result would be widespread crop failure and famine. Even a regional nuclear war causes significant cooling on these models.',
     related: ['fallout', 'fireball'],
   },
   {
@@ -95,7 +95,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Acute Radiation Syndrome',
     category: 'effects',
     short: 'The constellation of medical symptoms following a high dose of ionizing radiation, including nausea, immune-system failure, hemorrhage, and death.',
-    long: 'ARS occurs at whole-body doses of about 1 Sievert and above. Doses of 4-6 Sv kill about half of untreated victims within 60 days; doses above 8 Sv are usually fatal even with intensive supportive care. Symptoms progress through prodromal, latent, manifest illness, and either recovery or death.',
+    long: 'ARS occurs at whole-body doses above about 0.7 gray. About half of exposed people die within 60 days at roughly 2.5 to 5 gray, and survival is extremely unlikely above about 10 gray. {{c:us-centers-for-disease-control-and-prevention-ac}} Symptoms progress through prodromal, latent, manifest illness, and either recovery or death.',
     related: ['fallout', 'sievert', 'gamma-radiation'],
   },
 
@@ -105,7 +105,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Atomic Bomb',
     category: 'weapons',
     short: 'A nuclear weapon whose energy comes from nuclear fission of uranium-235 or plutonium-239.',
-    long: 'Atomic bombs (also called fission bombs) split heavy nuclei to release energy. Yields are typically below 100 kilotons because of inefficiency. The Hiroshima bomb (Little Boy, uranium-235, gun-type) and Nagasaki bomb (Fat Man, plutonium-239, implosion) were both fission weapons.',
+    long: 'Atomic bombs (also called fission bombs) split heavy nuclei to release energy. Most fission weapons yield under about 100 kilotons, though pure-fission designs have reached 500 kilotons (Ivy King, 1952). Little Boy (uranium-235, gun-type) and Fat Man (plutonium-239, implosion) were both fission weapons. {{c:wikipedia-operation-ivy}}',
     related: ['hydrogen-bomb', 'thermonuclear-weapon', 'nuclear-fission', 'critical-mass'],
   },
   {
@@ -113,7 +113,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Hydrogen Bomb',
     category: 'weapons',
     short: 'A nuclear weapon that derives most of its energy from nuclear fusion of hydrogen isotopes, ignited by a fission primary stage.',
-    long: 'Also called thermonuclear or H-bombs, hydrogen bombs use a small fission bomb to compress and heat a fusion fuel (typically lithium deuteride) to fusion-ignition conditions. Yields are scalable to tens of megatons; the largest weapon ever tested, Tsar Bomba (1961), was a 50 Mt three-stage thermonuclear device. Modern strategic warheads are all thermonuclear.',
+    long: 'Also called thermonuclear or H-bombs, hydrogen bombs use a small fission bomb to compress and heat a fusion fuel (typically lithium deuteride) to fusion-ignition conditions. Yields are scalable to tens of megatons; the largest weapon ever tested, Tsar Bomba (1961), was a 50 Mt three-stage thermonuclear device. {{c:atomic-heritage-foundation-national-museum-of-nu}} Modern strategic warheads are all thermonuclear.',
     related: ['thermonuclear-weapon', 'teller-ulam', 'tsar-bomba', 'nuclear-fusion'],
   },
   {
@@ -129,7 +129,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Teller-Ulam Design',
     category: 'weapons',
     short: 'The two-stage design used in nearly all modern thermonuclear weapons, named after physicists Edward Teller and Stanislaw Ulam.',
-    long: 'In the Teller–Ulam configuration, X-rays from a fission primary travel through a hohlraum and ablation-compress a separate fusion secondary, raising it to fusion-ignition temperatures. This radiation-implosion principle made very large yields practical and is used in every operational H-bomb since Ivy Mike (1952).',
+    long: 'In the Teller–Ulam configuration, X-rays from a fission primary travel through a hohlraum and ablation-compress a separate fusion secondary, raising it to fusion-ignition temperatures. This radiation-implosion principle made very large yields practical. First proven in Ivy Mike (1952), the Teller-Ulam configuration became the template for later thermonuclear weapons. {{c:american-nuclear-society-nuclear-news-the-spark}}',
     related: ['hydrogen-bomb', 'thermonuclear-weapon', 'nuclear-fusion'],
   },
   {
@@ -137,7 +137,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Warhead',
     category: 'weapons',
     short: 'The explosive payload of a missile, bomb, or other weapon system; for nuclear weapons, the package containing the fissile or fusion material.',
-    long: 'In nuclear arsenals, "warhead" usually refers to the physics package on a delivery vehicle (ICBM reentry vehicle, SLBM RV, cruise missile, gravity bomb). Modern warheads are typically thermonuclear and yield 100-500 kt. The W76 and W88 are the most common US warheads; the B61 is a variable-yield gravity bomb.',
+    long: 'In nuclear arsenals, "warhead" usually refers to the physics package on a delivery vehicle (ICBM reentry vehicle, SLBM RV, cruise missile, gravity bomb). Most modern warheads yield between about 100 and 800 kilotons, though some are much smaller. {{c:federation-of-american-scientists-bulletin-of-th-2;bulletin-of-the-atomic-scientists-fas-russian-nu;bulletin-of-the-atomic-scientists-indian-nuclear}} The W76 and W88 are the most common US warheads; the B61 is a variable-yield gravity bomb.',
     related: ['icbm', 'slbm', 'mirv', 'reentry-vehicle'],
   },
   {
@@ -145,7 +145,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'MIRV',
     category: 'weapons',
     short: 'Multiple Independently-targetable Reentry Vehicle — a single missile carrying several warheads, each able to strike a different target.',
-    long: 'MIRV technology, deployed from the early 1970s, allows one ICBM or SLBM to deliver up to 8-10 warheads on different targets. This was originally a counter-ABM measure but became the dominant warhead-multiplier in Cold War arsenals. New START limits MIRV deployments by warhead count, not by missile.',
+    long: 'MIRV technology, deployed from the early 1970s, allows one ICBM or SLBM to deliver up to 8-10 warheads on different targets. {{c:us-air-force-lgm-30g-minuteman-iii-fact-sheet;federation-of-american-scientists-bulletin-of-th-2;bulletin-of-the-atomic-scientists-fas-russian-nu}} This was originally a counter-ABM measure but became the dominant warhead-multiplier in Cold War arsenals. New START limits MIRV deployments by warhead count, not by missile.',
     related: ['icbm', 'slbm', 'warhead', 'reentry-vehicle'],
   },
   {
@@ -153,7 +153,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'ICBM (Intercontinental Ballistic Missile)',
     category: 'weapons',
     short: 'A long-range ballistic missile (range > 5,500 km) designed to deliver nuclear warheads between continents.',
-    long: 'ICBMs are typically launched from hardened silos or mobile launchers, follow a ballistic trajectory through space, and reenter the atmosphere to strike targets thousands of kilometers away. US Minuteman III and Russian RS-28 Sarmat are current examples. Flight time from Russia to the US is roughly 30 minutes.',
+    long: 'An ICBM is a long-range ballistic missile with a range greater than 5,500 km, designed to deliver nuclear warheads between continents. {{c:federation-of-american-scientists-intercontinent}} ICBMs are typically launched from hardened silos or mobile launchers, follow a ballistic trajectory through space, and reenter the atmosphere to strike targets thousands of kilometers away. US Minuteman III and Russian RS-28 Sarmat are current examples. An ICBM flight between Russia and the United States takes roughly 30 minutes, about 25 of them in midcourse flight. {{c:wikipedia-intercontinental-ballistic-missile}}',
     related: ['slbm', 'mirv', 'warhead', 'nuclear-triad'],
   },
   {
@@ -176,8 +176,8 @@ export const glossary: GlossaryEntry[] = [
     slug: 'tactical-nuclear-weapon',
     term: 'Tactical Nuclear Weapon',
     category: 'weapons',
-    short: 'A nuclear weapon designed for battlefield use, typically with low yield (sub-kiloton to ~50 kilotons) and short range.',
-    long: 'Tactical (or "non-strategic") nuclear weapons include artillery shells, depth charges, short-range missiles, and gravity bombs. Modern tactical weapons like the B61 and Russian Iskander-K warhead have variable yields (sometimes called "dial-a-yield"). The line between tactical and strategic blurs at higher yields.',
+    short: 'A nuclear weapon designed for battlefield use, with shorter range and yields running from under 1 kt to 100 kt or more.',
+    long: 'Tactical (non-strategic) nuclear weapons have shorter ranges; their yields run from under 1 kt to 100 kt or more (the US B61-3 bomb is rated at 0.3–170 kt). {{c:federation-of-american-scientists-bulletin-of-th-2;bulletin-of-the-atomic-scientists-fas-russian-nu}} They include artillery shells, depth charges, short-range missiles, and gravity bombs. Modern tactical weapons like the B61 and Russian Iskander-K warhead have variable yields (sometimes called "dial-a-yield"). The line between tactical and strategic blurs at higher yields.',
     related: ['strategic-nuclear-weapon', 'b61', 'davy-crockett'],
   },
   {
@@ -185,7 +185,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Strategic Nuclear Weapon',
     category: 'weapons',
     short: 'A nuclear weapon designed for long-range strikes against an adversary\'s population centers, industrial base, or strategic infrastructure.',
-    long: 'Strategic weapons are typically high-yield (100 kt to several megatons) and delivered by ICBMs, SLBMs, or strategic bombers. They are governed by treaties such as New START. The US triad consists of Minuteman ICBMs, Trident SLBMs, and B-2 / B-21 bombers carrying B61 / B83 gravity bombs.',
+    long: 'Strategic warheads typically yield about 100 to 800 kilotons; only a few still deployed exceed one megaton. {{c:federation-of-american-scientists-bulletin-of-th-2;bulletin-of-the-atomic-scientists-fas-russian-nu;bulletin-of-the-atomic-scientists-chinese-nuclea}} They are delivered by ICBMs, SLBMs, or strategic bombers and are governed by treaties such as New START. The US triad consists of Minuteman ICBMs, Trident SLBMs, and B-2 / B-21 bombers carrying B61 / B83 gravity bombs.',
     related: ['tactical-nuclear-weapon', 'icbm', 'slbm', 'nuclear-triad'],
   },
   {
@@ -193,7 +193,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Neutron Bomb',
     category: 'weapons',
     short: 'A small thermonuclear weapon designed to maximize neutron radiation output relative to blast and thermal effects.',
-    long: 'Also called an "enhanced radiation weapon," the neutron bomb releases roughly 80% of its energy as fast neutrons, which kill biological targets without destroying buildings. Originally conceived as a battlefield anti-tank weapon, the W70 neutron warhead was deployed briefly in the 1980s and retired by 1992.',
+    long: 'Also called an "enhanced radiation weapon," a neutron bomb releases a much larger share of its energy as prompt radiation, about 40% compared with about 5% for a fission weapon. {{c:wikipedia-neutron-bomb}} This radiation kills biological targets without destroying buildings. Originally conceived as a battlefield anti-tank weapon, the W70-3 neutron warhead was produced from 1981 and retired in 1992. {{c:wikipedia-neutron-bomb}}',
     related: ['thermonuclear-weapon', 'tactical-nuclear-weapon'],
   },
 
@@ -203,7 +203,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Yield',
     category: 'physics',
     short: 'The total energy released by a nuclear weapon, expressed in tons (or kilotons / megatons) of TNT equivalent.',
-    long: 'Nuclear yield is conventionally measured against TNT explosive energy: 1 kiloton (kt) = 1,000 tons of TNT, 1 megaton (Mt) = 1 million tons. The Hiroshima bomb was 15 kt, Tsar Bomba 50,000 kt, and modern strategic warheads typically 100-500 kt.',
+    long: 'Nuclear yield is conventionally measured against TNT explosive energy: 1 kiloton (kt) = 1,000 tons of TNT, 1 megaton (Mt) = 1 million tons. The Hiroshima bomb was about 15 kt, Tsar Bomba 50,000 kt, and modern strategic warheads are typically 100-500 kt. {{c:wikipedia-nuclear-weapon-yield}}',
     related: ['kiloton', 'megaton', 'tnt-equivalent'],
   },
   {
@@ -211,7 +211,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Kiloton (kt)',
     category: 'physics',
     short: 'A unit of nuclear yield equal to 1,000 tons of TNT equivalent (4.184 × 10¹² joules).',
-    long: 'A kiloton is the standard unit for tactical-yield nuclear weapons. The Hiroshima bomb was about 15 kilotons; modern artillery-fired nuclear shells (now retired) were sub-kiloton.',
+    long: 'A kiloton is the standard unit for tactical-yield nuclear weapons, equal to 1,000 tons of TNT or 4.184 × 10¹² joules. The Hiroshima bomb was about 15 kilotons; modern artillery-fired nuclear shells (now retired) were sub-kiloton. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5}}',
     related: ['yield', 'megaton', 'tnt-equivalent'],
   },
   {
@@ -219,7 +219,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Megaton (Mt)',
     category: 'physics',
     short: 'A unit of nuclear yield equal to 1,000,000 tons (or 1,000 kilotons) of TNT equivalent.',
-    long: 'A megaton is a unit for strategic thermonuclear weapons. Most modern strategic warheads are sub-megaton (100-500 kt) for accuracy reasons; only large city-busting weapons exceeded 1 Mt. Tsar Bomba (50 Mt) is the largest weapon ever detonated.',
+    long: 'A megaton equals 1,000 kilotons, or one million tons of TNT. Most modern strategic warheads are below one megaton, typically about 100–800 kt. Tsar Bomba (about 50 Mt, 1961) is the largest weapon ever detonated. {{c:wikipedia-tnt-equivalent;encyclopaedia-britannica-tsar-bomba;federation-of-american-scientists-bulletin-of-th-2}}',
     related: ['yield', 'kiloton', 'tsar-bomba'],
   },
   {
@@ -227,7 +227,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Nuclear Fission',
     category: 'physics',
     short: 'The splitting of heavy atomic nuclei (typically uranium-235 or plutonium-239) into lighter fragments, releasing large amounts of energy.',
-    long: 'Fission is the energy-release mechanism in atomic bombs and most nuclear power plants. Each fission event releases roughly 200 MeV of energy and 2–3 neutrons, which can sustain a chain reaction if a critical mass of fissile material is assembled.',
+    long: 'Fission is the energy-release mechanism in atomic bombs and most nuclear power plants. Each fission event releases roughly 200 MeV of energy and 2–3 neutrons, which can sustain a chain reaction if a critical mass of fissile material is assembled. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-11}}',
     related: ['nuclear-fusion', 'critical-mass', 'uranium-235', 'plutonium-239'],
   },
   {
@@ -235,7 +235,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Nuclear Fusion',
     category: 'physics',
     short: 'The combination of light atomic nuclei (typically deuterium and tritium) into heavier nuclei, releasing energy.',
-    long: 'Fusion powers stars and is the energy mechanism in thermonuclear weapons. In a hydrogen bomb, a fission primary compresses and heats lithium-deuteride fuel to fusion-ignition temperatures (millions of degrees), releasing far more energy than fission alone.',
+    long: 'Fusion powers stars and is the energy mechanism in thermonuclear weapons. In a hydrogen bomb, a fission primary compresses and heats lithium-deuteride fuel to fusion-ignition temperatures (tens of millions of degrees), releasing far more energy than fission alone. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5}}',
     related: ['nuclear-fission', 'thermonuclear-weapon', 'deuterium', 'tritium'],
   },
   {
@@ -243,7 +243,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Critical Mass',
     category: 'physics',
     short: 'The minimum amount of fissile material required to sustain a self-propagating nuclear chain reaction.',
-    long: 'For a bare sphere of plutonium-239, the critical mass is about 10 kg; for uranium-235 it is about 52 kg. Critical mass is reduced by neutron reflectors (tampers) and by compression. Atomic bombs work by rapidly assembling a supercritical mass before the chain reaction blows itself apart.',
+    long: 'For a bare sphere, the critical mass is about 10 kg for plutonium-239 and about 46 kg for pure uranium-235. {{c:los-alamos-national-laboratory-nuclear-science-f}} Critical mass is reduced by neutron reflectors (tampers) and by compression. Atomic bombs work by rapidly assembling a supercritical mass before the chain reaction blows itself apart.',
     related: ['nuclear-fission', 'plutonium-239', 'uranium-235', 'atomic-bomb'],
   },
   {
@@ -251,7 +251,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Uranium-235',
     category: 'physics',
     short: 'A fissile isotope of uranium that constitutes the explosive material in many fission weapons.',
-    long: 'Natural uranium is 99.3% non-fissile U-238 and only 0.7% U-235. Weapons-grade uranium is enriched to >90% U-235 — a process requiring centrifuges or gaseous diffusion. The Hiroshima bomb (Little Boy) used about 64 kg of highly enriched uranium-235.',
+    long: 'Natural uranium is about 99.3% U-238 and 0.7% U-235. Weapons-grade uranium is enriched to about 90% U-235 or more, a process requiring centrifuges or gaseous diffusion. Little Boy used about 64 kg of uranium enriched to an average of about 80% U-235. {{c:ieer-uranium-enrichment-just-plain-facts-to-fuel}}',
     related: ['plutonium-239', 'critical-mass', 'nuclear-fission', 'little-boy'],
   },
   {
@@ -259,7 +259,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Plutonium-239',
     category: 'physics',
     short: 'A fissile isotope of plutonium produced from uranium-238 in nuclear reactors and used in most modern fission weapons.',
-    long: 'Pu-239 has a smaller critical mass than U-235 and is the preferred material for compact fission weapons. It cannot be assembled by gun-type designs (it would predetonate), so plutonium weapons use implosion. The Nagasaki bomb (Fat Man) used about 6.2 kg of plutonium.',
+    long: 'Pu-239 has a smaller critical mass than U-235 and is the preferred material for compact fission weapons. It cannot be assembled by gun-type designs (it would predetonate), so plutonium weapons use implosion. The Nagasaki bomb (Fat Man) used about 6.2 kg of plutonium. {{c:wikipedia-fat-man}}',
     related: ['uranium-235', 'critical-mass', 'fat-man', 'implosion'],
   },
   {
@@ -267,7 +267,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Deuterium',
     category: 'physics',
     short: 'A heavy isotope of hydrogen with one neutron, used as fusion fuel in thermonuclear weapons.',
-    long: 'Deuterium occurs naturally at about 1 atom per 6,420 of normal hydrogen. In thermonuclear weapons, lithium-6 deuteride (a solid compound) is the fusion fuel — neutron irradiation of the lithium produces tritium in situ, which then fuses with deuterium to release energy.',
+    long: 'In ocean water, about 1 hydrogen atom in 6,420 is deuterium. {{c:wikipedia-deuterium}} In thermonuclear weapons, lithium-6 deuteride (a solid compound) is the fusion fuel: neutron irradiation of the lithium produces tritium in situ, which then fuses with deuterium to release energy.',
     related: ['tritium', 'nuclear-fusion', 'thermonuclear-weapon'],
   },
   {
@@ -275,7 +275,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Tritium',
     category: 'physics',
     short: 'A radioactive heavy isotope of hydrogen with two neutrons, used as fusion fuel and in boosted-fission weapons.',
-    long: 'Tritium has a half-life of 12.3 years, so warhead arsenals require ongoing tritium production to replace decay. Modern boosted-fission weapons inject tritium-deuterium gas into the fission core to enhance yield. Tritium is produced by irradiating lithium-6 in nuclear reactors.',
+    long: 'Tritium has a half-life of 12.3 years, so warhead arsenals require ongoing tritium production to replace decay. {{c:us-doe-savannah-river-site-environmental-report}} Modern boosted-fission weapons inject tritium-deuterium gas into the fission core to enhance yield. Tritium is produced by irradiating lithium-6 in nuclear reactors.',
     related: ['deuterium', 'nuclear-fusion', 'boosted-fission', 'half-life'],
   },
   {
@@ -283,15 +283,15 @@ export const glossary: GlossaryEntry[] = [
     term: 'Half-Life',
     category: 'physics',
     short: 'The time required for half of a quantity of a radioactive isotope to decay.',
-    long: 'Different isotopes have wildly different half-lives: tritium 12.3 years, cesium-137 30 years, plutonium-239 24,100 years, uranium-235 704 million years. Half-life determines fallout persistence: short-lived isotopes dominate early radiation, long-lived isotopes contaminate the environment for decades.',
+    long: 'Different isotopes have wildly different half-lives: tritium 12.3 years, cesium-137 30 years, plutonium-239 24,100 years, uranium-235 704 million years. {{c:us-doe-savannah-river-site-environmental-report}} Half-life determines fallout persistence: short-lived isotopes dominate early radiation, long-lived isotopes contaminate the environment for decades.',
     related: ['fallout', 'tritium', 'plutonium-239'],
   },
   {
     slug: 'sievert',
     term: 'Sievert (Sv)',
     category: 'physics',
-    short: 'The SI unit of equivalent dose of ionizing radiation, accounting for biological effect.',
-    long: 'A whole-body dose of about 1 Sv causes acute radiation syndrome; 4-6 Sv kills roughly half of untreated victims; 8 Sv is usually fatal. Background radiation is about 2-3 millisieverts per year. Aircrew and astronauts receive notably higher doses.',
+    short: 'The SI unit of equivalent dose of ionizing radiation, accounting for biological effect; natural background averages about 2.4 millisieverts per year worldwide.',
+    long: 'The sievert measures equivalent dose, weighting absorbed energy by biological effect. Acute effects are usually stated in gray: a whole-body dose above about 0.7 gray causes acute radiation syndrome; about 2.5 to 5 gray kills roughly half of exposed people within 60 days; survival is extremely unlikely above about 10 gray. {{c:us-centers-for-disease-control-and-prevention-ac}} Natural background radiation averages about 2.4 millisieverts per year worldwide. Aircrew and astronauts receive notably higher doses.',
     related: ['acute-radiation-syndrome', 'gamma-radiation'],
   },
   {
@@ -307,7 +307,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Boosted Fission',
     category: 'physics',
     short: 'A fission weapon design in which a small amount of deuterium-tritium gas is injected into the fissile core to enhance yield.',
-    long: 'Boosting allows a fission bomb to deliver several times its un-boosted yield with the same amount of fissile material. The fusion neutrons released by D-T reactions cause a much higher fraction of the fissile core to fission before the bomb disassembles. Most modern fission primaries are boosted.',
+    long: 'Boosting uses neutrons from a small amount of fusion fuel to make roughly twice as much of the fissile material fission, raising the yield; the fusion itself adds only about 1% of the energy. {{c:wikipedia-boosted-fission-weapon}} The fusion neutrons released by D-T reactions cause a much higher fraction of the fissile core to fission before the bomb disassembles. Most modern fission primaries are boosted.',
     related: ['nuclear-fission', 'tritium', 'thermonuclear-weapon'],
   },
   {
@@ -315,7 +315,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Second-Degree Burns',
     category: 'physics',
     short: 'Partial-thickness burns affecting both the epidermis and dermis, characterized by blistering and pain.',
-    long: 'In a nuclear context, the 2nd-degree burn radius is the distance at which exposed skin receives enough thermal radiation (about 5 cal/cm²) to blister but not char. For a Hiroshima-yield bomb, this radius is roughly 2 km; for a 1 Mt weapon it extends to about 12 km.',
+    long: 'In a nuclear context, the 2nd-degree burn radius is the distance at which exposed skin receives enough thermal radiation to blister; the energy needed rises with yield. For a Hiroshima-yield bomb this radius is about {{r:15:burn2}}; for a 1 Mt weapon about {{r:1000:burn2}}. {{c:wikipedia-effects-of-nuclear-explosions-scaling}}',
     related: ['thermal-radiation', 'fireball'],
   },
 
@@ -349,7 +349,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Nuclear Triad',
     category: 'doctrine',
     short: 'A three-pronged nuclear force structure consisting of land-based ICBMs, submarine-launched ballistic missiles (SLBMs), and strategic bombers.',
-    long: 'The triad provides survivability through diversity: each leg has different vulnerabilities. ICBMs are accurate but fixed; SLBMs are survivable but harder to recall; bombers are flexible but slow. The US, Russia, China, and India operate full triads; the UK and France rely solely on SLBMs.',
+    long: 'The triad provides survivability through diversity: each leg has different vulnerabilities. ICBMs are accurate but fixed; SLBMs are survivable but harder to recall; bombers are flexible but slow. The US and Russia operate full triads, and China and India field less mature ones. France relies on submarines and aircraft, and the UK only on submarine-launched Trident missiles. {{c:federation-of-american-scientists-bulletin-of-th;bulletin-of-the-atomic-scientists-french-nuclear;bulletin-of-the-atomic-scientists-chinese-nuclea;bulletin-of-the-atomic-scientists-indian-nuclear}}',
     related: ['icbm', 'slbm', 'second-strike', 'mad'],
   },
   {
@@ -381,7 +381,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Dead Hand',
     category: 'doctrine',
     short: 'A semi-automated Soviet (and reportedly current Russian) nuclear-retaliation system that can launch a counterstrike even if national leadership has been killed.',
-    long: 'The Dead Hand system, known as Perimeter, was developed in the early 1980s. If sensors detect a nuclear attack and command-and-control has been severed, the system enables surviving officers to authorize a full retaliatory launch. Russia is widely believed to maintain a modernized version.',
+    long: 'The Soviet Perimeter system, often called Dead Hand, entered service in 1985 after development that began in 1974. {{c:wikipedia-dead-hand}} If sensors detect a nuclear attack and command-and-control has been severed, the system enables surviving officers to authorize a full retaliatory launch. Russia is widely believed to maintain a modernized version.',
     related: ['second-strike', 'mad'],
   },
   {
@@ -389,7 +389,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'Permissive Action Link (PAL)',
     category: 'doctrine',
     short: 'A security device built into nuclear weapons that prevents unauthorized arming or detonation without the correct code.',
-    long: 'PALs were first deployed by the US in 1962 to prevent rogue or stolen weapons from being used. Modern PALs disable the warhead if tampered with. The Soviet Union and Russia use a different system based on centralized release codes.',
+    long: 'A June 1962 presidential order (NSAM 160) required PALs on US nuclear weapons in Europe, to prevent unauthorized arming or detonation. {{c:wikipedia-permissive-action-link}} Modern PALs disable the warhead if tampered with. The Soviet Union and Russia use a different system based on centralized release codes.',
     related: ['warhead', 'first-strike'],
   },
 
@@ -398,8 +398,8 @@ export const glossary: GlossaryEntry[] = [
     slug: 'npt',
     term: 'NPT (Non-Proliferation Treaty)',
     category: 'treaty',
-    short: 'The 1968 Treaty on the Non-Proliferation of Nuclear Weapons, which restricts nuclear-weapon possession to five recognized states and obligates them to pursue disarmament.',
-    long: 'The NPT recognizes the US, USSR/Russia, UK, France, and China as nuclear-weapon states. All other parties commit not to acquire nuclear weapons in exchange for access to peaceful nuclear technology. India, Pakistan, Israel, and North Korea (which withdrew) operate outside the NPT framework.',
+    short: 'The 1968 Treaty on the Non-Proliferation of Nuclear Weapons, which recognizes five nuclear-weapon states and obligates them to pursue disarmament.',
+    long: 'The 1968 Treaty on the Non-Proliferation of Nuclear Weapons recognizes five nuclear-weapon states, defined as those that exploded a nuclear device before 1 January 1967. {{c:un-office-for-disarmament-affairs-treaty-on-the;un-office-for-disarmament-affairs-npt-text-of-th;nus-centre-for-international-law-1968-treaty-on}} These are the US, USSR/Russia, UK, France, and China. All other parties commit not to acquire nuclear weapons in exchange for access to peaceful nuclear technology. India, Pakistan, Israel, and North Korea (which withdrew) operate outside the NPT framework.',
     related: ['tpnw', 'ctbt'],
   },
   {
@@ -407,7 +407,7 @@ export const glossary: GlossaryEntry[] = [
     term: 'TPNW (Treaty on the Prohibition of Nuclear Weapons)',
     category: 'treaty',
     short: 'A 2017 UN treaty that prohibits all activities related to nuclear weapons — development, possession, testing, threats of use — for state parties.',
-    long: 'The TPNW entered into force in January 2021. Over 70 states have ratified it. None of the nine nuclear-armed states have signed; the treaty is intended to stigmatize possession and build pressure toward eventual abolition. ICAN, the lead civil-society coalition behind the TPNW, won the 2017 Nobel Peace Prize.',
+    long: 'The TPNW entered into force in January 2021. 75 states are parties to the TPNW as of September 2026. {{c:united-nations-treaty-collection-status-of-treat;hiroshima-prefectural-government-status-of-the-t;nuclear-threat-initiative-treaty-on-the-prohibit}} None of the nine nuclear-armed states have signed; the treaty is intended to stigmatize possession and build pressure toward eventual abolition. ICAN, the lead civil-society coalition behind the TPNW, won the 2017 Nobel Peace Prize. {{c:norwegian-nobel-committee-the-nobel-peace-prize}}',
     related: ['npt', 'ctbt'],
   },
   {
@@ -415,15 +415,15 @@ export const glossary: GlossaryEntry[] = [
     term: 'CTBT (Comprehensive Test Ban Treaty)',
     category: 'treaty',
     short: 'A 1996 treaty banning all nuclear explosions in all environments, for both military and civilian purposes.',
-    long: 'The CTBT has not entered into force because eight key states (including the US, China, India, Pakistan, North Korea, Iran, Israel, Egypt) have not ratified it. Despite this, all states except North Korea have observed a de-facto testing moratorium since the late 1990s. The CTBTO operates a global monitoring network.',
+    long: 'The CTBT cannot enter into force until nine more key states ratify it: China, Egypt, India, Iran, Israel, North Korea, Pakistan, Russia and the United States. {{c:ctbto-preparatory-commission-frequently-asked-qu}} Despite this, all states except North Korea have observed a de-facto testing moratorium since the late 1990s. The CTBTO operates a global monitoring network.',
     related: ['npt', 'tpnw'],
   },
   {
     slug: 'new-start',
     term: 'New START',
     category: 'treaty',
-    short: 'A 2010 US–Russia treaty limiting each side to 1,550 deployed strategic nuclear warheads and 700 deployed delivery systems.',
-    long: 'New START replaced the 1991 START I treaty. It expires in February 2026 and Russia suspended participation in February 2023, although both sides have continued to observe the warhead limits informally. New START is currently the only remaining bilateral US–Russia nuclear arms control agreement.',
+    short: 'A 2010 US–Russia treaty that capped each side at 1,550 deployed strategic warheads, 700 deployed missiles and bombers, and 800 total launchers.',
+    long: 'New START replaced the 1991 START I treaty. It capped each side at 1,550 deployed strategic warheads, 700 deployed missiles and bombers, and 800 total launchers. Russia suspended participation in February 2023, and the treaty expired on 5 February 2026 with no replacement. {{c:federation-of-american-scientists-the-aftermath;nuclear-threat-initiative-new-start-treaty;arms-control-association-new-start-expires-as-u;un-office-for-disarmament-affairs-cd-2500-russia}} It was the last remaining bilateral US–Russia nuclear arms control agreement.',
     related: ['icbm', 'slbm', 'mirv'],
   },
 ]
