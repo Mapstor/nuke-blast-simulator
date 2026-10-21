@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { Cite, Sources, createCitations } from '@/components/seo/Cite'
+import { bombs } from '@/lib/data/bombs'
 import {
   faqPageSchema,
   breadcrumbSchema,
@@ -13,10 +15,14 @@ export const metadata: Metadata = {
   alternates: { canonical: '/how-it-works' },
 }
 
+// Nuclear-weapon count rendered from data. The picker excludes the 14
+// conventional bombs and the custom-yield slot; this equals 29.
+const nuclearCount = bombs.filter((b) => b.type !== 'conventional' && b.id !== 'custom').length
+
 const steps = [
   {
     name: 'Select a Nuclear Weapon',
-    text: 'Choose from the database of historical and modern nuclear weapons, from the 15-kiloton Little Boy (Hiroshima) to the 50-megaton Tsar Bomba (largest test ever). You can also pick "Custom Yield" to set any explosive power between 1 and 100,000 kilotons.',
+    text: `Choose from the database of ${nuclearCount} historical and modern nuclear weapons, from the 15-kiloton Little Boy (Hiroshima) to the 50-megaton Tsar Bomba (largest test ever). You can also pick "Custom Yield" to set any explosive power between 1 and 100,000 kilotons.`,
   },
   {
     name: 'Click on the Map',
@@ -36,7 +42,7 @@ const faqEntries = [
   {
     question: 'How accurate are the nuclear blast calculations in this simulator?',
     answer:
-      'Radii are computed from declassified nuclear testing data and published scaling laws (Glasstone & Dolan 1977 and the effects scaling table). They are simplified for public use and assume an air burst at optimum height. They should not be used for operational or emergency planning.',
+      'These are simplified scaling laws. Real effects depend on burst height, terrain, buildings and weather. The radii assume an air burst at optimum height, and you should not use them for operational or emergency planning.',
   },
   {
     question: 'Why does the simulator not show radioactive fallout patterns?',
@@ -51,6 +57,7 @@ const faqEntries = [
 ]
 
 export default function HowItWorksPage() {
+  const cites = createCitations()
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
       <JsonLd
@@ -95,35 +102,35 @@ export default function HowItWorksPage() {
               <div className="w-6 h-6 rounded-full mr-3 shrink-0" style={{ backgroundColor: '#ffff00' }} />
               <div>
                 <span className="font-semibold text-yellow-400">Fireball:</span>
-                <span className="text-green-300 ml-2">Complete vaporization zone.</span>
+                <span className="text-green-300 ml-2">At the first instant, temperatures reach tens of millions of degrees.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3" /></span>
               </div>
             </div>
             <div className="flex items-center">
               <div className="w-6 h-6 rounded-full mr-3 shrink-0" style={{ backgroundColor: '#ff0000' }} />
               <div>
                 <span className="font-semibold text-red-400">Severe Blast (20 psi):</span>
-                <span className="text-green-300 ml-2">Reinforced concrete buildings destroyed.</span>
+                <span className="text-green-300 ml-2">Reinforced concrete structures are leveled.<Cite c={cites} ids="us-congress-office-of-technology-assessment-via" /></span>
               </div>
             </div>
             <div className="flex items-center">
               <div className="w-6 h-6 rounded-full mr-3 shrink-0" style={{ backgroundColor: '#ff8800' }} />
               <div>
                 <span className="font-semibold text-orange-400">Moderate Blast (5 psi):</span>
-                <span className="text-green-300 ml-2">Most residential buildings collapse.</span>
+                <span className="text-green-300 ml-2">Typical homes and lightly built commercial buildings are destroyed.<Cite c={cites} ids="us-congress-office-of-technology-assessment-via" /></span>
               </div>
             </div>
             <div className="flex items-center">
               <div className="w-6 h-6 rounded-full mr-3 shrink-0" style={{ backgroundColor: '#808080' }} />
               <div>
                 <span className="font-semibold text-gray-300">Light Blast (1 psi):</span>
-                <span className="text-green-300 ml-2">Windows shatter; debris injuries.</span>
+                <span className="text-green-300 ml-2">Windows shatter; flying glass and debris cause injuries.<Cite c={cites} ids="us-congress-office-of-technology-assessment-via" /></span>
               </div>
             </div>
             <div className="flex items-center">
               <div className="w-6 h-6 rounded-full mr-3 shrink-0" style={{ backgroundColor: '#ff00ff' }} />
               <div>
                 <span className="font-semibold text-pink-400">3rd Degree Burns:</span>
-                <span className="text-green-300 ml-2">Severe thermal burns requiring immediate medical care.</span>
+                <span className="text-green-300 ml-2">Severe burns that need immediate medical care.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-6" /></span>
               </div>
             </div>
           </div>
@@ -134,9 +141,9 @@ export default function HowItWorksPage() {
 
           <ul className="bg-black/50 border border-green-500/30 rounded-lg p-6 list-disc list-inside space-y-2 text-green-300">
             <li>Effect radii computed from published scaling laws</li>
-            <li>Interactive map with global coverage (Mapbox)</li>
+            <li>Interactive Mapbox map with global coverage (map data &copy; Mapbox and OpenStreetMap)</li>
             <li>Fireball, blast overpressure and thermal burn zones (air burst at optimum height)</li>
-            <li>Database of historical and modern nuclear weapons</li>
+            <li>Database of {nuclearCount} historical and modern nuclear weapons</li>
             <li>Custom yield input for hypothetical scenarios</li>
             <li>Mobile-responsive design for phones, tablets, and desktops</li>
             <li>Shareable URLs that re-create your simulation</li>
@@ -173,6 +180,8 @@ export default function HowItWorksPage() {
             </p>
           </div>
         </section>
+
+        <Sources c={cites} />
 
         <div className="text-center mt-12">
           <Link

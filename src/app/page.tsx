@@ -11,10 +11,15 @@ import { glossary } from '@/lib/data/glossary'
 import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
 import { radiusText } from '@/lib/calculations/radius'
 
+// Count of nuclear weapons in the simulator picker (the BombSelector excludes
+// conventional bombs; the custom-yield slot is typed thermonuclear so is
+// excluded explicitly). Rendered from data so prose can never drift.
+const nuclearWeaponCount = bombs.filter((b) => b.type !== 'conventional' && b.id !== 'custom').length
+
 export const metadata: Metadata = {
   title: 'Nuclear Blast Simulator — Interactive Nuke Map & Blast Radius Calculator',
   description:
-    'Free interactive nuclear blast simulator. Click any city to see the fireball, blast radius, and thermal burn zones for Tsar Bomba, Little Boy, Castle Bravo, and 40+ other nuclear weapons (air burst). Real scientific data, no signup.',
+    `Free interactive nuclear blast simulator. Click any city to see the fireball, blast radius, and thermal burn zones for ${nuclearWeaponCount} nuclear weapons, including Tsar Bomba, Little Boy and Castle Bravo (air burst). Real scientific data, no signup.`,
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Nuclear Blast Simulator — Interactive Nuke Map',
@@ -45,7 +50,7 @@ const homepageFaq = [
   {
     question: 'How accurate is the nuclear blast simulator?',
     answer:
-      'The simulator uses scaling-law formulas from "The Effects of Nuclear Weapons" (Glasstone & Dolan, 1977), the canonical declassified DOD/DOE reference. Results are educational approximations: real-world effects depend on terrain, weather, building construction, and altitude of detonation, which the simulator idealizes.',
+      'The radii come from the scaling laws in "The Effects of Nuclear Weapons" (Glasstone & Dolan, 1977) and the standard scaling-law table derived from it. Results are educational approximations: real effects depend on terrain, weather, building construction and burst height, which the simulator idealizes.',
   },
   {
     question: 'Which nuclear weapons can I simulate?',
@@ -55,7 +60,7 @@ const homepageFaq = [
   {
     question: 'What is the difference between an air burst and a surface burst?',
     answer:
-      'An air burst detonates above the ground at optimal altitude, maximizing the area affected by blast and thermal radiation but producing minimal fallout. Hiroshima and Nagasaki were both air bursts. A surface burst detonates at ground level, producing roughly 40-50% smaller blast radius but creating massive radioactive fallout, a large crater, and long-term ground contamination.',
+      'An air burst detonates above the ground at optimal altitude, maximizing the area affected by blast and thermal radiation while producing little local fallout. Hiroshima and Nagasaki were both air bursts. A surface burst detonates at ground level; for most overpressures its blast reaches less far than an air burst at the optimum height, and it produces heavy local fallout.',
   },
   {
     question: 'Can I share my nuclear blast simulation?',
@@ -112,7 +117,7 @@ export default function HomePage() {
             <p className="text-lg mb-4">
               Nuclear Blast Simulator is a free, interactive online tool that lets you visualize the effects of
               nuclear weapons on any city or location worldwide. Click anywhere on the map above to detonate
-              one of <strong className="text-yellow-400">45+ historical and modern nuclear weapons</strong> — from
+              one of <strong className="text-yellow-400">{nuclearWeaponCount} historical and modern nuclear weapons</strong> — from
               the 15-kiloton Little Boy that destroyed Hiroshima to the 50-megaton Tsar Bomba, the largest
               nuclear weapon ever tested.
             </p>
@@ -147,7 +152,7 @@ export default function HomePage() {
           <section>
             <h2 className="text-3xl font-bold mb-4 text-green-400">Featured Nuclear Weapons</h2>
             <p className="mb-4">
-              The Weapons Database catalogs every major nuclear weapon from 1945 to the present. Click any
+              The Weapons Database covers {nuclearWeaponCount} historical and current nuclear weapons and tests. Click any
               weapon below to see its detailed blast-radius profile, historical context, and a one-click
               simulator preset.
             </p>
@@ -165,13 +170,15 @@ export default function HomePage() {
                       ? `${(b.yield / 1000).toLocaleString()} Mt`
                       : `${b.yield.toLocaleString()} kt`}
                   </div>
-                  <div className="text-xs text-green-300/70 mt-1">{b.description}</div>
+                  <div className="text-xs text-green-300/70 mt-1">
+                    {b.description} <Cite c={cites} ids={(b.sources ?? []).join(';')} />
+                  </div>
                 </Link>
               ))}
             </div>
             <p className="mt-4">
               <Link href="/weapons" className="text-yellow-400 hover:underline">
-                Browse the full Weapons Database (45+ entries) →
+                Browse the full Weapons Database ({nuclearWeaponCount} nuclear weapons) →
               </Link>
             </p>
           </section>
@@ -190,7 +197,8 @@ export default function HomePage() {
                 >
                   <div className="font-semibold text-yellow-400">{c.name}</div>
                   <div className="text-xs text-green-300/70">
-                    {c.country} · {(c.population / 1_000_000).toFixed(1)}M people
+                    {c.country} · {(c.population / 1_000_000).toFixed(1)}M people{' '}
+                    <Cite c={cites} ids={(c.sourceIds ?? []).join(';')} />
                   </div>
                 </Link>
               ))}
@@ -289,8 +297,8 @@ export default function HomePage() {
               <div>
                 <h3 className="text-xl font-semibold text-yellow-400 mb-2">Fireball</h3>
                 <p>
-                  At the instant of detonation, a sphere of plasma forms with temperatures exceeding 10 million °C
-                  — hotter than the surface of the Sun. Everything inside the fireball is vaporized.
+                  A sphere of extremely hot gas forms. At the first instant it reaches tens of millions of
+                  degrees, similar to the center of the Sun. <Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3" />
                 </p>
               </div>
               <div>
@@ -298,7 +306,7 @@ export default function HomePage() {
                 <p>
                   A shock wave radiates outward at supersonic speeds. The 20 PSI zone destroys reinforced concrete;
                   5 PSI collapses most residential buildings; 1 PSI shatters windows out to many kilometers.
-                  These radii scale with the cube root of yield.
+                  These radii scale with the cube root of yield. <Cite c={cites} ids="us-congress-office-of-technology-assessment-via" />
                 </p>
               </div>
               <div>
@@ -312,9 +320,9 @@ export default function HomePage() {
               <div>
                 <h3 className="text-xl font-semibold text-yellow-400 mb-2">Fallout</h3>
                 <p>
-                  Surface bursts produce massive radioactive fallout plumes that drift downwind for hundreds of
-                  kilometers. Air bursts produce minimal local fallout — which is why Hiroshima and Nagasaki
-                  were both air bursts.
+                  Surface bursts can spread heavy radioactive fallout hundreds of kilometers downwind; fallout
+                  from the Castle Bravo test contaminated an area more than 530 km long. Hiroshima and Nagasaki
+                  were air bursts, and fallout injuries there were essentially absent. <Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e" />
                 </p>
               </div>
             </div>

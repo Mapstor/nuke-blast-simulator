@@ -268,7 +268,7 @@ export default async function ComparePage({
         <section className="mb-10">
           <h2 className="text-2xl font-semibold mb-4 text-green-400">Hiroshima reference</h2>
           <p className="text-green-300">
-            The Hiroshima bomb (Little Boy) had a yield of approximately 15 kilotons. The {a.name} is{' '}
+            The Hiroshima bomb (Little Boy) had a yield of approximately 15 kilotons. <Cite c={cites} ids="us-doe-nevada-operations-office-united-states-nu" /> The {a.name} is{' '}
             <strong className="text-yellow-400">
               {hiroshimaA >= 1
                 ? `${hiroshimaA.toLocaleString(undefined, { maximumFractionDigits: 0 })}× more powerful`

@@ -213,9 +213,10 @@ export default async function WeaponDetailPage({
               ? `As a ${typeText} weapon, it derives its energy from ${
                   bomb.type === 'fission' ? 'nuclear fission of uranium or plutonium' :
                   bomb.type === 'fusion' ? 'fusion-boosted fission reactions' :
-                  'a fission primary that ignites a much larger fusion secondary stage'
+                  'a fission explosion that ignites fusion fuel, releasing on average roughly equal energy from fission and fusion'
                 }.`
               : `It is a conventional high-explosive weapon that releases its energy through chemical reactions, not nuclear processes.`}
+            {' '}<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5" />
           </p>
         </section>
 

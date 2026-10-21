@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { Cite, Sources, createCitations } from '@/components/seo/Cite'
 import { aboutPageSchema, authorPersonSchema, breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 }
 
 export default function AboutPage() {
+  const cites = createCitations()
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
       <JsonLd
@@ -116,13 +118,17 @@ export default function AboutPage() {
           <h2 className="text-2xl font-semibold mb-6 text-green-400">Scientific approach</h2>
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
             <p className="text-green-300 mb-3">
-              The effect radii come from the scaling laws in <em>The Effects of Nuclear Weapons</em> (Glasstone
-              &amp; Dolan, U.S. Department of Defense) and the published effects scaling table. All radii assume
-              an <strong className="text-yellow-400">air burst at optimum height</strong>:
+              The radii come from the scaling laws in <em>The Effects of Nuclear Weapons</em> (Glasstone &amp;
+              Dolan, 1977) and the standard scaling-law table derived from it.
+              <Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3" /> All radii assume an{' '}
+              <strong className="text-yellow-400">air burst at optimum height</strong>:
             </p>
             <ul className="list-disc list-inside space-y-2 text-green-300">
               <li>Fireball radius</li>
-              <li>Air-blast overpressure zones (20 psi, 5 psi, 1 psi)</li>
+              <li>
+                Air-blast overpressure zones (20 psi, 5 psi, 1 psi)
+                <Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-9" />
+              </li>
               <li>Thermal radiation burn zones (1st, 2nd and 3rd degree)</li>
             </ul>
             <p className="text-green-300 mt-3">
@@ -139,8 +145,10 @@ export default function AboutPage() {
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
             <p className="mb-4 text-green-300">
               Since the atomic bombings of Hiroshima and Nagasaki in 1945, nuclear weapons have shaped world
-              security. The weapons database includes devices from the first atomic bombs to modern
-              thermonuclear warheads.
+              security.
+              <Cite c={cites} ids="city-of-hiroshima-the-realities-of-the-atomic-bo;rerf-about-rerf" /> Both
+              cities were struck by air bursts. The weapons database includes devices from the first atomic
+              bombs to modern thermonuclear warheads.
             </p>
           </div>
         </section>
@@ -174,6 +182,8 @@ export default function AboutPage() {
             </p>
           </div>
         </section>
+
+        <Sources c={cites} />
       </main>
     </div>
   )

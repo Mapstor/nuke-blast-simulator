@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { faqPageSchema, breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
+import { Cite, Sources, createCitations } from '@/components/seo/Cite'
 
 export const metadata: Metadata = {
   title: 'FAQ - Frequently Asked Questions About Nuclear Effects',
@@ -21,7 +22,7 @@ const faqEntries = [
   {
     question: 'How accurate are the nuclear blast calculations?',
     answer:
-      'Calculations are based on scientifically validated formulas from "The Effects of Nuclear Weapons" by Glasstone & Dolan and other declassified research. They provide estimates based on idealized conditions. Real-world effects vary significantly due to terrain, weather, building construction, and many other factors. These are educational approximations, not precise predictions.',
+      'The radii come from the scaling laws in The Effects of Nuclear Weapons (Glasstone & Dolan, 1977) and the standard scaling-law table derived from it. They provide estimates based on idealized conditions. Real-world effects vary significantly due to terrain, weather, building construction, and many other factors. These are educational approximations, not precise predictions.',
   },
   {
     question: 'Who can use this nuclear blast simulator?',
@@ -31,27 +32,27 @@ const faqEntries = [
   {
     question: 'What is the difference between an air burst and a surface burst?',
     answer:
-      'An air burst is detonated above ground at optimal altitude, producing maximum blast damage over a wide area with minimal radioactive fallout — this is how Hiroshima and Nagasaki were attacked. A surface burst is detonated at ground level; it has roughly 40-50% smaller blast radius but creates massive radioactive fallout, a large crater, and long-term contamination of the surrounding area.',
+      'An air burst is detonated above ground at optimal altitude, producing maximum blast damage over a wide area with minimal radioactive fallout. This is how Hiroshima and Nagasaki were attacked. A surface burst is detonated at ground level; its blast reaches less far than an optimum-height air burst, but it creates heavy radioactive fallout, a large crater, and long-term contamination of the surrounding area.',
   },
   {
     question: 'What do the colored circles on the map represent?',
     answer:
-      'Each colored circle is a nuclear weapon effect zone. The fireball (yellow) is the complete vaporization zone. Severe blast (red) is the 20 psi overpressure zone where reinforced concrete is destroyed. Moderate blast (orange) is the 5 psi zone where most buildings collapse. Light blast (gray) is the 1 psi zone where windows shatter. Magenta and pink show third-degree and second-degree thermal burn radii. All radii assume an air burst at optimum height.',
+      'Each colored circle is a nuclear weapon effect zone. The fireball (yellow) is the hot, luminous sphere at the burst point. Severe blast (red) is the 20 psi overpressure zone where reinforced concrete is leveled. Moderate blast (orange) is the 5 psi zone where typical homes and lightly built commercial buildings are destroyed. Light blast (gray) is the 1 psi zone where windows shatter. Magenta and pink show third-degree and second-degree thermal burn radii. All radii assume an air burst at optimum height.',
   },
   {
     question: 'How do nuclear weapons cause damage?',
     answer:
-      'Nuclear weapons cause damage through multiple mechanisms. Immediate effects (seconds to minutes) include the fireball, thermal radiation that causes burns and fires, initial nuclear radiation, and an electromagnetic pulse that destroys electronics. Delayed effects (minutes to years) include the blast wave that destroys buildings, radioactive fallout, climate effects from soot and dust ("nuclear winter"), and long-term radiation that causes cancer and genetic damage.',
+      'Nuclear weapons cause damage through multiple mechanisms. Immediate effects (seconds to about a minute) include the fireball, thermal radiation that causes burns and fires, the blast wave that destroys buildings, initial nuclear radiation, and an electromagnetic pulse that destroys electronics. Delayed effects include radioactive fallout and possible climate effects from soot ("nuclear winter").',
   },
   {
     question: 'How long do nuclear weapon effects last?',
     answer:
-      'Effects last across multiple time scales. Immediate effects (0-1 hour): fireball, thermal radiation, initial nuclear radiation, EMP. Short-term (hours to weeks): blast wave damage, radioactive fallout, acute radiation sickness. Long-term (months to decades): residual radiation, cancer, genetic effects, environmental damage. Generational (decades to centuries): soil contamination, hereditary genetic damage, psychological trauma in affected populations.',
+      'Initial effects arrive within about a minute: the flash, fireball, blast wave and initial radiation. Residual fallout radiation is most intense in the first hours and days, then declines over weeks to years.',
   },
   {
     question: 'What does "yield" mean for a nuclear weapon?',
     answer:
-      'Yield is the amount of energy released by a nuclear weapon, measured in TNT-equivalent tons. 1 kiloton (kt) equals 1,000 tons of TNT. 1 megaton (Mt) equals 1,000,000 tons of TNT. The Hiroshima bomb was about 15 kt. Modern strategic warheads are typically 100-500 kt. The largest weapon ever tested, the Soviet Tsar Bomba, was 50 Mt.',
+      'Yield is the amount of energy released by a nuclear weapon, measured in TNT-equivalent tons. 1 kiloton (kt) equals 1,000 tons of TNT. 1 megaton (Mt) equals 1,000,000 tons of TNT. The Hiroshima bomb was about 15 kt. A modern strategic warhead is about 100 to 800 kt, and a few exceed 1 Mt. The largest weapon ever tested, the Soviet Tsar Bomba, was 50 Mt.',
   },
   {
     question: 'How are nuclear blast radii calculated?',
@@ -81,6 +82,7 @@ const faqEntries = [
 ]
 
 export default function FAQPage() {
+  const cites = createCitations()
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
       <JsonLd
@@ -127,12 +129,12 @@ export default function FAQPage() {
               <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-3 text-yellow-400">How accurate are the calculations?</h3>
                 <p className="text-green-300 mb-3">
-                  Our calculations are based on scientifically validated formulas from "The Effects of Nuclear Weapons" 
-                  by Glasstone & Dolan and other declassified research. However, they provide <em>estimates</em> 
+                  The radii come from the scaling laws in The Effects of Nuclear Weapons (Glasstone &amp; Dolan, 1977)
+                  and the standard scaling-law table derived from it.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3" /> They provide <em>estimates</em>
                   based on idealized conditions.
                 </p>
                 <p className="text-green-300">
-                  Real-world effects would vary significantly due to terrain, weather, building construction, 
+                  Real-world effects would vary significantly due to terrain, weather, building construction,
                   and numerous other factors. These are educational approximations, not precise predictions.
                 </p>
               </div>
@@ -175,8 +177,8 @@ export default function FAQPage() {
                     <h4 className="font-semibold text-red-400 mb-2">Surface Burst</h4>
                     <ul className="text-sm text-green-300 space-y-1">
                       <li>• Detonated at ground level</li>
-                      <li>• 40-50% reduced blast radius</li>
-                      <li>• Massive radioactive fallout plume</li>
+                      <li>• Shorter blast range than an optimum-height air burst<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2" /></li>
+                      <li>• Heavy local radioactive fallout</li>
                       <li>• Creates large crater</li>
                       <li>• Long-term area contamination</li>
                     </ul>
@@ -191,42 +193,42 @@ export default function FAQPage() {
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#ffff00' }}></div>
                     <div>
                       <span className="font-semibold text-yellow-400">Fireball (Yellow):</span>
-                      <span className="text-green-300 ml-2">Complete vaporization zone. Everything within is destroyed.</span>
+                      <span className="text-green-300 ml-2">The hot, luminous sphere at the burst point; at the first instant it reaches tens of millions of degrees.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3" /></span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#ff0000' }}></div>
                     <div>
                       <span className="font-semibold text-red-400">Severe Blast (Red):</span>
-                      <span className="text-green-300 ml-2">20 psi overpressure. Reinforced concrete buildings destroyed.</span>
+                      <span className="text-green-300 ml-2">20 psi overpressure. Reinforced concrete structures are leveled.<Cite c={cites} ids="us-congress-office-of-technology-assessment-via" /></span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#ff8800' }}></div>
                     <div>
                       <span className="font-semibold text-orange-400">Moderate Blast (Orange):</span>
-                      <span className="text-green-300 ml-2">5 psi overpressure. Most residential buildings collapse.</span>
+                      <span className="text-green-300 ml-2">5 psi overpressure. Typical homes and lightly built commercial buildings are destroyed.<Cite c={cites} ids="us-congress-office-of-technology-assessment-via" /></span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#808080' }}></div>
                     <div>
                       <span className="font-semibold text-gray-400">Light Blast (Gray):</span>
-                      <span className="text-green-300 ml-2">1 psi overpressure. Windows shatter; debris injuries.</span>
+                      <span className="text-green-300 ml-2">1 psi overpressure. Windows shatter.<Cite c={cites} ids="us-congress-office-of-technology-assessment-via" /></span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#ff00ff' }}></div>
                     <div>
                       <span className="font-semibold text-purple-400">3rd Degree Burns (Magenta):</span>
-                      <span className="text-green-300 ml-2">Severe burns requiring immediate medical care.</span>
+                      <span className="text-green-300 ml-2">Severe burns requiring immediate medical care.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-6" /></span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#ff99ff' }}></div>
                     <div>
                       <span className="font-semibold text-pink-400">2nd Degree Burns (Pink):</span>
-                      <span className="text-green-300 ml-2">Painful blistering burns.</span>
+                      <span className="text-green-300 ml-2">Painful blistering burns.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-6" /></span>
                     </div>
                   </div>
                 </div>
@@ -237,21 +239,20 @@ export default function FAQPage() {
                 <p className="text-green-300 mb-3">Nuclear weapons cause damage through multiple mechanisms:</p>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <h4 className="font-semibold text-orange-400 mb-2">Immediate Effects (seconds to minutes)</h4>
+                    <h4 className="font-semibold text-orange-400 mb-2">Immediate Effects (seconds to about a minute)<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2" /></h4>
                     <ul className="text-sm text-green-300 space-y-1">
                       <li>• <strong>Fireball:</strong> Extreme heat vaporizes everything nearby</li>
                       <li>• <strong>Thermal radiation:</strong> Intense heat causes burns and fires</li>
+                      <li>• <strong>Blast wave:</strong> Destroys buildings and causes injuries</li>
                       <li>• <strong>Nuclear radiation:</strong> Immediate lethal doses</li>
                       <li>• <strong>Electromagnetic pulse (EMP):</strong> Destroys electronics</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-red-400 mb-2">Delayed Effects (minutes to years)</h4>
+                    <h4 className="font-semibold text-red-400 mb-2">Delayed Effects</h4>
                     <ul className="text-sm text-green-300 space-y-1">
-                      <li>• <strong>Blast wave:</strong> Destroys buildings and causes injuries</li>
                       <li>• <strong>Radioactive fallout:</strong> Contamination lasting years</li>
-                      <li>• <strong>Nuclear winter:</strong> Climate effects from fires/dust</li>
-                      <li>• <strong>Long-term radiation:</strong> Cancer, genetic damage</li>
+                      <li>• <strong>Nuclear winter:</strong> Climate effects from fires and soot</li>
                     </ul>
                   </div>
                 </div>
@@ -261,20 +262,12 @@ export default function FAQPage() {
                 <h3 className="text-xl font-semibold mb-3 text-yellow-400">How long do the effects last?</h3>
                 <div className="space-y-3 text-green-300">
                   <div>
-                    <span className="font-semibold text-yellow-400">Immediate (0-1 hour):</span>
-                    <span className="ml-2">Fireball, thermal radiation, initial nuclear radiation, EMP</span>
+                    <span className="font-semibold text-yellow-400">Initial (within about a minute):</span>
+                    <span className="ml-2">Flash, fireball, blast wave and initial radiation</span>
                   </div>
                   <div>
-                    <span className="font-semibold text-orange-400">Short-term (hours to weeks):</span>
-                    <span className="ml-2">Blast effects, radioactive fallout, acute radiation sickness</span>
-                  </div>
-                  <div>
-                    <span className="font-semibold text-red-400">Long-term (months to decades):</span>
-                    <span className="ml-2">Residual radiation, cancer, genetic effects, environmental damage</span>
-                  </div>
-                  <div>
-                    <span className="font-semibold text-purple-400">Generational (decades to centuries):</span>
-                    <span className="ml-2">Soil contamination, genetic damage, psychological trauma</span>
+                    <span className="font-semibold text-orange-400">Residual fallout (hours to years):</span>
+                    <span className="ml-2">Most intense in the first hours and days, then declining over weeks to years<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5" /></span>
                   </div>
                 </div>
               </div>
@@ -293,11 +286,11 @@ export default function FAQPage() {
                   tons of TNT explosive:
                 </p>
                 <ul className="list-disc list-inside space-y-1 text-green-300">
-                  <li><strong>1 kiloton (kt)</strong> = 1,000 tons of TNT</li>
-                  <li><strong>1 megaton (Mt)</strong> = 1,000,000 tons of TNT</li>
-                  <li><strong>Hiroshima bomb:</strong> ~15 kt</li>
-                  <li><strong>Modern strategic weapon:</strong> 100-500 kt</li>
-                  <li><strong>Largest ever tested (Tsar Bomba):</strong> 50 Mt</li>
+                  <li><strong>1 kiloton (kt)</strong> = 1,000 tons of TNT<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5" /></li>
+                  <li><strong>1 megaton (Mt)</strong> = 1,000,000 tons of TNT<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5" /></li>
+                  <li><strong>Hiroshima bomb:</strong> ~15 kt<Cite c={cites} ids="us-doe-nevada-operations-office-united-states-nu" /></li>
+                  <li><strong>Modern strategic warhead:</strong> about 100-800 kt (a few exceed 1 Mt)<Cite c={cites} ids="federation-of-american-scientists-bulletin-of-th-2;bulletin-of-the-atomic-scientists-fas-russian-nu;bulletin-of-the-atomic-scientists-chinese-nuclea" /></li>
+                  <li><strong>Largest ever tested (Tsar Bomba):</strong> 50 Mt<Cite c={cites} ids="nuclear-weapon-archive-the-soviet-weapons-progra" /></li>
                 </ul>
               </div>
 
@@ -400,9 +393,6 @@ export default function FAQPage() {
               </p>
               <div className="text-center">
                 <p className="text-green-400 font-semibold text-lg mb-2">📧 info@nukeblastsimulator.com</p>
-                <p className="text-green-300 text-sm">
-                  Educational inquiries typically receive responses within 2-3 business days
-                </p>
               </div>
               <div className="mt-6 grid md:grid-cols-3 gap-4 text-center">
                 <div>
@@ -420,6 +410,8 @@ export default function FAQPage() {
               </div>
             </div>
           </section>
+
+          <Sources c={cites} />
         </div>
       </main>
     </div>
