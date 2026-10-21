@@ -7,6 +7,7 @@ export interface Bomb {
   country: string
   year?: number
   description: string
+  sources?: string[] // NBS-005 citation source ids (research/sources.csv)
 }
 
 export interface Location {

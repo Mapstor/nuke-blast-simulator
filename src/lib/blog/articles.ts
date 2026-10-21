@@ -327,7 +327,7 @@ export const articles: Article[] = [
   {
     slug: 'modern-nuclear-arsenals-2026',
     title: 'Modern Nuclear Arsenals: By the Numbers (2026 Update)',
-    description: 'Nine states currently possess nuclear weapons, with a combined inventory of roughly 12,500 warheads. Here is the breakdown by country, delivery system, and yield.',
+    description: 'Nine states currently possess nuclear weapons, with a combined inventory of roughly 12,187 warheads. Here is the breakdown by country, delivery system, and yield.',
     datePublished: '2026-04-29',
     author: 'Marko Visic',
     category: 'doctrine',
@@ -335,13 +335,13 @@ export const articles: Article[] = [
     body: [
       {
         body: [
-          { type: 'p', text: 'As of early 2026, nine states are believed to possess nuclear weapons: the United States, Russia, China, the United Kingdom, France, India, Pakistan, North Korea, and Israel (which has never officially confirmed). Their combined warhead inventory is approximately 12,500 — down from a Cold War peak of around 70,000 in 1986, but climbing again as China, Russia, and North Korea modernize and expand. Estimates draw on SIPRI, FAS, and Bulletin of the Atomic Scientists.' },
+          { type: 'p', text: 'As of early 2026, nine states are believed to possess nuclear weapons: the United States, Russia, China, the United Kingdom, France, India, Pakistan, North Korea, and Israel (which has never officially confirmed). Their combined warhead inventory is approximately 12,187 — down from a Cold War peak of around 70,000 in 1986, but climbing again as China, Russia, and North Korea modernize and expand. Estimates draw on SIPRI, FAS, and Bulletin of the Atomic Scientists.' },
         ],
       },
       {
         heading: 'The big two: the United States and Russia',
         body: [
-          { type: 'p', text: 'The United States and Russia together hold roughly 89% of the world\'s nuclear weapons. Russia\'s arsenal is estimated at about 5,580 warheads (1,710 deployed strategic, 1,070 deployed non-strategic, plus reserves and retired-but-intact). The United States has roughly 5,044 warheads (1,670 deployed strategic, 100 deployed non-strategic, plus reserves).' },
+          { type: 'p', text: 'The United States and Russia together hold about 86% of the world\'s nuclear weapons (FAS/SIPRI, early 2026). Russia\'s arsenal is estimated at about 5,580 warheads (1,710 deployed strategic, 1,070 deployed non-strategic, plus reserves and retired-but-intact). The United States has roughly 5,044 warheads (1,670 deployed strategic, 100 deployed non-strategic, plus reserves).' },
           { type: 'p', text: 'Both arsenals follow the classical "triad" structure: land-based intercontinental ballistic missiles (ICBMs), submarine-launched ballistic missiles (SLBMs), and strategic bombers. The United States operates 400 Minuteman III ICBMs, 14 Ohio-class ballistic-missile submarines (each carrying up to 20 Trident II SLBMs), and a fleet of B-2A and B-52H strategic bombers. Russia operates a similar triad with the Yars and Sarmat ICBMs, Borei-class submarines, and Tu-160 and Tu-95 bombers.' },
         ],
       },
@@ -382,7 +382,7 @@ export const articles: Article[] = [
       {
         heading: 'Total inventory and trends',
         body: [
-          { type: 'p', text: 'Adding the official estimates, the global nuclear stockpile is approximately 12,500 warheads in 2026, of which about 9,500 are in active military arsenals. Approximately 3,800 are deployed on missiles or aircraft ready to launch on short notice; the remainder are stored as reserves.' },
+          { type: 'p', text: 'Adding the official estimates, the global nuclear stockpile is approximately 12,187 warheads in 2026, of which about 9,500 are in active military arsenals. Approximately 3,800 are deployed on missiles or aircraft ready to launch on short notice; the remainder are stored as reserves.' },
           { type: 'p', text: 'After three decades of post-Cold-War decline, total numbers stabilized in the late 2010s and have begun rising slightly. The drivers are Chinese expansion, Russian and Pakistani modernization, and a likely North Korean buildup. Combined with the expiration of the New START Treaty in February 2026 and Russia\'s suspension of participation in 2023, the era of US-Russia bilateral arms control is effectively over.' },
           { type: 'p', text: 'See the full Weapons Database for individual warhead profiles. The "compare" pages let you put any two of these warheads head-to-head; the scenarios pages let you see what each one would do to a major city.' },
         ],

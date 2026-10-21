@@ -1,18 +1,18 @@
 {
   "/": {
-    "hash": "1d339052c94c5c11",
+    "hash": "cd12f9574ece7b48",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/about": {
-    "hash": "a3bfcdff60ec0d13",
+    "hash": "d4c34b6279a22496",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/blog": {
-    "hash": "f955244f321e8a97",
+    "hash": "8466f5769c50f106",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/blog/emp-high-altitude-nuclear-burst": {
     "hash": "a6fd9f9e98b8fb3c",
@@ -35,9 +35,9 @@
     "dateModified": "2026-10-15"
   },
   "/blog/modern-nuclear-arsenals-2026": {
-    "hash": "d65062237d336fe5",
+    "hash": "802037b0cb8f0eb6",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/blog/nuclear-winter-regional-war-cooling": {
     "hash": "dc13c8654faa8533",
@@ -55,39 +55,39 @@
     "dateModified": "2026-10-15"
   },
   "/compare": {
-    "hash": "3b3f47c16513e5ad",
+    "hash": "8d063883a3214868",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/b61-vs-davy-crockett": {
-    "hash": "0e86373e9b8e6fdf",
+    "hash": "87ace5e2e2712350",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/b61-vs-w54": {
-    "hash": "7dccb731f95a9a30",
+    "hash": "e99d9ba04b49d466",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/b83-vs-b53": {
-    "hash": "0d55dd486a6d4de9",
+    "hash": "2c521d5d47bbfaf5",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/b83-vs-tsar-bomba": {
-    "hash": "14ab48b546ee8937",
+    "hash": "f28ebe63b4ec4108",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/b83-vs-w88": {
-    "hash": "d4babb3bf20f7227",
+    "hash": "fdf84fdb3df4e5dc",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/castle-bravo-vs-castle-yankee": {
-    "hash": "ef940af78f2345a4",
+    "hash": "58fe157799c31560",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/castle-bravo-vs-ivy-mike": {
     "hash": "16170cc27a50a204",
@@ -95,14 +95,14 @@
     "dateModified": "2026-10-15"
   },
   "/compare/castle-bravo-vs-little-boy": {
-    "hash": "5f4cee54a4e38fec",
+    "hash": "7dea29d39b5333a6",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/fat-man-vs-moab": {
-    "hash": "6cf6b3807981293a",
+    "hash": "1a4c097f273bbeac",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/fat-man-vs-trinity": {
     "hash": "5ccef437e7b8a284",
@@ -110,9 +110,9 @@
     "dateModified": "2026-10-15"
   },
   "/compare/fat-man-vs-w76": {
-    "hash": "64913f11d8ac2bb4",
+    "hash": "cd6c49091926d4f9",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/ivy-mike-vs-castle-bravo": {
     "hash": "1b5f83d4b02fa603",
@@ -120,59 +120,59 @@
     "dateModified": "2026-10-15"
   },
   "/compare/little-boy-vs-fat-man": {
-    "hash": "687f797a080de6f2",
+    "hash": "971e929970300b29",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/little-boy-vs-foab": {
-    "hash": "8dd41b56488f0f1e",
+    "hash": "3e6195c694b8dcad",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/little-boy-vs-moab": {
-    "hash": "c8632a3cf35997c7",
+    "hash": "69c5a724ecb07c7a",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/little-boy-vs-w76": {
-    "hash": "16f8ca7ea74b0a00",
+    "hash": "5f59e7f6e46b9d42",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/trinity-vs-596": {
-    "hash": "93ba59c44d4382e7",
+    "hash": "57a52ba8370d8c3e",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/trinity-vs-chagai-i": {
-    "hash": "3b61a40b843a95f1",
+    "hash": "0f490021f7e979c7",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/trinity-vs-gerboise-bleue": {
-    "hash": "76e3b610147bc34e",
+    "hash": "6aea2a591a75af19",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/trinity-vs-hurricane": {
-    "hash": "b2efd92cc4834a68",
+    "hash": "49f98657228616e5",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/trinity-vs-hwasong-14": {
-    "hash": "566dd46b5fee3238",
+    "hash": "5a01b3c0e9225b4e",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/trinity-vs-joe-1": {
-    "hash": "9bf52a417cb64d67",
+    "hash": "73dfcea8c36fcee9",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/trinity-vs-smiling-buddha": {
-    "hash": "a3ab25cbc8aecc87",
+    "hash": "7b35edf13fb81cdd",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/tsar-bomba-vs-castle-bravo": {
     "hash": "d37ad33b15e6b3e6",
@@ -185,29 +185,29 @@
     "dateModified": "2026-10-15"
   },
   "/compare/tsar-bomba-vs-little-boy": {
-    "hash": "9646f9c9d6d8072d",
+    "hash": "fd1e98a1e0336cb1",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/tsar-bomba-vs-soviet-test-219": {
-    "hash": "508301fa6a85e5d1",
+    "hash": "10b1f6ab4c510a3d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/w80-vs-b61": {
-    "hash": "456ce73affac517e",
+    "hash": "bf290b62ee7632bb",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/w87-vs-w88": {
-    "hash": "7fa2be06938082c4",
+    "hash": "2611fb026240a7a2",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/compare/w88-vs-w76": {
-    "hash": "8bb0777f5257c352",
+    "hash": "8c18bcab43e890b4",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/contact": {
     "hash": "f1cc2529ea5521ec",
@@ -215,509 +215,509 @@
     "dateModified": "2026-10-15"
   },
   "/examples": {
-    "hash": "567a7791402e76c1",
+    "hash": "52b97a50da83efb5",
     "datePublished": "2026-05-05",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/abu-dhabi": {
-    "hash": "2e7c905c189d92d5",
+    "hash": "b91e56a377905074",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/accra": {
-    "hash": "20b440971c11775a",
+    "hash": "72339062c1d30298",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/addis-ababa": {
-    "hash": "d9a187475b1c5016",
+    "hash": "7b2440a0ff64a15b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/algiers": {
-    "hash": "4abc32ea6b264e99",
+    "hash": "e1a9e223bb900c2c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/amman": {
-    "hash": "dd0bab4a73182ca3",
+    "hash": "38e6658c12a8ee60",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/amsterdam": {
-    "hash": "f6ab55cb306494ac",
+    "hash": "f084436bc83c5ec6",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/atlanta": {
-    "hash": "099c651bcc3dabe9",
+    "hash": "fda4c460fb0eaa97",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/auckland": {
-    "hash": "151ad4f6da2a3ed6",
+    "hash": "cd0abcf2af57f9c9",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/baghdad": {
-    "hash": "ec6a3a24973ed4b5",
+    "hash": "ffac7a8eb34a2466",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/bangalore": {
-    "hash": "ff44544a4587623b",
+    "hash": "e17d82359c080fcc",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/bangkok": {
-    "hash": "4e5439880a0149e3",
+    "hash": "a571794638965211",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/barcelona": {
-    "hash": "6c13ff1473d265e8",
+    "hash": "88b96cd0b0c83c98",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/beijing": {
-    "hash": "d6e20932043d58e7",
+    "hash": "a93821a74d9e71f4",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/berlin": {
-    "hash": "392c1e9a4bf2877e",
+    "hash": "8470ad5108a022ff",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/bogota": {
-    "hash": "1726735792a96a09",
+    "hash": "c59d25f5c783d006",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/boston": {
-    "hash": "2c9e643e6bbc079e",
+    "hash": "8e26c9743fd3a91d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/brisbane": {
-    "hash": "b64ddf58ce3e6380",
+    "hash": "0b8a637e37235a80",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/brussels": {
-    "hash": "fb347b51510e3511",
+    "hash": "d978d92e72798020",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/budapest": {
-    "hash": "54b82c58ce027e2e",
+    "hash": "b8e5fc290b4c9d37",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/buenos-aires": {
-    "hash": "6d74baa70e2e0368",
+    "hash": "1a072a9c1b19cca7",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/busan": {
-    "hash": "e80e0f41ccfe483f",
+    "hash": "0065b1bec6238d87",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/cairo": {
-    "hash": "1b43893a51d01c14",
+    "hash": "d3b77590b4579667",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/cape-town": {
-    "hash": "533c94044354df2a",
+    "hash": "c7806287f0090c15",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/caracas": {
-    "hash": "7bc21a377f38c57a",
+    "hash": "128c7cc7b5cdd5d7",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/casablanca": {
-    "hash": "eed28fe3ce42b72c",
+    "hash": "75795b9134d00e17",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/chennai": {
-    "hash": "c255f06aa81d72d3",
+    "hash": "6ba6774f5ed9509f",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/chicago": {
-    "hash": "2f1eba9834b28986",
+    "hash": "4dea1c3e413956e9",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/chongqing": {
-    "hash": "8a15ae2cc62318b0",
+    "hash": "6f3becf34dca4ad7",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/copenhagen": {
-    "hash": "a8cea668446cc371",
+    "hash": "47bd52e3c419a765",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/delhi": {
-    "hash": "4ef0a78ea9cdbe09",
+    "hash": "5dfc8ebd718863e3",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/denver": {
-    "hash": "6f8ee6ddc483ea9a",
+    "hash": "10e0612d15e56f01",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/dhaka": {
-    "hash": "2655d93420d50e6c",
+    "hash": "7b86d2677db5c93a",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/doha": {
-    "hash": "4cc8925b4f1d278d",
+    "hash": "61cceddc249a59c4",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/dubai": {
-    "hash": "3e1697f4162abb71",
+    "hash": "14fe89dc06dedf2a",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/dublin": {
-    "hash": "f9af6a7f580b3a44",
+    "hash": "aa31666f29d2a707",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/guangzhou": {
-    "hash": "1cb556356e070428",
+    "hash": "b97d3abc8b05b0d6",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/hamburg": {
-    "hash": "83fc89c17b70057c",
+    "hash": "e821d0a063a2068d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/hanoi": {
-    "hash": "4211d7726330b1b0",
+    "hash": "85b966f6b5141802",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/ho-chi-minh-city": {
-    "hash": "3c109d73c77352de",
+    "hash": "3b3877c8699d24dc",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/hong-kong": {
-    "hash": "3f67490b45822f5f",
+    "hash": "fd495c03168e1a78",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/houston": {
-    "hash": "16f11e88b4f0830d",
+    "hash": "c31dab3a39411edf",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/hyderabad": {
-    "hash": "d61ea074cc52eb37",
+    "hash": "52e0f0e584fd6f3f",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/islamabad": {
-    "hash": "4bc70258ff0a28cf",
+    "hash": "eee41ebd4d8857a3",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/istanbul": {
-    "hash": "82eefe7658bac6ef",
+    "hash": "7745f5d30bf2bd52",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/jakarta": {
-    "hash": "c903859b53f670fb",
+    "hash": "d3ba13020692d911",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/johannesburg": {
-    "hash": "db12330b30f74fb5",
+    "hash": "3ec83a49e098ab21",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/karachi": {
-    "hash": "152fc66f5f855e46",
+    "hash": "9d98fb784c0df98c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/kolkata": {
-    "hash": "cdcce060d9cf571f",
+    "hash": "b7c571b3a9effb66",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/kuala-lumpur": {
-    "hash": "154ff49f30b7818a",
+    "hash": "5dfb282f2984ea7b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/kuwait-city": {
-    "hash": "bdd708070becec42",
+    "hash": "d9aacbf8786f7587",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/kyiv": {
-    "hash": "2cf1813ae2bfdf67",
+    "hash": "83754af38a2bfbe0",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/lagos": {
-    "hash": "b77778568286664a",
+    "hash": "cb3c78f0ea192c26",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/lahore": {
-    "hash": "dda0ef7f36884447",
+    "hash": "e7c553235a6f2590",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/lima": {
-    "hash": "54f6e4f20ec4becb",
+    "hash": "8b4e8ffd9d48ef0f",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/lisbon": {
-    "hash": "332c217ecacbe163",
+    "hash": "c6c11957876c7da9",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/london": {
-    "hash": "80f67fd62a566dd5",
+    "hash": "a5889b1970e1df5a",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/los-angeles": {
-    "hash": "0307db9ca1f37093",
+    "hash": "d7e9cde6e0d2c452",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/madrid": {
-    "hash": "7cfce849156f6aa2",
+    "hash": "55968c2fe99c1b9e",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/manila": {
-    "hash": "348627960d640fa2",
+    "hash": "7b4657bd7387efa2",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/melbourne": {
-    "hash": "5cd36478ac779d9a",
+    "hash": "a2077f83cef0dce3",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/mexico-city": {
-    "hash": "daa0459247b48825",
+    "hash": "d0187b59c8ba9a59",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/miami": {
-    "hash": "28f71d0a24726ffc",
+    "hash": "2a4ee94ff82758d1",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/milan": {
-    "hash": "7a12d4abc76fa3d8",
+    "hash": "855f91bd7210e653",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/montevideo": {
-    "hash": "9cb63aa763f08e08",
+    "hash": "9a0a4a45356132a0",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/moscow": {
-    "hash": "e55c430ad0bcecf6",
+    "hash": "344668fcaa0a2640",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/mumbai": {
-    "hash": "f2fac0077a21c4b2",
+    "hash": "4a13d8e3d0c04454",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/munich": {
-    "hash": "312f95448b9b47c7",
+    "hash": "76132773fb850e83",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/nagoya": {
-    "hash": "1d497355c75ca348",
+    "hash": "0f078e961cdc08cf",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/nairobi": {
-    "hash": "72045fae8c6ce2bc",
+    "hash": "a42166b4eae6db5d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/new-york": {
-    "hash": "eecb1b88363bc4c0",
+    "hash": "f0de471a10ad3fe8",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/osaka": {
-    "hash": "4c638fc1d7ab6a7b",
+    "hash": "87f7b1d891eefb5a",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/paris": {
-    "hash": "a91c77c300abe5f7",
+    "hash": "9b0ad1504151afeb",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/perth": {
-    "hash": "eaf3574bc7504ee9",
+    "hash": "d9e3c406a044a40a",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/philadelphia": {
-    "hash": "a31f0ed61930103d",
+    "hash": "7b8b1cf4258b2dd2",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/phoenix": {
-    "hash": "8dbf892da55879bf",
+    "hash": "0724a8088c8942ad",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/pyongyang": {
-    "hash": "1ef320eafe010084",
+    "hash": "bee48b28fc02519d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/quito": {
-    "hash": "62c9aaac7b3f7777",
+    "hash": "3610a340b10c3a4b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/rio-de-janeiro": {
-    "hash": "427dd09e387be042",
+    "hash": "40f455cd37ba30b1",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/riyadh": {
-    "hash": "7526fee436bfebb0",
+    "hash": "cf79d3bd942ab3d3",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/rome": {
-    "hash": "f70de64a5445af2d",
+    "hash": "d6819ac4ca79d98a",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/salvador": {
-    "hash": "9d43e028a44b411d",
+    "hash": "297711a98eadbaf8",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/san-francisco": {
-    "hash": "63b6f45fcbc1918d",
+    "hash": "20d084d81a3b5a45",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/santiago": {
-    "hash": "affe4af363223c30",
+    "hash": "21046438aedd2357",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/sao-paulo": {
-    "hash": "b9882b176ade1704",
+    "hash": "ffee1028d09c1aa8",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/seattle": {
-    "hash": "1fde32a5d10e6e32",
+    "hash": "a7f164ead6c10595",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/seoul": {
-    "hash": "e5995ec7b0b098a2",
+    "hash": "84d41aea962444d2",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/shanghai": {
-    "hash": "466e32836a46a03f",
+    "hash": "c366d786127cf45a",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/shenzhen": {
-    "hash": "d246caba459d2042",
+    "hash": "1eee6a70b67dc5b4",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/singapore": {
-    "hash": "4b7f57d548b78b1d",
+    "hash": "7d72cf2f3f18443d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/stockholm": {
-    "hash": "6acf92240a376973",
+    "hash": "6de17d5876a02807",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/sydney": {
-    "hash": "1c23474c75263a46",
+    "hash": "f05b79455daa9aa9",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/taipei": {
-    "hash": "6192bd2d0446056b",
+    "hash": "29f3a94322a0ad4d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/tehran": {
-    "hash": "cc8fec7f869dd661",
+    "hash": "e1311ee03cc1267d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/tel-aviv": {
-    "hash": "5356e0a78eff62dd",
+    "hash": "dd11dfc8b4075628",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/tokyo": {
-    "hash": "ed2071b7599da540",
+    "hash": "fbe8dcd6114ca4fa",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/toronto": {
-    "hash": "54c01a1ebfd37c48",
+    "hash": "3bf33647e495c0d0",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/vancouver": {
-    "hash": "896466d9e3071dc1",
+    "hash": "7ce59ec89e0d9bd8",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/vienna": {
-    "hash": "c5abd33f3195352a",
+    "hash": "ad286ab4026506a8",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/warsaw": {
-    "hash": "a81b0693989a3216",
+    "hash": "edba23ea230816c7",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/examples/washington-dc": {
-    "hash": "1d937d778b1b93c3",
+    "hash": "b2299baddc3b054f",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/faq": {
     "hash": "27b423ce19c94277",
@@ -1000,238 +1000,233 @@
     "dateModified": "2026-10-15"
   },
   "/sources": {
-    "hash": "5bb6d826b21d7982",
+    "hash": "a6e720e0ccad5f56",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/terms": {
-    "hash": "1cc7adae42f3c0c5",
+    "hash": "b368b1632a2ab07a",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons": {
-    "hash": "0520c2d4df8fa720",
+    "hash": "18612c9f43c56090",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/596": {
-    "hash": "adad117d75f041ad",
+    "hash": "b7696a761fc0d666",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/b41": {
-    "hash": "7c264a545c7c1765",
+    "hash": "7bda2b84507b9000",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/b53": {
-    "hash": "fab8ffa2a9515c10",
+    "hash": "2fcd9f76fa9e29f4",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/b61": {
-    "hash": "160db7629e759341",
+    "hash": "afcb4ca298a3b277",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/b83": {
-    "hash": "7940d2dcf0f64f36",
+    "hash": "01b92ea8716a7e49",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/blockbuster": {
-    "hash": "4ac8d94acbe6e4e0",
+    "hash": "11c584ebc352e15c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/blu-82": {
-    "hash": "5ca969fb1e1d9505",
+    "hash": "339412d678f57751",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/canopus": {
-    "hash": "25c10e9069cbc489",
+    "hash": "e79a5ffa8c489cfc",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/castle-bravo": {
-    "hash": "1d63aba51d429299",
+    "hash": "6927829be34484bd",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/castle-yankee": {
-    "hash": "680193d6a2b3a392",
+    "hash": "a5892055b0b16caf",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/chagai-i": {
-    "hash": "bb5e22598088c9be",
+    "hash": "19391ba8a654e8a4",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/davy-crockett": {
-    "hash": "b01cad287826c713",
+    "hash": "a8e720c4a0a917ed",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/fab-500": {
-    "hash": "1be3bedd081e7c29",
+    "hash": "68bad460c8a3489c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/fab-5000": {
-    "hash": "69f946a687be1913",
+    "hash": "89ae3278c46f1fcf",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/fat-man": {
-    "hash": "5b0cc04495b9de6f",
+    "hash": "f4ba5db694a6b230",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/foab": {
-    "hash": "676d39959a4a1eb7",
+    "hash": "ffee905c35b255b5",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/gbu-28": {
-    "hash": "5ef6318d1d16e693",
+    "hash": "0f4cc915e623fe20",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/gbu-57": {
-    "hash": "7e19f795de048958",
+    "hash": "80d3d52a7649a9f2",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/gerboise-bleue": {
-    "hash": "0dd45ad539566808",
+    "hash": "25d8e49861fa778d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/grand-slam": {
-    "hash": "bb849305b1fe8242",
+    "hash": "8f176d03580d406c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/halifax-explosion": {
-    "hash": "67aa9b521874c58e",
+    "hash": "1aeb554b6c577741",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/hurricane": {
-    "hash": "3a69e307a451a965",
+    "hash": "fd41e79289764845",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/hwasong-14": {
-    "hash": "f0a5a51a51dad6bf",
+    "hash": "4c79c1da9bf0048c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/ivy-mike": {
-    "hash": "e81daeed139cee1a",
+    "hash": "f8d6ba59bf8b0ada",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/jdam": {
-    "hash": "96574ba50a99c02b",
+    "hash": "efe7c4131909c165",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/joe-1": {
-    "hash": "35c210000d638215",
+    "hash": "f450904047527c2e",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/little-boy": {
-    "hash": "8c8b2ebabaf5ac8a",
+    "hash": "be196007968a60c2",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/mark-84": {
-    "hash": "f9bc1d73f6262102",
+    "hash": "6ee4954e66f6243d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/mk-82": {
-    "hash": "e1fcb706ae467870",
+    "hash": "f69840ced5eb98dc",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/moab": {
-    "hash": "a437fad5bb714816",
+    "hash": "a54bdf129dd8d1d1",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
-  },
-  "/weapons/ofab-5000": {
-    "hash": "1d0ec74fec845cbb",
-    "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/operation-hardtack-poplar": {
-    "hash": "5d4817a3656ffb5d",
+    "hash": "1eacdef18cccbb7f",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/orange-herald": {
-    "hash": "19c9c06376cbe7a7",
+    "hash": "fe460599b16d7b58",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/smiling-buddha": {
-    "hash": "2bedb775c89dc08f",
+    "hash": "10cf24577112d17c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/soviet-test-219": {
-    "hash": "c55adca527634309",
+    "hash": "814ccc579f611411",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/tallboy": {
-    "hash": "c378c5d2020140f1",
+    "hash": "6da251e1e6135a38",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/test-no-6": {
-    "hash": "13986f6efcaa19ff",
+    "hash": "8a6e86c43a20a5e1",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/trinity": {
-    "hash": "b2158455ba6bcc38",
+    "hash": "883744d21e9239f9",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/tsar-bomba": {
-    "hash": "df2d318bc8a762b2",
+    "hash": "5bee8474cf6747a1",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/w54": {
-    "hash": "0da97473d0c47673",
+    "hash": "b786ea3cac830cee",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/w76": {
-    "hash": "4cfc0edd6878550d",
+    "hash": "37f1ddae83efdd14",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/w80": {
-    "hash": "3ea2e532cdc214cb",
+    "hash": "374a230bfc241a31",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/w87": {
-    "hash": "2937b8ce4338e431",
+    "hash": "ecd9536ba8cbcb0c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   },
   "/weapons/w88": {
-    "hash": "a2ae3d4b07cf8353",
+    "hash": "4d036c896ea7e9bf",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-21"
   }
 }

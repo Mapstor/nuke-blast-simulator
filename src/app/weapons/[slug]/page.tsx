@@ -12,6 +12,7 @@ import {
 } from '@/lib/seo/schemas'
 import { bombs } from '@/lib/data/bombs'
 import { effectRadiiKm, formatRadiusKm, EFFECTS_FLAGS } from '@/lib/calculations/effects'
+import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
 import type { Bomb } from '@/lib/types'
 
 const HIROSHIMA_YIELD_KT = 15
@@ -130,6 +131,8 @@ export default async function WeaponDetailPage({
   // keep their spec content but show no effect radii (EFFECTS_FLAGS).
   const showEffects = isNuclear || EFFECTS_FLAGS.CONVENTIONAL_EFFECTS
   const r = showEffects ? effectRadiiKm(bomb.yield) : null
+  const cites = createCitations()
+  const weaponSourceIds = bomb.sources ?? []
 
   const faqEntries = [
     ...(r
@@ -204,7 +207,8 @@ export default async function WeaponDetailPage({
           <h2 className="text-2xl font-semibold mb-4 text-green-400">Overview</h2>
           <p className="text-green-300 mb-4">{bomb.description}.</p>
           <p className="text-green-300">
-            With a yield of <strong className="text-yellow-400">{yieldText}</strong>, the {bomb.name} is{' '}
+            With a yield of <strong className="text-yellow-400">{yieldText}</strong>
+            <Cite c={cites} ids={weaponSourceIds.join(';')} />, the {bomb.name} is{' '}
             <strong className="text-yellow-400">{comparison}</strong>. {isNuclear
               ? `As a ${typeText} weapon, it derives its energy from ${
                   bomb.type === 'fission' ? 'nuclear fission of uranium or plutonium' :
@@ -225,7 +229,7 @@ export default async function WeaponDetailPage({
               <Link href="/methodology" className="text-yellow-400 hover:underline">
                 The Effects of Nuclear Weapons (Glasstone &amp; Dolan, 1977)
               </Link>{' '}
-              and the published effects scaling table.
+              and the published effects scaling table<Cite c={cites} ids={ENGINE_SOURCE_IDS.join(';')} />.
             </p>
 
             <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 overflow-x-auto">
@@ -336,10 +340,12 @@ export default async function WeaponDetailPage({
           </div>
         </section>
 
-        <section className="text-sm text-green-300/70">
-          Sources: <Link href="/sources" className="text-yellow-400 hover:underline">declassified DOE/DOD records, FAS, SIPRI, Glasstone &amp; Dolan</Link>.
-          See the full <Link href="/weapons" className="text-yellow-400 hover:underline">Weapons Database</Link> or learn about
-          the <Link href="/methodology" className="text-yellow-400 hover:underline">scientific methodology</Link>.
+        <Sources c={cites} extraIds={[...(r ? ENGINE_SOURCE_IDS : []), ...weaponSourceIds]} />
+
+        <section className="text-sm text-green-300/70 mt-6">
+          See the full <Link href="/weapons" className="text-yellow-400 hover:underline">Weapons Database</Link>,
+          all <Link href="/sources" className="text-yellow-400 hover:underline">data sources</Link>, or the{' '}
+          <Link href="/methodology" className="text-yellow-400 hover:underline">scientific methodology</Link>.
         </section>
 
         <PrevNext {...pageNeighbors(bomb.id)} label="Previous and next weapon by yield" />

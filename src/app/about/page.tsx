@@ -83,11 +83,10 @@ export default function AboutPage() {
           <h2 className="text-2xl font-semibold mb-6 text-green-400">How this site is made</h2>
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
             <p className="text-green-300 mb-3">
-              Pages and articles are drafted with AI assistance and then checked by the author. Every figure is
-              traced to a primary source — chiefly <em>The Effects of Nuclear Weapons</em> (Glasstone &amp;
-              Dolan, 1977) and the references on the{' '}
-              <Link href="/sources" className="text-yellow-400 hover:underline">sources page</Link> — before
-              publication. The effect radii are computed from published scaling laws, documented on the{' '}
+              Pages and articles are drafted with AI assistance and then checked by the author. Every figure on
+              this site links to the source it comes from — see the{' '}
+              <Link href="/sources" className="text-yellow-400 hover:underline">sources page</Link>. The effect
+              radii are computed from published scaling laws, documented on the{' '}
               <Link href="/methodology" className="text-yellow-400 hover:underline">methodology page</Link>.
             </p>
             <p className="text-green-300">
@@ -143,12 +142,6 @@ export default function AboutPage() {
               security. The weapons database includes devices from the first atomic bombs to modern
               thermonuclear warheads.
             </p>
-            <div className="bg-yellow-900/20 border-l-4 border-yellow-400 p-4 mt-4">
-              <p className="text-yellow-300 font-semibold">
-                &ldquo;The unleashed power of the atom has changed everything save our modes of thinking, and we
-                thus drift toward unparalleled catastrophe.&rdquo; — Albert Einstein
-              </p>
-            </div>
           </div>
         </section>
 
@@ -175,15 +168,9 @@ export default function AboutPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-6 text-green-400">Data sources</h2>
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
-            <ul className="space-y-3 text-green-300">
-              <li>• Glasstone, S., &amp; Dolan, P. J. (1977). <em>The Effects of Nuclear Weapons</em> (3rd ed.)</li>
-              <li>• Federation of American Scientists — Nuclear Weapons Database</li>
-              <li>• Stockholm International Peace Research Institute (SIPRI)</li>
-              <li>• Bulletin of the Atomic Scientists — Nuclear Notebook</li>
-              <li>• &ldquo;Effects of nuclear explosions&rdquo; scaling table (Wikipedia)</li>
-            </ul>
-            <p className="text-sm text-green-300/70 mt-4">
-              Full citations on the <Link href="/sources" className="text-yellow-400 hover:underline">sources</Link> page.
+            <p className="text-green-300">
+              Every figure on the site is cited inline and listed, with its attribution and a link to the
+              original, on the <Link href="/sources" className="text-yellow-400 hover:underline">sources page</Link>.
             </p>
           </div>
         </section>

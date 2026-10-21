@@ -23,7 +23,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         title={`What if a nuke hit ${city.name}?`}
         subtitle={`${city.country}`}
         metric={{ label: 'Population', value: city.population.toLocaleString() }}
-        metricSecondary={{ label: 'Density', value: `${city.density.toLocaleString()}/km²` }}
+        metricSecondary={city.density !== undefined ? { label: 'Density', value: `${city.density.toLocaleString()}/km²` } : undefined}
       />
     ),
     { ...size },

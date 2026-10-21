@@ -13,6 +13,7 @@ import {
 import { presetLocations, type PresetLocation } from '@/lib/data/cities'
 import { bombs } from '@/lib/data/bombs'
 import { effectRadiiKm, formatRadiusKm } from '@/lib/calculations/effects'
+import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
 
 // The 4 representative weapons we run for each city scenario.
 const SCENARIO_BOMB_IDS = ['little-boy', 'w76', 'castle-bravo', 'tsar-bomba'] as const
@@ -88,6 +89,9 @@ export default async function CityExamplePage({
   const city = findCity(slug)
   if (!city) notFound()
 
+  const cites = createCitations()
+  const popText = `${city.population.toLocaleString()} (${city.populationYear}, ${city.populationDefinition})`
+
   const scenarios = SCENARIO_BOMB_IDS
     .map((id) => bombs.find((b) => b.id === id))
     .filter((b): b is NonNullable<typeof b> => Boolean(b))
@@ -101,7 +105,7 @@ export default async function CityExamplePage({
     {
       question: `What would happen if a nuclear bomb hit ${city.name}?`,
       answer:
-        `${city.name} has a metro population of about ${city.population.toLocaleString()} and an urban-core density around ${city.density.toLocaleString()} per km². ` +
+        `${city.name} has a population of about ${city.population.toLocaleString()} (${city.populationYear}, ${city.populationDefinition})${city.density !== undefined ? ` and an urban density around ${city.density.toLocaleString()} per km²` : ''}. ` +
         (littleBoyScenario
           ? `A Hiroshima-yield warhead (15 kt Little Boy), air-burst at optimum height, would produce a 5 psi moderate-blast radius of about ${formatRadiusKm(littleBoyScenario.r.overpressure5psi)} km — the zone in which most residential buildings collapse. `
           : '') +
@@ -166,7 +170,11 @@ export default async function CityExamplePage({
             What if a Nuclear Bomb Hit {city.name}?
           </h1>
           <p className="text-lg text-green-300">
-            {city.country} · Population {city.population.toLocaleString()} · Density {city.density.toLocaleString()}/km²
+            {city.country} · Population {popText}
+            <Cite c={cites} ids={city.sourceIds.join(';')} />
+            {city.density !== undefined && city.area_km2 !== undefined
+              ? <> · Density {city.density.toLocaleString()}/km²</>
+              : null}
           </p>
           <Byline className="mt-2" />
         </header>
@@ -177,7 +185,8 @@ export default async function CityExamplePage({
           <p className="text-green-300">
             Below are four scenario calculations using historical and modern nuclear weapons. Each row shows
             the radius of an effect zone in kilometers for an{' '}
-            <strong className="text-yellow-400">air burst at optimum height</strong>. Radii are scaling-law
+            <strong className="text-yellow-400">air burst at optimum height</strong>
+            <Cite c={cites} ids={ENGINE_SOURCE_IDS.join(';')} />. Radii are scaling-law
             estimates — see the{' '}
             <Link href="/methodology" className="text-yellow-400 hover:underline">methodology</Link> page for
             the underlying relations. Casualty and fallout estimates are not shown pending a verified
@@ -302,6 +311,8 @@ export default async function CityExamplePage({
           · <Link href="/methodology" className="text-yellow-400 hover:underline">Scientific methodology</Link>{' '}
           · <Link href="/sources" className="text-yellow-400 hover:underline">Data sources</Link>.
         </section>
+
+        <Sources c={cites} extraIds={[...ENGINE_SOURCE_IDS, ...city.sourceIds]} />
 
         <PrevNext {...cityNeighbors(city.slug)} label="Previous and next city" />
       </main>

@@ -3,11 +3,13 @@
 // permanent 308 for every retired URL (generated from the scenario data by
 // scripts/generate-scenario-redirects.mjs).
 const scenarioRedirects = require('./data/scenario-redirects.json')
+// NBS-005: OFAB-5000 was removed from the weapons data (no source).
+const weaponRedirects = require('./data/weapon-redirects.json')
 
 const nextConfig = {
   reactStrictMode: true,
   async redirects() {
-    return scenarioRedirects
+    return [...scenarioRedirects, ...weaponRedirects]
   },
   typescript: {
     ignoreBuildErrors: false,

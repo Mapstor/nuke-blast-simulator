@@ -48,7 +48,7 @@ export default function ExamplesIndexPage() {
             presetLocations.map((c) => ({
               name: `What if a nuclear bomb hit ${c.name}?`,
               url: `/examples/${c.slug}`,
-              description: `${c.country} · ${c.population.toLocaleString()} people · ${c.density.toLocaleString()}/km²`,
+              description: `${c.country} · ${c.population.toLocaleString()} people (${c.populationYear})${c.density !== undefined ? ` · ${c.density.toLocaleString()}/km²` : ''}`,
             })),
             'Nuclear Blast City Scenarios',
           ),
@@ -71,7 +71,7 @@ export default function ExamplesIndexPage() {
           <p className="text-lg text-green-300">
             {presetLocations.length} pre-computed scenarios for major world cities. Each page calculates the
             fireball, blast overpressure, and thermal burn radii (air burst at optimum height) for four
-            representative weapons (Little Boy 15 kt, W76 100 kt, Castle Bravo 15 Mt, Tsar Bomba 50 Mt) over the city.
+            representative weapons (Little Boy, W76, Castle Bravo and Tsar Bomba) over the city.
           </p>
         </header>
 
@@ -108,7 +108,7 @@ export default function ExamplesIndexPage() {
                   >
                     <div className="font-semibold text-yellow-400">{c.name}</div>
                     <div className="text-xs text-green-300/70 mt-1">
-                      {c.country} · {formatPopulation(c.population)} people · {c.density.toLocaleString()}/km²
+                      {c.country} · {formatPopulation(c.population)} people{c.density !== undefined ? <> · {c.density.toLocaleString()}/km²</> : null}
                     </div>
                   </Link>
                 ))}

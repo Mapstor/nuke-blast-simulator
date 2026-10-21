@@ -71,7 +71,8 @@ export function Footer() {
             educational awareness about nuclear weapons effects. Not intended for planning actual attacks.
           </p>
           <p>
-            Data based on declassified research and published scientific studies (Glasstone &amp; Dolan, FAS, SIPRI).
+            Every figure is cited to its source on the{' '}
+            <Link href="/sources" className="text-green-400 hover:text-green-300 hover:underline">sources page</Link>.
             Built to make the physical scale of nuclear weapon effects clear.
           </p>
           <p className="text-gray-400 mt-3">

@@ -357,7 +357,7 @@ export default function WeaponsPage() {
                       <td className="py-2 font-semibold">W76</td>
                       <td>🇺🇸 United States</td>
                       <td>1978</td>
-                      <td className="text-yellow-400">100 kt</td>
+                      <td className="text-yellow-400">90 kt</td>
                       <td>SLBM (Trident)</td>
                       <td className="text-green-400">Active</td>
                     </tr>
