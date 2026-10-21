@@ -18,6 +18,7 @@ import {
   encodeComparisonSlug,
 } from '@/lib/data/comparisons'
 import { effectRadiiKm, formatRadiusKm, EFFECTS_FLAGS, type EffectRadiiKm } from '@/lib/calculations/effects'
+import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
 import type { Bomb } from '@/lib/types'
 
 const HIROSHIMA_YIELD_KT = 15
@@ -112,6 +113,8 @@ export default async function ComparePage({
   const rA: EffectRadiiKm | null = showEffects ? effectRadiiKm(a.yield) : null
   const rB: EffectRadiiKm | null = showEffects ? effectRadiiKm(b.yield) : null
 
+  const cites = createCitations()
+
   const hiroshimaA = a.yield / HIROSHIMA_YIELD_KT
   const hiroshimaB = b.yield / HIROSHIMA_YIELD_KT
 
@@ -199,7 +202,7 @@ export default async function ComparePage({
               {a.country}{a.year ? ` · ${a.year}` : ''} · {describeType(a.type)}
             </p>
             <p className="text-3xl font-bold text-red-400 mb-2">{formatYield(a.yield)}</p>
-            <p className="text-sm text-green-300">{a.description}.</p>
+            <p className="text-sm text-green-300">{a.description}. <Cite c={cites} ids={(a.sources ?? []).join(';')} /></p>
           </div>
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
             <h2 className="text-xl font-semibold mb-2 text-yellow-400">{b.name}</h2>
@@ -207,7 +210,7 @@ export default async function ComparePage({
               {b.country}{b.year ? ` · ${b.year}` : ''} · {describeType(b.type)}
             </p>
             <p className="text-3xl font-bold text-red-400 mb-2">{formatYield(b.yield)}</p>
-            <p className="text-sm text-green-300">{b.description}.</p>
+            <p className="text-sm text-green-300">{b.description}. <Cite c={cites} ids={(b.sources ?? []).join(';')} /></p>
           </div>
         </section>
 
@@ -248,7 +251,7 @@ export default async function ComparePage({
               </table>
             </div>
             <p className="text-sm text-green-300/70 mt-3">
-              Air burst at optimum height. Casualty and fallout estimates are withdrawn pending a verified model.
+              Air burst at optimum height, computed by the site&apos;s effects engine. <Cite c={cites} ids={ENGINE_SOURCE_IDS.join(';')} /> Casualty and fallout estimates are withdrawn pending a verified model.
             </p>
           </section>
         ) : (
@@ -332,6 +335,8 @@ export default async function ComparePage({
             ))}
           </div>
         </section>
+
+        <Sources c={cites} />
 
         <section className="text-sm text-green-300/70">
           See <Link href={`/weapons/${a.id}`} className="text-yellow-400 hover:underline">{a.name} details</Link>,{' '}

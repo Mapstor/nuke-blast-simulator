@@ -8,6 +8,8 @@ import { presetLocations } from '@/lib/data/cities'
 import { COMPARISONS, encodeComparisonSlug } from '@/lib/data/comparisons'
 import { articles } from '@/lib/blog/articles'
 import { glossary } from '@/lib/data/glossary'
+import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
+import { radiusText } from '@/lib/calculations/radius'
 
 export const metadata: Metadata = {
   title: 'Nuclear Blast Simulator — Interactive Nuke Map & Blast Radius Calculator',
@@ -89,6 +91,7 @@ function shortYield(y: number): string {
 }
 
 export default function HomePage() {
+  const cites = createCitations()
   return (
     <main>
       <JsonLd id="ld-home-faq" schema={faqPageSchema(homepageFaq)} />
@@ -117,7 +120,7 @@ export default function HomePage() {
               The simulator instantly displays color-coded zones for the fireball, severe blast (20 psi), moderate
               blast (5 psi), light blast (1 psi), and thermal radiation burn radii — all for an air burst at
               optimum height, using scaling-law formulas from <em>The Effects of Nuclear Weapons</em>
-              (Glasstone &amp; Dolan, 1977) and the published effects scaling table. Casualty and fallout figures
+              (Glasstone &amp; Dolan, 1977) and the published effects scaling table. <Cite c={cites} ids={ENGINE_SOURCE_IDS.join(';')} /> Casualty and fallout figures
               are not shown pending a verified model.
             </p>
             <p>
@@ -302,7 +305,8 @@ export default function HomePage() {
                 <h3 className="text-xl font-semibold text-yellow-400 mb-2">Thermal Radiation</h3>
                 <p>
                   Intense light and infrared radiation cause burns and ignite fires far beyond the blast zone.
-                  3rd-degree burns are possible at distances up to several kilometers for strategic-yield weapons.
+                  3rd-degree burns reach out to about {radiusText(100, 'burn3')} from a 100 kt air burst and
+                  about {radiusText(1000, 'burn3')} from 1 Mt. <Cite c={cites} ids={ENGINE_SOURCE_IDS.join(';')} />
                 </p>
               </div>
               <div>
@@ -349,6 +353,8 @@ export default function HomePage() {
               🎯 Back to the Simulator
             </a>
           </section>
+
+          <Sources c={cites} />
 
         </div>
       </article>

@@ -10,6 +10,7 @@ import {
   SITE_URL,
 } from '@/lib/seo/schemas'
 import { getContentDates } from '@/lib/seo/contentDates'
+import { Sources, createCitations } from '@/components/seo/Cite'
 import { articles, findArticle, categoryLabel } from '@/lib/blog/articles'
 
 export function generateStaticParams() {
@@ -79,6 +80,7 @@ export default async function BlogArticlePage({
     .slice(0, 3)
 
   const dates = getContentDates(`/blog/${article.slug}`)
+  const cites = createCitations()
 
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
@@ -127,7 +129,9 @@ export default async function BlogArticlePage({
           </p>
         </header>
 
-        <ArticleBody sections={article.body} />
+        <ArticleBody sections={article.body} cites={cites} />
+
+        <Sources c={cites} extraIds={article.sourceIds} />
 
         {related.length > 0 && (
           <section className="mt-12 pt-8 border-t border-green-500/30">

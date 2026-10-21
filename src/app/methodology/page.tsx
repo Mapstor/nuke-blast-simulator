@@ -13,8 +13,11 @@ import {
   YIELD_KNOTS_KT,
   SCALING_TABLE_KM,
   EFFECT_LABELS,
+  formatRadiusKm,
   type EffectKey,
 } from '@/lib/calculations/effects'
+import { radiusKm } from '@/lib/calculations/radius'
+import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
 
 export const metadata: Metadata = {
   title: 'Methodology - How We Calculate Nuclear Blast Effects',
@@ -38,6 +41,7 @@ const EFFECT_ORDER: EffectKey[] = [
 ]
 
 export default function MethodologyPage() {
+  const cites = createCitations()
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
       <JsonLd
@@ -66,8 +70,8 @@ export default function MethodologyPage() {
             <strong className="text-yellow-400">air burst at optimum height</strong>. Radius is a function of
             weapon yield in kilotons (W). The two primary sources are{' '}
             <em>The Effects of Nuclear Weapons</em> (Glasstone &amp; Dolan, 3rd ed., 1977) and the published
-            effects scaling table. These are the exact relations the code runs — the constants below are read
-            directly from the calculation engine.
+            effects scaling table. <Cite c={cites} ids={ENGINE_SOURCE_IDS.join(';')} /> These are the exact
+            relations the code runs — the constants below are read directly from the calculation engine.
           </p>
 
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 mb-6">
@@ -121,8 +125,9 @@ export default function MethodologyPage() {
               radius is linear in log of yield between the two bracketing points). Beyond the tabulated range
               (1 kt … 20 Mt), the nearest segment&apos;s log–log slope is extended. This reproduces the table
               values exactly at the knots and gives physically reasonable radii in between — for example a
-              15 kt weapon&apos;s 5 psi radius of about 1.54 km, a 100 kt weapon&apos;s 2.89 km, and a 50 Mt
-              weapon&apos;s 23.1 km.
+              15 kt weapon&apos;s 5 psi radius of about {formatRadiusKm(radiusKm(15, 'psi5'))} km, a 100 kt
+              weapon&apos;s {formatRadiusKm(radiusKm(100, 'psi5'))} km, and a 50 Mt weapon&apos;s{' '}
+              {formatRadiusKm(radiusKm(50000, 'psi5'))} km.
             </p>
           </div>
         </section>
@@ -145,30 +150,7 @@ export default function MethodologyPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4 text-green-400">Data sources</h2>
-          <ul className="bg-black/50 border border-green-500/30 rounded-lg p-6 list-disc list-inside space-y-2 text-green-300">
-            <li>
-              Glasstone, S., &amp; Dolan, P. J. (1977). <em>The Effects of Nuclear Weapons</em> (3rd ed.) —{' '}
-              <a
-                href="https://atomicarchive.com/resources/documents/effects/glasstone-dolan/chapter2.html"
-                className="text-yellow-400 hover:underline"
-                rel="nofollow"
-              >
-                Chapter 2 (fireball &amp; scaling), atomicarchive.com
-              </a>
-            </li>
-            <li>
-              &ldquo;Effects of nuclear explosions&rdquo; scaling table —{' '}
-              <a
-                href="https://en.wikipedia.org/wiki/Effects_of_nuclear_explosions"
-                className="text-yellow-400 hover:underline"
-                rel="nofollow"
-              >
-                en.wikipedia.org/wiki/Effects_of_nuclear_explosions
-              </a>
-            </li>
-            <li>Federation of American Scientists — Nuclear Weapons effects references.</li>
-          </ul>
+          <Sources c={cites} />
           <p className="mt-4 text-sm text-green-300/70">
             See the full <Link href="/sources" className="text-yellow-400 hover:underline">data sources</Link> page for
             complete references.

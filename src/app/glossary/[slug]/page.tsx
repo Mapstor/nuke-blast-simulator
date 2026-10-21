@@ -9,6 +9,8 @@ import {
 } from '@/lib/seo/schemas'
 import { findGlossaryEntry, glossary, categoryLabel } from '@/lib/data/glossary'
 import { PrevNext, type PrevNextItem } from '@/components/nav/PrevNext'
+import { Sources, createCitations } from '@/components/seo/Cite'
+import { renderCited } from '@/components/seo/citeText'
 
 const CATEGORY_ORDER = ['effects', 'weapons', 'physics', 'doctrine', 'treaty'] as const
 
@@ -69,6 +71,8 @@ export default async function GlossaryTermPage({
     .map((s) => glossary.find((g) => g.slug === s))
     .filter((g): g is NonNullable<typeof g> => Boolean(g))
 
+  const cites = createCitations()
+
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
       <JsonLd
@@ -105,8 +109,10 @@ export default async function GlossaryTermPage({
         </header>
 
         <section className="mb-10 bg-black/50 border border-green-500/30 rounded-lg p-6">
-          <p className="text-green-300 text-base leading-relaxed">{entry.long}</p>
+          <p className="text-green-300 text-base leading-relaxed">{renderCited(entry.long, cites)}</p>
         </section>
+
+        <Sources c={cites} extraIds={entry.sourceIds} />
 
         {related.length > 0 && (
           <section className="mb-10">

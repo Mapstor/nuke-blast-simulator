@@ -1,30 +1,32 @@
 import type { Block, Section } from '@/lib/blog/types'
+import { renderCited } from '@/components/seo/citeText'
+import type { Citations } from '@/components/seo/Cite'
 
-function RenderBlock({ block }: { block: Block }) {
+function RenderBlock({ block, c }: { block: Block; c: Citations }) {
   switch (block.type) {
     case 'p':
-      return <p className="mb-4 text-green-300 leading-relaxed">{block.text}</p>
+      return <p className="mb-4 text-green-300 leading-relaxed">{renderCited(block.text, c)}</p>
     case 'h3':
-      return <h3 className="mt-6 mb-3 text-xl font-semibold text-yellow-400">{block.text}</h3>
+      return <h3 className="mt-6 mb-3 text-xl font-semibold text-yellow-400">{renderCited(block.text, c)}</h3>
     case 'list':
       return (
         <ul className="mb-4 list-disc list-inside space-y-2 text-green-300">
           {block.items.map((it, i) => (
-            <li key={i}>{it}</li>
+            <li key={i}>{renderCited(it, c)}</li>
           ))}
         </ul>
       )
     case 'quote':
       return (
         <blockquote className="my-6 border-l-4 border-yellow-400 bg-yellow-900/10 p-4 text-green-300 italic">
-          {block.text}
+          {renderCited(block.text, c)}
           {block.cite ? <footer className="mt-2 text-sm text-green-300/70 not-italic">— {block.cite}</footer> : null}
         </blockquote>
       )
   }
 }
 
-export function ArticleBody({ sections }: { sections: Section[] }) {
+export function ArticleBody({ sections, cites }: { sections: Section[]; cites: Citations }) {
   return (
     <article className="prose-lg">
       {sections.map((section, i) => (
@@ -33,7 +35,7 @@ export function ArticleBody({ sections }: { sections: Section[] }) {
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-green-400">{section.heading}</h2>
           ) : null}
           {section.body.map((block, j) => (
-            <RenderBlock key={j} block={block} />
+            <RenderBlock key={j} block={block} c={cites} />
           ))}
         </section>
       ))}

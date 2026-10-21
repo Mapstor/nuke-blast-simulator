@@ -11,8 +11,9 @@ export type GlossaryEntry = {
   term: string
   category: GlossaryCategory
   short: string  // one-sentence definition (used as meta description)
-  long: string   // expanded explanation (1–2 paragraphs)
+  long: string   // expanded explanation (1–2 paragraphs); may contain {{c:ids}} / {{r:y:eff}} tokens
   related?: string[] // slugs of related terms
+  sourceIds?: string[] // NBS-005 citation source ids (research/sources.csv)
 }
 
 export const glossary: GlossaryEntry[] = [

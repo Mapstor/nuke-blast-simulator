@@ -19,4 +19,5 @@ export type Article = {
   category: 'physics' | 'history' | 'doctrine' | 'effects'
   readingMinutes: number
   body: Section[]
+  sourceIds?: string[] // NBS-005 citation source ids (research/sources.csv)
 }
