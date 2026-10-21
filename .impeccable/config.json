@@ -20,6 +20,15 @@
         ],
         "createdAt": "2026-10-15T14:15:58.013Z",
         "reason": "chat (not user): same incumbent border-l-4 callout convention; NBS-003 'effect-radius comparison unavailable' notice for conventional pairings"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/app/examples/[slug]/page.tsx"
+        ],
+        "createdAt": "2026-10-21T08:49:07.692Z",
+        "reason": "chat (not user): incumbent bg-yellow-900/20 border-l-4 'Limitations' callout, pre-existing (attribution unknown); sitewide border-l-4 restyle is deferred to the DESIGN wave per DEVLOG D-11 (all such ignores removed then). NBS-005 is a facts wave — out of scope."
       }
     ]
   }
