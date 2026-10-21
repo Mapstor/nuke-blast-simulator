@@ -455,7 +455,7 @@ export const articles: Article[] = [
   {
     slug: 'emp-high-altitude-nuclear-burst',
     title: 'EMP: How a High-Altitude Nuclear Burst Could Disable a Continent',
-    description: 'A single nuclear weapon detonated above the atmosphere could disable unprotected electronics across an area larger than the continental United States. Here is how the effect works and how seriously experts take the threat.',
+    description: 'A single nuclear burst about 200 miles (320 km) above the central United States could expose almost the entire country, plus parts of Canada and Mexico, to EMP. Here is how the effect works and how seriously experts take the threat.',
     datePublished: '2026-04-29',
     author: 'Marko Visic',
     category: 'effects',

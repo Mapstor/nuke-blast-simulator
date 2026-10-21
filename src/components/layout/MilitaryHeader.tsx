@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { MAIN_MENU, SIMULATOR_HREF, type MenuItem, type MenuPanel } from '@/lib/menu/main-menu'
 import { SearchPalette } from '@/components/search/SearchPalette'
@@ -18,9 +19,14 @@ export function MilitaryHeader() {
   const [searchOpen, setSearchOpen] = useState(false)
   // Scroll-direction-driven hide state (mobile only via CSS).
   const [scrolledHidden, setScrolledHidden] = useState(false)
+  // The drawer renders through a portal to document.body, which only exists on
+  // the client; gate the portal on mount so SSR and first paint render nothing.
+  const [mounted, setMounted] = useState(false)
 
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const headerRef = useRef<HTMLElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const wasMobileOpenRef = useRef(false)
 
   // ESC closes any open menu (search has its own internal handler).
   useEffect(() => {
@@ -90,6 +96,15 @@ export function MilitaryHeader() {
     return () => { document.body.style.overflow = 'unset' }
   }, [mobileOpen])
 
+  // document.body is only available client-side; enable the portal after mount.
+  useEffect(() => { setMounted(true) }, [])
+
+  // Return focus to the menu button when the drawer closes (keyboard a11y).
+  useEffect(() => {
+    if (wasMobileOpenRef.current && !mobileOpen) menuButtonRef.current?.focus()
+    wasMobileOpenRef.current = mobileOpen
+  }, [mobileOpen])
+
   function openWithIntent(id: string) {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current)
     setOpenId(id)
@@ -106,6 +121,7 @@ export function MilitaryHeader() {
   const openPanel = openId ? MAIN_MENU.find((p) => p.id === openId) : null
 
   return (
+    <>
     <header
       ref={headerRef}
       className={`sticky top-0 z-50 bg-gradient-to-b from-gray-900 to-black border-b border-green-500/30 transition-transform duration-200 ${
@@ -241,9 +257,11 @@ export function MilitaryHeader() {
             🎯 Open
           </Link>
           <button
+            ref={menuButtonRef}
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-menu-drawer"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             className="p-2 text-green-400 hover:bg-green-400/10 rounded transition"
           >
@@ -258,81 +276,97 @@ export function MilitaryHeader() {
         </div>
       </div>
 
-      {/* ── Mobile drawer (accordion) ────────────────────────────────── */}
-      {mobileOpen ? (
-        <div className="lg:hidden fixed inset-0 top-[57px] z-40 bg-black flex flex-col">
-          <div className="flex-1 overflow-y-auto pb-20 px-4 py-3">
-            {MAIN_MENU.map((panel) => {
-              const expanded = mobileExpandedId === panel.id
-              return (
-                <div key={panel.id} className="border-b border-green-500/20">
-                  <button
-                    type="button"
-                    aria-expanded={expanded}
-                    onClick={() =>
-                      setMobileExpandedId((prev) => (prev === panel.id ? null : panel.id))
-                    }
-                    className="w-full flex items-center justify-between py-3 text-left text-green-400 hover:text-green-300"
-                  >
-                    <span className="text-base font-semibold">{panel.label}</span>
-                    <Chevron open={expanded} />
-                  </button>
-                  {expanded && panel.columns ? (
-                    <div className="pb-4 space-y-5">
-                      {panel.columns.map((col, i) => (
-                        <div key={i}>
-                          <p className="text-[11px] uppercase tracking-wider text-green-300/70 mb-2">
-                            {col.heading}
-                          </p>
-                          <ul className="space-y-1">
-                            {col.items.map((item) => (
-                              <li key={item.href + item.label}>
-                                <Link
-                                  href={item.href}
-                                  onClick={() => setMobileOpen(false)}
-                                  className="flex items-center justify-between py-1.5 px-2 rounded text-sm text-green-300 hover:bg-green-400/10 hover:text-green-200 transition"
-                                >
-                                  <span>{item.label}</span>
-                                  {item.meta ? (
-                                    <span className="text-[11px] text-green-300/60 ml-2 shrink-0">{item.meta}</span>
-                                  ) : null}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                      {panel.panelFooter ? (
-                        <Link
-                          href={panel.panelFooter.href}
-                          onClick={() => setMobileOpen(false)}
-                          className="inline-block mt-2 text-sm text-yellow-400 hover:underline"
-                        >
-                          {panel.panelFooter.label}
-                        </Link>
-                      ) : null}
-                    </div>
-                  ) : null}
-                </div>
-              )
-            })}
-          </div>
-
-          {/* Sticky bottom CTA */}
-          <div className="border-t border-green-500/30 bg-black px-4 py-3">
-            <Link
-              href={SIMULATOR_HREF}
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center bg-green-500 text-black px-4 py-3 rounded-md font-semibold hover:bg-green-400 transition"
-            >
-              🎯 Open Simulator
-            </Link>
-          </div>
-        </div>
-      ) : null}
-
       <SearchPalette open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
+
+    {/* Mobile drawer (accordion). Portaled to document.body so it is NOT a child
+        of the transformed <header>: a transformed ancestor becomes the containing
+        block for position:fixed descendants, which clipped the old in-header
+        drawer to the gap between its top-[57px] and the 65px-tall header. The
+        drawer's top is the header's bottom edge (65px) and its z-index sits above
+        the simulator overlays (z-50). Hide-on-scroll, the body scroll lock and
+        close-on-link-click are unchanged; Escape closes it (keydown handler
+        above) and focus returns to the menu button. */}
+    {mounted && mobileOpen
+      ? createPortal(
+          <div
+            id="mobile-menu-drawer"
+            data-testid="mobile-menu-drawer"
+            aria-label="Site menu"
+            className="lg:hidden fixed inset-0 top-[65px] z-[60] bg-black flex flex-col"
+          >
+            <div className="flex-1 overflow-y-auto pb-20 px-4 py-3">
+              {MAIN_MENU.map((panel) => {
+                const expanded = mobileExpandedId === panel.id
+                return (
+                  <div key={panel.id} className="border-b border-green-500/20">
+                    <button
+                      type="button"
+                      aria-expanded={expanded}
+                      onClick={() =>
+                        setMobileExpandedId((prev) => (prev === panel.id ? null : panel.id))
+                      }
+                      className="w-full flex items-center justify-between py-3 text-left text-green-400 hover:text-green-300"
+                    >
+                      <span className="text-base font-semibold">{panel.label}</span>
+                      <Chevron open={expanded} />
+                    </button>
+                    {expanded && panel.columns ? (
+                      <div className="pb-4 space-y-5">
+                        {panel.columns.map((col, i) => (
+                          <div key={i}>
+                            <p className="text-[11px] uppercase tracking-wider text-green-300/70 mb-2">
+                              {col.heading}
+                            </p>
+                            <ul className="space-y-1">
+                              {col.items.map((item) => (
+                                <li key={item.href + item.label}>
+                                  <Link
+                                    href={item.href}
+                                    onClick={() => setMobileOpen(false)}
+                                    className="flex items-center justify-between py-1.5 px-2 rounded text-sm text-green-300 hover:bg-green-400/10 hover:text-green-200 transition"
+                                  >
+                                    <span>{item.label}</span>
+                                    {item.meta ? (
+                                      <span className="text-[11px] text-green-300/60 ml-2 shrink-0">{item.meta}</span>
+                                    ) : null}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                        {panel.panelFooter ? (
+                          <Link
+                            href={panel.panelFooter.href}
+                            onClick={() => setMobileOpen(false)}
+                            className="inline-block mt-2 text-sm text-yellow-400 hover:underline"
+                          >
+                            {panel.panelFooter.label}
+                          </Link>
+                        ) : null}
+                      </div>
+                    ) : null}
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Sticky bottom CTA */}
+            <div className="border-t border-green-500/30 bg-black px-4 py-3">
+              <Link
+                href={SIMULATOR_HREF}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center bg-green-500 text-black px-4 py-3 rounded-md font-semibold hover:bg-green-400 transition"
+              >
+                🎯 Open Simulator
+              </Link>
+            </div>
+          </div>,
+          document.body,
+        )
+      : null}
+    </>
   )
 }
 

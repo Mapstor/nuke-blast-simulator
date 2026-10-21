@@ -35,7 +35,7 @@ const basePages: SearchEntry[] = [
   { title: 'Nuclear Weapons Glossary', description: 'Defined terms in nuclear weapons effects, physics, doctrine, and arms control.',                                          url: '/glossary',     section: 'page' },
   { title: 'Blog',                     description: 'Long-form articles on nuclear weapon physics, history, doctrine, effects.',                                               url: '/blog',         section: 'page' },
   { title: 'Data Sources',             description: 'Scientific references and primary sources used in calculations.',                                                         url: '/sources',      section: 'page' },
-  { title: 'Peace Resources',          description: 'Nuclear disarmament organizations and educational materials.',                                                            url: '/resources',    section: 'page' },
+  { title: 'Treaties & Data Sources',  description: 'Nuclear arms-control treaties (NPT, CTBT, TPNW) and the official organizations that publish nuclear-forces data.', url: '/resources',    section: 'page' },
   { title: 'Contact',                  description: 'Contact information for feedback and educational inquiries.',                                                             url: '/contact',      section: 'page' },
   { title: 'Privacy Policy',           description: 'Privacy policy.',                                                                                                          url: '/privacy',      section: 'page' },
   { title: 'Terms of Service',         description: 'Terms of service.',                                                                                                        url: '/terms',        section: 'page' },

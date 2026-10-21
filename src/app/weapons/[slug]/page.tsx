@@ -133,6 +133,16 @@ export default async function WeaponDetailPage({
   const r = showEffects ? effectRadiiKm(bomb.yield) : null
   const cites = createCitations()
   const weaponSourceIds = bomb.sources ?? []
+  // The generic "roughly equal fission/fusion" energy split is misleading on
+  // Tsar Bomba, whose lead tamper made it ~97% fusion. On that page only, use the
+  // chat-verified figure (facts row 145), cited to the Nuclear Weapon Archive.
+  const isTsarBomba = bomb.id === 'tsar-bomba'
+  const thermonuclearEnergy = isTsarBomba
+    ? 'a fission explosion that ignites fusion fuel. About 97% of its energy came from fusion, making it one of the cleanest nuclear explosions relative to its yield'
+    : 'a fission explosion that ignites fusion fuel, releasing on average roughly equal energy from fission and fusion'
+  const energySourceId = isTsarBomba
+    ? 'nuclear-weapon-archive-the-soviet-weapons-progra'
+    : 'us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5'
 
   const faqEntries = [
     ...(r
@@ -213,10 +223,10 @@ export default async function WeaponDetailPage({
               ? `As a ${typeText} weapon, it derives its energy from ${
                   bomb.type === 'fission' ? 'nuclear fission of uranium or plutonium' :
                   bomb.type === 'fusion' ? 'fusion-boosted fission reactions' :
-                  'a fission explosion that ignites fusion fuel, releasing on average roughly equal energy from fission and fusion'
+                  thermonuclearEnergy
                 }.`
               : `It is a conventional high-explosive weapon that releases its energy through chemical reactions, not nuclear processes.`}
-            {' '}<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5" />
+            {' '}<Cite c={cites} ids={energySourceId} />
           </p>
         </section>
 

@@ -256,7 +256,7 @@ const learnPanel: MenuPanel = {
         { label: 'FAQ',            href: '/faq'          },
         { label: 'Data sources',   href: '/sources'      },
         { label: 'About',          href: '/about'        },
-        { label: 'Peace resources', href: '/resources'   },
+        { label: 'Treaties & data sources', href: '/resources' },
       ],
     },
   ],

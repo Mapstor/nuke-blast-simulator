@@ -27,7 +27,7 @@ const FOOTER_GROUPS: Array<{ heading: string; links: Array<{ href: string; label
     heading: 'About',
     links: [
       { href: '/about',     label: 'About' },
-      { href: '/resources', label: 'Peace Resources' },
+      { href: '/resources', label: 'Treaties & Data Sources' },
       { href: '/sources',   label: 'Data Sources' },
       { href: '/contact',   label: 'Contact' },
     ],
