@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useRouter } from 'next/navigation'
-import { search, type SearchEntry } from '@/lib/search'
+import { search, SEARCH_INDEX, type SearchEntry } from '@/lib/search'
 
 const SECTION_LABEL: Record<SearchEntry['section'], string> = {
   page: 'Page',
@@ -16,10 +17,19 @@ const SECTION_LABEL: Record<SearchEntry['section'], string> = {
 export function SearchPalette({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [query, setQuery] = useState('')
   const [highlight, setHighlight] = useState(0)
+  // The overlay renders through a portal to document.body (client-only), so gate
+  // it on mount — the same fix the mobile drawer uses to escape the transformed
+  // header's containing block.
+  const [mounted, setMounted] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const triggerRef = useRef<HTMLElement | null>(null)
+  const wasOpenRef = useRef(false)
   const router = useRouter()
 
   const results = useMemo(() => search(query, 12), [query])
+
+  // document.body is only available client-side; enable the portal after mount.
+  useEffect(() => { setMounted(true) }, [])
 
   // Auto-focus input when opened.
   useEffect(() => {
@@ -27,6 +37,14 @@ export function SearchPalette({ open, onClose }: { open: boolean; onClose: () =>
       // Wait one frame so the element is mounted and focusable.
       requestAnimationFrame(() => inputRef.current?.focus())
     }
+  }, [open])
+
+  // Capture the element that opened the palette (the search button) and return
+  // focus to it when the palette closes.
+  useEffect(() => {
+    if (open && !wasOpenRef.current) triggerRef.current = document.activeElement as HTMLElement | null
+    else if (!open && wasOpenRef.current) triggerRef.current?.focus()
+    wasOpenRef.current = open
   }, [open])
 
   // Reset state when closed.
@@ -77,10 +95,11 @@ export function SearchPalette({ open, onClose }: { open: boolean; onClose: () =>
     return () => window.removeEventListener('keydown', onKey)
   }, [open, results, highlight, onClose, router])
 
-  if (!open) return null
+  if (!open || !mounted) return null
 
-  return (
+  return createPortal(
     <div
+      data-testid="search-palette"
       className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-start justify-center pt-16 sm:pt-24 px-4"
       onClick={onClose}
       role="dialog"
@@ -98,7 +117,7 @@ export function SearchPalette({ open, onClose }: { open: boolean; onClose: () =>
           <input
             ref={inputRef}
             type="text"
-            placeholder="Search 400 pages — weapons, cities, scenarios, articles…"
+            placeholder={`Search ${SEARCH_INDEX.length} pages — weapons, cities, articles…`}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="flex-1 bg-transparent px-4 py-4 text-green-300 placeholder-green-300/40 outline-none text-base"
@@ -158,6 +177,7 @@ export function SearchPalette({ open, onClose }: { open: boolean; onClose: () =>
           <span>{results.length} result{results.length === 1 ? '' : 's'}</span>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }

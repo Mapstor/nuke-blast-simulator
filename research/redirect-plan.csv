@@ -1,0 +1,143 @@
+from,to,status_code,reason
+/compare/b61-vs-davy-crockett,/compare,308,no measured demand; the compare tool covers the pair
+/compare/b61-vs-w54,/compare,308,no measured demand; the compare tool covers the pair
+/compare/b83-vs-b53,/compare,308,no measured demand; the compare tool covers the pair
+/compare/b83-vs-w88,/compare,308,no measured demand; the compare tool covers the pair
+/compare/castle-bravo-vs-castle-yankee,/compare,308,no measured demand; the compare tool covers the pair
+/compare/castle-bravo-vs-ivy-mike,/compare,308,no measured demand; the compare tool covers the pair
+/compare/castle-bravo-vs-little-boy,/compare,308,no measured demand; the compare tool covers the pair
+/compare/fat-man-vs-moab,/compare,308,no measured demand; the compare tool covers the pair
+/compare/fat-man-vs-trinity,/compare,308,no measured demand; the compare tool covers the pair
+/compare/fat-man-vs-w76,/compare,308,no measured demand; the compare tool covers the pair
+/compare/ivy-mike-vs-castle-bravo,/compare,308,no measured demand; the compare tool covers the pair
+/compare/little-boy-vs-foab,/compare,308,no measured demand; the compare tool covers the pair
+/compare/little-boy-vs-w76,/compare,308,no measured demand; the compare tool covers the pair
+/compare/trinity-vs-596,/compare,308,no measured demand; the compare tool covers the pair
+/compare/trinity-vs-chagai-i,/compare,308,no measured demand; the compare tool covers the pair
+/compare/trinity-vs-gerboise-bleue,/compare,308,no measured demand; the compare tool covers the pair
+/compare/trinity-vs-hurricane,/compare,308,no measured demand; the compare tool covers the pair
+/compare/trinity-vs-hwasong-14,/compare,308,no measured demand; the compare tool covers the pair
+/compare/trinity-vs-joe-1,/compare,308,no measured demand; the compare tool covers the pair
+/compare/trinity-vs-smiling-buddha,/compare,308,no measured demand; the compare tool covers the pair
+/compare/tsar-bomba-vs-ivy-mike,/compare,308,no measured demand; the compare tool covers the pair
+/compare/tsar-bomba-vs-soviet-test-219,/compare,308,no measured demand; the compare tool covers the pair
+/compare/w80-vs-b61,/compare,308,no measured demand; the compare tool covers the pair
+/compare/w87-vs-w88,/compare,308,no measured demand; the compare tool covers the pair
+/compare/w88-vs-w76,/compare,308,no measured demand; the compare tool covers the pair
+/examples/abu-dhabi,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/accra,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/addis-ababa,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/algiers,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/amman,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/amsterdam,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/auckland,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/baghdad,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/bangalore,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/bangkok,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/barcelona,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/beijing,/examples,308,KWP city demand 10/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/berlin,/examples,308,KWP city demand 10/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/bogota,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/brisbane,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/brussels,/examples,308,KWP city demand 10/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/budapest,/examples,308,KWP city demand 10/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/buenos-aires,/examples,308,KWP city demand 10/mo; Google impressions 15 (Search Console export 2026-10-14); fold into the city index
+/examples/busan,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/cairo,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/cape-town,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/caracas,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/casablanca,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/chennai,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/chongqing,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/copenhagen,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/delhi,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/dhaka,/examples,308,KWP city demand 0/mo; Google impressions 13 (Search Console export 2026-10-14); fold into the city index
+/examples/dubai,/examples,308,KWP city demand 20/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/dublin,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/guangzhou,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/hamburg,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/hanoi,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/ho-chi-minh-city,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/hong-kong,/examples,308,KWP city demand 10/mo; Google impressions 24 (Search Console export 2026-10-14); fold into the city index
+/examples/hyderabad,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/islamabad,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/istanbul,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/jakarta,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/johannesburg,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/karachi,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/kolkata,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/kuala-lumpur,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/kuwait-city,/examples,308,KWP city demand 0/mo; Google impressions 72 (Search Console export 2026-10-14); fold into the city index
+/examples/lahore,/examples,308,KWP city demand 0/mo; Google impressions 19 (Search Console export 2026-10-14); fold into the city index
+/examples/lima,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/lisbon,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/madrid,/examples,308,KWP city demand 10/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/manila,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/melbourne,/examples,308,KWP city demand 10/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/mexico-city,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/miami,/examples,308,KWP city demand 10/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/milan,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/montevideo,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/mumbai,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/munich,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/nagoya,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/nairobi,/examples,308,KWP city demand 0/mo; Google impressions 47 (Search Console export 2026-10-14); fold into the city index
+/examples/osaka,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/paris,/examples,308,KWP city demand 10/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/perth,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/philadelphia,/examples,308,KWP city demand 0/mo; Google impressions 74 (Search Console export 2026-10-14); fold into the city index
+/examples/phoenix,/examples,308,KWP city demand 10/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/quito,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/rio-de-janeiro,/examples,308,KWP city demand 0/mo; Google impressions 9 (Search Console export 2026-10-14); fold into the city index
+/examples/riyadh,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/rome,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/salvador,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/santiago,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/sao-paulo,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/seoul,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/shanghai,/examples,308,KWP city demand 10/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/shenzhen,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/singapore,/examples,308,KWP city demand 20/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/stockholm,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/taipei,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/toronto,/examples,308,KWP city demand 20/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/vienna,/examples,308,KWP city demand 0/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/examples/warsaw,/examples,308,KWP city demand 10/mo; Google impressions 0 (Search Console export 2026-10-14); fold into the city index
+/glossary/air-burst,/nuclear-blast-radius,308,no measured demand; definition kept on the target page
+/glossary/atomic-bomb,/blog/how-nuclear-weapons-work,308,no measured demand; definition kept on the target page
+/glossary/boosted-fission,/glossary,308,no measured demand; definition kept on the target page
+/glossary/counterforce,/glossary,308,no measured demand; definition kept on the target page
+/glossary/countervalue,/glossary,308,no measured demand; definition kept on the target page
+/glossary/critical-mass,/glossary,308,no measured demand; definition kept on the target page
+/glossary/cruise-missile,/glossary,308,no measured demand; definition kept on the target page
+/glossary/dead-hand,/glossary,308,no measured demand; definition kept on the target page
+/glossary/deuterium,/glossary,308,no measured demand; definition kept on the target page
+/glossary/emp,/blog/emp-high-altitude-nuclear-burst,308,no measured demand; definition kept on the target page
+/glossary/fireball,/nuclear-blast-radius,308,no measured demand; definition kept on the target page
+/glossary/first-strike,/glossary,308,no measured demand; definition kept on the target page
+/glossary/gamma-radiation,/glossary,308,no measured demand; definition kept on the target page
+/glossary/half-life,/glossary,308,no measured demand; definition kept on the target page
+/glossary/kiloton,/blog/physics-of-nuclear-blast,308,no measured demand; definition kept on the target page
+/glossary/mad,/glossary,308,no measured demand; definition kept on the target page
+/glossary/megaton,/blog/physics-of-nuclear-blast,308,no measured demand; definition kept on the target page
+/glossary/new-start,/glossary,308,no measured demand; definition kept on the target page
+/glossary/nuclear-deterrence,/glossary,308,no measured demand; definition kept on the target page
+/glossary/nuclear-fission,/blog/how-nuclear-weapons-work,308,no measured demand; definition kept on the target page
+/glossary/nuclear-fusion,/glossary/hydrogen-bomb,308,no measured demand; definition kept on the target page
+/glossary/nuclear-winter,/blog/nuclear-winter-regional-war-cooling,308,no measured demand; definition kept on the target page
+/glossary/overpressure,/nuclear-blast-radius,308,no measured demand; definition kept on the target page
+/glossary/permissive-action-link,/glossary,308,no measured demand; definition kept on the target page
+/glossary/psi,/nuclear-blast-radius,308,no measured demand; definition kept on the target page
+/glossary/second-degree-burns,/nuclear-blast-radius,308,no measured demand; definition kept on the target page
+/glossary/second-strike,/glossary,308,no measured demand; definition kept on the target page
+/glossary/sievert,/glossary,308,no measured demand; definition kept on the target page
+/glossary/strategic-nuclear-weapon,/glossary,308,no measured demand; definition kept on the target page
+/glossary/surface-burst,/nuclear-blast-radius,308,no measured demand; definition kept on the target page
+/glossary/teller-ulam,/glossary/hydrogen-bomb,308,no measured demand; definition kept on the target page
+/glossary/thermal-radiation,/nuclear-blast-radius,308,no measured demand; definition kept on the target page
+/glossary/thermonuclear-weapon,/glossary/hydrogen-bomb,308,no measured demand; definition kept on the target page
+/glossary/tritium,/glossary,308,no measured demand; definition kept on the target page
+/glossary/uranium-235,/glossary,308,no measured demand; definition kept on the target page
+/glossary/warhead,/glossary,308,no measured demand; definition kept on the target page
+/glossary/yield,/blog/physics-of-nuclear-blast,308,no measured demand; definition kept on the target page
+/blog/modern-nuclear-arsenals-2026,/nuclear-weapons-by-country,308,evergreen hub URL; article content becomes the hub

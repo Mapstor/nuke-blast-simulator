@@ -1,0 +1,140 @@
+# nukeblastsimulator.com — sitemap (GENERATED from keyword-ledger.csv + page-map.csv; do not hand-edit)
+
+Pages: 136 · keywords owned: 1842 · discarded: 699 · KWP variants folded: 191
+
+- `/` · T1 · live · tool · primary: nuke map (33,100) · cluster 63,120/mo
+- `/weapons` · T1 · live · hub · primary: nuclear bombs (60,500) · cluster 61,970/mo
+  - `/weapons/fat-man` · T1 · live · data · primary: fat man (90,500) · cluster 104,500/mo
+  - `/missiles/minuteman-iii` · T3 · proposed · data · primary: minuteman iii (14,800) · cluster 14,800/mo
+  - `/weapons/trinity` · T1 · live · data · primary: trinity test (9,900) · cluster 13,540/mo
+  - `/weapons/b61` · T1 · live · data · primary: b61 (8,100) · cluster 13,220/mo
+  - `/weapons/castle-bravo` · T1 · live · data · primary: castle bravo (9,900) · cluster 10,760/mo
+  - `/missiles/oreshnik` · T3 · proposed · data · primary: oreshnik missile (9,900) · cluster 9,900/mo
+  - `/weapons/b83` · T1 · live · data · primary: b83 (5,400) · cluster 8,300/mo
+  - `/weapons/b41` · T1 · live · data · primary: b41 (6,600) · cluster 7,190/mo
+  - `/missiles/rs-28-sarmat` · T3 · proposed · data · primary: rs 28 sarmat (4,400) · cluster 6,000/mo
+  - `/weapons/tsar-bomba` · T1 · live · data · primary: tsar bomba blast radius (2,400) · cluster 5,090/mo
+  - `/weapons/davy-crockett` · T1 · live · data · primary: davy crockett nuke (4,400) · cluster 4,400/mo
+  - `/weapons/b53` · T2 · live · data · primary: b53 (3,600) · cluster 3,620/mo
+  - `/missiles/burevestnik` · T3 · proposed · data · primary: burevestnik (3,600) · cluster 3,600/mo
+  - `/weapons/mk-82` · T2 · live · data · primary: mk82 bomb (2,900) · cluster 2,910/mo
+  - `/weapons/ivy-mike` · T2 · live · data · primary: ivy mike (2,400) · cluster 2,450/mo
+  - `/weapons/mark-84` · T2 · live · data · primary: mark 84 (2,400) · cluster 2,400/mo
+  - `/weapons/w88` · T2 · live · data · primary: w88 (1,600) · cluster 2,400/mo
+  - `/weapons/little-boy` · T1 · live · data · primary: hiroshima bomb blast radius (1,600) · cluster 2,290/mo
+  - `/weapons/smiling-buddha` · T2 · live · data · primary: smiling buddha (1,300) · cluster 2,020/mo
+  - `/weapons/w54` · T2 · live · data · primary: w54 (1,000) · cluster 1,590/mo
+  - `/missiles/sentinel-icbm` · T3 · proposed · data · primary: sentinel icbm (1,000) · cluster 1,000/mo
+  - `/missiles/trident-ii` · T3 · proposed · data · primary: trident ii (1,000) · cluster 1,000/mo
+  - `/missiles/poseidon` · T3 · proposed · data · primary: poseidon torpedo (880) · cluster 880/mo
+  - `/weapons/foab` · T2 · live · data · primary: foab (880) · cluster 880/mo
+  - `/weapons/joe-1` · T2 · live · data · primary: rds 1 (390) · cluster 560/mo
+  - `/weapons/w76` · T2 · live · data · primary: w76 (320) · cluster 460/mo
+  - `/weapons/fab-5000` · T2 · live · data · primary: fab 5000 bomb (390) · cluster 390/mo
+  - `/weapons/hurricane` · T2 · live · data · primary: operation hurricane (390) · cluster 390/mo
+  - `/weapons/w80` · T2 · live · data · primary: w80 (390) · cluster 390/mo
+  - `/weapons/w93` · T3 · proposed · data · primary: w93 (390) · cluster 390/mo
+  - `/weapons/blu-82` · T2 · live · data · primary: blu 82 daisy cutter bomb (320) · cluster 320/mo
+  - `/weapons/w87` · T2 · live · data · primary: w87 (320) · cluster 320/mo
+  - `/weapons/blockbuster` · T2 · live · data · primary: blockbuster bomb (210) · cluster 210/mo
+  - `/weapons/gerboise-bleue` · T2 · live · data · primary: gerboise bleue (140) · cluster 140/mo
+  - `/weapons/chagai-i` · T2 · live · data · primary: chagai (110) · cluster 110/mo
+  - `/weapons/orange-herald` · T2 · live · data · primary: orange herald (90) · cluster 90/mo
+  - `/weapons/soviet-test-219` · T2 · live · data · primary: test 219 (90) · cluster 90/mo
+  - `/weapons/halifax-explosion` · T2 · live · data · primary: halifax explosion yield (30) · cluster 60/mo
+  - `/weapons/canopus` · T2 · live · data · primary: canopus nuclear test (20) · cluster 30/mo
+  - `/weapons/gbu-57` · T2 · live · data · primary: gbu 57 radius (10) · cluster 10/mo
+  - `/weapons/596` · T2 · live · data · primary: 596 china bomb · cluster 0/mo
+  - `/weapons/castle-yankee` · T2 · live · data · primary: castle yankee · cluster 0/mo
+  - `/weapons/fab-500` · T2 · live · data · primary: fab 500 bomb · cluster 0/mo
+  - `/weapons/gbu-28` · T2 · live · data · primary: gbu 28 · cluster 0/mo
+  - `/weapons/grand-slam` · T2 · live · data · primary: grand slam bomb · cluster 0/mo
+  - `/weapons/hwasong-14` · T2 · live · data · primary: hwasong 14 · cluster 0/mo
+  - `/weapons/jdam` · T2 · live · data · primary: jdam bomb · cluster 0/mo
+  - `/weapons/moab` · T2 · live · data · primary: moab area of impact · cluster 0/mo
+  - `/weapons/operation-hardtack-poplar` · T2 · live · data · primary: hardtack poplar · cluster 0/mo
+  - `/weapons/tallboy` · T2 · live · data · primary: tallboy bomb · cluster 0/mo
+  - `/weapons/test-no-6` · T2 · live · data · primary: china test no 6 · cluster 0/mo
+- `/nuclear-weapons-by-country` · T1 · proposed · hub · primary: nuclear weapons by country (22,200) · cluster 41,360/mo
+  - `/nuclear-weapons-by-country/iran` · T1 · proposed · data · primary: does iran have nukes (33,100) · cluster 34,700/mo
+  - `/nuclear-weapons-by-country/united-states` · T1 · proposed · data · primary: how many nuclear weapons does the us have (14,800) · cluster 15,390/mo
+  - `/nuclear-weapons-by-country/russia` · T1 · proposed · data · primary: how many nukes does russia have (5,400) · cluster 5,560/mo
+  - `/nuclear-weapons-by-country/north-korea` · T1 · proposed · data · primary: how many nukes does north korea have (3,600) · cluster 5,040/mo
+  - `/nuclear-weapons-by-country/israel` · T1 · proposed · data · primary: how many nukes does israel have (4,400) · cluster 4,410/mo
+  - `/nuclear-weapons-by-country/china` · T1 · proposed · data · primary: how many nukes does china have (2,900) · cluster 3,070/mo
+  - `/nuclear-weapons-by-country/pakistan` · T2 · proposed · data · primary: how many nukes does pakistan have (1,000) · cluster 1,000/mo
+  - `/nuclear-weapons-by-country/france` · T2 · proposed · data · primary: how many nukes does france have (880) · cluster 880/mo
+  - `/nuclear-weapons-by-country/india` · T2 · proposed · data · primary: how many nukes does india have (880) · cluster 880/mo
+  - `/nuclear-weapons-by-country/united-kingdom` · T2 · proposed · data · primary: how many nukes does the uk have (880) · cluster 880/mo
+- `/nuclear-blast-radius` · T1 · proposed · tool · primary: nuclear blast radius (8,100) · cluster 22,110/mo
+- `/about` · T1 · live · structural · primary: — · cluster 0/mo
+- `/methodology` · T1 · live · structural · primary: — · cluster 0/mo
+- `/sources` · T1 · live · structural · primary: — · cluster 0/mo
+- `/nuclear-tests` · T2 · proposed · hub · primary: nuclear bomb test (3,600) · cluster 5,030/mo
+  - `/nuclear-tests/bikini-atoll` · T3 · proposed · data · primary: bikini atoll (49,500) · cluster 49,500/mo
+  - `/nuclear-tests/novaya-zemlya` · T3 · proposed · data · primary: novaya zemlya (5,400) · cluster 5,400/mo
+  - `/nuclear-tests/nevada-test-site` · T3 · proposed · data · primary: nevada test site (4,400) · cluster 4,400/mo
+  - `/nuclear-tests/lop-nur` · T3 · proposed · data · primary: lop nur (1,900) · cluster 1,900/mo
+  - `/nuclear-tests/operation-grapple` · T3 · proposed · data · primary: grapple x (1,900) · cluster 1,900/mo
+  - `/nuclear-tests/operation-crossroads` · T3 · proposed · data · primary: operation crossroads (1,600) · cluster 1,600/mo
+  - `/nuclear-tests/semipalatinsk-test-site` · T3 · proposed · data · primary: semipalatinsk test site (1,300) · cluster 1,300/mo
+- `/compare` · T2 · live · tool · primary: nuclear bomb size comparison (260) · cluster 1,290/mo
+  - `/compare/tsar-bomba-vs-little-boy` · T2 · live · tool · primary: tsar bomba vs hiroshima (260) · cluster 260/mo
+  - `/compare/little-boy-vs-moab` · T2 · live · tool · primary: moab vs nuke (170) · cluster 170/mo
+  - `/compare/b83-vs-tsar-bomba` · T2 · live · tool · primary: b83 vs tsar bomba (70) · cluster 70/mo
+  - `/compare/tsar-bomba-vs-castle-bravo` · T2 · live · tool · primary: tsar bomba vs castle bravo (70) · cluster 70/mo
+  - `/compare/little-boy-vs-fat-man` · T2 · live · tool · primary: little boy vs fat man · cluster 0/mo
+- `/examples` · T2 · live · hub · primary: nuke a city (210) · cluster 450/mo
+  - `/examples/new-york` · T2 · live · tool · primary: nuclear bomb new york (90) · cluster 200/mo
+  - `/examples/los-angeles` · T2 · live · tool · primary: los angeles nuke (40) · cluster 160/mo
+  - `/examples/san-francisco` · T2 · live · tool · primary: nuke sf (50) · cluster 130/mo
+  - `/examples/washington-dc` · T2 · live · tool · primary: nuke washington dc (70) · cluster 130/mo
+  - `/examples/chicago` · T2 · live · tool · primary: nuclear bomb chicago (50) · cluster 120/mo
+  - `/examples/tehran` · T2 · live · tool · primary: nuke tehran (70) · cluster 120/mo
+  - `/examples/tel-aviv` · T2 · live · tool · primary: nuke tel aviv (70) · cluster 80/mo
+  - `/examples/kyiv` · T2 · live · tool · primary: kiev nuclear attack (10) · cluster 70/mo
+  - `/examples/london` · T2 · live · tool · primary: nuke london (20) · cluster 50/mo
+  - `/examples/atlanta` · T2 · live · tool · primary: nuke atlanta (40) · cluster 40/mo
+  - `/examples/houston` · T2 · live · tool · primary: what if a nuke hit houston (10) · cluster 30/mo
+  - `/examples/moscow` · T2 · live · tool · primary: nuke moscow (20) · cluster 30/mo
+  - `/examples/seattle` · T2 · live · tool · primary: nuke seattle (20) · cluster 30/mo
+  - `/examples/boston` · T2 · live · tool · primary: what if a nuke hit boston (10) · cluster 20/mo
+  - `/examples/pyongyang` · T2 · live · tool · primary: nuclear strike on pyongyang (10) · cluster 20/mo
+  - `/examples/sydney` · T2 · live · tool · primary: nuclear bomb sydney (10) · cluster 10/mo
+  - `/examples/tokyo` · T2 · live · tool · primary: nuke tokyo (10) · cluster 10/mo
+  - `/examples/denver` · T2 · live · tool · primary: what if a nuke hit denver · cluster 0/mo
+  - `/examples/doha` · T2 · live · tool · primary: nuke doha · cluster 0/mo
+  - `/examples/lagos` · T2 · live · tool · primary: nuke lagos · cluster 0/mo
+  - `/examples/vancouver` · T2 · live · tool · primary: if vancouver got nuked world i die · cluster 0/mo
+- `/blog` · T2 · live · structural · primary: — · cluster 0/mo
+  - `/blog/hiroshima-nagasaki-80-years-of-data` · T1 · live · article · primary: hiroshima death toll (6,600) · cluster 337,810/mo
+  - `/blog/how-nuclear-weapons-work` · T1 · live · article · primary: how do nuclear bombs work (5,400) · cluster 257,520/mo
+  - `/blog/tsar-bomba-largest-test-ever` · T1 · live · article · primary: tsar bomba (74,000) · cluster 87,060/mo
+  - `/mushroom-cloud` · T2 · proposed · article · primary: mushroom cloud (22,200) · cluster 24,740/mo
+  - `/blog/four-kill-mechanisms` · T1 · live · article · primary: nuclear explosion (18,100) · cluster 20,100/mo
+  - `/blog/emp-high-altitude-nuclear-burst` · T2 · live · article · primary: what is an emp (8,100) · cluster 14,270/mo
+  - `/blog/nuclear-winter-regional-war-cooling` · T2 · live · article · primary: nuclear winter (9,900) · cluster 12,300/mo
+  - `/hydrogen-bomb-vs-atomic-bomb` · T2 · proposed · article · primary: hydrogen bomb vs atomic bomb (8,100) · cluster 8,580/mo
+  - `/atomic-bomb-vs-nuclear-bomb` · T2 · proposed · article · primary: atomic bomb vs nuclear bomb (6,600) · cluster 6,600/mo
+  - `/blog/physics-of-nuclear-blast` · T2 · live · article · primary: what is a megaton (720) · cluster 3,690/mo
+  - `/how-to-survive-a-nuclear-attack` · T2 · proposed · article · primary: how to survive a nuclear bomb (1,300) · cluster 1,760/mo
+- `/glossary` · T2 · live · structural · primary: — · cluster 0/mo
+  - `/glossary/hydrogen-bomb` · T1 · live · article · primary: hydrogen bomb (40,500) · cluster 46,520/mo
+  - `/glossary/npt` · T3 · live · article · primary: npt treaty (33,100) · cluster 33,100/mo
+  - `/glossary/acute-radiation-syndrome` · T3 · live · article · primary: radiation sickness (18,100) · cluster 28,000/mo
+  - `/glossary/icbm` · T3 · live · article · primary: icbm (27,100) · cluster 27,120/mo
+  - `/glossary/fallout` · T2 · live · article · primary: nuclear fallout (5,400) · cluster 11,450/mo
+  - `/glossary/neutron-bomb` · T2 · live · article · primary: neutron bomb (8,100) · cluster 8,980/mo
+  - `/glossary/tactical-nuclear-weapon` · T2 · live · article · primary: tactical nuke (4,400) · cluster 4,420/mo
+  - `/glossary/mirv` · T2 · live · article · primary: mirv (4,400) · cluster 4,400/mo
+  - `/glossary/plutonium-239` · T2 · live · article · primary: plutonium 239 (4,400) · cluster 4,400/mo
+  - `/glossary/nuclear-triad` · T2 · live · article · primary: nuclear triad (2,400) · cluster 2,400/mo
+  - `/glossary/slbm` · T2 · live · article · primary: slbm (1,600) · cluster 1,600/mo
+  - `/glossary/ctbt` · T3 · live · article · primary: ctbt (1,300) · cluster 1,300/mo
+  - `/glossary/tpnw` · T3 · live · article · primary: tpnw (590) · cluster 590/mo
+- `/contact` · T2 · live · structural · primary: — · cluster 0/mo
+- `/faq` · T2 · live · structural · primary: — · cluster 0/mo
+- `/how-it-works` · T2 · live · structural · primary: — · cluster 0/mo
+- `/privacy` · T2 · live · structural · primary: — · cluster 0/mo
+- `/resources` · T2 · live · structural · primary: — · cluster 0/mo
+- `/terms` · T2 · live · structural · primary: — · cluster 0/mo

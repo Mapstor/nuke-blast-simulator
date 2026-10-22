@@ -169,7 +169,7 @@ export default function TermsPage() {
         </section>
 
         <div className="text-center text-green-400/50 text-sm">
-          <p>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          <p>Last updated: 15 October 2026</p>
         </div>
       </main>
     </div>
