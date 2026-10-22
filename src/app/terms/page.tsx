@@ -160,7 +160,7 @@ export default function TermsPage() {
             </p>
             <div className="text-center">
               <p className="text-green-400 font-semibold text-lg">info@nukeblastsimulator.com</p>
-              <p className="text-green-300 text-sm mt-2">Educational Use • Nuclear Awareness • Peace Advocacy</p>
+              <p className="text-green-300 text-sm mt-2">Educational Use • Nuclear Awareness • Scientific Accuracy</p>
             </div>
           </div>
         </section>

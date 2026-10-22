@@ -113,7 +113,7 @@ function noEmDash(s) { return s.replace(/\s*—\s*/g, ', ').replace(/,\s*,/g, ',
 
 // ── hand-tuned head pages (title/h1/description; any field may be omitted) ──
 const OVERRIDES = {
-  '/': { title: 'Nuke Map: Interactive Nuclear Blast Radius Simulator', h1: 'Nuke Map — Nuclear Blast Radius Simulator', description: 'Free nuke map. Click any city to see the fireball, blast and thermal-burn radii for 29 nuclear weapons, from Little Boy to Tsar Bomba, on an air burst.' },
+  '/': { title: 'Nuke Map: Nuclear Bomb Simulator for Any City', h1: 'Nuke Map — Nuclear Bomb Simulator', description: 'Free nuke map. Click any city to see the fireball, blast and thermal-burn radii for 29 nuclear weapons, from Little Boy to Tsar Bomba, on an air burst.' },
   '/weapons': { title: 'Nuclear Bombs: Every Weapon by Yield and Country', h1: 'Nuclear Bombs Database', description: 'Browse 29 nuclear weapons and tests plus 14 conventional bombs, each with a cited yield, history and blast-radius profile, sortable by yield and country.' },
   '/examples': { title: 'Nuke a City: 100 Blast Radius Maps Worldwide', h1: 'Nuke a City — 100 Cities Mapped', description: 'Pick any of 100 world cities and see its nuclear blast radius: population, fireball, blast and thermal rings on an interactive map.' },
   '/compare': { title: 'Nuclear Bomb Size Comparison: Any Two Weapons', h1: 'Nuclear Bomb Size Comparison', description: 'Compare any two nuclear bombs side by side: yields, fireball, blast and thermal-burn radii for an air burst, with every figure cited.' },
@@ -137,9 +137,11 @@ const OVERRIDES = {
   '/blog/physics-of-nuclear-blast': { title: 'What Is a Megaton? Nuclear Yield Explained', h1: 'The Physics of Nuclear Yield', description: 'What a megaton and a kiloton mean in TNT equivalent, and why doubling a bomb\'s yield does not double its blast radius. Cube-root scaling explained.' },
   '/blog/nuclear-winter-regional-war-cooling': { title: 'Nuclear Winter: Could a War Cool the Planet?', h1: 'Nuclear Winter', description: 'Nuclear winter: how soot from burning cities could cool the planet for years. What the TTAPS and modern climate models actually project, cited.' },
   '/blog/emp-high-altitude-nuclear-burst': { title: 'What Is an EMP? High-Altitude Nuclear Burst', h1: 'EMP: How a High-Altitude Nuclear Burst Works', description: 'What an EMP is and how a single high-altitude nuclear burst, like Starfish Prime, could disable electronics across much of a continent.' },
-  // Long-tail primaries that title-case into awkward or garbled strings: hand-tuned.
+  // Long-tail primaries that title-case into awkward strings: hand-tuned.
   '/weapons/joe-1': { title: 'Joe-1 (RDS-1) — Blast Radius & Effects', h1: 'Joe-1 (RDS-1)' },
-  '/examples/vancouver': { title: 'If Vancouver Got Nuked: Would the World Die?' },
+  // NBS-009: the two most-searched weapons get name + place titles.
+  '/weapons/little-boy': { title: 'Little Boy: Hiroshima Bomb Blast Radius & Effects', h1: 'Little Boy (Hiroshima Bomb) Blast Radius' },
+  '/weapons/fat-man': { title: 'Fat Man Bomb: Nagasaki Blast Radius & Effects', h1: 'Fat Man (Nagasaki Bomb) Blast Radius' },
   // MOAB's full name makes the generic compare description overflow 155 and clamp.
   '/compare/little-boy-vs-moab': { description: 'Little Boy (15 kt) vs MOAB (11 t TNT): the smallest WWII nuclear bomb against the largest conventional bomb, blast and thermal radii side by side.' },
 }
@@ -157,10 +159,15 @@ function buildWeapon(slug, p) {
 }
 function buildCity(slug, p) {
   const f = cities[slug.split('/')[1]] || {}
-  const base = tc(p)
-  const title = withQualifier(base, ['Blast Radius Map', 'Nuclear Blast Map', 'Blast & Fallout Map'])
+  // NBS-009: one neutral, brand-safe pattern — no "Nuke {City}" imperative and
+  // no "attack"/"strike" anywhere. The "nuclear bomb" lead is used only when the
+  // page's primary keyword says "nuclear bomb"; otherwise "nuke". Both variants
+  // contain the primary's tokens because every city primary is a "nuke {city}"
+  // or "nuclear bomb {city}" form.
+  const lead = /\bnuclear bomb\b/.test(p || '') ? 'What If a Nuclear Bomb Hit' : 'What If a Nuke Hit'
+  const title = `${lead} ${f.name}? Blast Radius Map`
   const desc = clampDesc(`What a nuclear bomb would do to ${f.name}, ${f.country} (population ${popShort(f.population)}): fireball, blast and thermal-burn radii from Little Boy to Tsar Bomba, mapped.`)
-  return { title, h1: `What If a Nuclear Bomb Hit ${f.name}?`, description: desc }
+  return { title, h1: `${lead} ${f.name}?`, description: desc }
 }
 function buildCompare(slug, p) {
   const pair = slug.split('/')[1]
