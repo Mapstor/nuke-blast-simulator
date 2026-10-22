@@ -19,6 +19,7 @@ import {
 } from '@/lib/data/comparisons'
 import { effectRadiiKm, formatRadiusKm, EFFECTS_FLAGS, type EffectRadiiKm } from '@/lib/calculations/effects'
 import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 import type { Bomb } from '@/lib/types'
 
 const HIROSHIMA_YIELD_KT = 15
@@ -77,18 +78,7 @@ export async function generateMetadata({
   const { slug } = await params
   const data = loadComparison(slug)
   if (!data) return { title: 'Comparison Not Found' }
-  const { a, b } = data
-
-  const title = `${a.name} vs ${b.name}: Nuclear Weapon Comparison`
-  const description = `Side-by-side comparison of the ${a.name} (${formatYield(a.yield)}) and ${b.name} (${formatYield(b.yield)}). Yields, blast and thermal radii (air burst), historical context, and which weapon is more powerful.`
-
-  return {
-    title,
-    description,
-    alternates: { canonical: `/compare/${slug}` },
-    openGraph: { title, description, url: `/compare/${slug}`, type: 'article' },
-    twitter: { card: 'summary_large_image', title, description },
-  }
+  return seoMetadata(`/compare/${slug}`, 'article')
 }
 
 export default async function ComparePage({
@@ -170,7 +160,7 @@ export default async function ComparePage({
         schema={[
           articleSchema({
             url: `/compare/${slug}`,
-            headline: `${a.name} vs ${b.name}: Nuclear Weapon Comparison`,
+            headline: pageH1(`/compare/${slug}`),
             description: `Side-by-side comparison of the ${a.name} and the ${b.name} — yields, blast and thermal radii (air burst), and historical context.`,
           }),
           faqPageSchema(faqEntries),
@@ -189,7 +179,7 @@ export default async function ComparePage({
 
         <header className="mb-10">
           <h1 className="text-4xl font-bold mb-3 text-green-400">
-            {a.name} vs {b.name}
+            {pageH1(`/compare/${slug}`)}
           </h1>
           <p className="text-lg text-green-300">Nuclear weapon side-by-side comparison</p>
           <Byline className="mt-2" />

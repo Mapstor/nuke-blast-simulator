@@ -3,6 +3,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 // @ts-expect-error - plain .mjs helper, no type declarations
 import { readCsvObjects } from '../scripts/lib/csv.mjs'
+import foldRedirects from '../data/fold-redirects.json'
 
 // Scans the prerendered HTML for strings that the NBS-005 fact wave removed.
 // Run `npm run build` before `npm test`. Never edit research/removed-strings.csv
@@ -54,6 +55,11 @@ type Row = { row_id: string; verdict: string; scope: string; string: string }
 describe('removed-strings regression gate', () => {
   const rows = readCsvObjects(CSV) as Row[]
   const allHtml = walkHtml(APP)
+  // NBS-008: a scoped page may have been folded to another page; follow the
+  // redirect-plan so a removed string stays checked wherever its content moved.
+  const foldMap = new Map(
+    (foldRedirects as Array<{ source: string; destination: string }>).map((r) => [r.source, r.destination]),
+  )
   const cache = new Map<string, string>()
   const normOf = (f: string) => {
     let v = cache.get(f)
@@ -81,11 +87,12 @@ describe('removed-strings regression gate', () => {
           }
         }
       } else {
-        const f = pageFile(r.scope)
+        const scope = (foldMap.get(r.scope) ?? r.scope).split('#')[0]
+        const f = pageFile(scope)
         if (!existsSync(f)) {
-          offenders.push(`row ${r.row_id}: scoped page ${r.scope} has no built HTML`)
+          offenders.push(`row ${r.row_id}: scoped page ${r.scope} (-> ${scope}) has no built HTML`)
         } else if (normOf(f).includes(needle)) {
-          offenders.push(`row ${r.row_id} "${r.string}" -> ${r.scope}`)
+          offenders.push(`row ${r.row_id} "${r.string}" -> ${scope}`)
         }
       }
     }

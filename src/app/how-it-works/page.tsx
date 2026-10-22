@@ -8,12 +8,9 @@ import {
   breadcrumbSchema,
   SITE_URL,
 } from '@/lib/seo/schemas'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 
-export const metadata: Metadata = {
-  title: 'How It Works - Nuke Blast Simulator Guide',
-  description: 'How to use the nuclear blast simulator to see the fireball, blast and thermal radii of nuclear weapons on any location worldwide.',
-  alternates: { canonical: '/how-it-works' },
-}
+export const metadata: Metadata = seoMetadata('/how-it-works')
 
 // Nuclear-weapon count rendered from data. The picker excludes the 14
 // conventional bombs and the custom-yield slot; this equals 29.
@@ -72,7 +69,7 @@ export default function HowItWorksPage() {
       />
 
       <main className="max-w-4xl mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-8 text-green-400">How to Use the Nuclear Blast Simulator</h1>
+        <h1 className="text-4xl font-bold mb-8 text-green-400">{pageH1('/how-it-works')}</h1>
 
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6 text-green-400">Step-by-Step Guide</h2>

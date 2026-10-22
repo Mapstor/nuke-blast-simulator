@@ -4,52 +4,15 @@
 
 export type Comparison = readonly [string, string]
 
+// NBS-008: folded to the 5 pairs with measured demand (research/page-map.csv +
+// redirect-plan.csv). The other 25 pairs 308 to /compare, where the compare
+// tool still renders any two weapons side by side. Edit the page map, not here.
 export const COMPARISONS: Comparison[] = [
-  // ── Iconic head-to-heads ───────────────────────────────────────────────
   ['tsar-bomba', 'castle-bravo'],         // Largest USSR vs largest US test
   ['tsar-bomba', 'little-boy'],           // Largest ever vs Hiroshima
-  ['tsar-bomba', 'ivy-mike'],             // Largest vs first H-bomb
   ['little-boy', 'fat-man'],              // Hiroshima vs Nagasaki
-  ['castle-bravo', 'ivy-mike'],           // First operational H-bomb vs first H-bomb test
-  ['castle-bravo', 'little-boy'],         // Largest US test vs Hiroshima
-
-  // ── Modern US strategic arsenal ────────────────────────────────────────
-  ['b83', 'w88'],                          // Largest current US vs SLBM warhead
-  ['w88', 'w76'],                          // Most-modern SLBM vs most-deployed
-  ['b83', 'b53'],                          // Current vs retired US strategic bomb
-  ['w87', 'w88'],                          // ICBM vs SLBM
   ['b83', 'tsar-bomba'],                   // Current US vs USSR largest
-
-  // ── Tactical weapons ───────────────────────────────────────────────────
-  ['b61', 'w54'],                          // Modern tactical vs early tactical
-  ['b61', 'davy-crockett'],                // Variable-yield gravity vs tiniest tactical
-  ['w80', 'b61'],                          // Cruise missile warhead vs gravity bomb
-
-  // ── First-test by country ──────────────────────────────────────────────
-  ['trinity', 'joe-1'],                    // First US vs first USSR
-  ['trinity', 'hurricane'],                // First US vs first UK
-  ['trinity', 'gerboise-bleue'],           // First US vs first French
-  ['trinity', '596'],                      // First US vs first Chinese
-  ['trinity', 'smiling-buddha'],           // First US vs first Indian
-  ['trinity', 'chagai-i'],                 // First US vs first Pakistani
-  ['trinity', 'hwasong-14'],               // First US vs first North Korean missile
-
-  // ── Yield-class comparisons ────────────────────────────────────────────
-  ['fat-man', 'trinity'],                  // ~21 kt vs ~21 kt (same-class)
-  ['little-boy', 'w76'],                   // Hiroshima vs modern strategic
-  ['fat-man', 'w76'],                      // Nagasaki vs modern strategic
-
-  // ── Hydrogen bomb generations ──────────────────────────────────────────
-  ['ivy-mike', 'castle-bravo'],            // First H-bomb vs first deployable H-bomb
-
-  // ── Conventional vs nuclear ────────────────────────────────────────────
   ['little-boy', 'moab'],                  // Smallest WW2 nuke vs largest conventional
-  ['little-boy', 'foab'],                  // Smallest nuke vs Father of All Bombs
-  ['fat-man', 'moab'],                     // Nagasaki vs MOAB
-
-  // ── Mega-yield Soviet ─────────────────────────────────────────────────
-  ['tsar-bomba', 'soviet-test-219'],
-  ['castle-bravo', 'castle-yankee'],
 ]
 
 export function encodeComparisonSlug(a: string, b: string): string {

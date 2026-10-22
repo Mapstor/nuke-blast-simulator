@@ -12,6 +12,8 @@ import {
 import { getContentDates } from '@/lib/seo/contentDates'
 import { Sources, createCitations } from '@/components/seo/Cite'
 import { articles, findArticle, categoryLabel } from '@/lib/blog/articles'
+import { PAGE_SEO } from '@/lib/seo/pageSeo'
+import { pageH1 } from '@/lib/seo/pageMeta'
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }))
@@ -44,14 +46,15 @@ export async function generateMetadata({
   const article = findArticle(slug)
   if (!article) return { title: 'Article Not Found' }
   const dates = getContentDates(`/blog/${article.slug}`)
+  const seo = PAGE_SEO[`/blog/${slug}`]
 
   return {
-    title: `${article.title} | Nuke Blast Simulator Blog`,
-    description: article.description,
+    title: seo.title,
+    description: seo.description,
     alternates: { canonical: `/blog/${article.slug}` },
     openGraph: {
-      title: article.title,
-      description: article.description,
+      title: seo.title,
+      description: seo.description,
       url: `/blog/${article.slug}`,
       type: 'article',
       publishedTime: dates.datePublished,
@@ -60,8 +63,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: article.title,
-      description: article.description,
+      title: seo.title,
+      description: seo.description,
     },
   }
 }
@@ -115,7 +118,7 @@ export default async function BlogArticlePage({
             {categoryLabel(article.category)} · {article.readingMinutes} min read
           </p>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-green-400 leading-tight">
-            {article.title}
+            {pageH1(`/blog/${article.slug}`)}
           </h1>
           <p className="text-lg text-yellow-400 mb-4">{article.description}</p>
           <p className="text-sm text-green-300/70">

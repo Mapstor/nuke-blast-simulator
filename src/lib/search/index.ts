@@ -7,6 +7,7 @@ import { presetLocations } from '@/lib/data/cities'
 import { glossary } from '@/lib/data/glossary'
 import { articles } from '@/lib/blog/articles'
 import { COMPARISONS, encodeComparisonSlug } from '@/lib/data/comparisons'
+import { KEPT_CITY_SLUGS, KEPT_GLOSSARY_SLUGS } from '@/lib/data/livePages'
 
 export type SearchSection =
   | 'page'
@@ -29,11 +30,12 @@ const basePages: SearchEntry[] = [
   { title: 'FAQ',                      description: 'Common questions about nuclear weapon effects and the simulator methodology.',                                            url: '/faq',          section: 'page' },
   { title: 'How It Works',             description: 'Step-by-step guide to using the nuclear blast simulator.',                                                                url: '/how-it-works', section: 'page' },
   { title: 'Methodology',              description: 'Scaling-law formulas used to compute fireball, blast, thermal radiation, and fallout zones.',                             url: '/methodology',  section: 'page' },
-  { title: 'Weapons Database',         description: 'Browse 44 nuclear weapons by yield class and country.',                                                                   url: '/weapons',      section: 'page' },
-  { title: 'City Scenarios',           description: 'Browse nuclear blast scenarios for major world cities — what if a nuclear bomb hit each city.',                           url: '/examples',     section: 'page' },
+  { title: 'Weapons Database',         description: 'Browse 29 nuclear weapons and 14 conventional bombs by yield and country.',                                              url: '/weapons',      section: 'page' },
+  { title: 'Cities',                   description: 'Browse nuclear blast maps for major world cities, with cited populations.',                                              url: '/examples',     section: 'page' },
   { title: 'Weapon Comparisons',       description: 'Browse head-to-head nuclear weapon comparisons.',                                                                         url: '/compare',      section: 'page' },
   { title: 'Nuclear Weapons Glossary', description: 'Defined terms in nuclear weapons effects, physics, doctrine, and arms control.',                                          url: '/glossary',     section: 'page' },
   { title: 'Blog',                     description: 'Long-form articles on nuclear weapon physics, history, doctrine, effects.',                                               url: '/blog',         section: 'page' },
+  { title: 'Nuclear Weapons by Country', description: 'How many nuclear weapons each country has as of early 2026: warheads, delivery systems and trends, every figure cited.', url: '/nuclear-weapons-by-country', section: 'page' },
   { title: 'Data Sources',             description: 'Scientific references and primary sources used in calculations.',                                                         url: '/sources',      section: 'page' },
   { title: 'Treaties & Data Sources',  description: 'Nuclear arms-control treaties (NPT, CTBT, TPNW) and the official organizations that publish nuclear-forces data.', url: '/resources',    section: 'page' },
   { title: 'Contact',                  description: 'Contact information for feedback and educational inquiries.',                                                             url: '/contact',      section: 'page' },
@@ -50,7 +52,9 @@ const weaponPages: SearchEntry[] = bombs
     section: 'weapon' as const,
   }))
 
-const cityPages: SearchEntry[] = presetLocations.map((c) => ({
+const cityPages: SearchEntry[] = presetLocations
+  .filter((c) => KEPT_CITY_SLUGS.includes(c.slug))
+  .map((c) => ({
   title: `What if a nuclear bomb hit ${c.name}?`,
   description: `${c.name}, ${c.country}. Population ${c.population.toLocaleString()}. ${c.description}`,
   url: `/examples/${c.slug}`,
@@ -73,7 +77,9 @@ const comparisonPages: SearchEntry[] = (() => {
   return out
 })()
 
-const glossaryPages: SearchEntry[] = glossary.map((g) => ({
+const glossaryPages: SearchEntry[] = glossary
+  .filter((g) => KEPT_GLOSSARY_SLUGS.includes(g.slug))
+  .map((g) => ({
   title: g.term,
   description: g.short,
   url: `/glossary/${g.slug}`,

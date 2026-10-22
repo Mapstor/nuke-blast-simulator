@@ -5,11 +5,15 @@
 const scenarioRedirects = require('./data/scenario-redirects.json')
 // NBS-005: OFAB-5000 was removed from the weapons data (no source).
 const weaponRedirects = require('./data/weapon-redirects.json')
+// NBS-008: 142 folded URLs (79 cities, 25 compare pairs, 37 glossary terms, the
+// arsenals article) -> their owning page. Generated from research/redirect-plan.csv
+// by scripts/generate-fold-redirects.mjs.
+const foldRedirects = require('./data/fold-redirects.json')
 
 const nextConfig = {
   reactStrictMode: true,
   async redirects() {
-    return [...scenarioRedirects, ...weaponRedirects]
+    return [...scenarioRedirects, ...weaponRedirects, ...foldRedirects]
   },
   typescript: {
     ignoreBuildErrors: false,

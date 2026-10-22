@@ -9,7 +9,7 @@ const FOOTER_GROUPS: Array<{ heading: string; links: Array<{ href: string; label
     links: [
       { href: '/',          label: 'Simulator' },
       { href: '/weapons',   label: 'Weapons Database' },
-      { href: '/examples',  label: 'City Scenarios' },
+      { href: '/examples',  label: 'Cities' },
       { href: '/compare',   label: 'Weapon Comparisons' },
     ],
   },
@@ -17,6 +17,7 @@ const FOOTER_GROUPS: Array<{ heading: string; links: Array<{ href: string; label
     heading: 'Learn',
     links: [
       { href: '/blog',          label: 'Blog' },
+      { href: '/nuclear-weapons-by-country', label: 'Nuclear Weapons by Country' },
       { href: '/glossary',      label: 'Glossary' },
       { href: '/how-it-works',  label: 'How It Works' },
       { href: '/methodology',   label: 'Methodology' },

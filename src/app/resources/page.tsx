@@ -1,15 +1,11 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 import { breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 import { Cite, Sources, createCitations } from '@/components/seo/Cite'
 
-export const metadata: Metadata = {
-  title: 'Resources — Nuclear Arms-Control Treaties & Official Data Sources',
-  description:
-    'The main nuclear arms-control treaties (NPT, CTBT, TPNW) and the official organisations that publish nuclear-forces data: the Federation of American Scientists, SIPRI, the CTBTO and the UN Office for Disarmament Affairs.',
-  alternates: { canonical: '/resources' },
-}
+export const metadata: Metadata = seoMetadata('/resources')
 
 // Each external link below points to a URL that is already in the site's source
 // list (src/lib/data/sources.ts), so every organisation here is one the site
@@ -36,7 +32,7 @@ export default function ResourcesPage() {
         ])}
       />
       <main className="max-w-4xl mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-6 text-green-400">Resources</h1>
+        <h1 className="text-4xl font-bold mb-6 text-green-400">{pageH1('/resources')}</h1>
 
         <p className="text-green-300 text-lg mb-10">
           The main nuclear arms-control treaties and the official bodies whose data this site relies on.

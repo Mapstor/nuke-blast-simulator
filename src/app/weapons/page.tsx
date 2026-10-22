@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 import {
   datasetSchema,
   itemListSchema,
@@ -12,11 +13,7 @@ import type { Bomb } from '@/lib/types'
 
 const NUCLEAR_WEAPON_COUNT = bombs.filter((b) => b.type !== 'conventional' && b.id !== 'custom').length
 
-export const metadata: Metadata = {
-  title: 'Nuclear Weapons Database — Yields, Countries & Specifications',
-  description: `Searchable database of ${NUCLEAR_WEAPON_COUNT} nuclear weapons from 1945 to the present, with conventional comparison bombs, including Tsar Bomba (50 Mt), Castle Bravo (15 Mt), Little Boy, Fat Man, B83, W88, W76 and B61. Yields, countries, years and technical specs.`,
-  alternates: { canonical: '/weapons' }
-}
+export const metadata: Metadata = seoMetadata('/weapons')
 
 const indexedBombs = bombs.filter((b) => b.id !== 'custom')
 
@@ -85,7 +82,7 @@ export default function WeaponsPage() {
         ]}
       />
       <main className="max-w-6xl mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-8 text-green-400">Nuclear Weapons Database</h1>
+        <h1 className="text-4xl font-bold mb-8 text-green-400">{pageH1('/weapons')}</h1>
         
         <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4 text-red-400">Historical Educational Data</h2>
@@ -134,7 +131,7 @@ export default function WeaponsPage() {
             <Link href="/compare" className="text-yellow-400 hover:underline">all comparison pages</Link>{' '}
             (Tsar Bomba vs Castle Bravo, Little Boy vs Fat Man, etc.). Want to drop a specific weapon
             on a specific city? Open the{' '}
-            <Link href="/examples" className="text-yellow-400 hover:underline">city scenarios</Link> or run it on the{' '}
+            <Link href="/examples" className="text-yellow-400 hover:underline">cities</Link> or run it on the{' '}
             <Link href="/" className="text-yellow-400 hover:underline">interactive map</Link>.
           </p>
         </section>

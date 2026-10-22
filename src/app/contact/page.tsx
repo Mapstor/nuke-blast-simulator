@@ -1,12 +1,9 @@
 import { Metadata } from 'next'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { contactPageSchema, breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 
-export const metadata: Metadata = {
-  title: 'Contact - Nuke Blast Simulator',
-  description: 'Contact the publisher of Nuke Blast Simulator — feedback, corrections, and concerns. Published by Moving Data Systems d.o.o., Slovenia.',
-  alternates: { canonical: '/contact' },
-}
+export const metadata: Metadata = seoMetadata('/contact')
 
 export default function ContactPage() {
   return (
@@ -22,7 +19,7 @@ export default function ContactPage() {
         ]}
       />
       <main className="max-w-4xl mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-8 text-green-400">Contact</h1>
+        <h1 className="text-4xl font-bold mb-8 text-green-400">{pageH1('/contact')}</h1>
 
         <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-6 mb-8">
           <p className="text-green-300 text-lg">

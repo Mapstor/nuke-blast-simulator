@@ -4,6 +4,7 @@ import { join } from 'node:path'
 import { bombs } from '../src/lib/data/bombs'
 import { presetLocations } from '../src/lib/data/cities'
 import { COMPARISONS, encodeComparisonSlug } from '../src/lib/data/comparisons'
+import { KEPT_CITY_SLUGS } from '../src/lib/data/livePages'
 
 // Every page that shows computed radii must cite the two engine sources
 // (effects-fireball, effects-blast-thermal). We detect them by their deep-link
@@ -32,7 +33,7 @@ describe('engine-sources regression gate', () => {
     'index',
     'methodology',
     ...nuclear.map((b) => `weapons/${b.id}`),
-    ...presetLocations.map((c) => `examples/${c.slug}`),
+    ...presetLocations.filter((c) => KEPT_CITY_SLUGS.includes(c.slug)).map((c) => `examples/${c.slug}`),
     ...COMPARISONS.filter(([a, b]) => nuclearIds.has(a) && nuclearIds.has(b)).map(
       ([a, b]) => `compare/${encodeComparisonSlug(a, b)}`,
     ),

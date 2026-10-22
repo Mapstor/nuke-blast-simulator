@@ -1,0 +1,712 @@
+[
+  {
+    "source": "/compare/b61-vs-davy-crockett",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/b61-vs-w54",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/b83-vs-b53",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/b83-vs-w88",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/castle-bravo-vs-castle-yankee",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/castle-bravo-vs-ivy-mike",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/castle-bravo-vs-little-boy",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/fat-man-vs-moab",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/fat-man-vs-trinity",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/fat-man-vs-w76",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/ivy-mike-vs-castle-bravo",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/little-boy-vs-foab",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/little-boy-vs-w76",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/trinity-vs-596",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/trinity-vs-chagai-i",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/trinity-vs-gerboise-bleue",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/trinity-vs-hurricane",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/trinity-vs-hwasong-14",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/trinity-vs-joe-1",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/trinity-vs-smiling-buddha",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/tsar-bomba-vs-ivy-mike",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/tsar-bomba-vs-soviet-test-219",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/w80-vs-b61",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/w87-vs-w88",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/compare/w88-vs-w76",
+    "destination": "/compare",
+    "permanent": true
+  },
+  {
+    "source": "/examples/abu-dhabi",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/accra",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/addis-ababa",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/algiers",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/amman",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/amsterdam",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/auckland",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/baghdad",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/bangalore",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/bangkok",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/barcelona",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/beijing",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/berlin",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/bogota",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/brisbane",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/brussels",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/budapest",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/buenos-aires",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/busan",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/cairo",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/cape-town",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/caracas",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/casablanca",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/chennai",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/chongqing",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/copenhagen",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/delhi",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/dhaka",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/dubai",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/dublin",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/guangzhou",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/hamburg",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/hanoi",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/ho-chi-minh-city",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/hong-kong",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/hyderabad",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/islamabad",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/istanbul",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/jakarta",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/johannesburg",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/karachi",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/kolkata",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/kuala-lumpur",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/kuwait-city",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/lahore",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/lima",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/lisbon",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/madrid",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/manila",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/melbourne",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/mexico-city",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/miami",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/milan",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/montevideo",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/mumbai",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/munich",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/nagoya",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/nairobi",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/osaka",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/paris",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/perth",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/philadelphia",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/phoenix",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/quito",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/rio-de-janeiro",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/riyadh",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/rome",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/salvador",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/santiago",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/sao-paulo",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/seoul",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/shanghai",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/shenzhen",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/singapore",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/stockholm",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/taipei",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/toronto",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/vienna",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/examples/warsaw",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/air-burst",
+    "destination": "/glossary#air-burst",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/atomic-bomb",
+    "destination": "/blog/how-nuclear-weapons-work",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/boosted-fission",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/counterforce",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/countervalue",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/critical-mass",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/cruise-missile",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/dead-hand",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/deuterium",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/emp",
+    "destination": "/blog/emp-high-altitude-nuclear-burst",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/fireball",
+    "destination": "/glossary#fireball",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/first-strike",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/gamma-radiation",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/half-life",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/kiloton",
+    "destination": "/blog/physics-of-nuclear-blast",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/mad",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/megaton",
+    "destination": "/blog/physics-of-nuclear-blast",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/new-start",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/nuclear-deterrence",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/nuclear-fission",
+    "destination": "/blog/how-nuclear-weapons-work",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/nuclear-fusion",
+    "destination": "/glossary/hydrogen-bomb",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/nuclear-winter",
+    "destination": "/blog/nuclear-winter-regional-war-cooling",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/overpressure",
+    "destination": "/glossary#overpressure",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/permissive-action-link",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/psi",
+    "destination": "/glossary#psi",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/second-degree-burns",
+    "destination": "/glossary#second-degree-burns",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/second-strike",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/sievert",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/strategic-nuclear-weapon",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/surface-burst",
+    "destination": "/glossary#surface-burst",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/teller-ulam",
+    "destination": "/glossary/hydrogen-bomb",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/thermal-radiation",
+    "destination": "/glossary#thermal-radiation",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/thermonuclear-weapon",
+    "destination": "/glossary/hydrogen-bomb",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/tritium",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/uranium-235",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/warhead",
+    "destination": "/glossary",
+    "permanent": true
+  },
+  {
+    "source": "/glossary/yield",
+    "destination": "/blog/physics-of-nuclear-blast",
+    "permanent": true
+  },
+  {
+    "source": "/blog/modern-nuclear-arsenals-2026",
+    "destination": "/nuclear-weapons-by-country",
+    "permanent": true
+  }
+]

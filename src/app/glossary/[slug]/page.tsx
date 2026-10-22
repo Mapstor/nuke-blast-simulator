@@ -11,6 +11,8 @@ import { findGlossaryEntry, glossary, categoryLabel } from '@/lib/data/glossary'
 import { PrevNext, type PrevNextItem } from '@/components/nav/PrevNext'
 import { Sources, createCitations } from '@/components/seo/Cite'
 import { renderCited } from '@/components/seo/citeText'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
+import { KEPT_GLOSSARY_SLUGS } from '@/lib/data/livePages'
 
 const CATEGORY_ORDER = ['effects', 'weapons', 'physics', 'doctrine', 'treaty'] as const
 
@@ -25,7 +27,7 @@ function termNeighbors(slug: string): { prev: PrevNextItem; next: PrevNextItem }
   const i = sequencedGlossary.findIndex((g) => g.slug === slug)
   const fmt = (g: typeof sequencedGlossary[number]): PrevNextItem => ({
     label: g.term,
-    href: `/glossary/${g.slug}`,
+    href: KEPT_GLOSSARY_SLUGS.includes(g.slug) ? `/glossary/${g.slug}` : `/glossary#${g.slug}`,
     sublabel: categoryLabel(g.category),
   })
   return {
@@ -35,7 +37,9 @@ function termNeighbors(slug: string): { prev: PrevNextItem; next: PrevNextItem }
 }
 
 export function generateStaticParams() {
-  return glossary.map((g) => ({ slug: g.slug }))
+  return glossary
+    .filter((g) => KEPT_GLOSSARY_SLUGS.includes(g.slug))
+    .map((g) => ({ slug: g.slug }))
 }
 
 export async function generateMetadata({
@@ -47,15 +51,7 @@ export async function generateMetadata({
   const entry = findGlossaryEntry(slug)
   if (!entry) return { title: 'Term Not Found' }
 
-  const title = `${entry.term} — Nuclear Weapons Glossary`
-  const description = entry.short
-
-  return {
-    title,
-    description,
-    alternates: { canonical: `/glossary/${entry.slug}` },
-    openGraph: { title, description, url: `/glossary/${entry.slug}`, type: 'article' },
-  }
+  return seoMetadata(`/glossary/${slug}`, 'article')
 }
 
 export default async function GlossaryTermPage({
@@ -80,7 +76,7 @@ export default async function GlossaryTermPage({
         schema={[
           definedTermSchema({
             url: `/glossary/${entry.slug}`,
-            term: entry.term,
+            term: pageH1(`/glossary/${entry.slug}`),
             definition: entry.short,
           }),
           breadcrumbSchema([
@@ -104,7 +100,7 @@ export default async function GlossaryTermPage({
           <p className="text-xs uppercase tracking-wide text-green-300/70 mb-2">
             {categoryLabel(entry.category)}
           </p>
-          <h1 className="text-4xl font-bold mb-3 text-green-400">{entry.term}</h1>
+          <h1 className="text-4xl font-bold mb-3 text-green-400">{pageH1(`/glossary/${entry.slug}`)}</h1>
           <p className="text-lg text-yellow-400">{entry.short}</p>
         </header>
 
@@ -121,7 +117,7 @@ export default async function GlossaryTermPage({
               {related.map((r) => (
                 <Link
                   key={r.slug}
-                  href={`/glossary/${r.slug}`}
+                  href={KEPT_GLOSSARY_SLUGS.includes(r.slug) ? `/glossary/${r.slug}` : `/glossary#${r.slug}`}
                   className="block bg-black/50 border border-green-500/30 rounded-lg p-4 hover:border-green-400 transition"
                 >
                   <div className="font-semibold text-yellow-400">{r.term}</div>

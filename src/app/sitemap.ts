@@ -4,6 +4,7 @@ import { presetLocations } from '@/lib/data/cities'
 import { allComparisonSlugs } from '@/lib/data/comparisons'
 import { glossary } from '@/lib/data/glossary'
 import { articles } from '@/lib/blog/articles'
+import { KEPT_CITY_SLUGS, KEPT_GLOSSARY_SLUGS } from '@/lib/data/livePages'
 import { contentDateModified } from '@/lib/seo/contentDates'
 
 const BASE_URL = 'https://nukeblastsimulator.com'
@@ -26,6 +27,7 @@ const staticRoutes: Array<{
   { path: '/compare',      priority: 0.8, changeFrequency: 'monthly' },
   { path: '/glossary',     priority: 0.8, changeFrequency: 'monthly' },
   { path: '/blog',         priority: 0.8, changeFrequency: 'weekly'  },
+  { path: '/nuclear-weapons-by-country', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/faq',          priority: 0.8, changeFrequency: 'monthly' },
   { path: '/how-it-works', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/methodology',  priority: 0.8, changeFrequency: 'monthly' },
@@ -54,7 +56,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     }))
 
-  const cityEntries: MetadataRoute.Sitemap = presetLocations.map((c) => ({
+  const cityEntries: MetadataRoute.Sitemap = presetLocations
+    .filter((c) => KEPT_CITY_SLUGS.includes(c.slug))
+    .map((c) => ({
     url: `${BASE_URL}/examples/${c.slug}`,
     lastModified: lm(`/examples/${c.slug}`),
     changeFrequency: 'monthly' as ChangeFreq,
@@ -68,7 +72,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  const glossaryEntries: MetadataRoute.Sitemap = glossary.map((g) => ({
+  const glossaryEntries: MetadataRoute.Sitemap = glossary
+    .filter((g) => KEPT_GLOSSARY_SLUGS.includes(g.slug))
+    .map((g) => ({
     url: `${BASE_URL}/glossary/${g.slug}`,
     lastModified: lm(`/glossary/${g.slug}`),
     changeFrequency: 'yearly' as ChangeFreq,

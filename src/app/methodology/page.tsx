@@ -18,13 +18,9 @@ import {
 } from '@/lib/calculations/effects'
 import { radiusKm } from '@/lib/calculations/radius'
 import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 
-export const metadata: Metadata = {
-  title: 'Methodology - How We Calculate Nuclear Blast Effects',
-  description:
-    'The scaling-law formulas and data sources used to calculate nuclear blast and thermal effect radii in the simulator — the Glasstone & Dolan fireball relation and the published effects scaling table.',
-  alternates: { canonical: '/methodology' },
-}
+export const metadata: Metadata = seoMetadata('/methodology')
 
 // Column labels for the scaling-table knots.
 function knotLabel(kt: number): string {
@@ -61,7 +57,7 @@ export default function MethodologyPage() {
       />
 
       <main className="max-w-4xl mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-3 text-green-400">Scientific Methodology</h1>
+        <h1 className="text-4xl font-bold mb-3 text-green-400">{pageH1('/methodology')}</h1>
         <Byline className="mb-8" />
 
         <section className="mb-12">

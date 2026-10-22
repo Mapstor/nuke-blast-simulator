@@ -10,31 +10,15 @@ import { articles } from '@/lib/blog/articles'
 import { glossary } from '@/lib/data/glossary'
 import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
 import { radiusText } from '@/lib/calculations/radius'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
+import { KEPT_CITY_SLUGS, KEPT_GLOSSARY_SLUGS } from '@/lib/data/livePages'
 
 // Count of nuclear weapons in the simulator picker (the BombSelector excludes
 // conventional bombs; the custom-yield slot is typed thermonuclear so is
 // excluded explicitly). Rendered from data so prose can never drift.
 const nuclearWeaponCount = bombs.filter((b) => b.type !== 'conventional' && b.id !== 'custom').length
 
-export const metadata: Metadata = {
-  title: 'Nuclear Blast Simulator — Interactive Nuke Map & Blast Radius Calculator',
-  description:
-    `Free interactive nuclear blast simulator. Click any city to see the fireball, blast radius, and thermal burn zones for ${nuclearWeaponCount} nuclear weapons, including Tsar Bomba, Little Boy and Castle Bravo (air burst). Real scientific data, no signup.`,
-  alternates: { canonical: '/' },
-  openGraph: {
-    title: 'Nuclear Blast Simulator — Interactive Nuke Map',
-    description:
-      'See the fireball, blast radius, and thermal burn zones for any nuclear weapon on any city. Free, instant, air burst at optimum height.',
-    url: '/',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Nuclear Blast Simulator — Interactive Nuke Map',
-    description:
-      'See the fireball, blast radius, and thermal burn zones for any nuclear weapon on any city. Free, instant, air burst at optimum height.',
-  },
-}
+export const metadata: Metadata = seoMetadata('/')
 
 const homepageFaq = [
   {
@@ -73,7 +57,7 @@ const featuredWeapons = ['tsar-bomba', 'castle-bravo', 'little-boy', 'fat-man', 
   .map((id) => bombs.find((b) => b.id === id))
   .filter((b): b is NonNullable<typeof b> => Boolean(b))
 
-const featuredCities = presetLocations.slice(0, 8)
+const featuredCities = presetLocations.filter((c) => KEPT_CITY_SLUGS.includes(c.slug)).slice(0, 8)
 
 const featuredComparisons = COMPARISONS.slice(0, 6)
   .map(([a, b]) => {
@@ -88,7 +72,7 @@ const latestArticles = [...articles]
   .sort((a, b) => (a.datePublished < b.datePublished ? 1 : -1))
   .slice(0, 4)
 
-const featuredGlossaryTerms = glossary.slice(0, 6)
+const featuredGlossaryTerms = glossary.filter((g) => KEPT_GLOSSARY_SLUGS.includes(g.slug)).slice(0, 6)
 
 function shortYield(y: number): string {
   if (y >= 1000) return `${(y / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })} Mt`
@@ -101,9 +85,7 @@ export default function HomePage() {
     <main>
       <JsonLd id="ld-home-faq" schema={faqPageSchema(homepageFaq)} />
 
-      <h1 className="sr-only">
-        Nuclear Blast Simulator — Interactive Nuke Map &amp; Blast Radius Calculator
-      </h1>
+      <h1 className="sr-only">{pageH1('/')}</h1>
 
       <HomeClient />
 
@@ -191,7 +173,7 @@ export default function HomePage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-4 text-green-400">Featured City Scenarios</h2>
+            <h2 className="text-3xl font-bold mb-4 text-green-400">Featured Cities</h2>
             <p className="mb-4">
               Pre-computed nuclear blast effect radii for major world cities.
             </p>
@@ -219,7 +201,7 @@ export default function HomePage() {
             </div>
             <p className="mt-4">
               <Link href="/examples" className="text-yellow-400 hover:underline">
-                Browse all {presetLocations.length} city scenarios →
+                Browse all {presetLocations.length} cities →
               </Link>
             </p>
           </section>

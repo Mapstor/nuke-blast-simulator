@@ -1,12 +1,9 @@
 import { Metadata } from 'next'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy - Nuke Blast Simulator',
-  description: 'What data Nuke Blast Simulator collects and the third parties involved: Google Analytics, Mapbox, and Vercel. Controller: Moving Data Systems d.o.o.',
-  alternates: { canonical: '/privacy' },
-}
+export const metadata: Metadata = seoMetadata('/privacy')
 
 export default function PrivacyPage() {
   return (
@@ -19,7 +16,7 @@ export default function PrivacyPage() {
         ])}
       />
       <main className="max-w-4xl mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-8 text-green-400">Privacy Policy</h1>
+        <h1 className="text-4xl font-bold mb-8 text-green-400">{pageH1('/privacy')}</h1>
 
         <section className="mb-10">
           <h2 className="text-2xl font-semibold mb-4 text-green-400">Data controller</h2>

@@ -18,10 +18,9 @@ import {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nukeblastsimulator.com'),
-  title: {
-    default: 'Nuclear Blast Simulator - Interactive Nuke Map | NukeBlastSimulator.com',
-    template: '%s | NukeBlastSimulator.com'
-  },
+  // No title template: each page sets its own final <title> (<=60 chars) via
+  // seoMetadata(); the brand lives in openGraph.siteName, not the title tag.
+  title: 'Nuke Map: Interactive Nuclear Blast Radius Simulator',
   description: 'Interactive nuclear blast simulator. Calculate the fireball, blast radius, and thermal burn zones (air burst) for any location worldwide. Explore effects of Tsar Bomba, Little Boy, and modern nuclear weapons with real scientific data.',
   keywords: ['nuclear blast simulator', 'nuke simulator', 'blast radius calculator', 'atomic bomb simulator', 'nuclear weapon effects', 'tsar bomba simulator', 'nukemap alternative'],
   authors: [{ name: 'Marko Visic', url: 'https://nukeblastsimulator.com/about' }],

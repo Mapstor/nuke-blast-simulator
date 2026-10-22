@@ -14,6 +14,8 @@ import { presetLocations, type PresetLocation } from '@/lib/data/cities'
 import { bombs } from '@/lib/data/bombs'
 import { effectRadiiKm, formatRadiusKm } from '@/lib/calculations/effects'
 import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
+import { KEPT_CITY_SLUGS } from '@/lib/data/livePages'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 
 // The 4 representative weapons we run for each city scenario.
 const SCENARIO_BOMB_IDS = ['little-boy', 'w76', 'castle-bravo', 'tsar-bomba'] as const
@@ -26,7 +28,7 @@ const REGION_SEQUENCE: PresetLocation['region'][] = [
 // ordering on /examples and gives prev/next a coherent geographic walk.
 const sequencedCities = (() => {
   const groups: Record<string, PresetLocation[]> = {}
-  for (const c of presetLocations) (groups[c.region] ??= []).push(c)
+  for (const c of presetLocations.filter((p) => KEPT_CITY_SLUGS.includes(p.slug))) (groups[c.region] ??= []).push(c)
   for (const k of Object.keys(groups)) groups[k].sort((a, b) => b.population - a.population)
   const out: PresetLocation[] = []
   for (const r of REGION_SEQUENCE) if (groups[r]) out.push(...groups[r])
@@ -47,7 +49,9 @@ function cityNeighbors(slug: string): { prev: PrevNextItem; next: PrevNextItem }
 }
 
 export function generateStaticParams() {
-  return presetLocations.map((c) => ({ slug: c.slug }))
+  return presetLocations
+    .filter((c) => KEPT_CITY_SLUGS.includes(c.slug))
+    .map((c) => ({ slug: c.slug }))
 }
 
 function findCity(slug: string): PresetLocation | undefined {
@@ -67,17 +71,7 @@ export async function generateMetadata({
   const { slug } = await params
   const city = findCity(slug)
   if (!city) return { title: 'City Not Found' }
-
-  const title = `What if a Nuclear Bomb Hit ${city.name}? Blast Radius & Effects`
-  const description = `Nuclear blast effect radii for ${city.name}, ${city.country}. See the fireball, blast overpressure, and thermal burn zones (air burst at optimum height) for Little Boy, W76, Castle Bravo, and Tsar Bomba over ${city.name}.`
-
-  return {
-    title,
-    description,
-    alternates: { canonical: `/examples/${city.slug}` },
-    openGraph: { title, description, url: `/examples/${city.slug}`, type: 'article' },
-    twitter: { card: 'summary_large_image', title, description },
-  }
+  return seoMetadata(`/examples/${city.slug}`, 'article')
 }
 
 export default async function CityExamplePage({
@@ -144,13 +138,13 @@ export default async function CityExamplePage({
         schema={[
           articleSchema({
             url: `/examples/${city.slug}`,
-            headline: `What if a Nuclear Bomb Hit ${city.name}? Blast Radius & Effects`,
+            headline: pageH1(`/examples/${city.slug}`),
             description: `Nuclear blast effect radii for ${city.name}, ${city.country}. Calculated air-burst zones for Little Boy, W76, Castle Bravo, and Tsar Bomba.`,
           }),
           faqPageSchema(faqEntries),
           breadcrumbSchema([
             { name: 'Home', url: SITE_URL },
-            { name: 'Example Scenarios', url: '/examples' },
+            { name: 'Cities', url: '/examples' },
             { name: city.name, url: `/examples/${city.slug}` },
           ]),
         ]}
@@ -160,14 +154,14 @@ export default async function CityExamplePage({
         <nav aria-label="Breadcrumb" className="text-sm text-green-300/70 mb-6">
           <Link href="/" className="hover:text-green-400">Home</Link>
           <span className="mx-2">/</span>
-          <span className="text-green-300">Examples</span>
+          <span className="text-green-300">Cities</span>
           <span className="mx-2">/</span>
           <span className="text-green-400">{city.name}</span>
         </nav>
 
         <header className="mb-10">
           <h1 className="text-4xl font-bold mb-3 text-green-400">
-            What if a Nuclear Bomb Hit {city.name}?
+            {pageH1(`/examples/${city.slug}`)}
           </h1>
           <p className="text-lg text-green-300">
             {city.country} · Population {popText}
@@ -275,10 +269,10 @@ export default async function CityExamplePage({
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-green-400">Other City Scenarios</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-green-400">Other Cities</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
             {presetLocations
-              .filter((c) => c.slug !== city.slug)
+              .filter((c) => c.slug !== city.slug && KEPT_CITY_SLUGS.includes(c.slug))
               .map((c) => (
                 <Link
                   key={c.slug}

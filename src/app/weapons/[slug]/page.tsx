@@ -11,6 +11,7 @@ import {
   SITE_URL,
 } from '@/lib/seo/schemas'
 import { bombs } from '@/lib/data/bombs'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 import { effectRadiiKm, formatRadiusKm, EFFECTS_FLAGS } from '@/lib/calculations/effects'
 import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
 import type { Bomb } from '@/lib/types'
@@ -91,26 +92,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const bomb = findBomb(slug)
   if (!bomb) return { title: 'Weapon Not Found' }
 
-  const yieldText = formatYield(bomb.yield)
-  const isNuclear = bomb.type !== 'conventional'
-  const showEffects = isNuclear || EFFECTS_FLAGS.CONVENTIONAL_EFFECTS
-
-  const title = showEffects
-    ? `${bomb.name} — ${yieldText} ${bomb.type} weapon | Blast Radius & Effects`
-    : `${bomb.name} — ${yieldText} conventional weapon | Specifications & History`
-  const description = showEffects
-    ? `${bomb.name} (${bomb.country}${bomb.year ? `, ${bomb.year}` : ''}, ${yieldText}). ${bomb.description}. ` +
-      `See its computed fireball radius, blast overpressure zones, thermal burn radii (air burst), and how it compares to Hiroshima.`
-    : `${bomb.name} (${bomb.country}${bomb.year ? `, ${bomb.year}` : ''}, ${yieldText}). ${bomb.description}. ` +
-      `Specifications, yield, and historical context for this conventional weapon.`
-
-  return {
-    title,
-    description,
-    alternates: { canonical: `/weapons/${bomb.id}` },
-    openGraph: { title, description, url: `/weapons/${bomb.id}`, type: 'article' },
-    twitter: { card: 'summary_large_image', title, description },
-  }
+  return seoMetadata(`/weapons/${bomb.id}`, 'article')
 }
 
 export default async function WeaponDetailPage({
@@ -188,7 +170,7 @@ export default async function WeaponDetailPage({
         schema={[
           articleSchema({
             url: `/weapons/${bomb.id}`,
-            headline: `${bomb.name} — Yield, ${showEffects ? 'Blast Radius & Nuclear Effects' : 'Specifications & History'}`,
+            headline: pageH1(`/weapons/${bomb.id}`),
             description: bomb.description,
           }),
           faqPageSchema(faqEntries),
@@ -206,7 +188,7 @@ export default async function WeaponDetailPage({
         </nav>
 
         <header className="mb-10">
-          <h1 className="text-4xl font-bold mb-3 text-green-400">{bomb.name}</h1>
+          <h1 className="text-4xl font-bold mb-3 text-green-400">{pageH1(`/weapons/${bomb.id}`)}</h1>
           <p className="text-lg text-green-300">
             {bomb.country}{bomb.year ? ` · ${bomb.year}` : ''} · {yieldText} · {typeText}
           </p>

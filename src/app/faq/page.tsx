@@ -2,12 +2,9 @@ import { Metadata } from 'next'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { faqPageSchema, breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 import { Cite, Sources, createCitations } from '@/components/seo/Cite'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 
-export const metadata: Metadata = {
-  title: 'FAQ - Frequently Asked Questions About Nuclear Effects',
-  description: 'Common questions about nuclear weapons effects, blast calculations, and the educational purpose of our simulator.',
-  alternates: { canonical: '/faq' }
-}
+export const metadata: Metadata = seoMetadata('/faq')
 
 // Source of truth for the FAQPage schema. Keep entries in sync with the
 // visible Q&A blocks below. Each answer is plain text — Google strips inline
@@ -96,7 +93,7 @@ export default function FAQPage() {
         ]}
       />
       <main className="max-w-4xl mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-8 text-green-400">Frequently Asked Questions</h1>
+        <h1 className="text-4xl font-bold mb-8 text-green-400">{pageH1('/faq')}</h1>
         
         <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4 text-green-400">Educational Resource</h2>

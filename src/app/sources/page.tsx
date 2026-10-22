@@ -1,17 +1,14 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 import { breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
 import { SOURCES } from '@/lib/data/sources'
 import { ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
 import { bombs } from '@/lib/data/bombs'
 import { presetLocations } from '@/lib/data/cities'
 
-export const metadata: Metadata = {
-  title: 'Sources - Nuke Blast Simulator',
-  description: 'Every source cited on Nuke Blast Simulator, with its attribution and a link to the original. Generated from the citation registry; nothing hand-listed.',
-  alternates: { canonical: '/sources' },
-}
+export const metadata: Metadata = seoMetadata('/sources')
 
 // The sources actually cited somewhere on the site (generated, not hand-listed).
 const uniq = (xs: string[]) => [...new Set(xs)].filter((id) => SOURCES[id])
@@ -39,7 +36,7 @@ export default function SourcesPage() {
         ])}
       />
       <main className="max-w-4xl mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-3 text-green-400">Sources</h1>
+        <h1 className="text-4xl font-bold mb-3 text-green-400">{pageH1('/sources')}</h1>
         <p className="text-green-300 mb-8">
           Every figure on this site links to the source it comes from. This page lists the {total} sources
           currently cited, each with its full attribution and a link to the original. It is generated from the

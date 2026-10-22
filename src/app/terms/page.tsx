@@ -1,12 +1,9 @@
 import { Metadata } from 'next'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 
-export const metadata: Metadata = {
-  title: 'Terms of Service - Educational Use Only',
-  description: 'Terms of service for the nuclear blast simulator. Educational purposes only, not for planning or targeting.',
-  alternates: { canonical: '/terms' }
-}
+export const metadata: Metadata = seoMetadata('/terms')
 
 export default function TermsPage() {
   return (
@@ -19,7 +16,7 @@ export default function TermsPage() {
         ])}
       />
       <main className="max-w-4xl mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-8 text-green-400">Terms of Service</h1>
+        <h1 className="text-4xl font-bold mb-8 text-green-400">{pageH1('/terms')}</h1>
         
         <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4 text-red-400">Educational Use Only</h2>

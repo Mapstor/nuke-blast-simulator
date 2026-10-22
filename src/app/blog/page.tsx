@@ -1,14 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 import { breadcrumbSchema, itemListSchema, SITE_URL } from '@/lib/seo/schemas'
 import { articles, categoryLabel } from '@/lib/blog/articles'
 
-export const metadata: Metadata = {
-  title: 'Nuclear Weapons Blog — Physics, History, Effects, Doctrine',
-  description: 'Long-form, sourced articles on how nuclear weapons work, the physics of blast effects, the Hiroshima and Tsar Bomba histories, modern arsenals, nuclear winter, and EMP.',
-  alternates: { canonical: '/blog' },
-}
+export const metadata: Metadata = seoMetadata('/blog')
 
 const sorted = [...articles].sort((a, b) => (a.datePublished < b.datePublished ? 1 : -1))
 
@@ -41,7 +38,7 @@ export default function BlogIndexPage() {
         </nav>
 
         <header className="mb-10">
-          <h1 className="text-4xl font-bold mb-3 text-green-400">Nuclear Blast Simulator Blog</h1>
+          <h1 className="text-4xl font-bold mb-3 text-green-400">{pageH1('/blog')}</h1>
           <p className="text-lg text-green-300">
             Long-form, sourced articles on nuclear weapons physics, history, effects, and doctrine, written by
             Marko Visic. Each article is written for general educated audiences, cites authoritative sources,

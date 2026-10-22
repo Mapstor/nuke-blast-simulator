@@ -4,13 +4,9 @@ import Image from 'next/image'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { Cite, Sources, createCitations } from '@/components/seo/Cite'
 import { aboutPageSchema, authorPersonSchema, breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
+import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 
-export const metadata: Metadata = {
-  title: 'About - Nuke Blast Simulator',
-  description:
-    'Who builds Nuke Blast Simulator, the data and methods behind it, and how the site is made. An educational tool for visualizing nuclear weapon effects.',
-  alternates: { canonical: '/about' },
-}
+export const metadata: Metadata = seoMetadata('/about')
 
 export default function AboutPage() {
   const cites = createCitations()
@@ -28,7 +24,7 @@ export default function AboutPage() {
         ]}
       />
       <main className="max-w-4xl mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-8 text-green-400">About Nuke Blast Simulator</h1>
+        <h1 className="text-4xl font-bold mb-8 text-green-400">{pageH1('/about')}</h1>
 
         <section id="marko-visic" className="mb-12 scroll-mt-24">
           <h2 className="text-2xl font-semibold mb-6 text-green-400">Author</h2>
