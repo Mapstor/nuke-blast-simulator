@@ -123,6 +123,7 @@ export default function CompareIndexPage() {
 
         <section className="text-sm text-green-300/70">
           See also: <Link href="/weapons" className="text-yellow-400 hover:underline">full Weapons Database</Link> ·{' '}
+          <Link href="/nuclear-blast-radius" className="text-yellow-400 hover:underline">blast radius calculator</Link> ·{' '}
           <Link href="/examples" className="text-yellow-400 hover:underline">cities</Link> ·{' '}
           <Link href="/methodology" className="text-yellow-400 hover:underline">methodology</Link>.
         </section>

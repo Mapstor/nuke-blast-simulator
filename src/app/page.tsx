@@ -111,6 +111,11 @@ export default function HomePage() {
               are not shown pending a verified model.
             </p>
             <p>
+              Want every yield at a glance? The{' '}
+              <Link href="/nuclear-blast-radius" className="text-yellow-400 hover:underline">nuclear blast radius calculator and chart</Link>{' '}
+              lists every effect ring from 1 kt to 50 Mt in miles and kilometers.
+            </p>
+            <p>
               The tool is an educational resource for understanding the physical scale of nuclear weapon effects.
               It is <strong className="text-yellow-400">free</strong>, requires{' '}
               <strong className="text-yellow-400">no signup</strong>, and{' '}

@@ -26,6 +26,7 @@ export type SearchEntry = {
 
 const basePages: SearchEntry[] = [
   { title: 'Nuclear Blast Simulator',  description: 'Free interactive nuclear blast simulator and nuke map. Click any city to see fireball, blast, thermal, and fallout.', url: '/',             section: 'page' },
+  { title: 'Nuclear Blast Radius Calculator', description: 'Enter any yield or pick a weapon to get every effect radius in miles and km, plus a chart from 1 kt to 50 Mt.', url: '/nuclear-blast-radius', section: 'page' },
   { title: 'About',                    description: 'Educational mission and scientific approach behind the simulator.',                                                       url: '/about',        section: 'page' },
   { title: 'FAQ',                      description: 'Common questions about nuclear weapon effects and the simulator methodology.',                                            url: '/faq',          section: 'page' },
   { title: 'How It Works',             description: 'Step-by-step guide to using the nuclear blast simulator.',                                                                url: '/how-it-works', section: 'page' },

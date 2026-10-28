@@ -16,6 +16,22 @@ export const metadata: Metadata = seoMetadata(PATH)
 // demand also keep their own /glossary/<slug> page and link to it from here.
 const standalone = new Set(KEPT_GLOSSARY_SLUGS)
 
+// NBS-011: seven effect terms now live as sections on /nuclear-blast-radius
+// (their /glossary/<term> URLs 308 there), so their definitions link to the
+// matching section. The three yield-unit terms link to the calculator too.
+const BLAST_RADIUS_ANCHOR = new Set([
+  'air-burst', 'fireball', 'overpressure', 'psi',
+  'second-degree-burns', 'surface-burst', 'thermal-radiation',
+])
+const BLAST_RADIUS_UNIT = new Set(['yield', 'kiloton', 'megaton'])
+
+function termHref(slug: string): string | null {
+  if (standalone.has(slug)) return `/glossary/${slug}`
+  if (BLAST_RADIUS_ANCHOR.has(slug)) return `/nuclear-blast-radius#${slug}`
+  if (BLAST_RADIUS_UNIT.has(slug)) return '/nuclear-blast-radius'
+  return null
+}
+
 const groupedByCategory = (() => {
   const map = new Map<GlossaryCategory, typeof glossary>()
   for (const e of glossary) {
@@ -77,8 +93,8 @@ export default function GlossaryIndexPage() {
                 {entries.map((e) => (
                   <div key={e.slug} id={e.slug} className="scroll-mt-24 border-b border-green-500/10 pb-4">
                     <dt className="font-semibold text-yellow-400">
-                      {standalone.has(e.slug) ? (
-                        <Link href={`/glossary/${e.slug}`} className="hover:underline">{e.term}</Link>
+                      {termHref(e.slug) ? (
+                        <Link href={termHref(e.slug)!} className="hover:underline">{e.term}</Link>
                       ) : (
                         e.term
                       )}

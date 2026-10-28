@@ -271,6 +271,11 @@ export default async function WeaponDetailPage({
               detonation point. Real-world effects depend on terrain, weather, and building construction.
               Casualty and fallout estimates are not shown pending a verified population and fallout model.
             </p>
+            <p className="text-sm mt-3">
+              <Link href={`/nuclear-blast-radius?kt=${bomb.yield}`} className="text-yellow-400 hover:underline">
+                Compare every yield on the blast radius chart &rarr;
+              </Link>
+            </p>
           </section>
         ) : (
           <section className="mb-10 bg-yellow-900/20 border-l-4 border-yellow-400 p-6 rounded-r">

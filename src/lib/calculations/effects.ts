@@ -86,6 +86,28 @@ export function formatRadiusKm(km: number): string {
   return km >= 10 ? km.toFixed(1) : km.toFixed(2)
 }
 
+// Kilometre→mile conversion (1 km = 0.621371 mi). Miles shown on pages are
+// DERIVED from the engine's km values, never typed, so the imperial figure can
+// never drift from the metric one (D-18). The US market reads miles first; km
+// follows in parentheses.
+export const KM_TO_MI = 0.621371
+
+export function kmToMi(km: number): number {
+  return km * KM_TO_MI
+}
+
+// Table formatter in miles, mirroring formatRadiusKm (two decimals under 10,
+// one at or above) so the mi and km columns line up.
+export function formatRadiusMi(km: number): string {
+  const mi = km * KM_TO_MI
+  return mi >= 10 ? mi.toFixed(1) : mi.toFixed(2)
+}
+
+// A dual-unit table cell: "3.85 mi (6.2 km)", imperial primary, metric second.
+export function formatRadiusDual(km: number): string {
+  return `${formatRadiusMi(km)} mi (${formatRadiusKm(km)} km)`
+}
+
 export interface EffectRadiiKm {
   fireball: number
   overpressure20psi: number

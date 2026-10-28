@@ -106,6 +106,7 @@ export const LIVE_PATHS: string[] = [
   '/glossary/tpnw',
   '/how-it-works',
   '/methodology',
+  '/nuclear-blast-radius',
   '/nuclear-weapons-by-country',
   '/privacy',
   '/resources',

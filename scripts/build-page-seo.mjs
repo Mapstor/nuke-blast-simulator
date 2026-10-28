@@ -118,6 +118,10 @@ const OVERRIDES = {
   '/examples': { title: 'What If a Nuke Hit Your City? 100 Blast Radius Maps', h1: 'What If a Nuke Hit Your City?', description: 'Pick any of 100 world cities and see its nuclear blast radius: population, fireball, blast and thermal rings on an interactive map.' },
   '/compare': { title: 'Nuclear Bomb Size Comparison: Any Two Weapons', h1: 'Nuclear Bomb Size Comparison', description: 'Compare any two nuclear bombs side by side: yields, fireball, blast and thermal-burn radii for an air burst, with every figure cited.' },
   '/nuclear-weapons-by-country': { title: 'Nuclear Weapons by Country: 2026 Arsenals', h1: 'Nuclear Weapons by Country', description: 'How many nuclear weapons each country has as of early 2026: warheads, delivery systems and trends for all nine nuclear powers, every figure cited.' },
+  // NBS-011: the blast-radius tool page. Title carries the primary tokens
+  // (nuclear/blast/radius); the description's one number is engine-derived
+  // (5 psi radius of a 1 Mt air burst = radiusKm(1000,'psi5') = 6.2 km = 3.9 mi).
+  '/nuclear-blast-radius': { title: 'Nuclear Blast Radius Calculator and Chart (1 kt to 50 Mt)', h1: 'Nuclear Blast Radius Calculator', description: 'Nuclear blast radius calculator and chart, 1 kt to 50 Mt in miles and km. A 1-megaton air burst flattens buildings out to about 3.9 mi (6.2 km).' },
   '/glossary': { title: 'Nuclear Weapons Glossary: Terms Defined', h1: 'Nuclear Weapons Glossary', description: 'Plain, cited definitions of nuclear weapon terms: fireball, overpressure, fallout, yield, ICBM, MIRV, fission, fusion and more.' },
   '/blog': { title: 'Nuclear Weapons Blog: Physics, History and Effects', h1: 'Nuclear Weapons Blog', description: 'Long-form, cited articles on nuclear weapon physics, history, doctrine and effects: Tsar Bomba, Hiroshima, nuclear winter, EMP and more.' },
   '/about': { title: 'About the Nuke Blast Simulator', h1: 'About This Project', description: 'The educational mission, scientific method and named author behind the Nuke Blast Simulator, built on published Glasstone & Dolan scaling laws.' },

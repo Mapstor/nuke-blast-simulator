@@ -244,6 +244,7 @@ const learnPanel: MenuPanel = {
     {
       heading: 'Reference',
       items: [
+        { label: 'Blast Radius Calculator', href: '/nuclear-blast-radius' },
         { label: 'Nuclear Weapons by Country', href: '/nuclear-weapons-by-country' },
         { label: 'How It Works',   href: '/how-it-works' },
         { label: 'Methodology',    href: '/methodology'  },

@@ -22,6 +22,7 @@ const staticRoutes: Array<{
   changeFrequency: ChangeFreq
 }> = [
   { path: '/',             priority: 1.0, changeFrequency: 'weekly'  },
+  { path: '/nuclear-blast-radius', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/weapons',      priority: 0.9, changeFrequency: 'monthly' },
   { path: '/examples',     priority: 0.9, changeFrequency: 'monthly' },
   { path: '/compare',      priority: 0.8, changeFrequency: 'monthly' },

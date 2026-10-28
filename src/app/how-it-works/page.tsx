@@ -153,7 +153,9 @@ export default function HowItWorksPage() {
           <div className="bg-green-900/20 border-l-4 border-green-400 p-6 rounded-r">
             <p className="text-green-300">
               This simulator is an educational tool. It helps people understand the physical scale of nuclear
-              weapon effects by visualizing the radii on a map. See the{' '}
+              weapon effects by visualizing the radii on a map. Prefer a table? The{' '}
+              <Link href="/nuclear-blast-radius" className="text-yellow-400 hover:underline">blast radius calculator</Link>{' '}
+              lists every effect ring for any yield. See the{' '}
               <Link href="/methodology" className="text-yellow-400 hover:underline">methodology</Link> page for
               the scaling-law formulas, and the{' '}
               <Link href="/sources" className="text-yellow-400 hover:underline">data sources</Link> page for

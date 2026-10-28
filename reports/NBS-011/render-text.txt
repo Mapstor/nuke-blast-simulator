@@ -1,0 +1,155 @@
+Home / Blast radius Nuclear Blast Radius Calculator
+How big is a nuclear explosion? Enter any yield, or pick a weapon, and get every damage ring in miles and kilometers.
+Computed from the Glasstone & Dolan scaling laws, the same engine as our interactive map . Air burst at optimum height; methodology below.
+By Marko Visic, BSc Physics
+Weapon yield Yield unit kt
+Mt
+1 kt to 100,000 kt (100 Mt). That is 1,000 kilotons of TNT.
+Calculate radius
+Or pick a weapon to set the yield Choose a nuclear weapon…
+Davy Crockett ( 0.02 kt )
+W54 SADM ( 1 kt )
+Smiling Buddha ( 12 kt )
+Little Boy ( 15 kt )
+Fat Man ( 21 kt )
+Joe-1 (RDS-1) ( 22 kt )
+Test No. 596 ( 22 kt )
+Trinity ( 25 kt )
+Hurricane ( 25 kt )
+Chagai-I ( 40 kt )
+Gerboise Bleue ( 70 kt )
+W76 ( 90 kt )
+W80 ( 150 kt )
+North Korea 2017 Test ( 250 kt )
+W87 ( 300 kt )
+B61 ( 340 kt )
+W88 ( 455 kt )
+Orange Herald ( 720 kt )
+B83 ( 1.2 Mt )
+Canopus ( 2.6 Mt )
+Test No. 6 ( 3.3 Mt )
+B53 ( 9 Mt )
+Hardtack Poplar ( 9.3 Mt )
+Ivy Mike ( 10.4 Mt )
+Castle Yankee ( 13.5 Mt )
+Castle Bravo ( 15 Mt )
+Soviet Test 219 ( 24.2 Mt )
+B41 ( 25 Mt )
+Tsar Bomba ( 50 Mt )
+Enter a yield and press Calculate radius to see all seven effect rings in miles and kilometers. (Prefilled with 1 Mt.)
+A nuclear blast radius is how far each effect of the explosion reaches from the point of detonation. For the 15-kiloton Little Boy, the 5 psi zone that collapses most houses reaches 0.96 mi (1.5 km) ; for the 50-megaton Tsar Bomba it reaches 14 mi (23 km) . Heat and lighter blast damage reach several times farther.
+On this page
+What a blast radius means
+The fireball
+Overpressure and psi
+Thermal radiation and burns
+Air burst vs surface burst
+How the radius grows with yield
+How far a nuke reaches
+Nuclear missile blast radius
+Ways to use this
+FAQ
+Methodology and sources
+[SVG] The seven effect rings of a 1-megaton air burst , drawn to scale. The fireball is tiny next to the blast and heat rings: the 1 psi window-breaking ring ( 11 mi (17 km) ) reaches about 18 times farther than the fireball ( 0.6 mi (0.97 km) ). Values from the scaling-law engine. [ 1 , 2 ]
+What a blast radius means
+A nuclear explosion does not have one edge. It produces a set of nested effects, each reaching a different distance, so a bomb has not one radius but several. The useful way to read “blast radius” is as a set of rings : the fireball, three levels of blast pressure, and three levels of heat burn.
+When a single number is quoted, it is almost always the 5 psi overpressure radius — the distance within which most ordinary houses collapse. On this page the calculator and the chart below give you all seven rings at once, in miles first and kilometers in parentheses, so you never have to guess which one a headline meant.
+Nuclear blast radius chart: 1 kt to 50 Mt
+Every radius here is produced by the same engine as the calculator and the map, for an air burst at optimum height. Each number is calculated from scaling laws , not measured. Named rows link to the full weapon profile. [ 1 , 2 ]
+Nuclear blast effect radii in miles (kilometers) by yield, for an air burst at optimum height.
+Yield Fireball 20 psi 5 psi 1 psi 3rd burns 2nd burns 1st burns
+1 kt 0.04 mi (0.06 km) 0.12 mi (0.20 km) 0.37 mi (0.60 km) 1.06 mi (1.70 km) 0.37 mi (0.60 km) 0.50 mi (0.80 km) 0.68 mi (1.10 km)
+10 kt 0.10 mi (0.15 km) 0.29 mi (0.47 km) 0.83 mi (1.34 km) 2.31 mi (3.71 km) 1.12 mi (1.80 km) 1.44 mi (2.32 km) 1.91 mi (3.08 km)
+15 kt Little Boy 0.11 mi (0.18 km) 0.34 mi (0.54 km) 0.96 mi (1.54 km) 2.65 mi (4.26 km) 1.35 mi (2.18 km) 1.74 mi (2.80 km) 2.29 mi (3.69 km)
+21 kt Fat Man 0.13 mi (0.21 km) 0.38 mi (0.61 km) 1.07 mi (1.73 km) 2.97 mi (4.78 km) 1.58 mi (2.55 km) 2.03 mi (3.26 km) 2.66 mi (4.28 km)
+100 kt 0.24 mi (0.38 km) 0.66 mi (1.06 km) 1.80 mi (2.89 km) 4.96 mi (7.98 km) 2.96 mi (4.77 km) 3.75 mi (6.04 km) 4.86 mi (7.82 km)
+300 kt W87 0.37 mi (0.60 km) 0.97 mi (1.57 km) 2.59 mi (4.16 km) 7.11 mi (11.4 km) 4.60 mi (7.40 km) 5.79 mi (9.32 km) 7.42 mi (11.9 km)
+455 kt W88 0.44 mi (0.71 km) 1.13 mi (1.82 km) 2.97 mi (4.78 km) 8.15 mi (13.1 km) 5.44 mi (8.75 km) 6.83 mi (11.0 km) 8.71 mi (14.0 km)
+1 Mt 0.60 mi (0.97 km) 1.49 mi (2.40 km) 3.85 mi (6.20 km) 10.6 mi (17.0 km) 7.46 mi (12.0 km) 9.32 mi (15.0 km) 11.8 mi (19.0 km)
+1.2 Mt B83 0.65 mi (1.04 km) 1.58 mi (2.55 km) 4.10 mi (6.59 km) 11.2 mi (18.1 km) 8.00 mi (12.9 km) 9.95 mi (16.0 km) 12.6 mi (20.2 km)
+10 Mt 1.51 mi (2.43 km) 3.17 mi (5.10 km) 8.36 mi (13.5 km) 23.1 mi (37.1 km) 18.1 mi (29.1 km) 21.3 mi (34.3 km) 26.0 mi (41.8 km)
+15 Mt Castle Bravo 1.77 mi (2.86 km) 3.62 mi (5.82 km) 9.59 mi (15.4 km) 26.5 mi (42.6 km) 21.1 mi (34.0 km) 24.7 mi (39.7 km) 29.8 mi (48.0 km)
+50 Mt Tsar Bomba 2.87 mi (4.62 km) 5.37 mi (8.64 km) 14.4 mi (23.1 km) 39.9 mi (64.1 km) 33.6 mi (54.1 km) 38.0 mi (61.2 km) 45.1 mi (72.5 km)
+Fireball: Glasstone & Dolan 1977 §2.127. Blast and thermal: the standard scaling-law table (optimum-height air bursts). Values in mi (km); swipe sideways on a phone to see every ring. [ 1 , 2 ]
+A 1-megaton air burst destroys most homes out to 3.9 mi (6.2 km) — a circle of about 47 square miles ( 121 km²) .
+Source: scaling-law engine (Glasstone & Dolan 1977 and the effects scaling table). [ 1 , 2 ]
+Worked example: a 1-megaton air burst
+Take a 1-megaton bomb — roughly the size of the B83, the largest weapon still in the US stockpile. Detonated as an air burst, it produces these seven rings, closest to farthest:
+Fireball 0.60 mi ( 0.97 km)
+Severe blast · 20 psi 1.49 mi ( 2.40 km)
+Moderate blast · 5 psi 3.85 mi ( 6.20 km)
+Light blast · 1 psi 10.6 mi ( 17.0 km)
+3rd-degree burns 7.46 mi ( 12.0 km)
+2nd-degree burns 9.32 mi ( 15.0 km)
+1st-degree burns 11.8 mi ( 19.0 km)
+The fireball ( 0.6 mi (0.97 km) ) vaporizes anything inside it, but it is the smallest ring. The 20 psi ring ( 1.5 mi (2.4 km) ) destroys even heavy concrete buildings; the 5 psi ring ( 3.9 mi (6.2 km) ) collapses most houses — this is the number most people mean by “blast radius.”
+Lighter blast reaches much farther: 1 psi ( 11 mi (17 km) ) shatters windows. And the heat flash burns exposed skin to the edge of the map — first-degree burns out to 12 mi (19 km) , farther than the 5 psi blast.
+How to read your results
+Each ring answers a different question. From the center outward:
+Fireball
+The sphere of plasma at the detonation point. Anything inside is vaporized. It is the smallest radius and sets the scale for the rest.
+20 psi (severe blast)
+The pressure that collapses reinforced-concrete buildings. Survival is near zero inside this ring. [ 3 ]
+5 psi (moderate blast)
+The headline “blast radius.” Most houses collapse and fires start.
+1 psi (light blast)
+Windows shatter across a wide area; flying glass is the main injury. It covers by far the largest area of the blast rings.
+3rd / 2nd / 1st-degree burns
+How far the heat flash can burn exposed skin, from severe (3rd) to sunburn-like (1st). These assume clear weather and a direct line of sight to the fireball.
+The fireball
+The fireball is the sphere of superheated gas at the center of the explosion. For a split second it reaches tens of millions of degrees, as hot as the center of the Sun. [ 4 ] Everything inside it is vaporized.
+It is also the smallest ring, and it grows slowly: fireball radius scales with yield to the 0.4 power. A 15-kiloton bomb makes a 0.11 mi (0.18 km) fireball; a 1,000-times-larger 15-megaton bomb makes one of only 1.8 mi (2.9 km) . The destruction you picture comes from the blast wave and the heat, not from the fireball touching you.
+Overpressure and psi
+Overpressure is the pressure of the blast wave above normal air pressure, measured in pounds per square inch. It is how blast damage is graded: 20 psi destroys reinforced concrete, 5 psi collapses most homes, and 1 psi breaks windows. [ 3 ]
+Psi (pounds per square inch) is just the unit of that pressure. A few psi sounds small, but a 5 psi wall of air moving at highway speed is what flattens a neighborhood. Overpressure radius grows with roughly the cube root of yield, which is why the rings widen so slowly as bombs get bigger. [ 5 ]
+Thermal radiation and burns
+Thermal radiation is the flash of light and infrared heat that leaves the fireball at the speed of light. Because it travels in straight lines, it burns any exposed skin with a clear view of the fireball, often farther than the blast wave reaches.
+Burns are graded by depth. Second-degree burns blister the skin; third-degree burns destroy it; first-degree burns are like sunburn. For a 1-megaton air burst, second-degree burns reach 9.3 mi (15 km) and first-degree burns 12 mi (19 km) . These ranges assume clear weather — haze, cloud or terrain shorten them. [ 1 , 2 ]
+Air burst vs surface burst
+An air burst detonates the weapon above the ground, at the height that maximizes the area covered by a chosen blast pressure. Hiroshima and Nagasaki were both air bursts. It produces the widest blast and thermal rings and very little local fallout. Every number on this page assumes an air burst at optimum height, because that is the case the engine models.
+A surface burst detonates at ground level. For most overpressures its blast reaches less far than an optimum-height air burst, but it digs a crater and throws up heavy radioactive fallout that drifts downwind. Surface-burst radii are not shown here: the scaling the site uses is verified for air bursts only, and unverified effects are withheld rather than guessed.
+How the radius grows with yield
+Blast radius grows with roughly the cube root of yield , so each extra ton of explosive buys less reach than the last. A 1,000-fold jump in yield — from 1 kiloton to 1 megaton — widens the 5 psi ring only about tenfold, from 0.37 mi (0.6 km) to 3.9 mi (6.2 km) . [ 5 ] The chart shows that flattening across the whole database.
+[SVG] 5 psi blast radius versus yield, with the database weapons marked: 1 Little Boy ( 15 kt ) — 0.96 mi (1.54 km) 2 Fat Man ( 21 kt ) — 1.07 mi (1.73 km) 3 W87 ( 300 kt ) — 2.59 mi (4.16 km) 4 W88 ( 455 kt ) — 2.97 mi (4.78 km) 5 B83 ( 1.2 Mt ) — 4.10 mi (6.59 km) 6 Castle Bravo ( 15 Mt ) — 9.59 mi (15.4 km) 7 Tsar Bomba ( 50 Mt ) — 14.4 mi (23.1 km)
+How far a nuke reaches
+“How far does a nuke reach?” has three answers, because blast, heat and fallout travel differently. Blast reaches the 1 psi window-breaking line — 11 mi (17 km) for a 1-megaton air burst. Heat can reach farther: first-degree burns extend to 12 mi (19 km) at 1 megaton, and to 45 mi (73 km) for the 50-megaton Tsar Bomba — past even its 1 psi blast ( 40 mi (64 km) ). [ 1 , 2 ]
+Fallout can travel hundreds of miles downwind, far beyond any blast or heat ring, but only from a surface burst and only in a pattern set by the wind. Because that depends on weather, it is not part of these radii; see the fallout definition for how it behaves.
+Nuclear missile blast radius
+People searching for a “nuclear missile blast radius” usually picture a Tsar-Bomba-sized blast. Real deployed warheads are far smaller: most sit in the 100-to-500-kiloton range to pack several onto one missile. Here is the 5 psi radius for the warheads in the database: [ 1 , 2 ]
+W76 ( 90 kt ): 5 psi radius 1.7 mi (2.8 km)
+W87 ( 300 kt ): 5 psi radius 2.6 mi (4.2 km)
+W88 ( 455 kt ): 5 psi radius 3 mi (4.8 km)
+B61 ( 340 kt ): 5 psi radius 2.7 mi (4.3 km)
+B83 ( 1.2 Mt ): 5 psi radius 4.1 mi (6.6 km)
+A single ICBM often carries several of these on independent warheads, so the real question is less about one blast radius than about many at once. See the arsenals by country for how many each nation fields.
+At the top end, heat outruns blast : a 50-megaton air burst can cause first-degree burns out to 45 mi (73 km) , farther than its 1 psi blast wave ( 40 mi (64 km) ).
+Source: scaling-law engine (Glasstone & Dolan 1977 and the effects scaling table). [ 1 , 2 ]
+Ways to use this
+Picture a historical bomb
+Set 15 kt for Little Boy or 21 kt for Fat Man to see why those cities were destroyed by weapons smaller than a single modern warhead.
+Compare old and modern weapons
+Run a 455-kiloton W88 next to Little Boy, or line any two up on the comparison tool .
+Sanity-check a number from the news
+When a report quotes a “blast radius,” type the yield here to see which ring it matches and how far the other effects reach.
+See it on a real map
+Once you have a yield, open the interactive simulator to overlay the rings on any location and judge the scale against streets you know.
+Frequently asked questions
+What is the blast radius of a nuclear bomb? It depends entirely on the yield. The &quot;blast radius&quot; usually means the 5 psi ring, where most houses collapse. For a 1-megaton air burst that ring is 3.9 mi (6.2 km); for the 15-kiloton Hiroshima bomb it is 0.96 mi (1.5 km); for the 50-megaton Tsar Bomba it is 14 mi (23 km). The full chart on this page lists every yield from 1 kt to 50 Mt.
+How far does a nuke reach? Blast and heat reach much farther than the fireball. A 1-megaton air burst shatters windows (1 psi) out to 11 mi (17 km) and causes first-degree burns to 12 mi (19 km). At 50 megatons the heat flash reaches 45 mi (73 km). Radioactive fallout can travel much farther still, but it depends on wind and burst height and is not modeled here.
+How big is a nuclear explosion? The visible fireball is smaller than people expect. A 1-megaton air-burst fireball is about 0.6 mi (0.97 km) in radius; even the 50-megaton Tsar Bomba fireball is 2.9 mi (4.6 km). The destruction comes from the blast wave and heat that spread well beyond the fireball, not from the fireball itself.
+What is the blast radius of a nuke in miles? For a typical 300-kiloton modern warhead, the 5 psi &quot;most homes destroyed&quot; radius is about 2.59 miles and windows break (1 psi) out to about 7.11 miles. The chart on this page gives miles and kilometers for every ring and every yield.
+How much damage does a nuke do? Damage is graded by overpressure. At 20 psi even reinforced-concrete buildings fail; at 5 psi most houses collapse; at 1 psi windows shatter and flying glass injures people. Separately, the heat flash burns exposed skin out past the blast zone. This page shows the radius of each of those effects for any yield.
+Does a bigger bomb mean a proportionally bigger blast radius? No. Blast radius grows with roughly the cube root of yield, so returns shrink fast. Going from 1 kiloton to 1 megaton is 1,000 times the energy but only about 10 times the 5 psi radius (0.37 mi (0.6 km) to 3.9 mi (6.2 km)). That is why very large weapons spread their energy inefficiently.
+What is the nuclear missile blast radius for modern warheads? Most deployed warheads today are in the 100-to-500-kiloton range, far smaller than Cold War test monsters. A 455-kiloton W88 (a US submarine warhead) has a 5 psi radius of about 3 mi (4.8 km) and a 300-kiloton W87 (an ICBM warhead) about 2.6 mi (4.2 km).
+Methodology and sources
+Fireball radius uses the Glasstone & Dolan 1977 relation (§2.127); blast and thermal radii come from the standard scaling-law table for optimum-height air bursts, interpolated on a log-log scale. Every figure on this page, in the calculator, the chart and the diagrams, is produced by that one engine — the same one behind the map . Full working: methodology .
+What is not shown: casualty counts, fallout, radiation dose and surface-burst effects are withheld until each has a verified model. Radii are 1-D ground-distance estimates; real effects depend on terrain, weather and construction. Do not use them for emergency planning.
+Data as of 22 October 2026. By Marko Visic, BSc Physics.
+Sources
+1 . Source: U.S. DoD / DOE (Glasstone & Dolan, via Atomic Archive), The Effects of Nuclear Weapons, 3rd ed. (1977) §2.127 — retrieved Oct 2026
+2 . Source: Wikipedia, Effects of nuclear explosions — scaling-law table — retrieved Oct 2026
+3 . Source: US Congress, Office of Technology Assessment, via Atomic Archive, The Effects of Nuclear War (1979), Ch. II, Blast: Table 3, Blast Effects of a 1-Mt Explosion 8,000 ft Above the Earth's Surface — retrieved Oct 2026
+4 . Source: US DoD & ERDA (Glasstone & Dolan), via Atomic Archive, The Effects of Nuclear Weapons, 3rd ed. (1977), Chapter 2 — retrieved Oct 2026
+5 . Source: US DoD & ERDA (Glasstone & Dolan), via Atomic Archive, The Effects of Nuclear Weapons, 3rd ed. (1977), Chapter 3 — retrieved Oct 2026
+Related
+Interactive blast map · Weapons database · Compare two weapons · Tsar Bomba · Methodology · Glossary

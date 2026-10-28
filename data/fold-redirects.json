@@ -521,7 +521,7 @@
   },
   {
     "source": "/glossary/air-burst",
-    "destination": "/glossary#air-burst",
+    "destination": "/nuclear-blast-radius#air-burst",
     "permanent": true
   },
   {
@@ -571,7 +571,7 @@
   },
   {
     "source": "/glossary/fireball",
-    "destination": "/glossary#fireball",
+    "destination": "/nuclear-blast-radius#fireball",
     "permanent": true
   },
   {
@@ -631,7 +631,7 @@
   },
   {
     "source": "/glossary/overpressure",
-    "destination": "/glossary#overpressure",
+    "destination": "/nuclear-blast-radius#overpressure",
     "permanent": true
   },
   {
@@ -641,12 +641,12 @@
   },
   {
     "source": "/glossary/psi",
-    "destination": "/glossary#psi",
+    "destination": "/nuclear-blast-radius#psi",
     "permanent": true
   },
   {
     "source": "/glossary/second-degree-burns",
-    "destination": "/glossary#second-degree-burns",
+    "destination": "/nuclear-blast-radius#second-degree-burns",
     "permanent": true
   },
   {
@@ -666,7 +666,7 @@
   },
   {
     "source": "/glossary/surface-burst",
-    "destination": "/glossary#surface-burst",
+    "destination": "/nuclear-blast-radius#surface-burst",
     "permanent": true
   },
   {
@@ -676,7 +676,7 @@
   },
   {
     "source": "/glossary/thermal-radiation",
-    "destination": "/glossary#thermal-radiation",
+    "destination": "/nuclear-blast-radius#thermal-radiation",
     "permanent": true
   },
   {

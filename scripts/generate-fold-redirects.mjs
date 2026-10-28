@@ -2,23 +2,26 @@
 // approved research/redirect-plan.csv (same shape as NBS-004's scenario
 // redirects: {source, destination, permanent:true}, no trailing slash, one hop).
 //
-// Override: redirect-plan.csv sends 7 glossary terms to /nuclear-blast-radius,
-// an approved page that is not built yet. Until it ships we must never 308 to a
-// 404, so those point at /glossary#<term> (the term lives on the glossary hub
-// with that id anchor). DEVLOG §5 tracks the move to /nuclear-blast-radius.
+// NBS-011: redirect-plan.csv sends 7 glossary terms to /nuclear-blast-radius.
+// That tool page is now BUILT and carries a matching #<term> section anchor for
+// each of the 7, so each term 308s straight to /nuclear-blast-radius#<term> (one
+// hop, 308). Until NBS-011 those were parked on /glossary#<term> (page unbuilt).
+// The definitions stay on the glossary hub, each linking to its section here.
 import { writeFileSync } from 'node:fs'
 import { readCsvObjects } from './lib/csv.mjs'
 
-const UNBUILT_TARGET = '/nuclear-blast-radius'
+const BLAST_RADIUS_TARGET = '/nuclear-blast-radius'
 
 const rows = readCsvObjects('research/redirect-plan.csv')
-let overridden = 0
+let anchored = 0
 const rules = rows.map(({ from, to }) => {
   let destination = to
-  if (to === UNBUILT_TARGET) {
+  if (to === BLAST_RADIUS_TARGET) {
+    // The term's section anchor on the tool page, e.g. /glossary/fireball
+    // -> /nuclear-blast-radius#fireball.
     const term = from.split('/').pop()
-    destination = `/glossary#${term}`
-    overridden++
+    destination = `${BLAST_RADIUS_TARGET}#${term}`
+    anchored++
   }
   return { source: from, destination, permanent: true }
 })
@@ -33,5 +36,5 @@ for (const r of rules) {
   else byType.other++
 }
 console.log(
-  `wrote ${rules.length} fold redirects (compare ${byType.compare}, examples ${byType.examples}, glossary ${byType.glossary}, other ${byType.other}); ${overridden} retargeted from ${UNBUILT_TARGET} to /glossary#<term>`,
+  `wrote ${rules.length} fold redirects (compare ${byType.compare}, examples ${byType.examples}, glossary ${byType.glossary}, other ${byType.other}); ${anchored} anchored to ${BLAST_RADIUS_TARGET}#<term>`,
 )

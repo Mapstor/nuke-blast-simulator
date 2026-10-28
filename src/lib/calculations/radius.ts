@@ -7,6 +7,7 @@
 import {
   fireballRadiusKm,
   interpolateRadiusKm,
+  KM_TO_MI,
   type EffectKey,
 } from './effects'
 
@@ -37,4 +38,21 @@ export function formatRadiusProse(km: number): string {
 // Convenience: "2.9 km" straight from yield + effect.
 export function radiusText(yieldKt: number, effect: ProseEffect): string {
   return `${formatRadiusProse(radiusKm(yieldKt, effect))} km`
+}
+
+// Miles for PROSE, 2 significant figures, derived from the km value (never
+// typed) so imperial can't drift from metric. Mirrors formatRadiusProse.
+export function milesProse(km: number): string {
+  return formatRadiusProse(km * KM_TO_MI)
+}
+
+// Dual-unit PROSE from a km value already computed through the engine:
+// "0.96 mi (1.5 km)", imperial primary, metric in parentheses.
+export function dualProse(km: number): string {
+  return `${milesProse(km)} mi (${formatRadiusProse(km)} km)`
+}
+
+// Dual-unit PROSE straight from yield + effect, e.g. radiusDual(15, 'psi5').
+export function radiusDual(yieldKt: number, effect: ProseEffect): string {
+  return dualProse(radiusKm(yieldKt, effect))
 }

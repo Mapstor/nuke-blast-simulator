@@ -156,7 +156,8 @@ export default async function BlogArticlePage({
 
         <section className="mt-10 text-sm text-green-300/70">
           See the full <Link href="/blog" className="text-yellow-400 hover:underline">blog</Link>, the{' '}
-          <Link href="/glossary" className="text-yellow-400 hover:underline">glossary</Link>, or the{' '}
+          <Link href="/glossary" className="text-yellow-400 hover:underline">glossary</Link>, the{' '}
+          <Link href="/nuclear-blast-radius" className="text-yellow-400 hover:underline">blast radius calculator</Link>, or the{' '}
           <Link href="/" className="text-yellow-400 hover:underline">interactive simulator</Link>.
         </section>
 

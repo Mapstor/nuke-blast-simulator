@@ -1,6 +1,6 @@
 {
   "/": {
-    "hash": "d49d34ba1ec5e2e3",
+    "hash": "3048718927c406be",
     "datePublished": "2025-10-30",
     "dateModified": "2026-10-22"
   },
@@ -15,42 +15,42 @@
     "dateModified": "2026-10-22"
   },
   "/blog/emp-high-altitude-nuclear-burst": {
-    "hash": "2fcf65cbb3610e24",
+    "hash": "55775ea4cf0d6fe5",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/blog/four-kill-mechanisms": {
-    "hash": "2bb3f99e1109984f",
+    "hash": "f30d0d251f9af8bf",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/blog/hiroshima-nagasaki-80-years-of-data": {
-    "hash": "ce59381779d4b95e",
+    "hash": "5abada4c7046eca2",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/blog/how-nuclear-weapons-work": {
-    "hash": "9ac346ff0665cdfa",
+    "hash": "bdd6bc3c7cd621ff",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/blog/nuclear-winter-regional-war-cooling": {
-    "hash": "398bdea697655994",
+    "hash": "2fb2328cd0df556a",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/blog/physics-of-nuclear-blast": {
-    "hash": "d85abe6d5b287e28",
+    "hash": "b0664651a429b4c1",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/blog/tsar-bomba-largest-test-ever": {
-    "hash": "3f6341dfd6b84393",
+    "hash": "50fe316e674a3f51",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/compare": {
-    "hash": "7bd342358528962c",
+    "hash": "c6cbe518075f6af0",
     "datePublished": "2026-04-30",
     "dateModified": "2026-10-22"
   },
@@ -270,13 +270,18 @@
     "dateModified": "2026-10-21"
   },
   "/how-it-works": {
-    "hash": "30bfe377449ea6a9",
+    "hash": "ec2f0b8e732b50d0",
     "datePublished": "2025-10-30",
     "dateModified": "2026-10-22"
   },
   "/methodology": {
     "hash": "5fdf9506297d46de",
     "datePublished": "2025-10-30",
+    "dateModified": "2026-10-22"
+  },
+  "/nuclear-blast-radius": {
+    "hash": "e92f4298c3962f90",
+    "datePublished": "2026-10-22",
     "dateModified": "2026-10-22"
   },
   "/nuclear-weapons-by-country": {
@@ -310,29 +315,29 @@
     "dateModified": "2026-10-22"
   },
   "/weapons/596": {
-    "hash": "6ef976bf60e4aecd",
+    "hash": "b0cf07bb8355ac21",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/b41": {
-    "hash": "a3120f26b9adb5d8",
+    "hash": "4ec43dfbac8715d6",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/b53": {
-    "hash": "4ba367a489daac33",
+    "hash": "40e9582f117593e3",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/b61": {
-    "hash": "4561b30a38b7a4d8",
+    "hash": "984997e701e842ec",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/b83": {
-    "hash": "ce985f7bc5d0bb02",
+    "hash": "4896b60dbc6a4a2a",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/blockbuster": {
     "hash": "ab9829aa4d848a41",
@@ -345,29 +350,29 @@
     "dateModified": "2026-10-21"
   },
   "/weapons/canopus": {
-    "hash": "e3a5875f15947d95",
+    "hash": "90aa0ffd4e05ef6f",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/castle-bravo": {
-    "hash": "46b6c07e21c382d8",
+    "hash": "46342c8c0b343d8b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/castle-yankee": {
-    "hash": "01911b7fa7358417",
+    "hash": "a55b73e39d3082f5",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/chagai-i": {
-    "hash": "2c99c91b11933dee",
+    "hash": "28d885975de711a9",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/davy-crockett": {
-    "hash": "6207124668640a0a",
+    "hash": "4c8084854068383b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/fab-500": {
     "hash": "21a2ee641e79e44e",
@@ -380,9 +385,9 @@
     "dateModified": "2026-10-21"
   },
   "/weapons/fat-man": {
-    "hash": "74f67f53ca287e50",
+    "hash": "e0a996b343b8af49",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/foab": {
     "hash": "0d516a234e322c2f",
@@ -400,9 +405,9 @@
     "dateModified": "2026-10-21"
   },
   "/weapons/gerboise-bleue": {
-    "hash": "7a6641a1a8b36518",
+    "hash": "8127b879e32c12e1",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/grand-slam": {
     "hash": "af3bb56f203e725c",
@@ -415,19 +420,19 @@
     "dateModified": "2026-10-21"
   },
   "/weapons/hurricane": {
-    "hash": "c64408423b1f0091",
+    "hash": "5aeeb0a655a7595d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/hwasong-14": {
-    "hash": "dd4f65cb8be8acad",
+    "hash": "46c654e54d312cf2",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/ivy-mike": {
-    "hash": "872dad6b29a1482c",
+    "hash": "ed60d1edd136baf7",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/jdam": {
     "hash": "e12194c821e76004",
@@ -435,14 +440,14 @@
     "dateModified": "2026-10-21"
   },
   "/weapons/joe-1": {
-    "hash": "111571d5a93e34c1",
+    "hash": "8da848b73700781c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/little-boy": {
-    "hash": "026204a8fbb50db7",
+    "hash": "b02fe426477c85fb",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/mark-84": {
     "hash": "1101173e8e792cf5",
@@ -460,24 +465,24 @@
     "dateModified": "2026-10-21"
   },
   "/weapons/operation-hardtack-poplar": {
-    "hash": "073b725210766af7",
+    "hash": "f842867853ff06ee",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/orange-herald": {
-    "hash": "3b37afe246161e90",
+    "hash": "df5333cbf7fe55d4",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/smiling-buddha": {
-    "hash": "e1cabb67d826a36e",
+    "hash": "5bf00c4514a4f0fe",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/soviet-test-219": {
-    "hash": "f4f92f876d421531",
+    "hash": "c72a949140c595ba",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/tallboy": {
     "hash": "a91c795040bbd2d3",
@@ -485,43 +490,43 @@
     "dateModified": "2026-10-21"
   },
   "/weapons/test-no-6": {
-    "hash": "9c9e41a6fe327a41",
+    "hash": "3d5af671d21d95f5",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/trinity": {
-    "hash": "b1e44c2b6f87c9f0",
+    "hash": "891f87f3cae20d14",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/tsar-bomba": {
-    "hash": "03807086e54b1446",
+    "hash": "ef666167d6c32f3c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/w54": {
-    "hash": "07a3e5886c10eaf9",
+    "hash": "f3d2e7f9f12f60a4",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/w76": {
-    "hash": "b73d36237485011d",
+    "hash": "5de9e320f748c815",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/w80": {
-    "hash": "e1cbfb67b24bffd5",
+    "hash": "ec8d6cd189c5d4b1",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/w87": {
-    "hash": "4b152cd170947d25",
+    "hash": "a243a61a852e3826",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   },
   "/weapons/w88": {
-    "hash": "705304a6582a5f96",
+    "hash": "0b4768fb747c1b2b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-22"
   }
 }
