@@ -4,8 +4,8 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema, definedTermSetSchema, SITE_URL } from '@/lib/seo/schemas'
 import { glossary, categoryLabel, type GlossaryCategory } from '@/lib/data/glossary'
 import { KEPT_GLOSSARY_SLUGS } from '@/lib/data/livePages'
-import { renderCited } from '@/components/seo/citeText'
-import { Sources, createCitations } from '@/components/seo/Cite'
+import { renderCited, collectCiteTokens } from '@/components/seo/citeText'
+import { Sources, createCitationsFrom } from '@/components/seo/Cite'
 import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 
 const PATH = '/glossary'
@@ -45,7 +45,9 @@ const groupedByCategory = (() => {
 const categoryOrder: GlossaryCategory[] = ['effects', 'weapons', 'physics', 'doctrine', 'treaty']
 
 export default function GlossaryIndexPage() {
-  const cites = createCitations()
+  // Pre-register every {{c:}} id across all definitions so citation numbers
+  // resolve regardless of render order (NBS-013).
+  const cites = createCitationsFrom(glossary.flatMap((e) => collectCiteTokens(e.long)))
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
       <JsonLd

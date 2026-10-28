@@ -13,6 +13,18 @@ export function createCitations(): Citations {
   return { order: [], map: new Map() }
 }
 
+// NBS-013: pre-register a page's full set of cited source ids, in DOM order,
+// BEFORE any section renders. React does not guarantee that sibling server
+// components mutate the shared collector in document order, so a late-rendering
+// <Cite> could otherwise register a number after <Sources> already printed its
+// list — producing a citation that points at no listed source. Pre-registering
+// makes every [n] resolve: inline <Cite> calls then only look the id up.
+export function createCitationsFrom(ids: string[]): Citations {
+  const c = createCitations()
+  for (const id of ids) if (id) registerId(c, id)
+  return c
+}
+
 function registerId(c: Citations, id: string): number {
   const existing = c.map.get(id)
   if (existing) return existing

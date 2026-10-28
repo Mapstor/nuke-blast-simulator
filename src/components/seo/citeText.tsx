@@ -8,6 +8,17 @@ import { radiusKm, formatRadiusProse, type ProseEffect } from '@/lib/calculation
 
 const TOKEN = /\{\{(c|r):([^}]+)\}\}/g
 
+// NBS-013: collect the citation ids ({{c:a;b}}) from a text, in order, so a
+// page can pre-register them before render (see createCitationsFrom) and no
+// citation can point at a source that is not in the Sources list.
+export function collectCiteTokens(text: string): string[] {
+  const ids: string[] = []
+  for (const m of text.matchAll(/\{\{c:([^}]+)\}\}/g)) {
+    for (const id of m[1].split(';')) { const t = id.trim(); if (t) ids.push(t) }
+  }
+  return ids
+}
+
 export function renderCited(text: string, c: Citations): ReactNode[] {
   const out: ReactNode[] = []
   let last = 0

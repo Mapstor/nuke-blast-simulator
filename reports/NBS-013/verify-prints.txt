@@ -1,0 +1,30 @@
+NBS-013 VERIFY prints
+
+================ IRAN PAGE — first 2500 chars ================
+Home  /  Nuclear weapons by country  /  Iran    Does Iran Have Nukes?
+Where Iran’s nuclear program stands in 2026: what the IAEA can verify, what it cannot, and a dated record of how it got here. Every figure is attributed.
+By   Marko Visic, BSc Physics
+No.  As of early 2026, neither the Federation of American Scientists nor SIPRI counts Iran among the world’s nine nuclear-armed states. [  1 ,    2  ]  The International Atomic Energy Agency’s last stockpile estimate, from  13 June 2025 , was  440.9  kg  of uranium enriched up to 60% U-235. Since the attacks that began that day, the Agency says it can no longer confirm the stockpile’s current size, composition or location. [  3  ]
+Does Iran have nuclear weapons?
+Every major open assessment places Iran outside the group of nuclear-armed states. It is a party to the Non-Proliferation Treaty and has long enriched uranium under IAEA safeguards, but it is not assessed to possess a weapon.
+FAS and SIPRI both place Iran outside their lists of the world’s nine nuclear-armed states. [  1 ,    6  ]  The US intelligence community’s 2025 public assessment, as quoted by the Congressional Research Service, was that “Iran is not building a nuclear weapon,” [  7  ]  though CRS describes the current status of the program as unclear. [  7  ]
+Iran’s enriched-uranium stockpile
+These are the IAEA’s figures  as of 13 June 2025 , the last date it could take measurements. The Agency reports it  cannot currently verify  them. [  3  ]
+Total enriched uranium  9874.9  kg
+Enriched up to 60% U-235  440.9  kg
+of which IAEA-verified  432.9 of 440.9  kg
+Enriched up to 20% U-235  184.1  kg
+Enriched up to 5% U-235  6024.4  kg
+Uranium enriched to  20% or more  U-235 is called  highly enriched uranium (HEU) . [  4  ]  Weapons-grade uranium is usually described as about  90%  U-235, while power reactors use 3–5%. [  5  ]  Iran’s 60% material is therefore highly enriched and well above reactor grade, but below the level typically used in weapons.
+What the IAEA can and can’t verify now
+The strikes and Iran’s 2025 cooperation-suspension law left the IAEA unable to keep full track of the program. For more than a year the Agency has lost continuity of knowledge of Iran’s nuclear material, [  8  ]  and it reports that it can no longer discharge its Non-Proliferation-Treaty safeguards responsibilities in Iran [  8  ]  — a situation its Director General calls a serious proliferation concern. [  8  ]
+It has had no access to the facilities hit in the Jun
+
+================ RUSSIA INTRO ================
+Russia holds the world's largest nuclear arsenal, an estimated 5,420 warheads — about 44% of the world's roughly 12,187 warheads and more than any other country. It and the United States (about 5,042) together account for most of the warheads on Earth.
+
+================ US INTRO ================
+The United States has the world's second-largest nuclear arsenal, an estimated 5,042 warheads (about 41% of the world's roughly 12,187 warheads), and remains the only country ever to have used a nuclear weapon in war. Only Russia, with about 5,420, holds more.
+
+================ RUSSIA DELIVERY TABLE HEADER ================
+Desktop columns: System - Launchers - Yield - Warheads (4 columns; phones stack each row as a labelled card; subtotal rows render as bold Subtotal rows).

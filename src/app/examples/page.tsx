@@ -4,7 +4,7 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema, itemListSchema, SITE_URL } from '@/lib/seo/schemas'
 import { presetLocations, type PresetLocation } from '@/lib/data/cities'
 import { KEPT_CITY_SLUGS } from '@/lib/data/livePages'
-import { Cite, Sources, createCitations } from '@/components/seo/Cite'
+import { Cite, Sources, createCitationsFrom } from '@/components/seo/Cite'
 import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 
 const PATH = '/examples'
@@ -28,7 +28,9 @@ const groupedByRegion: Record<string, PresetLocation[]> = (() => {
 })()
 
 export default function ExamplesIndexPage() {
-  const cites = createCitations()
+  // Pre-register every city's population-source id so citation numbers resolve
+  // regardless of render order (NBS-013).
+  const cites = createCitationsFrom(presetLocations.flatMap((c) => c.sourceIds ?? []))
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
       <JsonLd

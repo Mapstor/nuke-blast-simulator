@@ -11,7 +11,7 @@ import { bombs } from '@/lib/data/bombs'
 const NUCLEAR_WEAPON_COUNT = bombs.filter((b) => b.type !== 'conventional' && b.id !== 'custom').length
 
 export const SITE_URL = 'https://nukeblastsimulator.com'
-export const SITE_NAME = 'Nuclear Blast Simulator' // product / software name
+export const SITE_NAME = 'Nuke Blast Simulator' // product / software name
 export const WEBSITE_NAME = 'Nuke Blast Simulator' // brand / WebSite name
 export const PUBLISHER_NAME = 'Moving Data Systems d.o.o.'
 export const AUTHOR_NAME = 'Marko Visic'
@@ -51,7 +51,7 @@ export const organizationSchema: SchemaObject = {
   founder: { '@id': AUTHOR_PERSON_ID },
   brand: { '@type': 'Brand', name: WEBSITE_NAME },
   description:
-    'Publisher of the Nuclear Blast Simulator, a free interactive tool that visualizes nuclear weapon effects for educational purposes.',
+    'Publisher of the Nuke Blast Simulator, a free interactive tool that visualizes nuclear weapon effects for educational purposes.',
   knowsAbout: [
     'Nuclear weapons effects',
     'Blast radius calculations',
@@ -66,7 +66,7 @@ export const websiteSchema: SchemaObject = {
   '@id': WEBSITE_ID,
   url: SITE_URL,
   name: WEBSITE_NAME,
-  alternateName: ['Nuclear Blast Simulator', 'NukeBlastSimulator.com'],
+  alternateName: ['NukeBlastSimulator.com'],
   description:
     `Free interactive nuclear blast simulator. See the fireball, blast overpressure zones and thermal burn radii for any city worldwide using ${NUCLEAR_WEAPON_COUNT} historical and modern nuclear weapons, for an air burst at optimum height.`,
   publisher: { '@id': ORG_ID },

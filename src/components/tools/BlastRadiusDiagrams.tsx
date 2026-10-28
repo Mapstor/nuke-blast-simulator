@@ -124,12 +124,14 @@ const WEAPON_MARKS = [
 ] as const
 
 export function YieldScaleChart() {
-  const padL = 64
-  const padR = 40
-  const padT = 28
-  const padB = 72
+  // NBS-013: fonts bumped so axis labels render >=11px at 390px (viewBox 900 ->
+  // scale 0.43, so font >=26). padL/padB widened to fit the larger labels.
+  const padL = 72
+  const padR = 44
+  const padT = 30
+  const padB = 104
   const W = 900
-  const H = 460
+  const H = 500
   const plotW = W - padL - padR
   const plotH = H - padT - padB
   const xMaxLog = Math.log10(50000)
@@ -180,7 +182,7 @@ export function YieldScaleChart() {
       {yTicks.map((t) => (
         <g key={`y${t}`}>
           <line x1={padL} y1={y(t)} x2={W - padR} y2={y(t)} stroke="#166534" strokeWidth="1" opacity="0.4" />
-          <text x={padL - 10} y={y(t) + 5} textAnchor="end" fill="#86efac" fontSize="16" fontFamily="sans-serif">
+          <text x={padL - 12} y={y(t) + 9} textAnchor="end" fill="#86efac" fontSize="26" fontFamily="sans-serif">
             {t}
           </text>
         </g>
@@ -190,23 +192,23 @@ export function YieldScaleChart() {
       {xTicks.map((t) => (
         <g key={`x${t.kt}`}>
           <line x1={x(t.kt)} y1={y(0)} x2={x(t.kt)} y2={y(0) + 6} stroke="#22c55e" strokeWidth="1.5" />
-          <text x={x(t.kt)} y={y(0) + 26} textAnchor="middle" fill="#86efac" fontSize="16" fontFamily="sans-serif">
+          <text x={x(t.kt)} y={y(0) + 38} textAnchor="middle" fill="#86efac" fontSize="26" fontFamily="sans-serif">
             {t.label}
           </text>
         </g>
       ))}
       {/* axis titles */}
-      <text x={padL + plotW / 2} y={H - 14} textAnchor="middle" fill="#4ade80" fontSize="17" fontFamily="sans-serif">
+      <text x={padL + plotW / 2} y={H - 20} textAnchor="middle" fill="#4ade80" fontSize="26" fontFamily="sans-serif">
         Weapon yield (log scale)
       </text>
       <text
-        x={18}
+        x={22}
         y={padT + plotH / 2}
         textAnchor="middle"
         fill="#4ade80"
-        fontSize="17"
+        fontSize="26"
         fontFamily="sans-serif"
-        transform={`rotate(-90 18 ${padT + plotH / 2})`}
+        transform={`rotate(-90 22 ${padT + plotH / 2})`}
       >
         5 psi radius (km)
       </text>
@@ -218,7 +220,7 @@ export function YieldScaleChart() {
       {marks.map((m) => (
         <g key={m.name}>
           <circle cx={m.cx} cy={m.cy} r={11} fill="#0a1810" stroke="#fde047" strokeWidth="2" />
-          <text x={m.cx} y={m.cy + 5} textAnchor="middle" fill="#fde047" fontSize="14" fontWeight="700" fontFamily="sans-serif">
+          <text x={m.cx} y={m.cy + 5} textAnchor="middle" fill="#fde047" fontSize="15" fontWeight="700" fontFamily="sans-serif">
             {m.n}
           </text>
         </g>

@@ -32,8 +32,57 @@ export function cells(value: string): Record<string, string> {
   }
   return out
 }
-export function isPipe(value: string): boolean {
-  return value.includes('|') && value.includes('=')
+// A delivery row is STRUCTURED (belongs in the table, including single-cell
+// subtotal rows like "warheads=1,794") if it carries any key=value cell; a row
+// with no "=" is a prose note. Detecting "=" (not "|") stops a single-cell
+// subtotal from leaking as raw "warheads=1,794" text (NBS-013).
+export function isStructured(value: string): boolean {
+  return value.includes('=')
+}
+
+// "beginning of 2026 (FAS page updated 2026-06-09)" -> "beginning of 2026".
+export function cleanAsOf(s: string): string {
+  return (s || '').split(' (')[0].trim()
+}
+
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December']
+// Rewrite ISO dates (YYYY-MM-DD) in a display string to "D Month YYYY".
+export function humanizeDates(s: string): string {
+  return (s || '').replace(/(\d{4})-(\d{2})-(\d{2})/g, (_, y, m, d) =>
+    `${parseInt(d, 10)} ${MONTHS[parseInt(m, 10) - 1]} ${y}`)
+}
+
+// Short display name for awkward possessives: "US warheads" not "the United
+// States's warheads"; "UK" likewise. Others keep their name.
+export function shortName(key: string, name: string): string {
+  if (key === 'united-states') return 'US'
+  if (key === 'united-kingdom') return 'UK'
+  return name
+}
+// Possessive heading: "US warheads" / "UK warheads" (acronyms, no 's) or
+// "Russia's warheads".
+export function headingPoss(key: string, name: string, noun: string): string {
+  if (key === 'united-states') return `US ${noun}`
+  if (key === 'united-kingdom') return `UK ${noun}`
+  return `${name}’s ${noun}`
+}
+
+// Parse a warhead-count value ("5,420", "1 796", "up to 80", "–", ". .") to an
+// integer, or null if not a plain number. Used only for computed comparisons
+// (share of the world total, ranking) — the figure itself always traces to a row.
+export function toInt(value: string): number | null {
+  const m = (value || '').replace(/[\s,]/g, '').match(/^\d+$/)
+  return m ? parseInt(m[0], 10) : null
+}
+// Sum of the nine arsenals' FAS total inventories (= the world total, ~12,187).
+export function worldTotalFas(): number {
+  let sum = 0
+  for (const k of COUNTRY_SLUGS) {
+    const n = toInt(COUNTRIES[k].rows.find((r) => r.field === 'warheads.fas.total_inventory')?.value ?? '')
+    if (n) sum += n
+  }
+  return sum
 }
 
 // Map a country page to the `country` string used in the weapons database, so a

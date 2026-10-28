@@ -8,7 +8,7 @@ import { presetLocations } from '@/lib/data/cities'
 import { COMPARISONS, encodeComparisonSlug } from '@/lib/data/comparisons'
 import { articles } from '@/lib/blog/articles'
 import { glossary } from '@/lib/data/glossary'
-import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
+import { Cite, Sources, createCitationsFrom, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
 import { radiusText } from '@/lib/calculations/radius'
 import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 import { KEPT_CITY_SLUGS, KEPT_GLOSSARY_SLUGS } from '@/lib/data/livePages'
@@ -22,12 +22,12 @@ export const metadata: Metadata = seoMetadata('/')
 
 const homepageFaq = [
   {
-    question: 'What is the Nuclear Blast Simulator?',
+    question: 'What is the Nuke Blast Simulator?',
     answer:
       'Nuke Blast Simulator is a free interactive web tool that visualizes the effects of nuclear weapons on any location worldwide. Pick from the database of historical and modern nuclear weapons (or set a custom yield), click anywhere on the map, and see the fireball, blast overpressure zones, and thermal radiation burn radii, computed from published scaling laws for an air burst at optimum height.',
   },
   {
-    question: 'Is the Nuclear Blast Simulator free to use?',
+    question: 'Is the Nuke Blast Simulator free to use?',
     answer:
       'Yes. The simulator is completely free, runs entirely in your browser, requires no account or signup, and never transmits your weapon selections or target locations to any server.',
   },
@@ -80,7 +80,17 @@ function shortYield(y: number): string {
 }
 
 export default function HomePage() {
-  const cites = createCitations()
+  // Pre-register every cited id (engine + featured weapon/city sources + the
+  // effect-explainer sources) so citation numbers resolve regardless of React's
+  // render order (NBS-013).
+  const cites = createCitationsFrom([
+    ...ENGINE_SOURCE_IDS,
+    ...featuredWeapons.flatMap((b) => b.sources ?? []),
+    ...featuredCities.flatMap((c) => c.sourceIds ?? []),
+    'us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3',
+    'us-congress-office-of-technology-assessment-via',
+    'us-dod-erda-the-effects-of-nuclear-weapons-3rd-e',
+  ])
   return (
     <main>
       <JsonLd id="ld-home-faq" schema={faqPageSchema(homepageFaq)} />
@@ -95,9 +105,9 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto space-y-12">
 
           <section>
-            <h2 className="text-3xl font-bold mb-4 text-green-400">What is the Nuclear Blast Simulator?</h2>
+            <h2 className="text-3xl font-bold mb-4 text-green-400">What is the Nuke Blast Simulator?</h2>
             <p className="text-lg mb-4">
-              Nuclear Blast Simulator is a free, interactive online tool that lets you visualize the effects of
+              Nuke Blast Simulator is a free, interactive online tool that lets you visualize the effects of
               nuclear weapons on any city or location worldwide. Click anywhere on the map above to detonate
               one of <strong className="text-yellow-400">{nuclearWeaponCount} historical and modern nuclear weapons</strong> — from
               the 15-kiloton Little Boy that destroyed Hiroshima to the 50-megaton Tsar Bomba, the largest

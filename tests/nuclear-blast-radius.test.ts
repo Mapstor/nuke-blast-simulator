@@ -130,8 +130,10 @@ describe('/nuclear-blast-radius is wired into the site', () => {
 
   it('is in the client search index', () => {
     // The search index imports `@/`-aliased modules, so assert on its source.
+    // Structural/hub entries (incl. /nuclear-blast-radius) are derived from
+    // PAGE_SEO via BASE_PATHS (NBS-013).
     const src = readFileSync(join(__dirname, '..', 'src', 'lib', 'search', 'index.ts'), 'utf8')
-    expect(src).toContain("url: '/nuclear-blast-radius'")
+    expect(src).toContain("'/nuclear-blast-radius'")
   })
 })
 

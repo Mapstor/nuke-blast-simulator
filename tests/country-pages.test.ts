@@ -126,3 +126,26 @@ describe('country titles and metas (from pageSeo)', () => {
     expect(metas.size).toBe(COUNTRY_SLUGS.length)
   })
 })
+
+describe('country intros and FAQs (NBS-013)', () => {
+  function introText(k: string): string {
+    const h = html(k)
+    const m = h.match(/<\/h1>\s*<p[^>]*>([\s\S]*?)<\/p>/)
+    return m ? m[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim() : ''
+  }
+  it('every country page has a unique, non-templated intro', () => {
+    const intros = COUNTRY_SLUGS.map(introText)
+    expect(intros.every((s) => s.length > 40)).toBe(true)
+    expect(new Set(intros).size).toBe(COUNTRY_SLUGS.length)
+    // the NBS-012 templated opener must be gone
+    expect(intros.some((s) => /^How many nuclear warheads .* holds, what carries them/.test(s))).toBe(false)
+  })
+  it('every country page has 4–6 FAQs', () => {
+    const problems: string[] = []
+    for (const k of COUNTRY_SLUGS) {
+      const n = (html(k).match(/<details/g) || []).length
+      if (n < 4 || n > 6) problems.push(`${k}: ${n} FAQs`)
+    }
+    expect(problems).toEqual([])
+  })
+})

@@ -4,7 +4,8 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { ArticleBody } from '@/components/blog/ArticleBody'
 import { Byline } from '@/components/Byline'
 import { articleSchema, breadcrumbSchema, SITE_URL } from '@/lib/seo/schemas'
-import { Cite, Sources, createCitations } from '@/components/seo/Cite'
+import { Cite, Sources, createCitationsFrom } from '@/components/seo/Cite'
+import { collectCiteTokens } from '@/components/seo/citeText'
 import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 import { COUNTRIES, COUNTRY_SLUGS, val } from '@/lib/data/countryView'
 import type { Section } from '@/lib/blog/types'
@@ -81,7 +82,12 @@ const SECTIONS: Section[] = [
 const TABLE_KEYS = COUNTRY_SLUGS.filter((k) => k !== 'iran')
 
 export default function NuclearWeaponsByCountryPage() {
-  const cites = createCitations()
+  // Pre-register every cited id (table caption + the {{c:}} tokens in SECTIONS)
+  // so each citation number resolves regardless of React's render order (NBS-013).
+  const cites = createCitationsFrom([
+    FAS, SIPRI, SIPRI_PR,
+    ...SECTIONS.flatMap((s) => (s.body ?? []).flatMap((b) => collectCiteTokens((b as { text?: string }).text ?? ''))),
+  ])
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
       <JsonLd

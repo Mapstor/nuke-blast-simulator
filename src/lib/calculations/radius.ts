@@ -56,3 +56,12 @@ export function dualProse(km: number): string {
 export function radiusDual(yieldKt: number, effect: ProseEffect): string {
   return dualProse(radiusKm(yieldKt, effect))
 }
+
+// Paren-free dual form, "11 mi or 17 km" — use this inside parentheses so the
+// units don't nest into "(11 mi (17 km))".
+export function orProse(km: number): string {
+  return `${milesProse(km)} mi or ${formatRadiusProse(km)} km`
+}
+export function radiusOr(yieldKt: number, effect: ProseEffect): string {
+  return orProse(radiusKm(yieldKt, effect))
+}

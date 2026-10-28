@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://nukeblastsimulator.com',
     siteName: 'NukeBlastSimulator.com',
-    title: 'Nuclear Blast Simulator - Interactive Nuke Map',
+    title: 'Nuke Blast Simulator - Interactive Nuke Map',
     description: 'Interactive nuclear blast simulator with real scientific data. Calculate blast effects for any location.',
     images: [
       {
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nuclear Blast Simulator - Interactive Nuke Map',
+    title: 'Nuke Blast Simulator - Interactive Nuke Map',
     description: 'Interactive nuclear blast simulator with real scientific data',
     images: ['/og-image.png']
   },

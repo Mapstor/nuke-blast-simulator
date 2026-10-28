@@ -91,7 +91,7 @@ export function OgFrame(props: OgFrameProps): ReactElement {
             boxShadow: `0 0 12px ${COLORS.border}`,
           }}
         />
-        Nuclear Blast Simulator
+        Nuke Blast Simulator
         {eyebrow ? (
           <span
             style={{

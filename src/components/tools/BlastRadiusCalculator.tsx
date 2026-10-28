@@ -248,7 +248,7 @@ export function BlastRadiusCalculator() {
       {!result && !error ? (
         <p className="mt-5 text-sm text-green-300/60">
           Enter a yield and press <strong className="text-green-300">Calculate radius</strong> to see all seven
-          effect rings in miles and kilometers. (Prefilled with 1 Mt.)
+          effect rings in miles and kilometers. (Prefilled with {amount} {unit}.)
         </p>
       ) : null}
 

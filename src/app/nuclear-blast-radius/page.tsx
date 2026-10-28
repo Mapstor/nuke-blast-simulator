@@ -16,7 +16,7 @@ import {
   formatRadiusMi,
   formatRadiusDual,
 } from '@/lib/calculations/effects'
-import { radiusKm, radiusDual, dualProse } from '@/lib/calculations/radius'
+import { radiusKm, radiusDual, dualProse, radiusOr } from '@/lib/calculations/radius'
 import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
 import { bombs } from '@/lib/data/bombs'
 import { BlastRadiusCalculator } from '@/components/tools/BlastRadiusCalculator'
@@ -105,7 +105,7 @@ const FAQ = [
   {
     question: 'Does a bigger bomb mean a proportionally bigger blast radius?',
     answer:
-      `No. Blast radius grows with roughly the cube root of yield, so returns shrink fast. Going from 1 kiloton to 1 megaton is 1,000 times the energy but only about 10 times the 5 psi radius (${radiusDual(1, 'psi5')} to ${radiusDual(1000, 'psi5')}). That is why very large weapons spread their energy inefficiently.`,
+      `No. Blast radius grows with roughly the cube root of yield, so returns shrink fast. Going from 1 kiloton to 1 megaton is 1,000 times the energy but only about 10 times the 5 psi radius, from ${radiusDual(1, 'psi5')} to ${radiusDual(1000, 'psi5')}. That is why very large weapons spread their energy inefficiently.`,
   },
   {
     question: 'What is the nuclear missile blast radius for modern warheads?',
@@ -215,8 +215,8 @@ export default function NuclearBlastRadiusPage() {
           <figcaption className="text-sm text-green-300/70 mt-2">
             The seven effect rings of a <strong className="text-green-300">1-megaton air burst</strong>, drawn to
             scale. The fireball is tiny next to the blast and heat rings: the 1 psi window-breaking ring
-            ({radiusDual(1000, 'psi1')}) reaches about 18 times farther than the fireball
-            ({radiusDual(1000, 'fireball')}). Values from the scaling-law engine.<Cite c={cites} ids={ENGINE_SOURCE_IDS.join(';')} />
+            ({radiusOr(1000, 'psi1')}) reaches about 18 times farther than the fireball
+            ({radiusOr(1000, 'fireball')}). Values from the scaling-law engine.<Cite c={cites} ids={ENGINE_SOURCE_IDS.join(';')} />
           </figcaption>
         </figure>
 
@@ -316,15 +316,15 @@ export default function NuclearBlastRadiusPage() {
             <WorkedExampleBars yieldKt={1000} />
           </div>
           <p className="text-green-300 mb-3">
-            The <strong className="text-yellow-400">fireball</strong> ({radiusDual(1000, 'fireball')}) vaporizes
+            The <strong className="text-yellow-400">fireball</strong> ({radiusOr(1000, 'fireball')}) vaporizes
             anything inside it, but it is the smallest ring. The <strong className="text-yellow-400">20 psi</strong>{' '}
-            ring ({radiusDual(1000, 'psi20')}) destroys even heavy concrete buildings; the{' '}
-            <strong className="text-yellow-400">5 psi</strong> ring ({radiusDual(1000, 'psi5')}) collapses most houses
+            ring ({radiusOr(1000, 'psi20')}) destroys even heavy concrete buildings; the{' '}
+            <strong className="text-yellow-400">5 psi</strong> ring ({radiusOr(1000, 'psi5')}) collapses most houses
             &mdash; this is the number most people mean by &ldquo;blast radius.&rdquo;
           </p>
           <p className="text-green-300">
             Lighter blast reaches much farther: <strong className="text-yellow-400">1 psi</strong>{' '}
-            ({radiusDual(1000, 'psi1')}) shatters windows. And the heat flash burns exposed skin to the edge of the
+            ({radiusOr(1000, 'psi1')}) shatters windows. And the heat flash burns exposed skin to the edge of the
             map: first-degree burns out to {radiusDual(1000, 'burn1')}, farther than the 5 psi blast.
           </p>
         </section>
@@ -442,7 +442,7 @@ export default function NuclearBlastRadiusPage() {
             {' '}{radiusDual(1000, 'psi1')} for a 1-megaton air burst. <strong className="text-yellow-400">Heat</strong>{' '}
             can reach farther: first-degree burns extend to {radiusDual(1000, 'burn1')} at 1 megaton, and to{' '}
             {radiusDual(50000, 'burn1')} for the 50-megaton Tsar Bomba &mdash; past even its 1 psi blast
-            ({radiusDual(50000, 'psi1')}).<Cite c={cites} ids={ENGINE_SOURCE_IDS.join(';')} />
+            ({radiusOr(50000, 'psi1')}).<Cite c={cites} ids={ENGINE_SOURCE_IDS.join(';')} />
           </p>
           <p className="text-green-300">
             <strong className="text-yellow-400">Fallout</strong> can travel hundreds of miles downwind, far beyond any
@@ -482,7 +482,7 @@ export default function NuclearBlastRadiusPage() {
           <p className="text-lg text-green-200">
             At the top end, <strong className="text-yellow-400">heat outruns blast</strong>: a 50-megaton air burst
             can cause first-degree burns out to <strong className="text-yellow-400">{radiusDual(50000, 'burn1')}</strong>,
-            farther than its 1 psi blast wave ({radiusDual(50000, 'psi1')}).
+            farther than its 1 psi blast wave ({radiusOr(50000, 'psi1')}).
           </p>
           <p className="text-xs text-green-300/60 mt-2">
             Source: scaling-law engine (Glasstone &amp; Dolan 1977 and the effects scaling table).<Cite c={cites} ids={ENGINE_SOURCE_IDS.join(';')} />

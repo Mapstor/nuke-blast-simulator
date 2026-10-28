@@ -9,6 +9,7 @@ import { articles } from '@/lib/blog/articles'
 import { COMPARISONS, encodeComparisonSlug } from '@/lib/data/comparisons'
 import { KEPT_CITY_SLUGS, KEPT_GLOSSARY_SLUGS } from '@/lib/data/livePages'
 import { COUNTRIES, COUNTRY_SLUGS } from '@/lib/data/countries'
+import { PAGE_SEO } from '@/lib/seo/pageSeo'
 
 export type SearchSection =
   | 'page'
@@ -25,25 +26,18 @@ export type SearchEntry = {
   section: SearchSection
 }
 
-const basePages: SearchEntry[] = [
-  { title: 'Nuclear Blast Simulator',  description: 'Free interactive nuclear blast simulator and nuke map. Click any city to see fireball, blast, thermal, and fallout.', url: '/',             section: 'page' },
-  { title: 'Nuclear Blast Radius Calculator', description: 'Enter any yield or pick a weapon to get every effect radius in miles and km, plus a chart from 1 kt to 50 Mt.', url: '/nuclear-blast-radius', section: 'page' },
-  { title: 'About',                    description: 'Educational mission and scientific approach behind the simulator.',                                                       url: '/about',        section: 'page' },
-  { title: 'FAQ',                      description: 'Common questions about nuclear weapon effects and the simulator methodology.',                                            url: '/faq',          section: 'page' },
-  { title: 'How It Works',             description: 'Step-by-step guide to using the nuclear blast simulator.',                                                                url: '/how-it-works', section: 'page' },
-  { title: 'Methodology',              description: 'Scaling-law formulas used to compute fireball, blast, thermal radiation, and fallout zones.',                             url: '/methodology',  section: 'page' },
-  { title: 'Weapons Database',         description: 'Browse 29 nuclear weapons and 14 conventional bombs by yield and country.',                                              url: '/weapons',      section: 'page' },
-  { title: 'Cities',                   description: 'Browse nuclear blast maps for major world cities, with cited populations.',                                              url: '/examples',     section: 'page' },
-  { title: 'Weapon Comparisons',       description: 'Browse head-to-head nuclear weapon comparisons.',                                                                         url: '/compare',      section: 'page' },
-  { title: 'Nuclear Weapons Glossary', description: 'Defined terms in nuclear weapons effects, physics, doctrine, and arms control.',                                          url: '/glossary',     section: 'page' },
-  { title: 'Blog',                     description: 'Long-form articles on nuclear weapon physics, history, doctrine, effects.',                                               url: '/blog',         section: 'page' },
-  { title: 'Nuclear Weapons by Country', description: 'How many nuclear weapons each country has as of early 2026: warheads, delivery systems and trends, every figure cited.', url: '/nuclear-weapons-by-country', section: 'page' },
-  { title: 'Data Sources',             description: 'Scientific references and primary sources used in calculations.',                                                         url: '/sources',      section: 'page' },
-  { title: 'Treaties & Data Sources',  description: 'Nuclear arms-control treaties (NPT, CTBT, TPNW) and the official organizations that publish nuclear-forces data.', url: '/resources',    section: 'page' },
-  { title: 'Contact',                  description: 'Contact information for feedback and educational inquiries.',                                                             url: '/contact',      section: 'page' },
-  { title: 'Privacy Policy',           description: 'Privacy policy.',                                                                                                          url: '/privacy',      section: 'page' },
-  { title: 'Terms of Service',         description: 'Terms of service.',                                                                                                        url: '/terms',        section: 'page' },
+// NBS-013: structural and hub search entries are DERIVED from PAGE_SEO (the
+// generated title/H1/description) so they can never drift from the pages and
+// can never reintroduce a stale claim about an effect the tool does not show.
+const BASE_PATHS = [
+  '/', '/nuclear-blast-radius', '/weapons', '/examples', '/compare', '/glossary', '/blog',
+  '/nuclear-weapons-by-country', '/faq', '/how-it-works', '/methodology', '/about',
+  '/sources', '/resources', '/contact', '/privacy', '/terms',
 ]
+const basePages: SearchEntry[] = BASE_PATHS.map((p) => {
+  const s = PAGE_SEO[p]
+  return { title: s?.h1 || s?.title || p, description: s?.description || '', url: p, section: 'page' as const }
+})
 
 const weaponPages: SearchEntry[] = bombs
   .filter((b) => b.id !== 'custom')
