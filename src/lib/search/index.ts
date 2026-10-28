@@ -8,6 +8,7 @@ import { glossary } from '@/lib/data/glossary'
 import { articles } from '@/lib/blog/articles'
 import { COMPARISONS, encodeComparisonSlug } from '@/lib/data/comparisons'
 import { KEPT_CITY_SLUGS, KEPT_GLOSSARY_SLUGS } from '@/lib/data/livePages'
+import { COUNTRIES, COUNTRY_SLUGS } from '@/lib/data/countries'
 
 export type SearchSection =
   | 'page'
@@ -94,6 +95,19 @@ const articlePages: SearchEntry[] = articles.map((a) => ({
   section: 'article' as const,
 }))
 
+const countryPages: SearchEntry[] = COUNTRY_SLUGS.map((k) => {
+  const c = COUNTRIES[k]
+  const total = c.rows.find((r) => r.field === 'warheads.fas.total_inventory')?.value
+  return {
+    title: `How many nuclear weapons does ${c.article === 'the' ? `the ${c.name}` : c.name} have?`,
+    description: total
+      ? `${c.name} has about ${total} nuclear warheads (early 2026): warhead count, delivery systems, tests and treaties, cited.`
+      : `${c.name}'s nuclear program status in 2026: what the IAEA can and cannot verify, with a dated timeline, cited.`,
+    url: `/nuclear-weapons-by-country/${k}`,
+    section: 'page' as const,
+  }
+})
+
 export const SEARCH_INDEX: SearchEntry[] = [
   ...basePages,
   ...weaponPages,
@@ -101,6 +115,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   ...comparisonPages,
   ...glossaryPages,
   ...articlePages,
+  ...countryPages,
 ]
 
 export function search(query: string, limit = 10): SearchEntry[] {

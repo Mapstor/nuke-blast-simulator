@@ -16,8 +16,11 @@ for (const s of sources) {
   map[s.id] = { publisher: s.publisher, title: s.title, url: s.url, attribution: s.attribution }
 }
 // Data-domain sources (effects-fireball, effects-blast-thermal, arsenals-2026, …).
+// Only VERIFIED domains are citable; candidate/GAP registry rows are placeholders
+// with no attribution and are never cited, so they stay out of SOURCES.
 for (const d of dataSources) {
   if (!d.domain) continue
+  if (d.status && d.status.trim() !== 'verified') continue
   map[d.domain] = { publisher: d.publisher, title: d.source, url: d.url, attribution: d.attribution }
 }
 

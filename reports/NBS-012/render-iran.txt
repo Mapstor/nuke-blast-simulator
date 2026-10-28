@@ -1,0 +1,84 @@
+Home  /  Nuclear weapons by country  /  Iran    Does Iran Have Nukes?
+Where Iran’s nuclear program stands in 2026: what the IAEA can verify, what it cannot, and a dated record of the events that got here. Every figure is attributed.
+By   Marko Visic, BSc Physics
+No.  As of early 2026, neither FAS nor SIPRI counts Iran among the world’s nuclear-armed states. [  1 ,    2  ]  The IAEA’s last stockpile estimate, from  13 June 2025 , was  440.9  kg  of uranium enriched up to 60%; since the June 2025 attacks the Agency says it cannot state the stockpile’s current size, composition or location. [  3  ]
+What the assessments say
+Iran is not among SIPRI's nine nuclear-armed states [  4  ]
+Iran is not among the nine countries in FAS's 2026 table [  1  ]
+'Iran is not building a nuclear weapon' (2025 public US intelligence assessment, as quoted by CRS) [  5  ]
+status of the program unclear [  5  ]
+What the IAEA knows and doesn’t
+stockpile total enriched
+9874.9  kg (enriched uranium, total) [  3  ]
+stockpile up to 60pct
+440.9  kg (uranium enriched up to 60% U-235) [  3  ]
+stockpile up to 60pct verified
+432.9 of 440.9  kg [  3  ]
+stockpile up to 20pct
+184.1  kg (uranium enriched up to 20% U-235) [  3  ]
+stockpile up to 5pct
+6024.4  kg (uranium enriched up to 5% U-235) [  3  ]
+stockpile current whereabouts
+unknown to the IAEA [  3  ]
+continuity of knowledge
+lost for more than a year (since the June 2025 attacks) [  6  ]
+safeguards unable
+IAEA unable to discharge its NPT safeguards responsibilities in Iran [  6  ]
+dg concern
+'serious proliferation concern' [  6  ]
+access affected facilities
+no IAEA access to facilities affected by the June 2025 attacks [  3  ]
+ifep
+fourth declared enrichment facility (IFEP, Isfahan) never accessed; location unknown to the Agency [  3  ]
+Timeline, June 2025 to 2026
+Israeli military operation from 13 June 2025 included attacks on several nuclear facilities [  3  ]
+22 June 2025: US attacks on three nuclear facilities [  3  ]
+Fordow, Natanz and Esfahan hit [  7  ]
+no increase in off-site radiation levels (per Iranian regulator, reported to IAEA) [  7  ]
+2 July 2025: law suspending cooperation with the IAEA signed into force [  3  ]
+28 Aug 2025: France, Germany, UK notified the Security Council (snapback) [  8  ]
+9 Sep 2025: IAEA-Iran understanding ('Cairo agreement') [  9  ]
+26 Sep 2025: draft to extend relief rejected, 9 against / 4 in favour / 2 abstentions [  10  ]
+measures to enter into effect on the evening of 27 Sep 2025 (US representative) [  10  ]
+Iran: snapback 'legally baseless' [  9  ]
+Iran letter of 20 Nov 2025: agreement 'no longer valid' [  3  ]
+28 Feb 2026: US and Israel launched further attacks, including on sites of some nuclear facilities [  3  ]
+entrance buildings of Natanz FEP damaged (satellite imagery, 3 Mar 2026) [  13  ]
+Iran informed IAEA of attacks on the Bushehr NPP site (several dates, Mar-Apr 2026) [  13  ]
+Khondab heavy water production plant attacked 27 Mar 2026 (not a nuclear facility per IAEA) [  13  ]
+conditional ceasefire declared 8 April 2026 [  14  ]
+one inspection and DIV at Bushehr NPP, 1–3 June 2026 [  13  ]
+June 2026 US-Iran MOU: 'Iran reaffirms that it shall not procure or develop nuclear weapons' [  5  ]
+Board resolution GOV/2026/61 adopted 9 Sep 2026 [  15  ]
+Treaty status
+NPT
+party; signed 1968-07-01; ratified 1970-02-02; in force 1970-03-05 [  11  ]
+CTBT
+signed 1996-09-24; not ratified [  12  ]
+Frequently asked questions
+Does Iran have nuclear weapons?
+No. As of early 2026, neither the Federation of American Scientists nor SIPRI counts Iran among the world’s nuclear-armed states. [  1  ]
+How much enriched uranium does Iran have?
+The IAEA’s most recent estimate, as of 13 June 2025, was 440.9 kg of uranium enriched up to 60% U-235. The Agency says it cannot confirm the stockpile’s current size, composition or location. [  3  ]
+Is Iran in the Non-Proliferation Treaty?
+Yes. On the NPT, Iran is: party; signed 1968-07-01; ratified 1970-02-02; in force 1970-03-05. On the CTBT: signed 1996-09-24; not ratified. [  11  ]
+Can the IAEA verify what Iran is doing now?
+Not fully. The IAEA reports that its continuity of knowledge was lost for more than a year (since the June 2025 attacks), and that it is IAEA unable to discharge its NPT safeguards responsibilities in Iran. [  6  ]
+Every figure on this page comes from a verified primary source, cited inline and listed below. Warhead counts are the Federation of American Scientists’ Status of World Nuclear Forces and SIPRI’s Yearbook; delivery systems come from the Nuclear Notebook; blast radii are  calculated  from Glasstone & Dolan scaling laws. Candidate and unverified figures are withheld.
+Data as of 22 October 2026. By Marko Visic, BSc Physics.
+Sources
+1 .  Source: Federation of American Scientists (Kristensen, Korda, Johns, Knight-Boyle, Kohn), Status of World Nuclear Forces (2026 estimates; page updated 9 Jun 2026) — retrieved Oct 2026
+2 .  Source: SIPRI (Hans M. Kristensen and Matt Korda), SIPRI Yearbook 2026, ch. 8: World nuclear forces (Appendix 8A, Tables 8A.1, 8A.4, 8A.5; January 2026) — retrieved Oct 2026
+3 .  Source: IAEA (Report by the Director General; copy hosted by Iran Watch), GOV/2026/50: NPT Safeguards Agreement and relevant UNSC resolutions in Iran (1 Sep 2026; derestricted 9 Sep 2026) — retrieved Oct 2026
+4 .  Source: SIPRI, SIPRI Yearbook 2026 press release: Increasing focus on nuclear weapons amid heightened escalation risks (8 Jun 2026) — retrieved Oct 2026
+5 .  Source: US Congressional Research Service (Paul K. Kerr; via EveryCRSReport), Iran and Nuclear Weapons Production, In Focus IF12106 (updated 13 Oct 2026) — retrieved Oct 2026
+6 .  Source: IAEA Director General (copy hosted by Iran Watch), Introductory Statement to the Board of Governors (7 Sep 2026) — retrieved Oct 2026
+7 .  Source: IAEA, Update on Developments in Iran (5), press release 54/2025 (22 Jun 2025) — retrieved Oct 2026
+8 .  Source: German Federal Foreign Office (E3 joint statement), Joint Statement by the Foreign Ministers of France, Germany and the United Kingdom on the Initiation of the Snapback Process (28 Aug 2025) — retrieved Oct 2026
+9 .  Source: Ministry of Foreign Affairs of the Islamic Republic of Iran (copy hosted by Iran Watch), Statement by the Foreign Ministry of the Islamic Republic of Iran (28 Sep 2025) — retrieved Oct 2026
+10 .  Source: United Nations, Meetings Coverage and Press Releases, SC/16181: Security Council Fails to Adopt Resolution Extending Joint Comprehensive Plan of Action on Iran's Nuclear Programme (26 Sep 2025) — retrieved Oct 2026
+11 .  Source: Government of the Netherlands, Treaty Database, Treaty on the Non-Proliferation of Nuclear Weapons: parties (page modified 2022-10-20) — retrieved Oct 2026
+12 .  Source: Government of the Netherlands, Treaty Database, Comprehensive Nuclear-Test-Ban Treaty: parties (page modified 2026-07-10) — retrieved Oct 2026
+Other nuclear powers
+United States    ·  Russia    ·  China    ·  United Kingdom    ·  France    ·  India    ·  Pakistan    ·  North Korea    ·  Israel
+Back to  all nuclear weapons by country .

@@ -21,3 +21,9 @@ export function seoMetadata(path: string, type: 'website' | 'article' = 'website
 export function pageH1(path: string): string {
   return PAGE_SEO[path]?.h1 ?? PAGE_SEO[path]?.title ?? ''
 }
+
+// The meta description for a page (used e.g. in Article JSON-LD so the schema
+// description matches the page's real description).
+export function pageDescription(path: string): string {
+  return PAGE_SEO[path]?.description ?? ''
+}

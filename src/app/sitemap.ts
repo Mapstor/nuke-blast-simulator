@@ -5,6 +5,7 @@ import { allComparisonSlugs } from '@/lib/data/comparisons'
 import { glossary } from '@/lib/data/glossary'
 import { articles } from '@/lib/blog/articles'
 import { KEPT_CITY_SLUGS, KEPT_GLOSSARY_SLUGS } from '@/lib/data/livePages'
+import { COUNTRY_SLUGS } from '@/lib/data/countries'
 import { contentDateModified } from '@/lib/seo/contentDates'
 
 const BASE_URL = 'https://nukeblastsimulator.com'
@@ -89,6 +90,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  // NBS-012: the 10 country pages under the by-country hub.
+  const countryEntries: MetadataRoute.Sitemap = COUNTRY_SLUGS.map((k) => ({
+    url: `${BASE_URL}/nuclear-weapons-by-country/${k}`,
+    lastModified: lm(`/nuclear-weapons-by-country/${k}`),
+    changeFrequency: 'monthly' as ChangeFreq,
+    priority: 0.7,
+  }))
+
   return [
     ...staticEntries,
     ...weaponEntries,
@@ -96,5 +105,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...compareEntries,
     ...glossaryEntries,
     ...blogEntries,
+    ...countryEntries,
   ]
 }

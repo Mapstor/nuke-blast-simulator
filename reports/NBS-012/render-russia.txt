@@ -1,0 +1,247 @@
+Home  /  Nuclear weapons by country  /  Russia    How Many Nukes Does Russia Have?
+How many nuclear warheads  Russia  holds, what carries them, and its test and treaty record, as of early 2026. Two independent counts (FAS and SIPRI) are shown side by side, every figure cited.
+By   Marko Visic, BSc Physics
+Russia has an estimated 5,420 nuclear warheads as of early 2026 (FAS). 1,796 are deployed on strategic launchers, and 4,400 are in the military stockpile. A further 1,020 are retired and awaiting dismantlement. SIPRI’s January 2026 count matches. [  1 ,    2  ]
+Warhead count
+FAS and SIPRI are compiled by the same analysts and agree on the totals; they split the categories slightly differently.  Retired  warheads are awaiting dismantlement and are not part of the reserve.
+FAS   ( beginning of 2026 (FAS page updated 2026-06-09) )
+Deployed (strategic)
+1,796
+Deployed (nonstrategic)
+0
+Reserve / nondeployed
+2,604
+Military stockpile
+4,400
+Retired, awaiting dismantlement
+1,020
+Total inventory
+5,420
+SIPRI   ( January 2026 (SIPRI Yearbook 2026, Table 8A.1) )
+Deployed
+1 796
+Stored (nondeployed)
+2 604
+Military stockpile
+4 400
+Retired, awaiting dismantlement
+1 020
+Total inventory
+5 420
+Terms:  deployed  = on missiles or at bomber bases;  reserve / stored  = non-deployed but in the stockpile;  military stockpile  = deployed + reserve;  retired  = withdrawn, awaiting dismantlement;  total inventory  = stockpile + retired. [  1 ,    2  ]
+How  Russia  delivers them
+Delivery systems from the latest Nuclear Notebook / SIPRI table  (2026 (Table 1, Nuclear Notebook published 2026-05-14)) . A “?” or a dash is the source’s own mark of an uncertain or unstated figure. [  3  ]
+System
+Type
+Launchers
+Per launcher
+Warhead × yield
+Weapons
+Year
+Warheads
+SS-18 M6 Satan / RS-20V (Voevoda)
+ICBM
+40
+10
+10 × 500–800 kt (MIRV)
+400
+SS-19 M4 / Avangard
+ICBM (hypersonic glide vehicle)
+12
+1
+1 × HGV (yield not printed)
+12
+SS-27 Mod 1 (mobile) / RS-12M1 (Topol-M)
+ICBM
+18
+1
+1 × 800? kt
+18
+SS-27 Mod 1 (silo) / RS-12M2 (Topol-M)
+ICBM
+50
+1
+1 × 800 kt
+50
+SS-27 Mod 2 (mobile) / RS-24 (Yars)
+ICBM
+180
+3
+3 × 100? kt (MIRV)
+540
+SS-27 Mod 2 (silo) / RS-24 (Yars)
+ICBM
+24
+3
+3 × 100? kt (MIRV)
+72
+SS-29 (silo) / RS-28 (Sarmat)
+ICBM
+–
+10
+10 × 500? kt (MIRV)
+(2026)
+–
+Subtotal
+327
+1,092
+SS-N-23 M2/3 / RSM-54 (Sineva/Layner)
+SLBM
+5 SSBNs / 80 missiles
+4
+4 × 100 kt (MIRV)
+256
+SS-N-32 / RSM-56 (Bulava)
+SLBM
+8 SSBNs / 128 missiles
+6
+6 × 100 kt (MIRV)
+672
+Subtotal
+13 SSBNs / 208 missiles
+928
+Bear-H6/16 / Tu-95MS6/MS16/MSM
+bomber
+45
+6 × AS-15A ALCMs or 14 × AS-23B ALCMs
+430
+Blackjack / Tu-160/M
+bomber
+15
+12 × AS-15B ALCMs or AS-23B ALCMs, bombs
+156
+Subtotal
+60
+586
+Subtotal
+595
+2,606
+SS-26 Stone / 9K720 Iskander-M
+SRBM (nonstrategic)
+156
+1
+1 × 10–100 kt
+130
+SSC-8 Screwdriver / 9M729
+GLCM (nonstrategic)
+16
+1
+1 × 10–100 kt
+30
+SS-X-31 Oreshnik
+ballistic missile (listed under nonstrategic)
+12
+6
+6 × 250 kt
+72
+SSC-X-9 Skyfall / Burevestnik
+GLCM
+–
+1 x ?
+2028
+–
+Tu-22M3(M3M) / Su-24M / Su-34 / MiG-31K
+nonstrategic aircraft
+292
+ASMs, AAMs, ALBMs, bombs
+488
+LACMs, SLCMs, ASWs, SAMs, DBs, torpedoes
+naval nonstrategic
+767
+SA-20/SA-21 / S-300/S-400
+air defense
+744
+1 × low
+200
+Gazelle / 53T6
+missile defense
+68
+1 × 10 kt
+68
+SSC-1B Sepal / Redut
+coastal defense
+8
+1 × 350 kt
+4
+SSC-5 Stooge (SS-N-26) / K-300P/3M-55
+coastal defense
+56
+(1 × 10 kt)
+35
+warheads=1,794 [  3  ]
+Blast radius of  Russia&rsquo;s  warheads
+For each  distinct warhead yield  in  Russia ’s arsenal, the air-burst 5 psi (most homes destroyed) and 3rd-degree-burn radii,  calculated  by the same engine as the  blast radius calculator . [  4 ,    5  ]
+Yield
+5 psi radius
+3rd-degree burns
+Links
+10 kt
+0.83 mi (1.3 km)
+1.1 mi (1.8 km)
+chart
+100 kt
+1.8 mi (2.9 km)
+3 mi (4.8 km)
+chart
+250 kt
+2.4 mi (3.9 km)
+4.3 mi (6.9 km)
+chart
+350 kt
+2.7 mi (4.4 km)
+4.9 mi (7.9 km)
+chart
+800 kt
+3.6 mi (5.8 km)
+6.8 mi (11 km)
+chart
+Russia&rsquo;s  nuclear tests
+Total
+715 [  6  ]
+Devices
+969 [  6  ]
+First
+test #1, 29 Aug 1949, STS (Semipalatinsk Test Site), surface, 22 kt [  7  ]
+Last date
+1990-10-24 [  8  ]
+Site semipalatinsk
+450 plus Soviet tests at Semipalatinsk [  9  ]
+Site novaya zemlya
+approximately 130 [  8  ]
+Largest
+Tsar Bomba (AN602), 50 Mt, October 1961, Novaya Zemlya [  8  ]
+Treaty status
+NPT
+party (nuclear-weapon state); signed 1968-07-01; ratified 1970-03-05 [  10  ]
+CTBT signed
+1996-09-24 [  11  ]
+CTBT ratified then withdrawn
+ratified 2000; ratification withdrawn 2023 [  12  ]
+CTBT withdrawal effective
+2023-11-03 [  13  ]
+Frequently asked questions
+How many nuclear weapons does Russia have?
+Russia has an estimated 5,420 nuclear warheads as of early 2026, according to the Federation of American Scientists. SIPRI’s January 2026 count is the same. [  1  ]
+When did Russia first test a nuclear weapon?
+Russia’s first nuclear test is recorded as test #1, 29 Aug 1949, STS (Semipalatinsk Test Site), surface, 22 kt. [  7  ]
+Is Russia part of the Non-Proliferation Treaty?
+On the NPT, Russia is: party (nuclear-weapon state); signed 1968-07-01; ratified 1970-03-05. [  10  ]
+Every figure on this page comes from a verified primary source, cited inline and listed below. Warhead counts are the Federation of American Scientists’ Status of World Nuclear Forces and SIPRI’s Yearbook; delivery systems come from the Nuclear Notebook; blast radii are  calculated  from Glasstone & Dolan scaling laws. Candidate and unverified figures are withheld.
+Data as of 22 October 2026. By Marko Visic, BSc Physics.
+Sources
+1 .  Source: Federation of American Scientists (Kristensen, Korda, Johns, Knight-Boyle, Kohn), Status of World Nuclear Forces (2026 estimates; page updated 9 Jun 2026) — retrieved Oct 2026
+2 .  Source: SIPRI (Hans M. Kristensen and Matt Korda), SIPRI Yearbook 2026, ch. 8: World nuclear forces (Appendix 8A, Tables 8A.1, 8A.4, 8A.5; January 2026) — retrieved Oct 2026
+3 .  Source: Bulletin of the Atomic Scientists / FAS, Russian nuclear weapons, 2026, Table 1 (May 2026) — retrieved Oct 2026
+4 .  Source: U.S. DoD / DOE (Glasstone & Dolan, via Atomic Archive), The Effects of Nuclear Weapons, 3rd ed. (1977) §2.127 — retrieved Oct 2026
+5 .  Source: Wikipedia, Effects of nuclear explosions — scaling-law table — retrieved Oct 2026
+6 .  Source: Nuclear Weapon Archive (Carey Sublette), Soviet Nuclear Test Summary (last updated 7 Oct 1997) — retrieved Oct 2026
+7 .  Source: Nuclear Weapon Archive (Carey Sublette), Soviet Atmospheric Tests (last updated 7 Oct 1997) — retrieved Oct 2026
+8 .  Source: Nuclear Threat Initiative, Central Test Site of Russia on Novaya Zemlya (no longer updated as of 6 Apr 2026) — retrieved Oct 2026
+9 .  Source: CTBTO Preparatory Commission, International Day against Nuclear Tests, 29 August — retrieved Oct 2026
+10 .  Source: Government of the Netherlands, Treaty Database, Treaty on the Non-Proliferation of Nuclear Weapons: parties (page modified 2022-10-20) — retrieved Oct 2026
+11 .  Source: Government of the Netherlands, Treaty Database, Comprehensive Nuclear-Test-Ban Treaty: parties (page modified 2026-07-10) — retrieved Oct 2026
+12 .  Source: Arms Control Association, The Status of the Comprehensive Test Ban Treaty: Signatories and Ratifiers (reviewed Jul 2024) — retrieved Oct 2026
+13 .  Source: United Nations Treaty Collection (Secretary-General as depositary), C.N.463.2023.TREATIES-XXVI.4: Russian Federation, withdrawal of ratification of the CTBT (8 Nov 2023) — retrieved Oct 2026
+Other nuclear powers
+United States    ·  China    ·  United Kingdom    ·  France    ·  India    ·  Pakistan    ·  North Korea    ·  Israel    ·  Iran
+Back to  all nuclear weapons by country .

@@ -1,0 +1,104 @@
+Home  /  Nuclear weapons by country  /  North Korea    How Many Nukes Does North Korea Have?
+How many nuclear warheads  North Korea  holds, what carries them, and its test and treaty record, as of early 2026. Two independent counts (FAS and SIPRI) are shown side by side, every figure cited.
+By   Marko Visic, BSc Physics
+North Korea has an estimated 60 nuclear warheads as of early 2026 (FAS). FAS lists none as deployed and 60 held in reserve. SIPRI’s January 2026 count matches. [  1 ,    2  ]
+Warhead count
+FAS and SIPRI are compiled by the same analysts and agree on the totals; they split the categories slightly differently.  Retired  warheads are awaiting dismantlement and are not part of the reserve.
+FAS   ( beginning of 2026 (FAS page updated 2026-06-09) )
+Deployed (strategic)
+0
+Reserve / nondeployed
+60
+Military stockpile
+60
+Total inventory
+60
+SIPRI   ( January 2026 (SIPRI Yearbook 2026, Table 8A.1) )
+Deployed
+–
+Stored (nondeployed)
+60
+Military stockpile
+60
+Retired, awaiting dismantlement
+. .
+Total inventory
+60
+Terms:  deployed  = on missiles or at bomber bases;  reserve / stored  = non-deployed but in the stockpile;  military stockpile  = deployed + reserve;  retired  = withdrawn, awaiting dismantlement;  total inventory  = stockpile + retired. [  1 ,    2  ]
+How  North Korea  delivers them
+Delivery systems from the latest Nuclear Notebook / SIPRI table  (2024 (Nuclear Notebook PDF, published 2024-07-15)) . A “?” or a dash is the source’s own mark of an uncertain or unstated figure. [  3  ]
+Hwasong-15, Hwasong-17, Hwasong-18 [  3  ]
+all new-generation solid-fuel SRBMs tied to the nuclear program [  3  ]
+Hwasal cruise missiles deployed with units tasked with tactical nuclear strikes [  3  ]
+most Pukguksong variants likely not deployed [  3  ]
+Hwasan-31 small warhead displayed [  3  ]
+two liquid-fueled road-mobile ICBMs tested in 2017 [  4  ]
+Hwasong-17 (KN-28) test launches began 2022 [  4  ]
+Hwasong-18 (2023) and Hwasong-19 (2024) solid-fueled ICBMs tested [  4  ]
+Hwasong-20 unveiled Oct 2025, apparently not yet flight tested [  4  ]
+Blast radius of  North Korea&rsquo;s  warheads
+For each  tested yield  in  North Korea ’s arsenal, the air-burst 5 psi (most homes destroyed) and 3rd-degree-burn radii,  calculated  by the same engine as the  blast radius calculator . [  5 ,    6  ]
+Yield
+5 psi radius
+3rd-degree burns
+Links
+1 kt
+0.37 mi (0.6 km)
+0.37 mi (0.6 km)
+chart
+250 kt
+2.4 mi (3.9 km)
+4.3 mi (6.9 km)
+chart  ·  weapon
+Based on  North Korea ’s verified test yields; no per-warhead yield is published.
+North Korea&rsquo;s  nuclear tests
+Total site
+6 tests since 2006 at Punggye-ri [  4  ]
+First
+2006-10-09 (announced by the DPRK; detected by over twenty IMS seismic stations) [  7  ]
+First yield
+around 1 [  8  ]
+Last
+2017-09-03 [  4  ]
+Last claim
+DPRK called it a hydrogen bomb [  4  ]
+Last yield estimate
+250 (mb 6.1, NORSAR estimate) [  9  ]
+Seventh test posture
+test site restored; postured for a seventh test (CRS) [  4  ]
+FAS does not estimate North Korea's launcher counts or a per-system warhead split; those figures are a source-level gap.
+Treaty status
+NPT accession
+1985-12-12 [  10  ]
+NPT withdrawal
+announced 2003-01-10; stated effective 2003-01-11 [  11  ]
+NPT withdrawal aca
+announced 2003-01-10, effective the next day [  12  ]
+CTBT
+not signed [  13  ]
+Frequently asked questions
+How many nuclear weapons does North Korea have?
+North Korea has an estimated 60 nuclear warheads as of early 2026, according to the Federation of American Scientists. SIPRI’s January 2026 count is the same. [  1  ]
+When did North Korea first test a nuclear weapon?
+North Korea’s first nuclear test is recorded as 2006-10-09 (announced by the DPRK; detected by over twenty IMS seismic stations). [  7  ]
+Is North Korea part of the Non-Proliferation Treaty?
+On the NPT, North Korea is: 1985-12-12. [  10  ]
+Every figure on this page comes from a verified primary source, cited inline and listed below. Warhead counts are the Federation of American Scientists’ Status of World Nuclear Forces and SIPRI’s Yearbook; delivery systems come from the Nuclear Notebook; blast radii are  calculated  from Glasstone & Dolan scaling laws. Candidate and unverified figures are withheld.
+Data as of 22 October 2026. By Marko Visic, BSc Physics.
+Sources
+1 .  Source: Federation of American Scientists (Kristensen, Korda, Johns, Knight-Boyle, Kohn), Status of World Nuclear Forces (2026 estimates; page updated 9 Jun 2026) — retrieved Oct 2026
+2 .  Source: SIPRI (Hans M. Kristensen and Matt Korda), SIPRI Yearbook 2026, ch. 8: World nuclear forces (Appendix 8A, Tables 8A.1, 8A.4, 8A.5; January 2026) — retrieved Oct 2026
+3 .  Source: Federation of American Scientists / Bulletin of the Atomic Scientists (Kristensen, Korda, Johns, Knight-Boyle), North Korean nuclear weapons, 2024 (Nuclear Notebook PDF, 15 Jul 2024) — retrieved Oct 2026
+4 .  Source: US Congressional Research Service (via EveryCRSReport), North Korea's Nuclear Weapons and Missile Programs, In Focus IF10472 (updated 13 Oct 2026) — retrieved Oct 2026
+5 .  Source: U.S. DoD / DOE (Glasstone & Dolan, via Atomic Archive), The Effects of Nuclear Weapons, 3rd ed. (1977) §2.127 — retrieved Oct 2026
+6 .  Source: Wikipedia, Effects of nuclear explosions — scaling-law table — retrieved Oct 2026
+7 .  Source: CTBTO Preparatory Commission, 2006 DPRK Announced Nuclear Test — retrieved Oct 2026
+8 .  Source: NORSAR, 19 years since North Korea's first nuclear test explosion — retrieved Oct 2026
+9 .  Source: NORSAR, Summing up the nuclear test in North Korea on 3 September 2017 (22 Sep 2017) — retrieved Oct 2026
+10 .  Source: Government of the Netherlands, Treaty Database, Treaty on the Non-Proliferation of Nuclear Weapons: parties (page modified 2022-10-20) — retrieved Oct 2026
+11 .  Source: IAEA (Report by the Director General), GC(49)/13: Implementation of the Safeguards Agreement between the Agency and the DPRK (4 Aug 2005) — retrieved Oct 2026
+12 .  Source: Arms Control Association, The Nuclear Nonproliferation Treaty (NPT) at a Glance (reviewed Jul 2024) — retrieved Oct 2026
+13 .  Source: Arms Control Association, The Status of the Comprehensive Test Ban Treaty: Signatories and Ratifiers (reviewed Jul 2024) — retrieved Oct 2026
+Other nuclear powers
+United States    ·  Russia    ·  China    ·  United Kingdom    ·  France    ·  India    ·  Pakistan    ·  Israel    ·  Iran
+Back to  all nuclear weapons by country .

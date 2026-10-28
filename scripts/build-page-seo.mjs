@@ -55,6 +55,23 @@ for (const m of glossSrc.matchAll(/slug:\s*['"]([^'"]+)['"][\s\S]*?term:\s*['"](
   gloss[m[1]] = { term: m[2], short: m[3] }
 }
 
+// NBS-012: country FAS warhead totals (verified rows only) for the country-page
+// titles/descriptions — number and year from the data, never typed.
+const countryFas = {}
+for (const r of readCsvObjects('research/country-facts.csv')) {
+  if (r.status.trim() !== 'verified') continue
+  const k = r.country
+  countryFas[k] ??= {}
+  if (r.field === 'warheads.fas.total_inventory') countryFas[k].total = r.value.trim()
+  else if (r.field === 'warheads.fas.military_stockpile') countryFas[k].stockpile = r.value.trim()
+}
+const COUNTRY_NAME = {
+  'united-states': 'United States', russia: 'Russia', china: 'China',
+  'united-kingdom': 'United Kingdom', france: 'France', india: 'India',
+  pakistan: 'Pakistan', 'north-korea': 'North Korea', israel: 'Israel', iran: 'Iran',
+}
+const COUNTRY_THE = new Set(['united-states', 'united-kingdom'])
+
 // ── helpers ──────────────────────────────────────────────────────────────
 const ACRONYMS = new Set(['us', 'uk', 'usa', 'ussr', 'npt', 'ctbt', 'tpnw', 'icbm', 'slbm', 'mirv',
   'emp', 'moab', 'foab', 'gbu', 'jdam', 'blu', 'fab', 'tnt', 'psi', 'mad', 'dc', 'nyc', 'un',
@@ -194,6 +211,29 @@ function buildArticle(slug, p) {
   const title = withQualifier(base, ['Explained', 'Facts & Figures'])
   return { title, h1: base, description: clampDesc(`${base}: a cited, long-form explainer on nuclear weapon effects, physics and history.`) }
 }
+// NBS-012: country pages. H1 = the primary as a question; title adds the FAS
+// total and the year (number from the data, <=60); Iran is a status page.
+function buildCountry(slug, p) {
+  const key = slug.split('/')[1]
+  const q = `${tc(p)}?`
+  if (key === 'iran') {
+    return {
+      title: "Does Iran Have Nukes? Iran's Nuclear Program in 2026",
+      h1: q,
+      description: clampDesc("Iran has no nuclear weapons as of early 2026 (FAS and SIPRI). What the IAEA can and cannot verify, a dated 2025-2026 timeline, and Iran's treaty status."),
+    }
+  }
+  const f = countryFas[key] || {}
+  const total = f.total || ''
+  const year = '(2026)'
+  let title = `${q} ${total} Warheads ${year}`
+  if (title.length > 60) title = `${q} ${total} ${year}`
+  if (title.length > 60) title = q
+  const subj = COUNTRY_THE.has(key) ? `The ${COUNTRY_NAME[key]}` : COUNTRY_NAME[key]
+  const paren = f.stockpile && f.stockpile !== total ? ` (${f.stockpile} stockpiled)` : ''
+  const description = clampDesc(`${subj} has about ${total} nuclear warheads in early 2026${paren}. Delivery systems, test history and treaty status, cited.`)
+  return { title, h1: q, description }
+}
 
 // ── assemble ──────────────────────────────────────────────────────────────
 const STRUCTURAL = new Set(['about', 'methodology', 'sources', 'blog', 'contact', 'faq', 'glossary',
@@ -207,6 +247,7 @@ for (const row of pages) {
   const p = primary[slug]
   let seo
   if (slug.startsWith('weapons/')) seo = buildWeapon(slug, p)
+  else if (slug.startsWith('nuclear-weapons-by-country/')) seo = buildCountry(slug, p)
   else if (slug.startsWith('examples/')) seo = buildCity(slug, p)
   else if (slug.startsWith('compare/')) seo = buildCompare(slug, p)
   else if (slug.startsWith('glossary/')) seo = buildGlossary(slug, p)

@@ -285,9 +285,59 @@
     "dateModified": "2026-10-22"
   },
   "/nuclear-weapons-by-country": {
-    "hash": "630f6874e723be8a",
+    "hash": "c04141ee1361f75c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-22"
+  },
+  "/nuclear-weapons-by-country/china": {
+    "hash": "4269220105778de9",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-10-22"
+  },
+  "/nuclear-weapons-by-country/france": {
+    "hash": "7d6d14afe8dfafe6",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-10-22"
+  },
+  "/nuclear-weapons-by-country/india": {
+    "hash": "fce6aad16d505c0a",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-10-22"
+  },
+  "/nuclear-weapons-by-country/iran": {
+    "hash": "7378e97805bd316a",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-10-22"
+  },
+  "/nuclear-weapons-by-country/israel": {
+    "hash": "d14dbb403e33782b",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-10-22"
+  },
+  "/nuclear-weapons-by-country/north-korea": {
+    "hash": "e108b81a6fcd13cb",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-10-22"
+  },
+  "/nuclear-weapons-by-country/pakistan": {
+    "hash": "2229e4ef50ecadcd",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-10-22"
+  },
+  "/nuclear-weapons-by-country/russia": {
+    "hash": "cb10c9729f1d116c",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-10-22"
+  },
+  "/nuclear-weapons-by-country/united-kingdom": {
+    "hash": "ee21f7152d2bfcb2",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-10-22"
+  },
+  "/nuclear-weapons-by-country/united-states": {
+    "hash": "b6e533d949cdb644",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-10-22"
   },
   "/privacy": {
     "hash": "ddfc2c9f9b586b74",
