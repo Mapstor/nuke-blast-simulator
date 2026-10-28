@@ -293,7 +293,7 @@ export default function NuclearBlastRadiusPage() {
         </section>
 
         {/* ── Stat callout 1 ── */}
-        <aside className="mb-10 bg-black/60 border-l-4 border-yellow-400 rounded-r-lg p-5">
+        <aside className="mb-10 bg-black/60 border border-yellow-400/40 rounded-lg p-5">
           <p className="text-lg text-green-200">
             A <strong className="text-yellow-400">1-megaton air burst</strong> destroys most homes out to{' '}
             <strong className="text-yellow-400">{radiusDual(1000, 'psi5')}</strong>, a circle of about{' '}
@@ -478,7 +478,7 @@ export default function NuclearBlastRadiusPage() {
         </section>
 
         {/* ── Stat callout 2 ── */}
-        <aside className="mb-10 bg-black/60 border-l-4 border-yellow-400 rounded-r-lg p-5">
+        <aside className="mb-10 bg-black/60 border border-yellow-400/40 rounded-lg p-5">
           <p className="text-lg text-green-200">
             At the top end, <strong className="text-yellow-400">heat outruns blast</strong>: a 50-megaton air burst
             can cause first-degree burns out to <strong className="text-yellow-400">{radiusDual(50000, 'burn1')}</strong>,
