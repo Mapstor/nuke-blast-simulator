@@ -1,6 +1,6 @@
 {
   "/": {
-    "hash": "6e7e6c017339dea9",
+    "hash": "de873b41ef0bf7ba",
     "datePublished": "2025-10-30",
     "dateModified": "2026-10-28"
   },
@@ -10,24 +10,24 @@
     "dateModified": "2026-10-22"
   },
   "/blog": {
-    "hash": "7a064ceff66901d6",
+    "hash": "938f8d98be86395d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/blog/emp-high-altitude-nuclear-burst": {
-    "hash": "55775ea4cf0d6fe5",
+    "hash": "0adbc75f05787dd1",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/blog/four-kill-mechanisms": {
-    "hash": "f30d0d251f9af8bf",
+    "hash": "79bdf5f241d8657c",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/blog/hiroshima-nagasaki-80-years-of-data": {
-    "hash": "5abada4c7046eca2",
+    "hash": "c0b432b050fc0b5d",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/blog/how-nuclear-weapons-work": {
     "hash": "bdd6bc3c7cd621ff",
@@ -35,9 +35,9 @@
     "dateModified": "2026-10-22"
   },
   "/blog/nuclear-winter-regional-war-cooling": {
-    "hash": "2fb2328cd0df556a",
+    "hash": "9509235ab7b56228",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/blog/physics-of-nuclear-blast": {
     "hash": "b0664651a429b4c1",
@@ -45,9 +45,9 @@
     "dateModified": "2026-10-22"
   },
   "/blog/tsar-bomba-largest-test-ever": {
-    "hash": "50fe316e674a3f51",
+    "hash": "e8707e652af7acb5",
     "datePublished": "2026-04-29",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/compare": {
     "hash": "c6cbe518075f6af0",
@@ -60,14 +60,14 @@
     "dateModified": "2026-10-22"
   },
   "/compare/little-boy-vs-fat-man": {
-    "hash": "15f01ac8a9b9094c",
+    "hash": "f4ff3a63e973a367",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/compare/little-boy-vs-moab": {
-    "hash": "199350bae1b6edc8",
+    "hash": "a5e4ee1ac441e286",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/compare/tsar-bomba-vs-castle-bravo": {
     "hash": "1566266c420c781d",
@@ -75,9 +75,9 @@
     "dateModified": "2026-10-22"
   },
   "/compare/tsar-bomba-vs-little-boy": {
-    "hash": "d4a5c0c18e6c4330",
+    "hash": "38dd8de5835ab872",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/contact": {
     "hash": "f1cc2529ea5521ec",
@@ -200,7 +200,7 @@
     "dateModified": "2026-10-21"
   },
   "/glossary": {
-    "hash": "103ca2d3e94854ee",
+    "hash": "a7dda92c36097610",
     "datePublished": "2026-04-30",
     "dateModified": "2026-10-28"
   },
@@ -220,9 +220,9 @@
     "dateModified": "2026-10-21"
   },
   "/glossary/hydrogen-bomb": {
-    "hash": "34dbc17d13a2c8f3",
+    "hash": "fe8a699186c8f35e",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-28"
   },
   "/glossary/icbm": {
     "hash": "59de3d489eef7139",
@@ -350,9 +350,9 @@
     "dateModified": "2026-10-22"
   },
   "/sources": {
-    "hash": "b012f31aae8382f9",
+    "hash": "7b588c02de84f4dc",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/terms": {
     "hash": "dd91849ab7156d50",
@@ -435,9 +435,9 @@
     "dateModified": "2026-10-21"
   },
   "/weapons/fat-man": {
-    "hash": "e0a996b343b8af49",
+    "hash": "9304c32a4132674e",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/weapons/foab": {
     "hash": "0d516a234e322c2f",
@@ -480,9 +480,9 @@
     "dateModified": "2026-10-22"
   },
   "/weapons/ivy-mike": {
-    "hash": "ed60d1edd136baf7",
+    "hash": "5603c094231c50e6",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/weapons/jdam": {
     "hash": "e12194c821e76004",
@@ -495,9 +495,9 @@
     "dateModified": "2026-10-22"
   },
   "/weapons/little-boy": {
-    "hash": "b02fe426477c85fb",
+    "hash": "324aea377a99645b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/weapons/mark-84": {
     "hash": "1101173e8e792cf5",
@@ -550,9 +550,9 @@
     "dateModified": "2026-10-22"
   },
   "/weapons/tsar-bomba": {
-    "hash": "ef666167d6c32f3c",
+    "hash": "d44fdd59fad159ed",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-28"
   },
   "/weapons/w54": {
     "hash": "f3d2e7f9f12f60a4",

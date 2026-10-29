@@ -1,0 +1,100 @@
+
+================ /blog/hiroshima-nagasaki-80-years-of-data ================
+TITLE (47): How Many People Died in Hiroshima and Nagasaki?
+H1   : How Many People Died in Hiroshima and Nagasaki?
+META (154): About 140,000 died in Hiroshima and more than 70,000 in Nagasaki by the end of 1945. The sourced death tolls, the bombings, and the survivors alive today.
+H2s:
+   - The death toll in each city
+   - When the bombs were dropped
+   - Why the US bombed Hiroshima
+   - The survivors
+   - Are Hiroshima and Nagasaki radioactive today?
+   - What 80 years of RERF data show
+   - Frequently asked questions
+   - Sources
+   - Related articles
+
+================ /weapons/little-boy ================
+TITLE (53): Little Boy: Hiroshima Bomb Blast Radius &amp; Effects
+H1   : Little Boy (Hiroshima Bomb) Blast Radius
+META (122): Little Boy: 15 kt nuclear weapon (USA, 1945). Fireball, blast and thermal-burn radii for an air burst, mapped on any city.
+H2s:
+   - Overview
+   - Little Boy Blast Effects
+   - How big was the Hiroshima bomb?
+   - Run the Little Boy on a City
+   - Related Weapons
+   - FAQ
+   - Sources
+
+================ /weapons/fat-man ================
+TITLE (49): Fat Man Bomb: Nagasaki Blast Radius &amp; Effects
+H1   : Fat Man (Nagasaki Bomb) Blast Radius
+META (119): Fat Man: 21 kt nuclear weapon (USA, 1945). Fireball, blast and thermal-burn radii for an air burst, mapped on any city.
+H2s:
+   - Overview
+   - Fat Man Blast Effects
+   - When was Fat Man dropped?
+   - Physical description
+   - Run the Fat Man on a City
+   - Related Weapons
+   - FAQ
+   - Sources
+
+================ /blog/tsar-bomba-largest-test-ever ================
+TITLE (41): Tsar Bomba: The Largest Nuclear Test Ever
+H1   : Tsar Bomba: The Largest Nuclear Test Ever
+META (147): Tsar Bomba, the 50-megaton Soviet test of 1961 and the largest nuclear explosion ever. Its fireball, blast and thermal effects, every figure cited.
+H2s:
+   - The explosion
+   - How big the bomb was
+   - Where and when it was tested
+   - The mushroom cloud
+   - 50 megatons tested against a 100-megaton design
+   - Frequently asked questions
+   - Sources
+   - Related articles
+
+================ /weapons/tsar-bomba ================
+TITLE (43): Tsar Bomba Blast Radius — Map &amp; Effects
+H1   : Tsar Bomba Blast Radius
+META (123): Tsar Bomba: 50 Mt nuclear weapon (USSR, 1961). Fireball, blast and thermal-burn radii for an air burst, mapped on any city.
+H2s:
+   - Overview
+   - Tsar Bomba Blast Effects
+   - Where and when Tsar Bomba was tested
+   - Run the Tsar Bomba on a City
+   - Related Weapons
+   - FAQ
+   - Sources
+
+================ /glossary/hydrogen-bomb ================
+TITLE (50): Hydrogen Bomb: How It Works and Who Has Tested One
+H1   : Hydrogen Bomb
+META (155): How a hydrogen bomb works, which countries have tested one, who invented it, and how powerful H-bombs are, from Ivy Mike to Tsar Bomba. Every figure cited.
+H2s:
+   - How a thermonuclear bomb works
+   - Which countries have hydrogen bombs
+   - Who invented the hydrogen bomb
+   - The first hydrogen bomb test
+   - How powerful hydrogen bombs are
+   - Frequently asked questions
+   - Sources
+   - Related terms
+
+================ /blog/four-kill-mechanisms ================
+TITLE (49): Nuclear Explosion: What Happens, Second by Second
+H1   : What Happens in a Nuclear Explosion
+META (153): What happens in a nuclear explosion, second by second: the flash, fireball, shock wave and mushroom cloud, how hot it gets and how far it reaches, cited.
+H2s:
+   - What happens, in order
+   - How hot it gets
+   - How big it gets
+   - The sound and the shock wave
+   - Underwater and in space
+   - How bright the flash is
+   - What causes a nuclear explosion
+   - Where the energy goes
+   - Frequently asked questions
+   - Sources
+   - Related articles

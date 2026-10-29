@@ -5,12 +5,14 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import {
   definedTermSchema,
   breadcrumbSchema,
+  faqPageSchema,
   SITE_URL,
 } from '@/lib/seo/schemas'
 import { findGlossaryEntry, glossary, categoryLabel } from '@/lib/data/glossary'
 import { PrevNext, type PrevNextItem } from '@/components/nav/PrevNext'
-import { Sources, createCitations } from '@/components/seo/Cite'
-import { renderCited } from '@/components/seo/citeText'
+import { ArticleBody } from '@/components/blog/ArticleBody'
+import { Cite, Sources, createCitations, createCitationsFrom } from '@/components/seo/Cite'
+import { renderCited, collectSectionCiteIds, faqSchemaText } from '@/components/seo/citeText'
 import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 import { KEPT_GLOSSARY_SLUGS } from '@/lib/data/livePages'
 
@@ -67,7 +69,17 @@ export default async function GlossaryTermPage({
     .map((s) => glossary.find((g) => g.slug === s))
     .filter((g): g is NonNullable<typeof g> => Boolean(g))
 
-  const cites = createCitations()
+  // NBS-014: a full page (sections present) pre-registers its cited ids in DOM
+  // order; a plain stub registers them as it renders the single paragraph.
+  const faq = entry.faq ?? []
+  const isFullPage = Boolean(entry.sections?.length)
+  const cites = isFullPage
+    ? createCitationsFrom([
+        ...collectSectionCiteIds(entry.sections!),
+        ...faq.flatMap((q) => q.sourceIds ?? []),
+        ...(entry.sourceIds ?? []),
+      ])
+    : createCitations()
 
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
@@ -84,6 +96,7 @@ export default async function GlossaryTermPage({
             { name: 'Glossary', url: '/glossary' },
             { name: entry.term, url: `/glossary/${entry.slug}` },
           ]),
+          ...(faq.length ? [faqPageSchema(faq.map((q) => ({ question: q.question, answer: faqSchemaText(q.answer) })))] : []),
         ]}
       />
 
@@ -104,9 +117,30 @@ export default async function GlossaryTermPage({
           <p className="text-lg text-yellow-400">{entry.short}</p>
         </header>
 
-        <section className="mb-10 bg-black/50 border border-green-500/30 rounded-lg p-6">
-          <p className="text-green-300 text-base leading-relaxed">{renderCited(entry.long, cites)}</p>
-        </section>
+        {isFullPage ? (
+          <ArticleBody sections={entry.sections!} cites={cites} />
+        ) : (
+          <section className="mb-10 bg-black/50 border border-green-500/30 rounded-lg p-6">
+            <p className="text-green-300 text-base leading-relaxed">{renderCited(entry.long, cites)}</p>
+          </section>
+        )}
+
+        {faq.length > 0 && (
+          <section id="faq" className="mb-10 scroll-mt-24">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-green-400">Frequently asked questions</h2>
+            <div className="space-y-3">
+              {faq.map((qa) => (
+                <details key={qa.question} className="bg-black/50 border border-green-500/30 rounded-lg p-4">
+                  <summary className="font-semibold cursor-pointer text-yellow-400">{qa.question}</summary>
+                  <p className="mt-3 text-green-300 leading-relaxed">
+                    {renderCited(qa.answer, cites)}
+                    {qa.sourceIds?.length ? <Cite c={cites} ids={qa.sourceIds.join(';')} /> : null}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
 
         <Sources c={cites} extraIds={entry.sourceIds} />
 

@@ -4,6 +4,8 @@
 // the first sentence is a self-contained definition that AI engines can quote
 // directly, followed by an expanded explanation.
 
+import type { Section, FaqItem } from '@/lib/blog/types'
+
 export type GlossaryCategory = 'effects' | 'weapons' | 'physics' | 'doctrine' | 'treaty'
 
 export type GlossaryEntry = {
@@ -14,6 +16,11 @@ export type GlossaryEntry = {
   long: string   // expanded explanation (1–2 paragraphs); may contain {{c:ids}} / {{r:y:eff}} tokens
   related?: string[] // slugs of related terms
   sourceIds?: string[] // NBS-005 citation source ids (research/sources.csv)
+  // NBS-014: when a stub is upgraded to a full page, `sections` carries the
+  // long-form, H2-structured body (same Section/Block system as blog articles)
+  // and `faq` its FAQPage. When present they render instead of `long`.
+  sections?: Section[]
+  faq?: FaqItem[]
 }
 
 export const glossary: GlossaryEntry[] = [
@@ -113,8 +120,94 @@ export const glossary: GlossaryEntry[] = [
     term: 'Hydrogen Bomb',
     category: 'weapons',
     short: 'A nuclear weapon that derives most of its energy from nuclear fusion of hydrogen isotopes, ignited by a fission primary stage.',
-    long: 'Also called thermonuclear or H-bombs, hydrogen bombs use a small fission bomb to compress and heat a fusion fuel (typically lithium deuteride) to fusion-ignition conditions. Yields are scalable to tens of megatons; the largest weapon ever tested, Tsar Bomba (1961), was a 50 Mt three-stage thermonuclear device. {{c:atomic-heritage-foundation-national-museum-of-nu}} Modern strategic warheads are all thermonuclear.',
+    long: 'Also called thermonuclear or H-bombs, hydrogen bombs use a fission explosion to ignite fusion in a secondary fuel. Yields are scalable to tens of megatons; the largest weapon ever tested, Tsar Bomba (1961), released about 50 megatons. {{c:atomic-heritage-foundation-national-museum-of-nu}}',
     related: ['thermonuclear-weapon', 'teller-ulam', 'tsar-bomba', 'nuclear-fusion'],
+    sourceIds: ['effects-fireball', 'effects-blast-thermal'],
+    sections: [
+      {
+        body: [
+          { type: 'p', text: 'A hydrogen bomb is a nuclear weapon that gets most of its energy from fusion — the joining of light atoms — ignited by a fission explosion. Also called a thermonuclear weapon or H-bomb, it can be scaled to far higher yields than a pure fission (atomic) bomb. Seven countries have tested or claimed a thermonuclear device, and the three most powerful nuclear explosions in history were all hydrogen bombs.' },
+        ],
+      },
+      {
+        heading: 'How a thermonuclear bomb works',
+        body: [
+          { type: 'p', text: 'A thermonuclear bomb works by using a fission explosion to set off a much larger fusion reaction. In the words of the American Nuclear Society, "the energy from a fission device could ignite fusion in a secondary fuel." {{c:american-nuclear-society-nuclear-news-the-spark}} That staged arrangement is called the [Teller–Ulam design](/glossary#teller-ulam), after the two physicists who devised it. This page describes only that one-line concept; it carries no device design detail.' },
+        ],
+      },
+      {
+        heading: 'Which countries have hydrogen bombs',
+        body: [
+          { type: 'p', text: 'Five countries have confirmed thermonuclear tests — the United States, Russia, the United Kingdom, China and France — and two more, India and North Korea, have claimed thermonuclear devices that remain disputed.' },
+          {
+            type: 'table',
+            columns: ['Country', 'First thermonuclear test', 'Date', 'Yield'],
+            rows: [
+              ['[United States](/nuclear-weapons-by-country/united-states)', 'Ivy Mike', '1 Nov 1952', '10.4 Mt {{c:us-doe-nnsa-nevada-field-office-united-states-nu}}'],
+              ['[Russia (USSR)](/nuclear-weapons-by-country/russia)', 'Joe-4 (first thermonuclear explosion)', '12 Aug 1953', '400 kt {{c:nuclear-weapon-archive-soviet-atmospheric-tests}}'],
+              ['[United Kingdom](/nuclear-weapons-by-country/united-kingdom)', 'Grapple X', '8 Nov 1957', '1.8 Mt {{c:atomic-archive-britain-goes-nuclear;uk-ministry-of-defence-uk-atmospheric-nuclear-te}}'],
+              ['[China](/nuclear-weapons-by-country/china)', 'Test No. 6', '17 Jun 1967', '3.3 Mt {{c:atomic-archive-test-no-6-photo-caption}}'],
+              ['[France](/nuclear-weapons-by-country/france)', 'Canopus', '24 Aug 1968', '2.6 Mt {{c:atomic-archive-canopus-photo-caption}}'],
+              ['[India](/nuclear-weapons-by-country/india)', 'Claimed (Pokhran-II)', '11 May 1998', 'about 43 kt, disputed {{c:government-of-india-dae-drdo-joint-press-stateme;atomic-archive-the-nuclear-club-expands}}'],
+              ['[North Korea](/nuclear-weapons-by-country/north-korea)', 'Claimed', '3 Sep 2017', 'about 250 kt, claim {{c:norsar-summing-up-the-nuclear-test-in-north-kore}}'],
+            ],
+            caption: 'Each country\'s first thermonuclear test. India\'s 1998 device was announced as thermonuclear by the government but is disputed (one of its own scientists later called it a "fizzle"); North Korea\'s 2017 test is a claim — seismic data alone cannot tell a fission bomb from a hydrogen bomb. {{c:deccan-herald-ians-chidambaram-puzzled-over-repo;norsar-summing-up-the-nuclear-test-in-north-kore}}',
+          },
+          { type: 'svg', id: 'hbomb-test-timeline', caption: 'First thermonuclear test by country, with yield on a logarithmic scale. India (1998) and North Korea (2017) are drawn hollow because their claims are disputed.' },
+        ],
+      },
+      {
+        heading: 'Who invented the hydrogen bomb',
+        body: [
+          { type: 'p', text: 'The two-stage thermonuclear design was devised in the United States by Edward Teller and Stanislaw Ulam, in a report (LAMS-1225) dated 9 March 1951. {{c:american-nuclear-society-nuclear-news-the-spark}} In the Soviet Union, Andrei Sakharov is called "the father of the Soviet hydrogen bomb"; his early "Layer Cake" (Sloika) design was the basis of the first Soviet thermonuclear test. {{c:nobel-prize-outreach-andrei-sakharov-facts;atomic-heritage-foundation-national-museum-of-nu-3}}' },
+        ],
+      },
+      {
+        heading: 'The first hydrogen bomb test',
+        body: [
+          { type: 'p', text: 'The first full-scale thermonuclear test was Ivy Mike, detonated on 1 November 1952 (local time) at Enewetak Atoll with a yield of 10.4 megatons. {{c:us-doe-nnsa-nevada-field-office-united-states-nu;american-nuclear-society-nuclear-news-the-spark}} You can see its effect radii on the [Ivy Mike weapon page](/weapons/ivy-mike). The Soviet Union\'s first thermonuclear explosion, Joe-4, followed on 12 August 1953 at 400 kilotons, and its first true two-stage device, RDS-37, on 22 November 1955 at 1.6 megatons. {{c:nuclear-weapon-archive-soviet-atmospheric-tests;atomic-archive-joe-6-rds-37-photo-caption}}' },
+        ],
+      },
+      {
+        heading: 'How powerful hydrogen bombs are',
+        body: [
+          { type: 'p', text: 'Hydrogen bombs span a huge range. Ivy Mike released 10.4 megatons and Castle Bravo, the largest US test, about 15 megatons, both from the US government test catalogue; {{c:us-doe-nnsa-nevada-field-office-united-states-nu}} Tsar Bomba released about 50 megatons, the largest nuclear explosion ever. {{c:the-national-wwii-museum-tsar-bomba-the-largest}} For a 10.4-megaton air burst the simulator computes a 5 psi moderate-blast radius of about {{r:10400:psi5}}; for 50 megatons it is about {{r:50000:psi5}}. See the full rings for [Ivy Mike](/nuclear-blast-radius?kt=10400), [Castle Bravo](/nuclear-blast-radius?kt=15000) and [Tsar Bomba](/nuclear-blast-radius?kt=50000).' },
+          { type: 'svg', id: 'hbomb-ring-comparison', caption: 'The 5 psi moderate-blast radius of three hydrogen-bomb tests, drawn to scale, computed from the engine behind the blast-radius calculator.' },
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: 'How does a hydrogen bomb work?',
+        answer: 'A hydrogen bomb uses a fission explosion to ignite fusion in a secondary fuel, the one-line concept the American Nuclear Society gives. The staged arrangement is called the Teller–Ulam design. It lets a hydrogen bomb reach far higher yields than a pure fission bomb; this page carries no device design detail.',
+        sourceIds: ['american-nuclear-society-nuclear-news-the-spark'],
+      },
+      {
+        question: 'Which countries have hydrogen bombs?',
+        answer: 'Five countries have confirmed thermonuclear tests: the United States (1952), Russia (1953), the United Kingdom (1957), China (1967) and France (1968). India announced a thermonuclear device in 1998 and North Korea claimed one in 2017, but both remain disputed.',
+        sourceIds: ['us-doe-nnsa-nevada-field-office-united-states-nu', 'atomic-archive-britain-goes-nuclear', 'atomic-archive-the-nuclear-club-expands'],
+      },
+      {
+        question: 'Who invented the hydrogen bomb?',
+        answer: 'The two-stage thermonuclear design was devised in the United States by Edward Teller and Stanislaw Ulam, in a report dated 9 March 1951. In the Soviet Union, Andrei Sakharov is called the father of the Soviet hydrogen bomb.',
+        sourceIds: ['american-nuclear-society-nuclear-news-the-spark', 'nobel-prize-outreach-andrei-sakharov-facts'],
+      },
+      {
+        question: 'What was the first hydrogen bomb?',
+        answer: 'The first full-scale thermonuclear test was Ivy Mike, detonated on 1 November 1952 at Enewetak Atoll with a yield of 10.4 megatons. The first Soviet thermonuclear explosion, Joe-4, came in 1953, and the first true two-stage Soviet device, RDS-37, in 1955.',
+        sourceIds: ['us-doe-nnsa-nevada-field-office-united-states-nu', 'nuclear-weapon-archive-soviet-atmospheric-tests'],
+      },
+      {
+        question: 'How powerful is a hydrogen bomb?',
+        answer: 'Hydrogen bombs range from a few hundred kilotons to tens of megatons. Ivy Mike released 10.4 megatons and Tsar Bomba about 50 megatons, the largest nuclear explosion ever. A 50-megaton air burst has a 5 psi moderate-blast radius of about {{r:50000:psi5}}, far larger than any fission bomb.',
+        sourceIds: ['us-doe-nnsa-nevada-field-office-united-states-nu', 'the-national-wwii-museum-tsar-bomba-the-largest'],
+      },
+      {
+        question: 'Is a hydrogen bomb stronger than an atomic bomb?',
+        answer: 'Yes. An atomic (pure fission) bomb is limited to roughly the low hundreds of kilotons, while a hydrogen bomb adds a fusion stage that can reach tens of megatons — Tsar Bomba was about 50 megatons, more than 3,000 times the 15-kiloton Hiroshima bomb. Both release energy from nuclear reactions, but the hydrogen bomb scales far higher.',
+        sourceIds: ['the-national-wwii-museum-tsar-bomba-the-largest', 'us-doe-nnsa-nevada-field-office-united-states-nu'],
+      },
+    ],
   },
   {
     slug: 'thermonuclear-weapon',

@@ -14,6 +14,9 @@ import { bombs } from '@/lib/data/bombs'
 import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
 import { effectRadiiKm, formatRadiusKm, EFFECTS_FLAGS } from '@/lib/calculations/effects'
 import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
+import { renderCited, faqSchemaText } from '@/components/seo/citeText'
+import { ArticleBody } from '@/components/blog/ArticleBody'
+import { WEAPON_EXTRAS } from '@/lib/data/weaponExtras'
 import type { Bomb } from '@/lib/types'
 
 const HIROSHIMA_YIELD_KT = 15
@@ -106,7 +109,15 @@ export default async function WeaponDetailPage({
 
   const yieldText = formatYield(bomb.yield)
   const typeText = describeType(bomb.type)
-  const comparison = compareToHiroshima(bomb.yield)
+  // NBS-014: Little Boy and Fat Man ARE the Hiroshima/Nagasaki bombs, so the
+  // generic "comparable in yield to the Hiroshima bomb" phrasing is circular.
+  // Give those two a bespoke, accurate comparison and drop the self-referential
+  // generic FAQ below (their extras FAQ cover yield and power).
+  const isReferenceBomb = bomb.id === 'little-boy' || bomb.id === 'fat-man'
+  const comparison =
+    bomb.id === 'little-boy' ? 'the atomic bomb dropped on Hiroshima' :
+    bomb.id === 'fat-man' ? 'the atomic bomb dropped on Nagasaki, larger than the 15-kiloton Hiroshima bomb' :
+    compareToHiroshima(bomb.yield)
   const related = relatedBombs(bomb, 4)
   const isNuclear = bomb.type !== 'conventional'
   // Nuclear scaling laws only apply to nuclear weapons. Conventional weapons
@@ -126,7 +137,13 @@ export default async function WeaponDetailPage({
     ? 'nuclear-weapon-archive-the-soviet-weapons-progra'
     : 'us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5'
 
-  const faqEntries = [
+  // NBS-014: the three T1 weapons carry long-form sections + question-form FAQ
+  // (research/retarget-facts). Extras FAQ lead; the generic radius/yield FAQ
+  // follows. Answers may carry {{r:kt:effect}} (engine radii) and are resolved
+  // to plain text for the FAQPage schema.
+  const extra = WEAPON_EXTRAS[bomb.id]
+  const faqEntries: { question: string; answer: string; sourceIds?: string[] }[] = [
+    ...(extra?.faq ?? []),
     ...(r
       ? [
           {
@@ -136,16 +153,23 @@ export default async function WeaponDetailPage({
           },
         ]
       : []),
-    {
-      question: `What is the yield of the ${bomb.name}?`,
-      answer:
-        `The ${bomb.name} has a yield of ${yieldText} of TNT equivalent. That is ${comparison}.`,
-    },
-    {
-      question: `Is the ${bomb.name} bigger than the Hiroshima bomb?`,
-      answer:
-        `The Hiroshima bomb (Little Boy) had a yield of approximately 15 kilotons. The ${bomb.name} at ${yieldText} is ${comparison}.`,
-    },
+    // Suppressed for Little Boy and Fat Man: they ARE the Hiroshima/Nagasaki
+    // bombs, so "yield … comparable to the Hiroshima bomb" and "bigger than the
+    // Hiroshima bomb?" are circular. Their extras FAQ already cover yield/power.
+    ...(!isReferenceBomb
+      ? [
+          {
+            question: `What is the yield of the ${bomb.name}?`,
+            answer:
+              `The ${bomb.name} has a yield of ${yieldText} of TNT equivalent. That is ${comparison}.`,
+          },
+          {
+            question: `Is the ${bomb.name} bigger than the Hiroshima bomb?`,
+            answer:
+              `The Hiroshima bomb (Little Boy) had a yield of approximately 15 kilotons. The ${bomb.name} at ${yieldText} is ${comparison}.`,
+          },
+        ]
+      : []),
     ...(r
       ? [
           {
@@ -173,7 +197,7 @@ export default async function WeaponDetailPage({
             headline: pageH1(`/weapons/${bomb.id}`),
             description: bomb.description,
           }),
-          faqPageSchema(faqEntries),
+          faqPageSchema(faqEntries.map((q) => ({ question: q.question, answer: faqSchemaText(q.answer) }))),
           breadcrumbSchema(breadcrumbs),
         ]}
       />
@@ -288,6 +312,8 @@ export default async function WeaponDetailPage({
           </section>
         )}
 
+        {extra ? <ArticleBody sections={extra.sections} cites={cites} /> : null}
+
         {isNuclear && (
           <section className="mb-10">
             <h2 className="text-2xl font-semibold mb-4 text-green-400">Run the {bomb.name} on a City</h2>
@@ -332,13 +358,16 @@ export default async function WeaponDetailPage({
             {faqEntries.map((qa) => (
               <details key={qa.question} className="bg-black/50 border border-green-500/30 rounded-lg p-4">
                 <summary className="font-semibold cursor-pointer text-yellow-400">{qa.question}</summary>
-                <p className="mt-3 text-green-300">{qa.answer}</p>
+                <p className="mt-3 text-green-300">
+                  {renderCited(qa.answer, cites)}
+                  {qa.sourceIds?.length ? <Cite c={cites} ids={qa.sourceIds.join(';')} /> : null}
+                </p>
               </details>
             ))}
           </div>
         </section>
 
-        <Sources c={cites} extraIds={[...(r ? ENGINE_SOURCE_IDS : []), ...weaponSourceIds]} />
+        <Sources c={cites} extraIds={[...(r ? ENGINE_SOURCE_IDS : []), ...weaponSourceIds, ...(extra?.sourceIds ?? [])]} />
 
         <section className="text-sm text-green-300/70 mt-6">
           See the full <Link href="/weapons" className="text-yellow-400 hover:underline">Weapons Database</Link>,

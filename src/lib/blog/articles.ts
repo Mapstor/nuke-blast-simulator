@@ -132,66 +132,104 @@ export const articles: Article[] = [
     ],
   },
 
-  // ── 3. The Four Kill Mechanisms ────────────────────────────────────────
+  // ── 3. What Happens in a Nuclear Explosion ─────────────────────────────
   {
     slug: 'four-kill-mechanisms',
-    title: 'The Four Kill Mechanisms: Fireball, Blast, Thermal, Fallout',
-    description: 'Nuclear weapons kill through four distinct mechanisms, each with different ranges, timings, and survival windows. Here is what each mechanism does and how to think about them in combination.',
+    title: 'Nuclear Explosion: What Happens, Second by Second',
+    description: 'A nuclear explosion unfolds in a fixed order: a flash at the speed of light, a fireball, a shock wave, then the mushroom cloud. What happens second by second, how hot it gets and how far it reaches, every figure cited.',
     datePublished: '2026-04-29',
     author: 'Marko Visic',
     category: 'effects',
-    readingMinutes: 8,
+    readingMinutes: 9,
     body: [
       {
         body: [
-          { type: 'p', text: 'A nuclear detonation kills people through four distinct physical mechanisms: the fireball, the blast wave, thermal radiation, and radioactive fallout. They have different ranges, different timings, and different survival probabilities. Understanding the four mechanisms separately is the foundation of how the simulator computes effects — and of how civil-defense planning has historically been organized.' },
+          { type: 'p', text: 'A nuclear explosion is the very rapid release of a large amount of energy in a small space, {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} and it unfolds in a fixed order. A fireball forms in under a millionth of a second; a flash of light and heat races out at the speed of light; a shock wave follows through the air; and a mushroom cloud rises for about ten minutes. The times and distances below are for a 1-megaton air burst, from the standard reference The Effects of Nuclear Weapons (Glasstone & Dolan).' },
         ],
       },
       {
-        heading: 'The fireball',
+        heading: 'What happens, in order',
         body: [
-          { type: 'p', text: 'The fireball is the sphere of plasma created in the first microseconds of detonation. At the first instant, temperatures reach tens of millions of degrees Celsius, similar to the center of the Sun. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3}} Everything within the fireball radius is vaporized: humans, buildings, soil. There are no survivors.' },
-          { type: 'p', text: 'Fireball radius scales with yield to the 0.4 power: about {{r:15:fireball}} for a 15 kt Hiroshima-class weapon, about {{r:1000:fireball}} for 1 Mt, and about {{r:50000:fireball}} (over 9 km wide) for 50 Mt. Tsar Bomba\'s flash was seen about 1,000 km away. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3}}' },
+          { type: 'p', text: 'In the first instant, the weapon\'s energy forms a fireball — a spherical mass of incandescent air and bomb residues — in less than a millionth of a second. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} Within about 0.7 millisecond the fireball of a 1-megaton burst is roughly 440 feet across; by 10 seconds it has grown to about 5,700 feet. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} The flash of light and heat leaves at the speed of light, {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} so it reaches the eyes before anything else.' },
+          { type: 'p', text: 'A shock front races ahead of the fireball: about 3 miles out at 10 seconds and about 12 miles out at 50 seconds, by then moving at roughly 1,150 feet per second, a little faster than sound at sea level. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} Initial nuclear radiation — the gamma rays and neutrons released in roughly the first minute — arrives over the same interval. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} The cloud top reaches about 3 miles at 30 seconds and about 5 miles within a minute, climbing to its maximum height after about 10 minutes. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}}' },
+          { type: 'svg', id: 'explosion-timeline', caption: 'A 1-megaton air burst, from the fireball forming in under a millionth of a second to the cloud reaching maximum height at about 10 minutes. Times and distances from Glasstone & Dolan. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}}' },
         ],
       },
       {
-        heading: 'The blast wave (overpressure)',
+        heading: 'How hot it gets',
         body: [
-          { type: 'p', text: 'A nanosecond after detonation, the rapidly expanding fireball drives a shock wave outward through the surrounding air at supersonic speeds. The shock wave is felt as overpressure — an instantaneous spike in air pressure above atmospheric, measured in pounds per square inch (PSI). Overpressure damages structures and kills people through wind effects, building collapse, and direct lung injury.' },
-          { type: 'p', text: 'Damage is conventionally categorized by overpressure level. The 20 PSI zone destroys reinforced concrete buildings; the 5 PSI zone collapses most residential structures; the 1 PSI zone shatters windows and causes light injuries from flying glass. {{c:us-congress-office-of-technology-assessment-via}} A 100 kt weapon produces a 5 PSI radius of about {{r:100:psi5}} in an air burst — enough to flatten a city center. {{c:wikipedia-effects-of-nuclear-explosions-scaling}}' },
-          { type: 'p', text: 'The blast wave arrives seconds after the flash: from a 1 Mt air burst, about 1.4 seconds at 1.6 km and 4.5 seconds at 3.2 km. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2}} People who hear or feel the blast have already been exposed to thermal radiation, which travels at the speed of light and arrives instantly.' },
+          { type: 'p', text: 'At the first instant the weapon residues reach several tens of millions of degrees — hotter than the centre of the Sun. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} That heat is what forms the fireball and drives the thermal flash. As the fireball expands and cools it radiates most of its energy as light and infrared, the pulse that causes burns and starts fires at a distance.' },
         ],
       },
       {
-        heading: 'Thermal radiation',
+        heading: 'How big it gets',
         body: [
-          { type: 'p', text: 'In an air burst, about 35% of a nuclear weapon\'s energy is released as an intense flash of light and heat, lasting from under a second for small yields to about 10 seconds for 1 Mt. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5}} At close range this thermal pulse causes fatal burns through clothing; at longer range it causes 3rd-degree burns to exposed skin; at much longer range it can ignite paper, fabric, and wood, starting fires that may merge into a city-wide firestorm.' },
-          { type: 'p', text: 'Thermal range grows faster with yield than blast range, roughly as yield^0.4 versus yield^(1/3). For a 1 Mt warhead, the 3rd-degree burn radius is about {{r:1000:burn3}} and the 2nd-degree burn radius about {{r:1000:burn2}}. {{c:wikipedia-effects-of-nuclear-explosions-scaling}} People looking at the flash within these distances can suffer flash blindness or permanent retinal damage.' },
-          { type: 'p', text: 'The Hiroshima firestorm killed tens of thousands of people who survived the initial blast — burned alive in collapsed wooden buildings as fires spread. Modern construction (steel and concrete) reduces firestorm risk, but does not eliminate it.' },
+          { type: 'p', text: 'The fireball of a 1-megaton burst grows to about 5,700 feet across within 10 seconds, {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} but the destructive radii reach much further. How far the blast and heat extend depends on yield, and for that the [nuclear blast radius calculator](/nuclear-blast-radius) computes the fireball, blast and thermal rings for any weapon from 1 kiloton to 50 megatons on a map of any city.' },
         ],
       },
       {
-        heading: 'Fallout',
+        heading: 'The sound and the shock wave',
         body: [
-          { type: 'p', text: 'Surface bursts vaporize soil along with everything else in the fireball. The vaporized soil is irradiated by the bomb\'s neutron flux, becoming radioactive. As the fireball cools and rises, this radioactive debris condenses into particles and is lofted to the upper atmosphere, where it drifts downwind and falls back to earth as fallout — anywhere from minutes to weeks after the detonation.' },
-          { type: 'p', text: 'Fallout intensity depends strongly on whether the weapon is detonated at the surface or in the air. Air bursts produce essentially no local fallout because the fireball never touches the ground. Fallout from a large surface burst can be lethal far downwind: after the Bravo test, unprotected people in a belt about 270 km long would have received lethal doses. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e}}' },
-          { type: 'p', text: 'Fallout dose rates decay rapidly. One hour after the explosion, fallout dose rates are about 40 times higher than at one day and roughly 400-500 times higher than at one week. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e}} Fallout radiation is most intense in the first hours and days; by 48 hours the dose rate is about 1% of its one-hour value, so sheltering through that period avoids much of the dose. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e}} The "rule of seven" — a 7-fold increase in time means a 10-fold decrease in dose rate — captures this decay roughly. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e}}' },
+          { type: 'p', text: 'The shock wave is what people hear as the explosion, and it arrives well after the flash because it travels at roughly the speed of sound rather than the speed of light. By 50 seconds after a 1-megaton burst the shock front is about 12 miles out and moving at about 1,150 feet per second. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} Closer in, it arrives in seconds: roughly 1.4 seconds at 1 mile and 4.5 seconds at 2 miles. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} Because the flash arrives first, someone a few miles away sees the light, then feels the blast seconds later.' },
         ],
       },
       {
-        heading: 'Timing and overlap',
+        heading: 'Underwater and in space',
         body: [
-          { type: 'p', text: 'The four mechanisms arrive in a predictable sequence. At time zero: the prompt nuclear radiation pulse (gamma rays and neutrons) and the thermal flash arrive together at the speed of light. Within a few seconds: the fireball reaches its maximum extent. Within 5-30 seconds: the blast wave arrives at urban ranges. Within minutes to hours: fallout begins to deposit downwind of surface bursts.' },
-          { type: 'p', text: 'Survival depends on which mechanisms reach you. Within the fireball: nothing survives. In OTA\'s 1979 study of a 1 Mt burst on Detroit, almost no one survived where overpressure exceeded 12 psi, about half died in the 5-12 psi band and about 5% in the 2-5 psi band. {{c:us-congress-office-of-technology-assessment-via-2}}' },
-          { type: 'p', text: 'Beyond all of these, survival comes down to fallout. Air bursts mean negligible fallout: the people who survive blast and thermal effects largely survive long-term. Surface bursts mean potentially lethal fallout out to hundreds of kilometers — and surviving the immediate detonation is no guarantee of surviving the radioactive plume that arrives hours later.' },
+          { type: 'p', text: 'Not every nuclear explosion is an air burst over a city. In the 1946 Crossroads Baker test, a 21-kiloton device was detonated 90 feet underwater at Bikini Atoll on 25 July (local time), throwing up a column of water and a base surge of radioactive spray. {{c:us-doe-nnsa-nevada-field-office-united-states-nu;naval-history-and-heritage-command-operation-cro}} (The US Navy history office gives the yield as 23 kilotons; this page uses the 21-kiloton figure from the DOE test catalogue. {{c:us-doe-history-program-operation-crossroads-biki}})' },
+          { type: 'p', text: 'A nuclear explosion in space behaves differently again. On 9 July 1962 (UTC) the Starfish Prime test detonated a 1.4-megaton warhead about 400 km above Johnston Island in the Pacific. {{c:us-defense-nuclear-agency-operation-dominic-i-19;wikipedia-starfish-prime}} With almost no air to carry a shock wave, the main effect was a powerful electromagnetic pulse — the subject of the [EMP article](/blog/emp-high-altitude-nuclear-burst), which covers a nuclear explosion in space in detail.' },
         ],
       },
       {
-        heading: 'Why the simulator visualizes them as concentric circles',
+        heading: 'How bright the flash is',
         body: [
-          { type: 'p', text: 'The familiar "rings" view of a nuclear blast — fireball, severe blast, moderate blast, light blast, thermal — is an idealization but a useful one. It captures the dominant kill mechanism at each range. Inside the fireball, vaporization. Just outside, severe blast. A bit further, thermal burns dominate. Further still, moderate blast. Out at the edge, glass injuries.' },
-          { type: 'p', text: 'In practice the boundaries blur — a building might collapse from blast and then burn from thermal ignition, or a person might survive blast but die later from acute radiation. But the concentric-ring simplification is good enough to give a clear picture of total casualties, which is what the simulator computes. See the methodology page for the underlying formulas.' },
+          { type: 'p', text: 'The flash of a nuclear explosion is briefly brighter than the Sun and, because light travels at the speed of light, {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} it reaches an observer the instant the fireball forms — long before the sound. At close range the flash can cause temporary flash blindness or permanent retinal burns in anyone looking toward it, which is why it can be seen and felt at far greater distances than the blast damage itself.' },
         ],
+      },
+      {
+        heading: 'What causes a nuclear explosion',
+        body: [
+          { type: 'p', text: 'A nuclear explosion is powered by one of two nuclear reactions: fission, the splitting of heavy atoms, or fusion, the joining together of light ones. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} In a fission weapon the energy comes from a self-sustaining chain reaction in uranium or plutonium; {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} a hydrogen bomb adds a fusion stage. For how the two designs work, see [how nuclear weapons work](/blog/how-nuclear-weapons-work). This page describes only the one-line concept, not any weapon design detail.' },
+        ],
+      },
+      {
+        heading: 'Where the energy goes',
+        body: [
+          { type: 'p', text: 'For a fission weapon exploded in the air, the energy divides into about 50% blast, 35% thermal radiation, 5% initial nuclear radiation and 10% residual radiation. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}} That split is why blast and heat dominate the effects of an air burst, while the residual radiation that becomes fallout is a larger factor for a surface burst.' },
+          { type: 'svg', id: 'energy-split', caption: 'How the energy of a fission air burst divides, per Glasstone & Dolan §1.25–1.26. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12}}' },
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: 'What happens in a nuclear explosion?',
+        answer: 'A fireball forms in under a millionth of a second and reaches tens of millions of degrees; a flash of light and heat leaves at the speed of light; a shock wave follows through the air, about 12 miles out by 50 seconds; and a mushroom cloud rises to its maximum height over about 10 minutes. The figures are for a 1-megaton air burst.',
+        sourceIds: ['us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12'],
+      },
+      {
+        question: 'How hot is a nuclear explosion?',
+        answer: 'At the first instant the weapon residues reach several tens of millions of degrees, hotter than the centre of the Sun, according to Glasstone & Dolan. That heat forms the fireball and drives the thermal flash of light and infrared that causes burns and starts fires at a distance.',
+        sourceIds: ['us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12'],
+      },
+      {
+        question: 'How fast is a nuclear explosion?',
+        answer: 'The flash of light and heat travels at the speed of light, so it arrives essentially instantly. The shock wave is much slower: by 50 seconds after a 1-megaton air burst it is about 12 miles out and moving at roughly 1,150 feet per second, a little faster than the speed of sound at sea level.',
+        sourceIds: ['us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12'],
+      },
+      {
+        question: 'How long does a nuclear explosion last?',
+        answer: 'The fireball forms in under a millionth of a second and keeps growing for about 10 seconds. The shock wave passes a given point in seconds, initial radiation is emitted over roughly the first minute, and the mushroom cloud takes about 10 minutes to reach its maximum height. Fallout from a surface burst can keep arriving for hours.',
+        sourceIds: ['us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12'],
+      },
+      {
+        question: 'What causes a nuclear explosion?',
+        answer: 'A nuclear explosion is caused by fission, the splitting of heavy atoms such as uranium or plutonium, or by fusion, the joining of light atoms, sustained by a chain reaction. This releases a large amount of energy in a very small space almost instantly. A hydrogen bomb uses a fission stage to ignite a larger fusion stage.',
+        sourceIds: ['us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12'],
+      },
+      {
+        question: 'Can there be a nuclear explosion underwater or in space?',
+        answer: 'Yes. The 1946 Crossroads Baker test detonated a 21-kiloton device 90 feet underwater at Bikini Atoll. In space, the 1962 Starfish Prime test detonated a 1.4-megaton warhead about 400 km above the Pacific; with almost no air to carry a blast wave, its main effect was a powerful electromagnetic pulse.',
+        sourceIds: ['us-doe-nnsa-nevada-field-office-united-states-nu', 'us-defense-nuclear-agency-operation-dominic-i-19'],
       },
     ],
   },
@@ -199,8 +237,8 @@ export const articles: Article[] = [
   // ── 4. Tsar Bomba ──────────────────────────────────────────────────────
   {
     slug: 'tsar-bomba-largest-test-ever',
-    title: 'Tsar Bomba: Inside the Largest Nuclear Test Ever',
-    description: 'On October 30, 1961, the Soviet Union detonated a 50-megaton hydrogen bomb over the Arctic — a weapon so powerful it broke windows 900 km away and circled the Earth\'s atmosphere three times.',
+    title: 'Tsar Bomba: The Largest Nuclear Test Ever',
+    description: 'Tsar Bomba, the 50-megaton Soviet test of 30 October 1961, was the largest nuclear explosion ever. The flash, the mushroom cloud, the bomb, where it was tested and the 100-megaton design behind it, every figure cited.',
     datePublished: '2026-04-29',
     author: 'Marko Visic',
     category: 'history',
@@ -208,53 +246,75 @@ export const articles: Article[] = [
     body: [
       {
         body: [
-          { type: 'p', text: 'On October 30, 1961, a Soviet Tu-95V bomber dropped a single 27-ton bomb over Novaya Zemlya, a remote Arctic island. {{c:atomic-heritage-foundation-national-museum-of-nu}} The detonation released about 50 megatons, about 3,300 times the yield of the Hiroshima bomb and about ten times the combined power of all conventional explosives used in World War II. {{c:atomic-heritage-foundation-national-museum-of-nu}} To this day no weapon has been detonated bigger.' },
+          { type: 'p', text: 'Tsar Bomba was a Soviet hydrogen bomb detonated on 30 October 1961, and at about 50 megatons it remains the largest nuclear explosion ever produced. {{c:the-national-wwii-museum-tsar-bomba-the-largest}} Rosatom, the Russian state nuclear corporation, released declassified test footage of it in August 2020. {{c:bulletin-of-the-atomic-scientists-an-unearthly-s;the-barents-observer-rosatom-releases-previously}} For how it compares with the Hiroshima bomb, see [Tsar Bomba vs Little Boy](/compare/tsar-bomba-vs-little-boy).' },
         ],
       },
       {
-        heading: 'The 100-megaton design',
+        heading: 'The explosion',
         body: [
-          { type: 'p', text: 'Tsar Bomba was designed for about 100 megatons. It was a three-stage device in which a fission primary drove two fusion stages. For the test, lead replaced the uranium-238 tamper, halving the yield. {{c:atomic-heritage-foundation-national-museum-of-nu}}' },
-          { type: 'p', text: 'Fast fission of the uranium-238 tamper would have supplied about half of the 100 Mt design yield. Replacing it with lead halved the yield and cut fallout by about 97%. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}} Khrushchev personally ordered the substitution: a clean 50 Mt test was politically more useful than a dirty 100 Mt test.' },
-          { type: 'p', text: 'About 97% of its energy came from fusion, making it one of the cleanest nuclear explosions relative to its yield. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}}' },
+          { type: 'p', text: 'The flash of the detonation was seen about 1,000 km away. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}} The pressure wave was so strong that it was detected circling the Earth three times. {{c:nuclear-weapon-archive-the-soviet-weapons-progra;atomic-heritage-foundation-national-museum-of-nu}} The fireball was large enough that it reached down to the ground and up to nearly the height from which the bomb had been released. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}} Rosatom\'s declassified footage, released in August 2020, shows the fireball and the rising cloud from several camera positions. {{c:the-barents-observer-rosatom-releases-previously}}' },
         ],
       },
       {
-        heading: 'Delivery and detonation',
+        heading: 'How big the bomb was',
         body: [
-          { type: 'p', text: 'The bomb was so heavy (27 tons) that the modified Tu-95V bomber could not close its bomb-bay doors with the weapon loaded. To survive the detonation, the bomb was suspended from a giant parachute that slowed its descent and gave the Tu-95V time to fly to a safe distance. Even so, the crew\'s estimated probability of survival was given as only 50%. {{c:atomic-heritage-foundation-national-museum-of-nu}}' },
-          { type: 'p', text: 'At 11:32 a.m. Moscow time, the bomb detonated at an altitude of about 4,000 m above the test site at Sukhoy Nos on Novaya Zemlya. The yield was later assessed at 50 to 58 megatons, depending on source — the largest nuclear explosion ever produced by humans. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}}' },
+          { type: 'p', text: 'The bomb itself was about 8 metres long and 2.1 metres across, and weighed roughly 27 tonnes, with sources giving a range of 24.5 to 27.5 tonnes. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}} It was too big to fit inside the bomb bay, so it was carried partly recessed, with more than half of it protruding, and lowered on a specially developed parachute that slowed its fall and gave the aircraft time to fly clear. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}} By the time the bomb detonated, the aircraft was about 45 km away. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}}' },
         ],
       },
       {
-        heading: 'The fireball and mushroom cloud',
+        heading: 'Where and when it was tested',
         body: [
-          { type: 'p', text: 'The fireball was about 8 to 10 km wide — large enough that its lower edge nearly touched the ground despite the high-altitude burst, and its upper edge reached roughly the altitude of a commercial airliner. The flash was visible about 1,000 km away, and windows broke as far away as Norway and Finland. {{c:the-national-wwii-museum-tsar-bomba-the-largest}}' },
-          { type: 'p', text: 'The mushroom cloud rose to about 67 km altitude — well into the stratosphere and seven times the height of Mount Everest. The cloud cap reached 95 km in diameter. {{c:bulletin-of-the-atomic-scientists-an-unearthly-s}} The Tu-95V crew, who had flown about 50 km from ground zero by detonation time, were briefly knocked out of formation by the shock wave but survived.' },
+          { type: 'p', text: 'Tsar Bomba was tested at 11:32 Moscow time on 30 October 1961 at the Mityushikha Bay test site on the west coast of Novaya Zemlya, test field D-2 near Cape Sukhoy Nos. {{c:nuclear-weapon-archive-the-soviet-weapons-progra;atomic-heritage-foundation-national-museum-of-nu}} It was carried by a Tu-95V bomber (Carey Sublette designates the aircraft a Tu-95N) flown by Major Andrei Durnovtsev. {{c:atomic-heritage-foundation-national-museum-of-nu;nuclear-weapon-archive-the-soviet-weapons-progra}} The bomb was released from about 10,500 m and burst at about 4,000 m above the test field. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}}' },
         ],
       },
       {
-        heading: 'Effects at distance',
+        heading: 'The mushroom cloud',
         body: [
-          { type: 'p', text: 'The blast wave from Tsar Bomba was detected three times as it circled the planet. Every building in Severny, 55 km from ground zero, was destroyed. The shock wave was felt at Dikson, about 700 km away, and windows broke up to 900 km away. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}}' },
-          { type: 'p', text: 'All buildings in the settlement of Severny, 55 km from ground zero, were destroyed. The blast registered a seismic magnitude of about 5.0 to 5.25. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}}' },
-          { type: 'p', text: 'The thermal pulse could have caused third-degree burns on exposed skin up to 100 km away. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}}' },
+          { type: 'p', text: 'The mushroom cloud rose into the stratosphere. Estimates of its height range from about 64 km (Sublette) to 67 km (the Bulletin of the Atomic Scientists), with the Atomic Heritage Foundation and the National WWII Museum giving about 40 miles. {{c:nuclear-weapon-archive-the-soviet-weapons-progra;bulletin-of-the-atomic-scientists-an-unearthly-s;atomic-heritage-foundation-national-museum-of-nu}} Within about ten minutes the cloud cap had spread roughly 60 miles across. {{c:bulletin-of-the-atomic-scientists-an-unearthly-s}}' },
         ],
       },
       {
-        heading: 'Why no one tested anything bigger',
+        heading: '50 megatons tested against a 100-megaton design',
         body: [
-          { type: 'p', text: 'After Tsar Bomba, no state ever designed or tested a more powerful weapon. The reasons are practical, not political. First, a 100-megaton weapon offers diminishing returns: because blast radius scales with the cube root of yield, doubling the yield from 50 Mt to 100 Mt only multiplies blast radius by about 1.26. {{c:us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2}} The marginal additional damage is not worth the cost.' },
-          { type: 'p', text: 'Second, the size and weight of multi-megaton bombs make them impractical to deliver. Tsar Bomba required a specially modified bomber and a parachute system; an ICBM cannot carry such a payload at intercontinental range.' },
-          { type: 'p', text: 'Third, by the early 1970s the move was firmly toward lower-yield, higher-accuracy MIRVed warheads. Eight W88 warheads (about 3.6 Mt in total) spread over separate targets destroy far more area per megaton than one 50-megaton bomb, but only about a third of its total 5 psi area. {{c:bulletin-of-the-atomic-scientists-fas-united-sta}}' },
+          { type: 'p', text: 'Tsar Bomba was designed for about 100 megatons, {{c:atomic-heritage-foundation-national-museum-of-nu}} but it was tested at roughly half that. For the test the uranium tamper was replaced with lead, which roughly halved the yield and cut the fallout; about 97% of the energy released came from fusion, making it one of the cleanest large explosions relative to its yield. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}} Later US assessments put the yield as high as about 57 megatons. {{c:nuclear-weapon-archive-the-soviet-weapons-progra}} No more powerful weapon has been tested since. You can detonate Tsar Bomba over any city on the [nuclear blast radius calculator](/nuclear-blast-radius?kt=50000) or its [weapon page](/weapons/tsar-bomba).' },
         ],
       },
+    ],
+    faq: [
       {
-        heading: 'Tsar Bomba in modern arsenals',
-        body: [
-          { type: 'p', text: 'Tsar Bomba was a one-off test article. The Soviet Union never deployed a weapon of comparable yield. Russian strategic warheads are estimated at about 100 to 800 kilotons each. The new RS-28 Sarmat had not entered service as of March 2026. The largest warheads still deployed are multi-megaton warheads on some Chinese DF-5 missiles (FAS). {{c:bulletin-of-the-atomic-scientists-russian-nuclea;bulletin-of-the-atomic-scientists-fas-russian-nu;bulletin-of-the-atomic-scientists-chinese-nuclea}}' },
-          { type: 'p', text: 'Tsar Bomba is best understood as the technological maximum of a particular design philosophy — one that the major nuclear powers ultimately abandoned in favor of accuracy and MIRV. Its main legacy today is symbolic: it remains the loudest demonstration in history of just how much energy a single explosion can release. The simulator includes Tsar Bomba in its weapons database; you can detonate it over any city to see the radii.' },
-        ],
+        question: 'Where was Tsar Bomba tested?',
+        answer: 'Tsar Bomba was tested at the Mityushikha Bay test site on the west coast of Novaya Zemlya, a remote Arctic island, at test field D-2 near Cape Sukhoy Nos. It was dropped from a bomber and burst about 4,000 m above the ground.',
+        sourceIds: ['nuclear-weapon-archive-the-soviet-weapons-progra', 'atomic-heritage-foundation-national-museum-of-nu'],
+      },
+      {
+        question: 'How big was Tsar Bomba?',
+        answer: 'The bomb was about 8 metres long and 2.1 metres in diameter and weighed roughly 27 tonnes, with published figures ranging from 24.5 to 27.5 tonnes. It was too large to fit inside the aircraft\'s bomb bay and was carried partly protruding, lowered on a parachute.',
+        sourceIds: ['nuclear-weapon-archive-the-soviet-weapons-progra'],
+      },
+      {
+        question: 'When was Tsar Bomba tested?',
+        answer: 'Tsar Bomba was detonated at 11:32 Moscow time on 30 October 1961. Russia\'s state nuclear corporation, Rosatom, released declassified footage of the test in August 2020, nearly 59 years later.',
+        sourceIds: ['atomic-heritage-foundation-national-museum-of-nu', 'the-barents-observer-rosatom-releases-previously'],
+      },
+      {
+        question: 'How much did Tsar Bomba weigh?',
+        answer: 'About 27 tonnes, with sources giving a range of 24.5 to 27.5 tonnes. The weight and size meant it could not fit inside the bomb bay of its carrier aircraft, which flew with the weapon partly protruding and the bomb bay doors removed.',
+        sourceIds: ['nuclear-weapon-archive-the-soviet-weapons-progra'],
+      },
+      {
+        question: 'How powerful was Tsar Bomba?',
+        answer: 'It was tested at about 50 megatons, the largest nuclear explosion ever. It was designed for roughly 100 megatons but tested at half that after a lead tamper replaced the uranium one; later US assessments put the yield as high as about 57 megatons.',
+        sourceIds: ['the-national-wwii-museum-tsar-bomba-the-largest', 'atomic-heritage-foundation-national-museum-of-nu', 'nuclear-weapon-archive-the-soviet-weapons-progra'],
+      },
+      {
+        question: 'Did Tsar Bomba leave a crater?',
+        answer: 'No. Tsar Bomba was an air burst, detonated about 4,000 m above the ground, so it did not form the kind of crater a surface or underground burst leaves. The fireball was large enough to reach down to the ground, but the bomb never touched the surface.',
+        sourceIds: ['nuclear-weapon-archive-the-soviet-weapons-progra'],
+      },
+      {
+        question: 'How high was the Tsar Bomba mushroom cloud?',
+        answer: 'Estimates range from about 64 km (Sublette) to 67 km (the Bulletin of the Atomic Scientists), with the Atomic Heritage Foundation and the National WWII Museum giving about 40 miles. The cloud reached well into the stratosphere and spread roughly 60 miles across within ten minutes.',
+        sourceIds: ['nuclear-weapon-archive-the-soviet-weapons-progra', 'bulletin-of-the-atomic-scientists-an-unearthly-s', 'atomic-heritage-foundation-national-museum-of-nu'],
       },
     ],
   },
@@ -262,63 +322,104 @@ export const articles: Article[] = [
   // ── 5. Hiroshima and Nagasaki ──────────────────────────────────────────
   {
     slug: 'hiroshima-nagasaki-80-years-of-data',
-    title: 'Hiroshima and Nagasaki: What 80 Years of Data Tell Us',
-    description: 'The atomic bombings of August 1945 produced the only large datasets we have on real nuclear-weapon effects in real cities. Eight decades of follow-up studies have shaped almost everything we now know about radiation safety.',
+    title: 'How Many People Died in Hiroshima and Nagasaki?',
+    description: 'About 140,000 people died in Hiroshima and more than 70,000 in Nagasaki by the end of 1945. The sourced death tolls, the bombings, why the cities were chosen, and the survivors today.',
     datePublished: '2026-04-29',
     author: 'Marko Visic',
     category: 'history',
-    readingMinutes: 8,
+    readingMinutes: 9,
     body: [
       {
         body: [
-          { type: 'p', text: 'On August 6 and August 9, 1945, the United States detonated atomic bombs over Hiroshima and Nagasaki. By the end of 1945, an estimated 140,000 people had died in Hiroshima and about 74,000 in Nagasaki. {{c:nagasaki-city-damage-caused-by-atomic-bombing}} Nearly 80 years of follow-up research on the survivors, begun by the ABCC in 1947 and continued by RERF since 1975, has tracked the long-term health effects of radiation. {{c:radiation-effects-research-foundation-objective}} Almost everything we now know about acute and long-term radiation effects on humans comes from this work.' },
+          { type: 'p', text: 'About 140,000 people are estimated to have died in Hiroshima by the end of December 1945, give or take 10,000 — the official estimate of the city\'s Peace Memorial Museum. {{c:city-of-hiroshima-q-how-many-people-died-because;hiroshima-peace-memorial-museum-virtual-museum-e-2}} In Nagasaki more than 70,000 died, with a city report putting the end-of-1945 toll at 73,884 killed. {{c:nagasaki-city-1945-8-9-at-11-02-a-m-august-9-194;nagasaki-city-damage-caused-by-atomic-bombing}} The exact numbers will never be known, as both cities say; the figures below are the best-sourced estimates, shown with the definition each one uses.' },
         ],
       },
       {
-        heading: 'August 6, 1945: Little Boy over Hiroshima',
+        heading: 'The death toll in each city',
         body: [
-          { type: 'p', text: 'At 8:15 a.m. on August 6, 1945, the B-29 Enola Gay dropped Little Boy, a gun-type uranium-235 bomb yielding about 15 kilotons, over Hiroshima. It detonated about 600 m above the city. {{c:radiation-effects-research-foundation-frequently}}' },
-          { type: 'p', text: 'Hiroshima had a population of about 350,000. The detonation point was near the Aioi Bridge in the city center. Close to the hypocenter, 80 to 100 percent of people died, and within 2 km virtually all wooden buildings were toppled by the blast. {{c:city-of-hiroshima-the-realities-of-the-atomic-bo}} Thermal radiation set fires throughout the city, and within a few hours those fires had merged into a city-wide firestorm.' },
-          { type: 'p', text: 'By the end of December 1945, an estimated 140,000 people had died in Hiroshima. About half of those within 1.2 km of the hypocenter died on the day of the bombing; many others died later from burns, injuries and radiation sickness. {{c:city-of-hiroshima-q-how-many-people-died-because}}' },
+          { type: 'p', text: 'There is no single official death toll, because the deaths were counted in different ways. The most-cited figures are the number of deaths by the end of 1945 and the Radiation Effects Research Foundation\'s estimate of acute deaths within two to four months of the bombings.' },
+          {
+            type: 'table',
+            columns: ['City', 'Deaths by end of 1945', 'Acute deaths within 2–4 months (RERF)'],
+            rows: [
+              ['Hiroshima', 'About 140,000 (±10,000) {{c:city-of-hiroshima-q-how-many-people-died-because;hiroshima-peace-memorial-museum-virtual-museum-e-2}}', '90,000–166,000 {{c:radiation-effects-research-foundation-frequently}}'],
+              ['Nagasaki', '73,884 killed; 74,909 injured {{c:nagasaki-city-damage-caused-by-atomic-bombing}}', '60,000–80,000 {{c:radiation-effects-research-foundation-frequently}}'],
+            ],
+            caption: 'Hiroshima\'s end-of-1945 figure is the Peace Memorial Museum\'s official estimate; Nagasaki\'s is from a 1950 city report. The RERF ranges count deaths within two to four months of the bombings.',
+          },
+          { type: 'p', text: 'The US National Park Service describes "eighty thousand killed or grievously wounded instantly" at Hiroshima and "over 100,000 more in the coming months." {{c:us-national-park-service-the-atomic-bombings-of}} Those figures combine deaths and injuries, so they are not a death count and should not be added together. Both cities also keep a register of the names of the dead — 353,639 names at Hiroshima by August 2026 and 202,053 at Nagasaki — but these are cumulative lists of names added on application over 80 years, not a tally of deaths in 1945. {{c:stars-and-stripes-hiroshima-atomic-bomb-annivers;jiji-press-nippon-com-register-of-nagasaki-a-bom;hiroshima-peace-culture-foundation-cenotaph-for}}' },
         ],
       },
       {
-        heading: 'August 9, 1945: Fat Man over Nagasaki',
+        heading: 'When the bombs were dropped',
         body: [
-          { type: 'p', text: 'Three days later, the B-29 Bockscar dropped Fat Man — an implosion-type plutonium-239 bomb yielding approximately 21 kilotons — over Nagasaki. The original target had been the city of Kokura, but heavy cloud cover forced a diversion to the secondary target. {{c:us-national-park-service-the-atomic-bombings-of}}' },
-          { type: 'p', text: 'Fat Man detonated about 503 m above the Urakami Valley, northwest of downtown Nagasaki. Nagasaki\'s hilly geography somewhat shielded parts of the city from the blast, reducing total casualties relative to the flatter Hiroshima. An estimated 60,000 to 80,000 people died within four months. {{c:radiation-effects-research-foundation-frequently}}' },
-          { type: 'p', text: 'Both bombs were air bursts — chosen specifically to maximize blast spread at the cost of fallout. Local fallout in both cities was minimal. The "black rain" that fell on Hiroshima after the detonation was a mixture of soot, ash, and condensed moisture; it carried some radioactivity but not at lethal levels.' },
+          { type: 'p', text: 'Hiroshima was bombed at 8:15 a.m. on 6 August 1945. The B-29 Superfortress Enola Gay, commanded by Colonel Paul W. Tibbets, Jr., dropped Little Boy, a 15-kiloton gun-type uranium bomb; {{c:city-of-hiroshima-1-the-atomic-bombing-and-the-s;us-national-park-service-the-atomic-bombings-of;smithsonian-national-air-and-space-museum-boeing;us-doe-nnsa-nevada-field-office-united-states-nu}} it exploded 43 seconds later, about 600 m above the city. {{c:city-of-hiroshima-the-realities-of-the-atomic-bo}}' },
+          { type: 'p', text: 'Nagasaki was bombed at 11:02 a.m. on 9 August 1945. The B-29 Bockscar, commanded by Major Charles W. Sweeney, dropped Fat Man, a 21-kiloton implosion-type plutonium bomb, {{c:nagasaki-city-1945-8-9-at-11-02-a-m-august-9-194;us-national-park-service-the-atomic-bombings-of;us-doe-nnsa-nevada-field-office-united-states-nu}} which detonated about 503 m above the Urakami district. {{c:radiation-effects-research-foundation-frequently}} Both weapons were air bursts, detonated high above the ground to spread the blast, so neither city received heavy local fallout.' },
         ],
       },
       {
-        heading: 'The Atomic Bomb Casualty Commission',
+        heading: 'Why the US bombed Hiroshima',
         body: [
-          { type: 'p', text: 'In 1947, the US National Academy of Sciences established the Atomic Bomb Casualty Commission (ABCC) with funding from the US Atomic Energy Commission, to conduct long-term medical follow-up of the survivors. On 1 April 1975, the ABCC was reorganized as the Radiation Effects Research Foundation (RERF), funded by Japan and the United States. {{c:radiation-effects-research-foundation-objective}}' },
-          { type: 'p', text: 'The RERF Life Span Study (LSS) is the largest and longest-running epidemiological study of radiation exposure ever conducted. It tracks roughly 120,000 people — survivors and their non-exposed control population — from 1950 to the present. {{c:radiation-effects-research-foundation-life-span}} The study\'s findings underpin essentially all modern radiation-protection standards used in medicine, nuclear power, and arms control.' },
+          { type: 'p', text: 'The stated justification was to end the war without an invasion of Japan. The Potsdam Declaration of 26 July 1945 warned Japan of "prompt and utter destruction" if it did not surrender. {{c:national-diet-library-potsdam-declaration}} Announcing the bombing on 6 August, President Truman called Hiroshima "an important Japanese Army base," said the Potsdam ultimatum had been issued "to spare the Japanese people from utter destruction," and framed the attack as an answer to Pearl Harbor: "They have been repaid many fold." {{c:truman-library-statement-by-the-president-announ}}' },
+          { type: 'p', text: 'Nagasaki was not the intended target on 9 August. The primary target was Kokura; the Bockscar crew turned to the secondary target, Nagasaki, after the primary was obscured. Sources differ on the obscurant — Nagasaki City records smoke, the National Park Service haze, and the US Air Force museum clouds. {{c:nagasaki-city-events-leading-up-to-atomic-bombin;us-national-park-service-the-atomic-bombings-of;national-museum-of-the-us-air-force-the-mission}} This page describes the history in neutral terms and takes no view on whether the bombings were justified.' },
         ],
       },
       {
-        heading: 'What the data showed',
+        heading: 'The survivors',
         body: [
-          { type: 'p', text: 'The Life Span Study established the dose-response relationship for radiation-induced cancer. Survivors who received high doses had clearly elevated rates of leukemia, which began about 2 years after exposure and peaked about 6 to 8 years after, and of solid cancers, whose excess risk has persisted throughout their lives. {{c:radiation-effects-research-foundation-leukemia-r}} The data fit a roughly linear dose-response model down to the lowest measured doses, which is why modern radiation-protection regulations assume that there is no safe threshold for ionizing radiation.' },
-          { type: 'p', text: 'But the study also overturned some pre-1945 assumptions. Earlier expectations had been that radiation effects would be far more catastrophic than they turned out to be — that survivors would suffer mass genetic abnormalities, infertility, or population-level health collapse. The data did not show those effects. Genetic damage was not detected in the children of survivors, and overall survivor mortality from causes other than cancer was not significantly elevated.' },
-          { type: 'p', text: 'The implication is dual: nuclear weapons are even more devastating in their immediate effects than feared (the casualty toll matched or exceeded estimates), but their long-term genetic legacy is less catastrophic than feared.' },
+          { type: 'p', text: 'As of the end of March 2026, 91,105 survivors of the bombings were still living, with an average age of 86.66. {{c:japan-ministry-of-health-labour-and-welfare-hiba}} The count is the number of holders of the Atomic Bomb Survivor\'s Health Handbook issued by Japan\'s Ministry of Health, Labour and Welfare; it fell below 100,000 for the first time the previous year. {{c:jiji-press-nippon-com-number-of-hibakusha-drops}} The survivors are known in Japanese as hibakusha. The ministry updates the figure each year in July, so it is rechecked annually.' },
         ],
       },
       {
-        heading: 'The acute radiation syndrome data',
+        heading: 'Are Hiroshima and Nagasaki radioactive today?',
         body: [
-          { type: 'p', text: 'The Hiroshima and Nagasaki survivor cohort also produced the foundational dataset on acute radiation syndrome (ARS). The LD50/60, the dose that kills half of exposed people within 60 days, is about 2.5 to 5 gray. {{c:us-centers-for-disease-control-and-prevention-ac}}' },
-          { type: 'p', text: 'For the simulator\'s casualty calculations, ARS is implicit in the mortality rates assigned to each blast zone. Outside the blast zones, ARS is rare in air-burst scenarios because the radiation flux drops below the ARS threshold by the time it reaches survivable distances.' },
+          { type: 'p', text: 'No — not at any level that affects health. RERF\'s answer to whether the cities are still radioactive is, in its words, "The practical answer is, \'No.\'": the residual radioactivity is now so small it is hard to distinguish from the trace fallout found worldwide, and most of the neutron-induced activity decayed within a day. {{c:radiation-effects-research-foundation-frequently}} The City of Hiroshima puts present-day radiation "on a par with extremely low background levels," with no effect on the body. {{c:city-of-hiroshima-q-is-there-still-radiation-in}} Both cities were rebuilt and are home to well over a million people between them.' },
         ],
       },
       {
-        heading: 'What the data does not capture',
+        heading: 'What 80 years of RERF data show',
         body: [
-          { type: 'p', text: 'Hiroshima and Nagasaki are the only two real-world data points we have on nuclear weapons used against real cities. Both bombs were small by modern standards (15 and 21 kt). {{c:us-doe-nevada-operations-office-united-states-nu}} Both were air bursts in flat or moderately hilly terrain. Both were used against early-1940s wood-and-paper urban construction.' },
-          { type: 'p', text: 'A modern strategic warhead, typically 90 to 455 kilotons in the US arsenal, detonated over a modern city would produce different effects: larger blast zones, greater thermal impact, and — depending on construction type — either reduced firestorm risk (steel-and-concrete buildings) or different patterns of injury. {{c:federation-of-american-scientists-bulletin-of-th-2}} A surface burst, which neither attack used, would also add a major fallout component.' },
-          { type: 'p', text: 'The simulator extrapolates from the 1945 calibration data using the Glasstone-Dolan scaling laws, which themselves were validated against test-data at higher yields. The methodology page details the formulas. The bottom line is that we have good first-order knowledge of what nuclear weapons do — but no nuclear weapon has been used in war since August 9, 1945, more than 80 years ago, and we hope never to again. {{c:norwegian-nobel-committee-the-nobel-peace-prize-2}}' },
+          { type: 'p', text: 'Hiroshima and Nagasaki produced the only large datasets on nuclear-weapon effects in real cities, and 80 years of follow-up has shaped modern radiation safety. The Atomic Bomb Casualty Commission began studying survivors in 1947 and was reorganized as the Radiation Effects Research Foundation in 1975. {{c:radiation-effects-research-foundation-objective}} Its Life Span Study tracks roughly 120,000 people and underpins essentially all modern radiation-protection standards. {{c:radiation-effects-research-foundation-life-span}}' },
+          { type: 'p', text: 'The data established the dose-response relationship for radiation-induced cancer: survivors with high doses had clearly elevated rates of leukemia, which rose about two years after exposure and peaked six to eight years later, and of solid cancers, whose excess risk persisted for life. {{c:radiation-effects-research-foundation-leukemia-r}} It also showed that some feared effects did not appear — no detectable increase in genetic abnormalities in survivors\' children. The foundational figure for acute radiation syndrome, the dose that kills about half of those exposed within 60 days, is roughly 2.5 to 5 gray. {{c:us-centers-for-disease-control-and-prevention-ac}}' },
+          { type: 'p', text: 'These were the only two nuclear weapons ever used in war, {{c:un-office-for-disarmament-affairs-nuclear-weapon-2}} and both were small by modern standards at 15 and 21 kilotons. {{c:us-doe-nnsa-nevada-field-office-united-states-nu}} No nuclear weapon has been used in war since 9 August 1945. {{c:norwegian-nobel-committee-the-nobel-peace-prize-2}} You can see the blast radii of each bomb on the [Little Boy](/weapons/little-boy) and [Fat Man](/weapons/fat-man) pages.' },
         ],
+      },
+    ],
+    faq: [
+      {
+        question: 'When was Hiroshima bombed?',
+        answer: 'Hiroshima was bombed at 8:15 a.m. local time on 6 August 1945. The B-29 Enola Gay, commanded by Colonel Paul W. Tibbets, Jr., dropped the uranium bomb Little Boy, which exploded about 43 seconds later roughly 600 metres above the city. Nagasaki was bombed three days later, on 9 August.',
+        sourceIds: ['city-of-hiroshima-1-the-atomic-bombing-and-the-s', 'city-of-hiroshima-the-realities-of-the-atomic-bo', 'us-national-park-service-the-atomic-bombings-of'],
+      },
+      {
+        question: 'Why did the US bomb Hiroshima?',
+        answer: 'The stated aim was to force Japan\'s surrender and avoid an invasion. The Potsdam Declaration of 26 July 1945 had warned of "prompt and utter destruction," and President Truman described Hiroshima as "an important Japanese Army base" when he announced the bombing on 6 August. This page reports the official statements and takes no view on whether the decision was justified.',
+        sourceIds: ['national-diet-library-potsdam-declaration', 'truman-library-statement-by-the-president-announ'],
+      },
+      {
+        question: 'How many hibakusha are still alive?',
+        answer: 'As of the end of March 2026, 91,105 survivors of the Hiroshima and Nagasaki bombings were still living, with an average age of 86.66, according to Japan\'s Ministry of Health, Labour and Welfare. The figure, which counts holders of the official survivor\'s health handbook, dropped below 100,000 for the first time the year before.',
+        sourceIds: ['japan-ministry-of-health-labour-and-welfare-hiba', 'jiji-press-nippon-com-number-of-hibakusha-drops'],
+      },
+      {
+        question: 'How many nuclear weapons have been used in war?',
+        answer: 'Two: the bombs dropped on Hiroshima on 6 August 1945 and Nagasaki on 9 August 1945. No nuclear weapon has been used in war in the 80 years since, a point the UN Office for Disarmament Affairs and the Norwegian Nobel Committee both make.',
+        sourceIds: ['un-office-for-disarmament-affairs-nuclear-weapon-2', 'norwegian-nobel-committee-the-nobel-peace-prize-2'],
+      },
+      {
+        question: 'Is Hiroshima still radioactive?',
+        answer: 'No. RERF\'s answer is that "the practical answer is, \'No.\'" — the residual radioactivity is now so small it is hard to tell from the trace fallout found worldwide, and most of it decayed within a day of the bombing. The City of Hiroshima describes present-day levels as on a par with extremely low background radiation, with no effect on health.',
+        sourceIds: ['radiation-effects-research-foundation-frequently', 'city-of-hiroshima-q-is-there-still-radiation-in'],
+      },
+      {
+        question: 'Why was Nagasaki chosen?',
+        answer: 'Nagasaki was the secondary target on 9 August 1945. The primary target was Kokura, but the Bockscar crew diverted to Nagasaki after the primary was obscured; sources variously describe smoke, haze or cloud over Kokura. Nagasaki was a port city with shipyards and war industry.',
+        sourceIds: ['nagasaki-city-events-leading-up-to-atomic-bombin', 'us-national-park-service-the-atomic-bombings-of'],
+      },
+      {
+        question: 'Is Nagasaki radioactive today?',
+        answer: 'No. Like Hiroshima, Nagasaki was struck by an air burst, which produced little local fallout, and the residual radioactivity has long since decayed to background levels. RERF reports that the cities are not radioactive in any way that affects health. Both cities were rebuilt and are home to hundreds of thousands of people.',
+        sourceIds: ['radiation-effects-research-foundation-frequently', 'city-of-hiroshima-q-is-there-still-radiation-in'],
       },
     ],
   },

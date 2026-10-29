@@ -7,10 +7,12 @@ import { PrevNext, type PrevNextItem } from '@/components/nav/PrevNext'
 import {
   articleSchema,
   breadcrumbSchema,
+  faqPageSchema,
   SITE_URL,
 } from '@/lib/seo/schemas'
 import { getContentDates } from '@/lib/seo/contentDates'
-import { Sources, createCitations } from '@/components/seo/Cite'
+import { Cite, Sources, createCitationsFrom } from '@/components/seo/Cite'
+import { collectSectionCiteIds, renderCited, faqSchemaText } from '@/components/seo/citeText'
 import { articles, findArticle, categoryLabel } from '@/lib/blog/articles'
 import { PAGE_SEO } from '@/lib/seo/pageSeo'
 import { pageH1 } from '@/lib/seo/pageMeta'
@@ -83,7 +85,12 @@ export default async function BlogArticlePage({
     .slice(0, 3)
 
   const dates = getContentDates(`/blog/${article.slug}`)
-  const cites = createCitations()
+  const faq = article.faq ?? []
+  const cites = createCitationsFrom([
+    ...collectSectionCiteIds(article.body),
+    ...faq.flatMap((q) => q.sourceIds ?? []),
+    ...(article.sourceIds ?? []),
+  ])
 
   return (
     <div className="min-h-screen bg-gray-900 text-green-400">
@@ -101,6 +108,7 @@ export default async function BlogArticlePage({
             { name: 'Blog', url: '/blog' },
             { name: article.title, url: `/blog/${article.slug}` },
           ]),
+          ...(faq.length ? [faqPageSchema(faq.map((q) => ({ question: q.question, answer: faqSchemaText(q.answer) })))] : []),
         ]}
       />
 
@@ -133,6 +141,23 @@ export default async function BlogArticlePage({
         </header>
 
         <ArticleBody sections={article.body} cites={cites} />
+
+        {faq.length > 0 && (
+          <section id="faq" className="mt-12 pt-8 border-t border-green-500/30 scroll-mt-24">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-green-400">Frequently asked questions</h2>
+            <div className="space-y-3">
+              {faq.map((qa) => (
+                <details key={qa.question} className="bg-black/50 border border-green-500/30 rounded-lg p-4">
+                  <summary className="font-semibold cursor-pointer text-yellow-400">{qa.question}</summary>
+                  <p className="mt-3 text-green-300 leading-relaxed">
+                    {renderCited(qa.answer, cites)}
+                    {qa.sourceIds?.length ? <Cite c={cites} ids={qa.sourceIds.join(';')} /> : null}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
 
         <Sources c={cites} extraIds={article.sourceIds} />
 

@@ -13,6 +13,7 @@ import { bombs } from '@/lib/data/bombs'
 import { presetLocations } from '@/lib/data/cities'
 import { glossary } from '@/lib/data/glossary'
 import { worldTotalFas } from '@/lib/data/countryView'
+import { ENERGY } from '@/components/diagrams/ContentDiagrams'
 
 export { OG_SIZE, OG_CONTENT_TYPE } from './og'
 import { OG_SIZE } from './og'
@@ -23,6 +24,10 @@ import { OG_SIZE } from './og'
 // title-only.
 const nuclearCount = bombs.filter((b) => b.type !== 'conventional' && b.id !== 'custom').length
 const tsarMt = (bombs.find((b) => b.id === 'tsar-bomba')?.yield ?? 50000) / 1000
+const ivyMikeMt = (bombs.find((b) => b.id === 'ivy-mike')?.yield ?? 10400) / 1000
+// Blast + thermal share of a fission air burst, summed from the energy-split
+// data (not a typed literal) so it can't drift from the diagram.
+const blastThermalPct = ENERGY.filter((e) => e.label === 'Blast' || e.label === 'Thermal radiation').reduce((s, e) => s + e.pct, 0)
 function ogMetric(path: string): { label: string; value: string } | undefined {
   switch (path) {
     case '/': return { label: 'Nuclear weapons', value: String(nuclearCount) }
@@ -31,6 +36,9 @@ function ogMetric(path: string): { label: string; value: string } | undefined {
     case '/glossary': return { label: 'Defined terms', value: String(glossary.length) }
     case '/nuclear-weapons-by-country': return { label: 'Warheads worldwide, early 2026', value: `~${worldTotalFas().toLocaleString()}` }
     case '/blog/tsar-bomba-largest-test-ever': return { label: 'Yield', value: `${tsarMt} Mt` }
+    // NBS-014: one real data point on the retargeted article/standalone pages.
+    case '/glossary/hydrogen-bomb': return { label: 'First H-bomb test (Ivy Mike)', value: `${ivyMikeMt} Mt` }
+    case '/blog/four-kill-mechanisms': return { label: 'Energy as blast and heat', value: `${blastThermalPct}%` }
     default: return undefined
   }
 }
