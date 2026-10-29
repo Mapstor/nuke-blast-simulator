@@ -1,0 +1,45 @@
+================ NINE COUNTRY INTROS (with citation numbers) ================
+
+--- russia ---
+  Russia holds the world's largest nuclear arsenal, an estimated 5,420 warheads — about 44% of the world's roughly 12,187 warheads and more than any other country. It and the United States (about 5,042) together account for most of the warheads on Earth.[1,2]
+
+--- united-states ---
+  The United States has the world's second-largest nuclear arsenal, an estimated 5,042 warheads (about 41% of the world's roughly 12,187 warheads), and remains the only country ever to have used a nuclear weapon in war. Only Russia, with about 5,420, holds more.[1,2,3]
+
+--- china ---
+  China has an estimated 620 warheads and is expanding faster than any other nuclear power: about 1,000 operational warheads by 2030 (Pentagon, as quoted by FAS). That is still far below the United States (about 5,042) and Russia (about 5,420).[1,2,3]
+
+--- united-kingdom ---
+  The United Kingdom keeps a submarine-only deterrent of about 225 warheads — one of the smallest arsenals among the five NPT nuclear-weapon states, with a stated plan to raise its ceiling to 260.[1,2,3]
+
+--- france ---
+  France fields about 370 nuclear warheads across submarines and aircraft. With the United Kingdom, it holds one of the smallest arsenals of the five NPT nuclear-weapon states.[1,2]
+
+--- india ---
+  India has an estimated 190 nuclear warheads. It first tested a nuclear device in 1974 and again in 1998; with Pakistan across the border, it is one of two rivals that have never joined the Non-Proliferation Treaty.[1,2,3,4,5]
+
+--- pakistan ---
+  Pakistan has an estimated 170 nuclear warheads, slightly fewer than India across the border. Both countries tested in May 1998 and neither has joined the Non-Proliferation Treaty.[1,2,3,4,5]
+
+--- north-korea ---
+  North Korea has an estimated 60 assembled nuclear warheads and is the only country to have tested a nuclear weapon this century; its most recent test, in 2017, was its largest.[1,2,3,4]
+
+--- israel ---
+  Israel is estimated to hold about 90 nuclear warheads but has never confirmed a nuclear test or officially acknowledged its arsenal — a decades-long policy of deliberate ambiguity.[1,2,3]
+
+
+================ IRAN 'Does Iran have nuclear weapons?' FIRST PARAGRAPH ================
+  Every major open assessment places Iran outside the group of nuclear-armed states. It is a party to the Non-Proliferation Treaty[16] and has enriched uranium under its IAEA safeguards agreement, the stockpiles of which the Agency has measured and reported,[3] but it is not assessed to possess a weapon.
+
+
+================ DELIVERY SUBTOTAL LABELS — RUSSIA & US ================
+
+--- russia subtotal rows ---
+   System: ICBMsLaunchers: 327Warheads: 1,092
+   System: SLBMsLaunchers: 13 SSBNs / 208 missilesWarheads: 928
+   System: BombersLaunchers: 60Warheads: 586
+   System: Strategic totalLaunchers: 595Warheads: 2,606
+   System: NonstrategicWarheads: 1,794
+
+--- united-states subtotal rows ---
+   System: ICBMsLaunchers: 400Warheads: 800

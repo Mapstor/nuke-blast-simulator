@@ -111,7 +111,7 @@ Pages: 136 · keywords owned: 1842 · discarded: 699 · KWP variants folded: 191
   - `/blog/how-nuclear-weapons-work` · T1 · live · article · primary: how do nuclear bombs work (5,400) · cluster 257,520/mo
   - `/blog/tsar-bomba-largest-test-ever` · T1 · live · article · primary: tsar bomba (74,000) · cluster 87,060/mo
   - `/mushroom-cloud` · T2 · proposed · article · primary: mushroom cloud (22,200) · cluster 24,740/mo
-  - `/blog/four-kill-mechanisms` · T1 · live · article · primary: nuclear explosion (18,100) · cluster 20,100/mo
+  - `/blog/nuclear-explosion` · T1 · live · article · primary: nuclear explosion (18,100) · cluster 20,100/mo
   - `/blog/emp-high-altitude-nuclear-burst` · T2 · live · article · primary: what is an emp (8,100) · cluster 14,270/mo
   - `/blog/nuclear-winter-regional-war-cooling` · T2 · live · article · primary: nuclear winter (9,900) · cluster 12,300/mo
   - `/hydrogen-bomb-vs-atomic-bomb` · T2 · proposed · article · primary: hydrogen bomb vs atomic bomb (8,100) · cluster 8,580/mo

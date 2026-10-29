@@ -4,6 +4,7 @@ import { join } from 'node:path'
 import scenarioRedirects from '../data/scenario-redirects.json'
 import weaponRedirects from '../data/weapon-redirects.json'
 import foldRedirects from '../data/fold-redirects.json'
+import blogRedirects from '../data/blog-redirects.json'
 
 // NBS-010: every redirect in all three config files (scenario, weapon, fold)
 // must be a permanent (308) redirect that resolves in ONE hop to a built page
@@ -14,7 +15,7 @@ const SITEMAP = join(APP, 'sitemap.xml.body')
 const BASE = 'https://nukeblastsimulator.com'
 
 type Rule = { source: string; destination: string; permanent: boolean }
-const all = [...scenarioRedirects, ...weaponRedirects, ...foldRedirects] as Rule[]
+const all = [...scenarioRedirects, ...weaponRedirects, ...foldRedirects, ...blogRedirects] as Rule[]
 
 function builtHtml(path: string): string {
   const clean = path.split('#')[0].split('?')[0]
@@ -25,11 +26,33 @@ function builtHtml(path: string): string {
 describe('all redirects are one-hop 308 -> 200 (NBS-010)', () => {
   const sources = new Set(all.map((r) => r.source))
 
-  it('expected rule counts (251 scenario + 1 weapon + 142 fold = 394)', () => {
+  it('expected rule counts (251 scenario + 1 weapon + 142 fold + 1 blog = 395)', () => {
     expect(scenarioRedirects.length).toBe(251)
     expect(weaponRedirects.length).toBe(1)
     expect(foldRedirects.length).toBe(142)
-    expect(all.length).toBe(394)
+    expect(blogRedirects.length).toBe(1)
+    expect(all.length).toBe(395)
+  })
+
+  it('the nuclear-explosion rename is a one-hop 308 and the old URL is gone (NBS-015)', () => {
+    const rule = all.find((r) => r.source === '/blog/four-kill-mechanisms')
+    expect(rule).toBeTruthy()
+    expect(rule!.destination).toBe('/blog/nuclear-explosion')
+    expect(rule!.permanent).toBe(true)
+    // destination is a built page and the old URL is not
+    expect(existsSync(builtHtml('/blog/nuclear-explosion'))).toBe(true)
+    expect(existsSync(builtHtml('/blog/four-kill-mechanisms'))).toBe(false)
+    // no built page links to the old URL
+    const offenders: string[] = []
+    const walk = (dir: string) => {
+      for (const e of require('node:fs').readdirSync(dir)) {
+        const p = join(dir, e)
+        if (require('node:fs').statSync(p).isDirectory()) walk(p)
+        else if (e.endsWith('.html') && readFileSync(p, 'utf8').includes('/blog/four-kill-mechanisms')) offenders.push(p.replace(APP, ''))
+      }
+    }
+    walk(APP)
+    expect(offenders).toEqual([])
   })
 
   it('no source is duplicated across the three files', () => {

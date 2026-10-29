@@ -1,11 +1,10 @@
-// NBS-014: server-rendered, inline (crawlable) SVGs for the retargeted content
-// pages. No client JS. Every number is either a verified fact from
+// NBS-014/015: server-rendered, inline (crawlable) SVGs for the content pages.
+// No client JS. Every number is either a verified fact from
 // research/retarget-facts-2026-10-28.csv (cited in each figure's caption) or
 // computed from the engine (effects.ts). Text sits in legends/axes, never over
-// a stroke, so there are no collisions. The viewBox is 680 wide and the
-// smallest label is 24px, so inside the article column (~294px on a 390px
-// phone) every label renders >= ~11px (24 x 294 / 680 ~= 10.4, labels at 26px
-// ~= 11.2) — the same readability bar as the /nuclear-blast-radius chart.
+// a stroke, so there are no collisions. The viewBox is 680 wide; in the article
+// column (~294px on a 390px phone) a 26px label renders ~11.2px (26 x 294 /
+// 680), so the NBS-015 Hiroshima figures size their labels at 26px or more.
 import type { ReactElement } from 'react'
 import { effectRadiiKm, formatRadiusKm, formatRadiusMi } from '@/lib/calculations/effects'
 
@@ -257,9 +256,117 @@ export function HBombRingComparison() {
 }
 
 // Registry so a Section block can reference a diagram by id.
+// ── 5. Hiroshima & Nagasaki death-toll estimates (hero) ─────────────────────
+// Each city's end-of-1945 estimate and the RERF 2-4-month range, from verified
+// rows. No images of people, injuries or destruction — figures only.
+const DEATH_TOLLS = [
+  { city: 'Hiroshima', end1945: 140000, end1945Label: 'about 140,000 (±10,000)', lo: 90000, hi: 166000, rerfLabel: '90,000–166,000' },
+  { city: 'Nagasaki', end1945: 73884, end1945Label: '73,884', lo: 60000, hi: 80000, rerfLabel: '60,000–80,000' },
+]
+
+export function HiroshimaDeathTolls() {
+  // The numeric value sits in a left-anchored label ABOVE each bar, so no text
+  // can run past the 680-wide viewBox; the bar below it is the to-scale visual.
+  const padL = 28
+  const padR = 30
+  const padT = 58
+  const axisMax = 180000
+  const plotW = W - padL - padR
+  const xpos = (n: number) => padL + (n / axisMax) * plotW
+  const barH = 18
+  const ticks = [0, 50000, 100000, 150000]
+  let y = padT
+  const groups = DEATH_TOLLS.map((d) => {
+    const name = y; y += 40
+    const endLabel = y; const endBar = y + 10; y += 10 + barH + 22
+    const rerfLabel = y; const rerfBar = y + 10; y += 10 + barH + 30
+    return { d, name, endLabel, endBar, rerfLabel, rerfBar }
+  })
+  const axisY = y - 30 + 10
+  const H = axisY + 52
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} role="img" style={svgStyle}
+      aria-label="Death-toll estimates for Hiroshima and Nagasaki: each city's count by the end of 1945 and the Radiation Effects Research Foundation's estimate of deaths within two to four months.">
+      <title>Hiroshima and Nagasaki death-toll estimates by source</title>
+      <rect x="0" y="0" width={W} height={H} fill={C.bg} rx="10" />
+      <text x={padL} y="40" fill={C.title} fontSize="28" fontWeight="700" fontFamily="sans-serif">Deaths by city and source</text>
+      {ticks.map((t) => (
+        <line key={t} x1={xpos(t)} y1={padT + 8} x2={xpos(t)} y2={axisY} stroke={C.grid} strokeWidth="1" />
+      ))}
+      {groups.map(({ d, name, endLabel, endBar, rerfLabel, rerfBar }) => (
+        <g key={d.city}>
+          <text x={padL} y={name + 26} fill={C.body} fontSize="26" fontWeight="700" fontFamily="sans-serif">{d.city}</text>
+          <text x={padL} y={endLabel + 24} fill={C.axis} fontSize="26" fontFamily="sans-serif">By end of 1945: {d.end1945Label}</text>
+          <rect x={padL} y={endBar} width={Math.max(2, xpos(d.end1945) - padL)} height={barH} rx="3" fill={C.accent} opacity="0.9" />
+          <text x={padL} y={rerfLabel + 24} fill={C.axis} fontSize="26" fontFamily="sans-serif">RERF, 2–4 months: {d.rerfLabel}</text>
+          <rect x={xpos(d.lo)} y={rerfBar} width={Math.max(2, xpos(d.hi) - xpos(d.lo))} height={barH} rx="3" fill="none" stroke={C.thermal} strokeWidth="3" />
+        </g>
+      ))}
+      <line x1={padL} y1={axisY} x2={W - padR} y2={axisY} stroke={C.axis} strokeWidth="2" />
+      {ticks.map((t) => (
+        <text key={`t${t}`} x={xpos(t)} y={axisY + 34} textAnchor="middle" fill={C.axis} fontSize="26" fontFamily="sans-serif">{t / 1000}k</text>
+      ))}
+    </svg>
+  )
+}
+
+// ── 6. From the Potsdam Declaration to the bombings (supporting) ─────────────
+const HN_TIMELINE = [
+  { day: 0, n: 1, label: '26 July 1945 — Potsdam Declaration' },
+  { day: 11, n: 2, label: '6 August 1945, 8:15 a.m. — Hiroshima' },
+  { day: 14, n: 3, label: '9 August 1945, 11:02 a.m. — Nagasaki' },
+]
+
+export function HiroshimaTimeline() {
+  const padL = 46
+  const padR = 40
+  const axisY = 120
+  const plotW = W - padL - padR
+  const maxDay = 15
+  const xpos = (day: number) => padL + (day / maxDay) * plotW
+  const ticks = [{ d: 0, l: '26 Jul' }, { d: 5, l: '31 Jul' }, { d: 10, l: '5 Aug' }, { d: 14, l: '9 Aug' }]
+  const rowH = 44
+  const legendTop = 178
+  const H = legendTop + HN_TIMELINE.length * rowH + 8
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} role="img" style={svgStyle}
+      aria-label="Timeline from the Potsdam Declaration on 26 July 1945 to the atomic bombing of Nagasaki on 9 August 1945.">
+      <title>From the Potsdam Declaration to the bombings, July–August 1945</title>
+      <rect x="0" y="0" width={W} height={H} fill={C.bg} rx="10" />
+      <text x={padL} y="46" fill={C.title} fontSize="28" fontWeight="700" fontFamily="sans-serif">July–August 1945</text>
+      <line x1={padL} y1={axisY} x2={W - padR} y2={axisY} stroke={C.axis} strokeWidth="2" />
+      {ticks.map((t) => (
+        <g key={t.l}>
+          <line x1={xpos(t.d)} y1={axisY - 7} x2={xpos(t.d)} y2={axisY + 7} stroke={C.axis} strokeWidth="2" />
+          <text x={xpos(t.d)} y={axisY + 34} textAnchor="middle" fill={C.axis} fontSize="26" fontFamily="sans-serif">{t.l}</text>
+        </g>
+      ))}
+      {HN_TIMELINE.map((e) => (
+        <g key={e.n}>
+          <line x1={xpos(e.day)} y1={axisY - 24} x2={xpos(e.day)} y2={axisY - 7} stroke={C.accent} strokeWidth="2" />
+          <circle cx={xpos(e.day)} cy={axisY - 40} r="19" fill={C.accent} />
+          <text x={xpos(e.day)} y={axisY - 31} textAnchor="middle" fill="#0a1810" fontSize="26" fontWeight="700" fontFamily="sans-serif">{e.n}</text>
+        </g>
+      ))}
+      {HN_TIMELINE.map((e, i) => {
+        const y = legendTop + i * rowH
+        return (
+          <g key={`l${e.n}`}>
+            <circle cx={padL + 17} cy={y} r="18" fill={C.accent} />
+            <text x={padL + 17} y={y + 8} textAnchor="middle" fill="#0a1810" fontSize="26" fontWeight="700" fontFamily="sans-serif">{e.n}</text>
+            <text x={padL + 46} y={y + 9} fill={C.body} fontSize="26" fontFamily="sans-serif">{e.label}</text>
+          </g>
+        )
+      })}
+    </svg>
+  )
+}
+
 export const CONTENT_DIAGRAMS: Record<string, () => ReactElement> = {
   'explosion-timeline': ExplosionTimeline,
   'energy-split': EnergySplitBar,
   'hbomb-test-timeline': HBombTestTimeline,
   'hbomb-ring-comparison': HBombRingComparison,
+  'hiroshima-death-tolls': HiroshimaDeathTolls,
+  'hiroshima-timeline': HiroshimaTimeline,
 }

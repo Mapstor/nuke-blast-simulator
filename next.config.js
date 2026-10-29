@@ -9,11 +9,14 @@ const weaponRedirects = require('./data/weapon-redirects.json')
 // arsenals article) -> their owning page. Generated from research/redirect-plan.csv
 // by scripts/generate-fold-redirects.mjs.
 const foldRedirects = require('./data/fold-redirects.json')
+// NBS-015: /blog/four-kill-mechanisms renamed to /blog/nuclear-explosion
+// (owner approved). Permanent 308, one hop.
+const blogRedirects = require('./data/blog-redirects.json')
 
 const nextConfig = {
   reactStrictMode: true,
   async redirects() {
-    return [...scenarioRedirects, ...weaponRedirects, ...foldRedirects]
+    return [...scenarioRedirects, ...weaponRedirects, ...foldRedirects, ...blogRedirects]
   },
   typescript: {
     ignoreBuildErrors: false,

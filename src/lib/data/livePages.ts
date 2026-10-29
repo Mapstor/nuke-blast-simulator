@@ -54,7 +54,7 @@ export const LIVE_PATHS: string[] = [
   '/about',
   '/blog',
   '/blog/emp-high-altitude-nuclear-burst',
-  '/blog/four-kill-mechanisms',
+  '/blog/nuclear-explosion',
   '/blog/hiroshima-nagasaki-80-years-of-data',
   '/blog/how-nuclear-weapons-work',
   '/blog/nuclear-winter-regional-war-cooling',

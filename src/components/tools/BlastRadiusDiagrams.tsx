@@ -122,10 +122,14 @@ const WEAPON_MARKS = [
   { name: 'Castle Bravo', kt: 15000 },
   { name: 'Tsar Bomba', kt: 50000 },
 ] as const
+// NBS-015: the on-chart marks are colored dots (no cramped number) keyed to a
+// legible HTML legend with matching color swatches — a 6px badge number can't
+// render >=11px on a phone, and Little Boy/Fat Man sit too close to enlarge.
+const MARK_COLORS = ['#fde047', '#f97316', '#22d3ee', '#a3e635', '#f0abfc', '#60a5fa', '#fb7185'] as const
 
 export function YieldScaleChart() {
-  // NBS-013: fonts bumped so axis labels render >=11px at 390px (viewBox 900 ->
-  // scale 0.43, so font >=26). padL/padB widened to fit the larger labels.
+  // NBS-013/015: axis fonts sized so labels render >=11px inside the article
+  // column (~326px on a 390px phone): 32 x 326 / 900 ~= 11.6px. padL/padB fit them.
   const padL = 72
   const padR = 44
   const padT = 30
@@ -161,6 +165,7 @@ export function YieldScaleChart() {
   const marks = WEAPON_MARKS.map((w, i) => ({
     ...w,
     n: i + 1,
+    color: MARK_COLORS[i % MARK_COLORS.length],
     km: radiusKm(w.kt, 'psi5'),
     cx: x(w.kt),
     cy: y(radiusKm(w.kt, 'psi5')),
@@ -182,7 +187,7 @@ export function YieldScaleChart() {
       {yTicks.map((t) => (
         <g key={`y${t}`}>
           <line x1={padL} y1={y(t)} x2={W - padR} y2={y(t)} stroke="#166534" strokeWidth="1" opacity="0.4" />
-          <text x={padL - 12} y={y(t) + 9} textAnchor="end" fill="#86efac" fontSize="26" fontFamily="sans-serif">
+          <text x={padL - 12} y={y(t) + 9} textAnchor="end" fill="#86efac" fontSize="32" fontFamily="sans-serif">
             {t}
           </text>
         </g>
@@ -192,13 +197,13 @@ export function YieldScaleChart() {
       {xTicks.map((t) => (
         <g key={`x${t.kt}`}>
           <line x1={x(t.kt)} y1={y(0)} x2={x(t.kt)} y2={y(0) + 6} stroke="#22c55e" strokeWidth="1.5" />
-          <text x={x(t.kt)} y={y(0) + 38} textAnchor="middle" fill="#86efac" fontSize="26" fontFamily="sans-serif">
+          <text x={x(t.kt)} y={y(0) + 38} textAnchor="middle" fill="#86efac" fontSize="32" fontFamily="sans-serif">
             {t.label}
           </text>
         </g>
       ))}
       {/* axis titles */}
-      <text x={padL + plotW / 2} y={H - 20} textAnchor="middle" fill="#4ade80" fontSize="26" fontFamily="sans-serif">
+      <text x={padL + plotW / 2} y={H - 20} textAnchor="middle" fill="#4ade80" fontSize="32" fontFamily="sans-serif">
         Weapon yield (log scale)
       </text>
       <text
@@ -206,7 +211,7 @@ export function YieldScaleChart() {
         y={padT + plotH / 2}
         textAnchor="middle"
         fill="#4ade80"
-        fontSize="26"
+        fontSize="32"
         fontFamily="sans-serif"
         transform={`rotate(-90 22 ${padT + plotH / 2})`}
       >
@@ -216,26 +221,23 @@ export function YieldScaleChart() {
       {/* curve */}
       <polyline points={samples.join(' ')} fill="none" stroke="#f97316" strokeWidth="3" />
 
-      {/* weapon marks: numbered badges keyed to the HTML legend below */}
+      {/* weapon marks: colored dots keyed to the HTML legend's color swatches
+          (a readable on-chart number won't fit without overlap on a phone) */}
       {marks.map((m) => (
-        <g key={m.name}>
-          <circle cx={m.cx} cy={m.cy} r={11} fill="#0a1810" stroke="#fde047" strokeWidth="2" />
-          <text x={m.cx} y={m.cy + 5} textAnchor="middle" fill="#fde047" fontSize="15" fontWeight="700" fontFamily="sans-serif">
-            {m.n}
-          </text>
-        </g>
+        <circle key={m.name} cx={m.cx} cy={m.cy} r={10} fill={m.color} stroke="#0a1810" strokeWidth="2.5" />
       ))}
     </svg>
   )
 }
 
-// The HTML legend for the yield chart — rendered beside/below the SVG so the
-// weapon names stay legible on phones (they map to the numbered badges).
+// The HTML legend for the yield chart — rendered below the SVG so the weapon
+// names stay legible on phones; each entry's color swatch matches its dot.
 export function yieldChartLegend() {
   return WEAPON_MARKS.map((w, i) => ({
     n: i + 1,
     name: w.name,
     kt: w.kt,
+    color: MARK_COLORS[i % MARK_COLORS.length],
     yieldLabel: w.kt >= 1000 ? `${w.kt / 1000} Mt` : `${w.kt} kt`,
     dual: formatRadiusDual(radiusKm(w.kt, 'psi5')),
   }))

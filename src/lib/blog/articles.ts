@@ -134,7 +134,7 @@ export const articles: Article[] = [
 
   // ── 3. What Happens in a Nuclear Explosion ─────────────────────────────
   {
-    slug: 'four-kill-mechanisms',
+    slug: 'nuclear-explosion',
     title: 'Nuclear Explosion: What Happens, Second by Second',
     description: 'A nuclear explosion unfolds in a fixed order: a flash at the speed of light, a fireball, a shock wave, then the mushroom cloud. What happens second by second, how hot it gets and how far it reaches, every figure cited.',
     datePublished: '2026-04-29',
@@ -347,6 +347,7 @@ export const articles: Article[] = [
             ],
             caption: 'Hiroshima\'s end-of-1945 figure is the Peace Memorial Museum\'s official estimate; Nagasaki\'s is from a 1950 city report. The RERF ranges count deaths within two to four months of the bombings.',
           },
+          { type: 'svg', id: 'hiroshima-death-tolls', caption: 'Each city\'s death toll by the end of 1945 (solid bars) and the RERF estimate of deaths within two to four months (outlined ranges). {{c:city-of-hiroshima-q-how-many-people-died-because;nagasaki-city-damage-caused-by-atomic-bombing;radiation-effects-research-foundation-frequently}}' },
           { type: 'p', text: 'The US National Park Service describes "eighty thousand killed or grievously wounded instantly" at Hiroshima and "over 100,000 more in the coming months." {{c:us-national-park-service-the-atomic-bombings-of}} Those figures combine deaths and injuries, so they are not a death count and should not be added together. Both cities also keep a register of the names of the dead — 353,639 names at Hiroshima by August 2026 and 202,053 at Nagasaki — but these are cumulative lists of names added on application over 80 years, not a tally of deaths in 1945. {{c:stars-and-stripes-hiroshima-atomic-bomb-annivers;jiji-press-nippon-com-register-of-nagasaki-a-bom;hiroshima-peace-culture-foundation-cenotaph-for}}' },
         ],
       },
@@ -355,6 +356,7 @@ export const articles: Article[] = [
         body: [
           { type: 'p', text: 'Hiroshima was bombed at 8:15 a.m. on 6 August 1945. The B-29 Superfortress Enola Gay, commanded by Colonel Paul W. Tibbets, Jr., dropped Little Boy, a 15-kiloton gun-type uranium bomb; {{c:city-of-hiroshima-1-the-atomic-bombing-and-the-s;us-national-park-service-the-atomic-bombings-of;smithsonian-national-air-and-space-museum-boeing;us-doe-nnsa-nevada-field-office-united-states-nu}} it exploded 43 seconds later, about 600 m above the city. {{c:city-of-hiroshima-the-realities-of-the-atomic-bo}}' },
           { type: 'p', text: 'Nagasaki was bombed at 11:02 a.m. on 9 August 1945. The B-29 Bockscar, commanded by Major Charles W. Sweeney, dropped Fat Man, a 21-kiloton implosion-type plutonium bomb, {{c:nagasaki-city-1945-8-9-at-11-02-a-m-august-9-194;us-national-park-service-the-atomic-bombings-of;us-doe-nnsa-nevada-field-office-united-states-nu}} which detonated about 503 m above the Urakami district. {{c:radiation-effects-research-foundation-frequently}} Both weapons were air bursts, detonated high above the ground to spread the blast, so neither city received heavy local fallout.' },
+          { type: 'svg', id: 'hiroshima-timeline', caption: 'The two weeks from the Allied ultimatum to the second bombing. {{c:national-diet-library-potsdam-declaration;city-of-hiroshima-1-the-atomic-bombing-and-the-s;nagasaki-city-1945-8-9-at-11-02-a-m-august-9-194}}' },
         ],
       },
       {

@@ -38,7 +38,7 @@ function ogMetric(path: string): { label: string; value: string } | undefined {
     case '/blog/tsar-bomba-largest-test-ever': return { label: 'Yield', value: `${tsarMt} Mt` }
     // NBS-014: one real data point on the retargeted article/standalone pages.
     case '/glossary/hydrogen-bomb': return { label: 'First H-bomb test (Ivy Mike)', value: `${ivyMikeMt} Mt` }
-    case '/blog/four-kill-mechanisms': return { label: 'Energy as blast and heat', value: `${blastThermalPct}%` }
+    case '/blog/nuclear-explosion': return { label: 'Energy as blast and heat', value: `${blastThermalPct}%` }
     default: return undefined
   }
 }

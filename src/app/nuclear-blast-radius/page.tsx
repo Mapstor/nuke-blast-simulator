@@ -421,11 +421,11 @@ export default function NuclearBlastRadiusPage() {
           <figure className="mb-3">
             <YieldScaleChart />
             <figcaption className="text-sm text-green-300/70 mt-2">
-              <span className="block mb-1">5 psi blast radius versus yield, with the database weapons marked:</span>
+              <span className="block mb-1">5 psi blast radius versus yield. Each colored dot on the chart is a database weapon:</span>
               <span className="flex flex-wrap gap-x-4 gap-y-1">
                 {legend.map((m) => (
-                  <span key={m.n}>
-                    <span className="text-yellow-400 font-semibold">{m.n}</span> {m.name} ({m.yieldLabel}): {m.dual}
+                  <span key={m.n} className="inline-flex items-center gap-1.5">
+                    <span className="inline-block w-3 h-3 rounded-full" style={{ backgroundColor: m.color }} aria-hidden="true" /> {m.name} ({m.yieldLabel}): {m.dual}
                   </span>
                 ))}
               </span>

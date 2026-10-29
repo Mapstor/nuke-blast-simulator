@@ -25,6 +25,10 @@ export async function generateMetadata({ params }: { params: Promise<{ country: 
 
 const FAS_SRC = 'federation-of-american-scientists-status-of-worl'
 const SIPRI_SRC = 'sipri-sipri-yearbook-2026-ch-8-world-nuclear-for'
+// NBS-015: the intro's non-numeric claims — China's expansion cites the SIPRI
+// Yearbook 2026 press release; the US "only country ever used in war" cites UN ODA.
+const SIPRI_PR = 'sipri-sipri-yearbook-2026-press-release-increasi'
+const UNODA_WAR = 'un-office-for-disarmament-affairs-nuclear-weapon-2'
 const ENGINE_IDS = ['effects-fireball', 'effects-blast-thermal']
 
 function subj(c: Country): string {
@@ -98,41 +102,48 @@ function buildCtx(c: Country): Ctx {
 }
 
 // ── Country-specific intro, computed from verified rows (fix #4) ─────────────
-function buildIntro(c: Country, ctx: Ctx): string {
+// NBS-015: returns the prose AND the source ids backing its claims (fix #2):
+// totals/shares → FAS + SIPRI; China's expansion → the SIPRI YB2026 press
+// release; test claims → the test-history rows; the US "used in war" → UN ODA.
+function firstSrc(c: Country, prefix: string): string[] {
+  return rowsWith(c, prefix).map((r) => r.sourceId).filter(Boolean)
+}
+function buildIntro(c: Country, ctx: Ctx): { text: string; ids: string[] } {
   const total = val(c, 'warheads.fas.total_inventory')
   const share = ctx.sharePct !== null ? `${sharePhrase(ctx)} of the world's roughly ${ctx.worldTotal.toLocaleString()} warheads` : null
   const us = val(COUNTRIES['united-states'], 'warheads.fas.total_inventory')
   const ru = val(COUNTRIES['russia'], 'warheads.fas.total_inventory')
+  const base = [FAS_SRC, SIPRI_SRC]
   switch (c.key) {
     case 'russia':
-      return `Russia holds the world's largest nuclear arsenal, an estimated ${total} warheads — ${share} and more than any other country. It and the United States (about ${us}) together account for most of the warheads on Earth.`
+      return { text: `Russia holds the world's largest nuclear arsenal, an estimated ${total} warheads — ${share} and more than any other country. It and the United States (about ${us}) together account for most of the warheads on Earth.`, ids: base }
     case 'united-states':
-      return `The United States has the world's second-largest nuclear arsenal, an estimated ${total} warheads (${share}), and remains the only country ever to have used a nuclear weapon in war. Only Russia, with about ${ru}, holds more.`
+      return { text: `The United States has the world's second-largest nuclear arsenal, an estimated ${total} warheads (${share}), and remains the only country ever to have used a nuclear weapon in war. Only Russia, with about ${ru}, holds more.`, ids: [...base, UNODA_WAR] }
     case 'china': {
       const proj = val(c, 'warheads.projection_2030')
-      return `China has an estimated ${total} warheads and is expanding faster than any other nuclear power: ${proj || 'the US Defense Department projects roughly 1,000 operational warheads by 2030'}. That is still far below the United States (about ${us}) and Russia (about ${ru}).`
+      return { text: `China has an estimated ${total} warheads and is expanding faster than any other nuclear power: ${proj || 'the US Defense Department projects roughly 1,000 operational warheads by 2030'}. That is still far below the United States (about ${us}) and Russia (about ${ru}).`, ids: [...base, SIPRI_PR] }
     }
     case 'united-kingdom': {
       const cap = val(c, 'warheads.stockpile_cap')
-      return `The United Kingdom keeps a submarine-only deterrent of about ${total} warheads — one of the smallest arsenals among the five NPT nuclear-weapon states${cap ? `, with a stated plan to raise its ceiling to ${cap}` : ''}.`
+      return { text: `The United Kingdom keeps a submarine-only deterrent of about ${total} warheads — one of the smallest arsenals among the five NPT nuclear-weapon states${cap ? `, with a stated plan to raise its ceiling to ${cap}` : ''}.`, ids: [...base, row(c, 'warheads.stockpile_cap')?.sourceId ?? ''] }
     }
     case 'france':
-      return `France fields about ${total} nuclear warheads across submarines and aircraft. With the United Kingdom, it holds one of the smallest arsenals of the five NPT nuclear-weapon states, and it is the only one with both a sea- and air-based force on constant readiness.`
+      return { text: `France fields about ${total} nuclear warheads across submarines and aircraft. With the United Kingdom, it holds one of the smallest arsenals of the five NPT nuclear-weapon states.`, ids: base }
     case 'india':
-      return `India has an estimated ${total} nuclear warheads. It first tested a nuclear device in 1974 and again in 1998; with Pakistan across the border, it is one of two rivals that have never joined the Non-Proliferation Treaty.`
+      return { text: `India has an estimated ${total} nuclear warheads. It first tested a nuclear device in 1974 and again in 1998; with Pakistan across the border, it is one of two rivals that have never joined the Non-Proliferation Treaty.`, ids: [...base, ...firstSrc(c, 'tests.first'), ...firstSrc(c, 'tests.last'), row(c, 'treaty.npt')?.sourceId ?? ''] }
     case 'pakistan': {
       const india = toInt(val(COUNTRIES['india'], 'warheads.fas.total_inventory'))
       const cmp = india && ctx.total ? (ctx.total < india ? 'slightly fewer than India across the border' : 'comparable to India across the border') : 'comparable to India'
-      return `Pakistan has an estimated ${total} nuclear warheads, ${cmp}. Both countries tested in May 1998 and neither has joined the Non-Proliferation Treaty.`
+      return { text: `Pakistan has an estimated ${total} nuclear warheads, ${cmp}. Both countries tested in May 1998 and neither has joined the Non-Proliferation Treaty.`, ids: [...base, ...firstSrc(c, 'tests.first'), ...firstSrc(c, 'tests.last'), row(c, 'treaty.npt')?.sourceId ?? ''] }
     }
     case 'north-korea': {
       const yr = ctx.lastTestYear
-      return `North Korea has an estimated ${total} assembled nuclear warheads${ctx.onlyThisCentury ? ' and is the only country to have tested a nuclear weapon this century' : ''}${yr ? `; its most recent test, in ${yr}, was its largest` : ''}.`
+      return { text: `North Korea has an estimated ${total} assembled nuclear warheads${ctx.onlyThisCentury ? ' and is the only country to have tested a nuclear weapon this century' : ''}${yr ? `; its most recent test, in ${yr}, was its largest` : ''}.`, ids: [...base, ...firstSrc(c, 'tests.last')] }
     }
     case 'israel':
-      return `Israel is estimated to hold about ${total} nuclear warheads but has never confirmed a nuclear test or officially acknowledged its arsenal — a decades-long policy of deliberate ambiguity.`
+      return { text: `Israel is estimated to hold about ${total} nuclear warheads but has never confirmed a nuclear test or officially acknowledged its arsenal — a decades-long policy of deliberate ambiguity.`, ids: [...base, 'sipri-sipri-yearbook-2024-ch-7-sec-ix-israeli-nu'] }
     default:
-      return `${Subj(c)} has an estimated ${total} nuclear warheads as of early 2026.`
+      return { text: `${Subj(c)} has an estimated ${total} nuclear warheads as of early 2026.`, ids: base }
   }
 }
 
@@ -195,6 +206,19 @@ function WarheadContext({ c, ctx, cites }: { c: Country; ctx: Ctx; cites: Citati
 function cleanCategory(cat: string): string {
   return cat.replace(/\s*\([^)]*\)/g, '').trim()
 }
+// NBS-015: label each subtotal row by what it sums (from the Nuclear Notebook
+// leg it totals), keyed off the field name, instead of a bare "Subtotal".
+const SUBTOTAL_LABEL: Record<string, string> = {
+  icbm: 'ICBMs', slbm: 'SLBMs', bomber: 'Bombers', aircraft: 'Aircraft',
+  land: 'Land-based', sea: 'Sea-based', strategic: 'Strategic total',
+  nonstrategic: 'Nonstrategic', total: 'Total', 'land-based-total': 'Land-based total',
+  subtotal: 'Subtotal',
+}
+function subtotalLabel(field: string): string {
+  const parts = field.split('.') // delivery.icbm.subtotal | delivery.table.total
+  const key = parts[1] === 'table' ? parts[2] : parts[1]
+  return SUBTOTAL_LABEL[key] ?? 'Subtotal'
+}
 function DeliverySection({ c, cites }: { c: Country; cites: Citations }) {
   const all = rowsWith(c, 'delivery.')
   const tableRows = all.filter((r) => isStructured(r.value))
@@ -234,7 +258,7 @@ function DeliverySection({ c, cites }: { c: Country; cites: Citations }) {
             return (
               <div key={r.field} className={`grid grid-cols-1 ${gridCls} gap-x-2 gap-y-0.5 px-3 py-2 border-b border-green-500/10 last:border-0 ${isSub ? 'font-semibold text-green-200 bg-black/30' : 'text-green-300'}`}>
                 {cols.map((col) => {
-                  const v = cl[col.key] ?? (col.key === 'designation' && isSub ? 'Subtotal' : '')
+                  const v = cl[col.key] ?? (col.key === 'designation' && isSub ? subtotalLabel(r.field) : '')
                   if (v === '') return <div key={col.key} className="hidden sm:block" />
                   const alignRight = col.key === 'warheads' || col.key === 'launchers'
                   return (
@@ -545,7 +569,7 @@ function IranPage({ c, path }: { c: Country; path: string }) {
         <section id="status" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-semibold mb-3 text-green-400">Does Iran have nuclear weapons?</h2>
           <p className="text-green-300 mb-3">
-            Every major open assessment places Iran outside the group of nuclear-armed states. It is a party to the Non-Proliferation Treaty and has long enriched uranium under IAEA safeguards, but it is not assessed to possess a weapon.
+            Every major open assessment places Iran outside the group of nuclear-armed states. It is a party to the Non-Proliferation Treaty<Cite c={cites} ids={row(c, 'treaty.npt')?.sourceId ?? ''} /> and has enriched uranium under its IAEA safeguards agreement, the stockpiles of which the Agency has measured and reported,<Cite c={cites} ids={row(c, 'iaea.stockpile.up_to_60pct')?.sourceId ?? ''} /> but it is not assessed to possess a weapon.
           </p>
           <p className="text-green-300">
             FAS and SIPRI both place Iran outside their lists of the world&rsquo;s nine nuclear-armed states.<Cite c={cites} ids={[row(c, 'status.not_among_nuclear_armed.fas')?.sourceId, row(c, 'status.not_among_nuclear_armed.sipri')?.sourceId].filter(Boolean).join(';')} /> The US intelligence community&rsquo;s 2025 public assessment, as quoted by the Congressional Research Service, was that &ldquo;Iran is not building a nuclear weapon,&rdquo;<Cite c={cites} ids={row(c, 'status.us_intelligence_2025')?.sourceId ?? ''} /> though CRS describes the current status of the program as unclear.<Cite c={cites} ids={row(c, 'status.crs_oct2026')?.sourceId ?? ''} />
@@ -674,6 +698,7 @@ function directAnswer(c: Country): { text: string; ids: string } {
 
 function ArsenalPage({ c, path }: { c: Country; path: string }) {
   const ctx = buildCtx(c)
+  const intro = buildIntro(c, ctx)
   const da = directAnswer(c)
   const fasAsOf = row(c, 'warheads.fas.total_inventory')?.asOf ?? 'early 2026'
   const sipriAsOf = row(c, 'warheads.sipri.total_inventory')?.asOf ?? 'January 2026'
@@ -683,6 +708,7 @@ function ArsenalPage({ c, path }: { c: Country; path: string }) {
   // Pre-register every cited id in DOM order (fix #1).
   const ids = uniq([
     FAS_SRC, SIPRI_SRC,
+    ...intro.ids,
     ...rowsWith(c, 'delivery.').map((r) => r.sourceId),
     ...(yields.length ? ENGINE_IDS : []),
     ...rowsWith(c, 'tests.').map((r) => r.sourceId),
@@ -721,7 +747,7 @@ function ArsenalPage({ c, path }: { c: Country; path: string }) {
         </nav>
         <header className="mb-6">
           <h1 className="text-4xl font-bold mb-3 text-green-400">{pageH1(path)}</h1>
-          <p className="text-lg text-green-300">{buildIntro(c, ctx)}</p>
+          <p className="text-lg text-green-300">{intro.text}<Cite c={cites} ids={uniq(intro.ids).join(';')} /></p>
           <Byline className="mt-2" />
         </header>
 

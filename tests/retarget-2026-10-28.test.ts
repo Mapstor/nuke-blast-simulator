@@ -24,10 +24,10 @@ describe('every number added from retarget-facts resolves to a verified row', ()
     { page: 'blog/hiroshima-nagasaki-80-years-of-data.html', rendered: '86.66', fact: '86.66' },
     { page: 'blog/hiroshima-nagasaki-80-years-of-data.html', rendered: '90,000', fact: '90,000-166,000' },
     // Nuclear explosion (four-kill)
-    { page: 'blog/four-kill-mechanisms.html', rendered: '440 feet', fact: '440 ft' },
-    { page: 'blog/four-kill-mechanisms.html', rendered: '5,700 feet', fact: '5,700 ft' },
-    { page: 'blog/four-kill-mechanisms.html', rendered: '1,150 feet', fact: '1,150 ft' },
-    { page: 'blog/four-kill-mechanisms.html', rendered: '400 km', fact: '400 km' },
+    { page: 'blog/nuclear-explosion.html', rendered: '440 feet', fact: '440 ft' },
+    { page: 'blog/nuclear-explosion.html', rendered: '5,700 feet', fact: '5,700 ft' },
+    { page: 'blog/nuclear-explosion.html', rendered: '1,150 feet', fact: '1,150 ft' },
+    { page: 'blog/nuclear-explosion.html', rendered: '400 km', fact: '400 km' },
     // Tsar Bomba article
     { page: 'blog/tsar-bomba-largest-test-ever.html', rendered: 'about 45 km', fact: 'about 45 km' },
     { page: 'blog/tsar-bomba-largest-test-ever.html', rendered: '10,500 m', fact: '10,500 m' },
@@ -59,7 +59,7 @@ describe('every number added from retarget-facts resolves to a verified row', ()
 })
 
 describe('four-kill page is retargeted to "nuclear explosion" with no "kill"', () => {
-  const html = read('blog/four-kill-mechanisms.html')
+  const html = read('blog/nuclear-explosion.html')
   const grab = (re: RegExp) => (html.match(re)?.[1] ?? '')
   const title = grab(/<title>([^<]*)<\/title>/i)
   const h1 = grab(/<h1[^>]*>([^<]*)<\/h1>/i)
