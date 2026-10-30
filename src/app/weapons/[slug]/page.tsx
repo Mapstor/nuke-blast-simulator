@@ -17,9 +17,15 @@ import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/
 import { renderCited, faqSchemaText } from '@/components/seo/citeText'
 import { ArticleBody } from '@/components/blog/ArticleBody'
 import { WEAPON_EXTRAS } from '@/lib/data/weaponExtras'
+import {
+  specLine,
+  shortSpec,
+  formatYield,
+  overviewQuantity,
+  hiroshimaMultiple,
+  HIROSHIMA_YIELD_KT,
+} from '@/lib/data/weaponSpec'
 import type { Bomb } from '@/lib/types'
-
-const HIROSHIMA_YIELD_KT = 15
 
 // Linearize the weapons list by yield ascending so prev/next moves through
 // the database from smallest to largest.
@@ -33,7 +39,7 @@ function pageNeighbors(slug: string): { prev: PrevNextItem; next: PrevNextItem }
   const fmt = (b: Bomb): PrevNextItem => ({
     label: b.name,
     href: `/weapons/${b.id}`,
-    sublabel: `${b.yield >= 1000 ? `${(b.yield / 1000).toFixed(1)} Mt` : `${b.yield} kt`} · ${b.country}`,
+    sublabel: `${shortSpec(b)} · ${b.country}`,
   })
   return {
     prev: i > 0 ? fmt(sequencedBombs[i - 1]) : null,
@@ -51,12 +57,6 @@ function findBomb(slug: string): Bomb | undefined {
   return bombs.find((b) => b.id === slug && b.id !== 'custom')
 }
 
-function formatYield(yieldKt: number): string {
-  if (yieldKt >= 1000) return `${(yieldKt / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })} megatons`
-  if (yieldKt >= 1) return `${yieldKt.toLocaleString()} kilotons`
-  return `${(yieldKt * 1000).toLocaleString()} tons TNT`
-}
-
 function describeType(t: Bomb['type']): string {
   switch (t) {
     case 'fission': return 'pure fission'
@@ -66,12 +66,12 @@ function describeType(t: Bomb['type']): string {
   }
 }
 
+// Hiroshima comparison in prose. One decimal below 10×, whole at/above, never
+// "1×"; "comparable" only in the 1.0–1.5× band (NBS-016 rounding fix).
 function compareToHiroshima(yieldKt: number): string {
   const ratio = yieldKt / HIROSHIMA_YIELD_KT
-  if (ratio < 0.001) return `${(1 / ratio).toFixed(0)}× smaller than the Hiroshima bomb`
-  if (ratio < 1) return `${(1 / ratio).toFixed(1)}× smaller than the Hiroshima bomb`
-  if (ratio < 1.5) return 'comparable in yield to the Hiroshima bomb'
-  return `${ratio.toLocaleString(undefined, { maximumFractionDigits: 0 })}× more powerful than the Hiroshima bomb`
+  if (ratio >= 1 && ratio < 1.5) return 'comparable in yield to the Hiroshima bomb'
+  return `${hiroshimaMultiple(ratio)} than the Hiroshima bomb`
 }
 
 function relatedBombs(target: Bomb, n = 4): Bomb[] {
@@ -107,17 +107,6 @@ export default async function WeaponDetailPage({
   const bomb = findBomb(slug)
   if (!bomb) notFound()
 
-  const yieldText = formatYield(bomb.yield)
-  const typeText = describeType(bomb.type)
-  // NBS-014: Little Boy and Fat Man ARE the Hiroshima/Nagasaki bombs, so the
-  // generic "comparable in yield to the Hiroshima bomb" phrasing is circular.
-  // Give those two a bespoke, accurate comparison and drop the self-referential
-  // generic FAQ below (their extras FAQ cover yield and power).
-  const isReferenceBomb = bomb.id === 'little-boy' || bomb.id === 'fat-man'
-  const comparison =
-    bomb.id === 'little-boy' ? 'the atomic bomb dropped on Hiroshima' :
-    bomb.id === 'fat-man' ? 'the atomic bomb dropped on Nagasaki, larger than the 15-kiloton Hiroshima bomb' :
-    compareToHiroshima(bomb.yield)
   const related = relatedBombs(bomb, 4)
   const isNuclear = bomb.type !== 'conventional'
   // Nuclear scaling laws only apply to nuclear weapons. Conventional weapons
@@ -126,22 +115,97 @@ export default async function WeaponDetailPage({
   const r = showEffects ? effectRadiiKm(bomb.yield) : null
   const cites = createCitations()
   const weaponSourceIds = bomb.sources ?? []
-  // The generic "roughly equal fission/fusion" energy split is misleading on
-  // Tsar Bomba, whose lead tamper made it ~97% fusion. On that page only, use the
-  // chat-verified figure (facts row 145), cited to the Nuclear Weapon Archive.
+
+  // NBS-016 (audit-a) per-weapon framing:
+  const isHalifax = bomb.id === 'halifax-explosion'    // accidental explosion, not a weapon
+  const isChagai = bomb.id === 'chagai-i'              // 40 kt is only Pakistan's claim; seismic ~9 kt
+  const isNK2017 = bomb.id === 'north-korea-2017-test' // H-bomb is NK's claim; seismic can't confirm it
   const isTsarBomba = bomb.id === 'tsar-bomba'
+  const isFillBomb = bomb.type === 'conventional' && bomb.measure === 'fill'
+  // NBS-014: Little Boy and Fat Man ARE the Hiroshima/Nagasaki bombs, so the
+  // generic "comparable to the Hiroshima bomb" phrasing is circular.
+  const isReferenceBomb = bomb.id === 'little-boy' || bomb.id === 'fat-man'
+
+  const typeText =
+    isHalifax ? 'historical explosion' :
+    isNK2017 ? 'claimed thermonuclear (unconfirmed)' :
+    isChagai ? 'fission (claimed boosted)' :
+    bomb.id === 'orange-herald' ? 'boosted fission' :
+    describeType(bomb.type)
+
+  // Header "how much" figure. Chagai's 40 kt is only a claim; conventional bombs
+  // show their fill or TNT equivalent via specLine(); nuclear bombs their yield.
+  const headerSpec = isChagai ? 'claimed up to 40 kt (seismic estimates about 9 kt)' : specLine(bomb)
+  const yieldText = formatYield(bomb.yield) // nuclear FAQ prose
+
+  // Hiroshima comparison is meaningful only where a real yield / TNT equivalent
+  // exists; a fill weight is not a yield, and Chagai / NK / Halifax are reframed.
+  const comparison =
+    bomb.id === 'little-boy' ? 'the atomic bomb dropped on Hiroshima' :
+    bomb.id === 'fat-man' ? 'the atomic bomb dropped on Nagasaki, larger than the 15-kiloton Hiroshima bomb' :
+    compareToHiroshima(bomb.yield)
+  const overviewQty =
+    isChagai ? 'a claimed yield of up to 40 kt (seismic estimates about 9 kt)' :
+    isNK2017 ? 'an estimated yield of about 250 kilotons' :
+    overviewQuantity(bomb)
+
+  // The generic "roughly equal fission/fusion" energy split is misleading on
+  // Tsar Bomba (lead tamper, ~97% fusion). The NK 2017 test cites NORSAR for the
+  // "seismic can't tell" note instead of the Glasstone & Dolan energy section.
   const thermonuclearEnergy = isTsarBomba
     ? 'a fission explosion that ignites fusion fuel. About 97% of its energy came from fusion, making it one of the cleanest nuclear explosions relative to its yield'
     : 'a fission explosion that ignites fusion fuel, releasing on average roughly equal energy from fission and fusion'
+  const energyPhrase =
+    bomb.type === 'fission' ? 'nuclear fission of uranium or plutonium' :
+    bomb.type === 'fusion' ? 'fusion-boosted fission reactions' :
+    thermonuclearEnergy
   const energySourceId = isTsarBomba
     ? 'nuclear-weapon-archive-the-soviet-weapons-progra'
+    : isNK2017
+    ? 'norsar-summing-up-the-nuclear-test-in-north-kore'
+    // Chagai: the "boosted" claim is the Pakistan archive's, not Glasstone & Dolan's.
+    : isChagai
+    ? 'us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5;nuclear-weapon-archive-pakistan-s-nuclear-weapon'
     : 'us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5'
 
-  // NBS-014: the three T1 weapons carry long-form sections + question-form FAQ
-  // (research/retarget-facts). Extras FAQ lead; the generic radius/yield FAQ
-  // follows. Answers may carry {{r:kt:effect}} (engine radii) and are resolved
-  // to plain text for the FAQPage schema.
+  // NBS-014: the T1 weapons carry long-form sections + question-form FAQ. Extras
+  // FAQ lead; the generic radius/quantity FAQ follows. The Hiroshima 15 kt claim
+  // is cited to DOE/NV-209 (NBS-016). Fill bombs ask about explosive fill, not a
+  // TNT yield; Chagai and Halifax get bespoke answers.
   const extra = WEAPON_EXTRAS[bomb.id]
+  const HIROSHIMA_CITE = ['us-doe-nnsa-nevada-field-office-united-states-nu']
+  const quantityFaq: { question: string; answer: string; sourceIds?: string[] }[] =
+    isReferenceBomb ? [] :
+    isHalifax ? [{
+      question: 'What was the Halifax Explosion?',
+      answer: "The Halifax Explosion was an accidental detonation of the munitions ship SS Mont-Blanc's cargo in Halifax, Nova Scotia, on 6 December 1917 — roughly 2.9 kt of TNT equivalent, the largest man-made explosion before the atomic bomb. It was not a weapon.",
+      sourceIds: weaponSourceIds,
+    }] :
+    isChagai ? [{
+      question: 'What is the yield of the Chagai-I?',
+      answer: 'Pakistan claimed a yield of up to 40 kt. Independent seismic estimates put it near 9 kt (roughly 5 to 20 kt), below the 15 kt Hiroshima bomb.',
+      sourceIds: weaponSourceIds,
+    }, {
+      question: 'Is the Chagai-I bigger than the Hiroshima bomb?',
+      answer: "Only by Pakistan's claim of up to 40 kt. Seismic estimates of about 9 kt make it smaller than the 15 kt Hiroshima bomb.",
+      sourceIds: [...HIROSHIMA_CITE, ...weaponSourceIds],
+    }] :
+    isFillBomb ? [{
+      question: `What is the explosive fill of the ${bomb.name}?`,
+      answer: `The ${bomb.name} holds ${overviewQuantity(bomb)}.`,
+      sourceIds: weaponSourceIds,
+    }] :
+    [{
+      question: `What is the yield of the ${bomb.name}?`,
+      answer: isNuclear
+        ? `The ${bomb.name} has a yield of ${yieldText} of TNT equivalent. That is ${comparison}.`
+        : `The ${bomb.name} is rated at ${overviewQuantity(bomb)}. That is ${comparison}.`,
+    }, {
+      question: `Is the ${bomb.name} bigger than the Hiroshima bomb?`,
+      answer: `The Hiroshima bomb (Little Boy) had a yield of approximately 15 kilotons. The ${bomb.name} at ${isNuclear ? yieldText : shortSpec(bomb)} is ${comparison}.`,
+      sourceIds: HIROSHIMA_CITE,
+    }]
+
   const faqEntries: { question: string; answer: string; sourceIds?: string[] }[] = [
     ...(extra?.faq ?? []),
     ...(r
@@ -153,23 +217,7 @@ export default async function WeaponDetailPage({
           },
         ]
       : []),
-    // Suppressed for Little Boy and Fat Man: they ARE the Hiroshima/Nagasaki
-    // bombs, so "yield … comparable to the Hiroshima bomb" and "bigger than the
-    // Hiroshima bomb?" are circular. Their extras FAQ already cover yield/power.
-    ...(!isReferenceBomb
-      ? [
-          {
-            question: `What is the yield of the ${bomb.name}?`,
-            answer:
-              `The ${bomb.name} has a yield of ${yieldText} of TNT equivalent. That is ${comparison}.`,
-          },
-          {
-            question: `Is the ${bomb.name} bigger than the Hiroshima bomb?`,
-            answer:
-              `The Hiroshima bomb (Little Boy) had a yield of approximately 15 kilotons. The ${bomb.name} at ${yieldText} is ${comparison}.`,
-          },
-        ]
-      : []),
+    ...quantityFaq,
     ...(r
       ? [
           {
@@ -214,7 +262,7 @@ export default async function WeaponDetailPage({
         <header className="mb-10">
           <h1 className="text-4xl font-bold mb-3 text-green-400">{pageH1(`/weapons/${bomb.id}`)}</h1>
           <p className="text-lg text-green-300">
-            {bomb.country}{bomb.year ? ` · ${bomb.year}` : ''} · {yieldText} · {typeText}
+            {bomb.country}{bomb.year ? ` · ${bomb.year}` : ''} · {headerSpec} · {typeText}
           </p>
           <Byline className="mt-2" />
         </header>
@@ -223,17 +271,30 @@ export default async function WeaponDetailPage({
           <h2 className="text-2xl font-semibold mb-4 text-green-400">Overview</h2>
           <p className="text-green-300 mb-4">{bomb.description}.</p>
           <p className="text-green-300">
-            With a yield of <strong className="text-yellow-400">{yieldText}</strong>
-            <Cite c={cites} ids={weaponSourceIds.join(';')} />, the {bomb.name} is{' '}
-            <strong className="text-yellow-400">{comparison}</strong>. {isNuclear
-              ? `As a ${typeText} weapon, it derives its energy from ${
-                  bomb.type === 'fission' ? 'nuclear fission of uranium or plutonium' :
-                  bomb.type === 'fusion' ? 'fusion-boosted fission reactions' :
-                  thermonuclearEnergy
-                }.`
-              : `It is a conventional high-explosive weapon that releases its energy through chemical reactions, not nuclear processes.`}
-            {' '}<Cite c={cites} ids={energySourceId} />
+            With <strong className="text-yellow-400">{overviewQty}</strong>
+            <Cite c={cites} ids={weaponSourceIds.join(';')} />,{' '}
+            {isHalifax ? (
+              <>the Halifax Explosion was an accidental detonation of the munitions ship SS Mont-Blanc&apos;s cargo (about 2.3 million kg of high explosives) in 1917, not a weapon.</>
+            ) : isChagai ? (
+              <>the Chagai-I derives its energy from nuclear fission of uranium; Pakistan says the devices were boosted.{' '}<Cite c={cites} ids={energySourceId} /></>
+            ) : isNK2017 ? (
+              <>North Korea said the device was a hydrogen bomb, but the seismic signal cannot tell a fission bomb from a thermonuclear one.{' '}<Cite c={cites} ids={energySourceId} /></>
+            ) : isFillBomb ? (
+              <>the {bomb.name} is a conventional high-explosive weapon that releases its energy through chemical reactions, not nuclear processes.{' '}<Cite c={cites} ids={energySourceId} /></>
+            ) : (
+              <>the {bomb.name} is <strong className="text-yellow-400">{comparison}</strong>.{' '}
+                {isNuclear
+                  ? `As a ${typeText} weapon, it derives its energy from ${energyPhrase}.`
+                  : 'It is a conventional high-explosive weapon that releases its energy through chemical reactions, not nuclear processes.'}
+                {' '}<Cite c={cites} ids={energySourceId} /></>
+            )}
           </p>
+          {isNK2017 ? (
+            <p className="text-green-300 mt-4">
+              For the country&apos;s wider program, see the{' '}
+              <Link href="/nuclear-weapons-by-country/north-korea" className="text-yellow-400 hover:underline">North Korea nuclear arsenal</Link> page.
+            </p>
+          ) : null}
         </section>
 
         {r ? (
@@ -305,8 +366,11 @@ export default async function WeaponDetailPage({
           <section className="mb-10 bg-yellow-900/20 border-l-4 border-yellow-400 p-6 rounded-r">
             <h2 className="text-xl font-semibold mb-3 text-yellow-400">Effect radii not shown</h2>
             <p className="text-green-300">
-              The {bomb.name} is a conventional (non-nuclear) weapon. The nuclear blast and thermal scaling
-              laws this site uses do not apply to chemical explosives, so no effect radii are shown. See the{' '}
+              {isHalifax
+                ? 'The Halifax Explosion (1917) was an accidental munitions-ship explosion, not a weapon.'
+                : `The ${bomb.name} is a conventional (non-nuclear) weapon.`}{' '}
+              The nuclear blast and thermal scaling laws this site uses do not apply to chemical explosives, so
+              no effect radii are shown. See the{' '}
               <Link href="/methodology" className="text-yellow-400 hover:underline">methodology</Link> page.
             </p>
           </section>
@@ -343,7 +407,7 @@ export default async function WeaponDetailPage({
                 >
                   <div className="font-semibold text-yellow-400">{rb.name}</div>
                   <div className="text-sm text-green-300">
-                    {rb.country} · {formatYield(rb.yield)}
+                    {rb.country} · {shortSpec(rb)}
                   </div>
                   <div className="text-xs text-green-300/70 mt-1">{rb.description}</div>
                 </Link>

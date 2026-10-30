@@ -45,6 +45,7 @@ export default function PrivacyPage() {
               <ul className="list-disc list-inside space-y-2 text-green-300">
                 <li>Measurement ID <code className="text-green-200">G-XDZQYKGTE2</code>, provided by Google.</li>
                 <li>Collects pseudonymous usage data: pages viewed, referrer, device and browser type, and an approximate location derived from your IP address.</li>
+                <li>Receives only the page path, never the query string. Your chosen weapon and map coordinates (which the share URL encodes in the query string) are never sent to Google Analytics.</li>
                 <li>Sets analytics cookies (for example <code className="text-green-200">_ga</code> and <code className="text-green-200">_ga_*</code>) to measure returning visits — only after you accept (see Consent below).</li>
                 <li>Purpose: understand overall traffic and which pages are useful. Legal basis: your consent (EEA/UK/CH) or legitimate interest elsewhere.</li>
                 <li>Opt out any time via the <em>Cookie settings</em> link in the footer, or Google&apos;s{' '}
@@ -127,7 +128,7 @@ export default function PrivacyPage() {
         </section>
 
         <div className="text-center text-green-400/50 text-sm">
-          <p>Last updated: 15 October 2026</p>
+          <p>Last updated: 29 October 2026</p>
         </div>
       </main>
     </div>

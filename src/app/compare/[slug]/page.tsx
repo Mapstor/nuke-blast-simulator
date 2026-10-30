@@ -20,9 +20,20 @@ import {
 import { effectRadiiKm, formatRadiusKm, EFFECTS_FLAGS, type EffectRadiiKm } from '@/lib/calculations/effects'
 import { Cite, Sources, createCitations, ENGINE_SOURCE_IDS } from '@/components/seo/Cite'
 import { seoMetadata, pageH1 } from '@/lib/seo/pageMeta'
+import { specLine, shortSpec, hiroshimaMultiple, HIROSHIMA_YIELD_KT } from '@/lib/data/weaponSpec'
 import type { Bomb } from '@/lib/types'
 
-const HIROSHIMA_YIELD_KT = 15
+// One decimal below 10×, whole at/above (NBS-016 rounding rule).
+function fmtMultiple(x: number): string {
+  return x.toLocaleString(undefined, { maximumFractionDigits: x < 10 ? 1 : 0 })
+}
+
+// Hiroshima comparison phrase; "the Hiroshima bomb" for Little Boy itself
+// (never the circular "1×").
+function hiroshimaPhrase(b: Bomb): string {
+  if (b.id === 'little-boy') return 'the Hiroshima bomb'
+  return `${hiroshimaMultiple(b.yield / HIROSHIMA_YIELD_KT)} than the Hiroshima bomb`
+}
 
 export function generateStaticParams() {
   return allComparisonSlugs().map((slug) => ({ slug }))
@@ -53,12 +64,6 @@ function loadComparison(slug: string): { a: Bomb; b: Bomb } | null {
   const b = bombs.find((x) => x.id === decoded.b)
   if (!a || !b) return null
   return { a, b }
-}
-
-function formatYield(yieldKt: number): string {
-  if (yieldKt >= 1000) return `${(yieldKt / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })} Mt`
-  if (yieldKt >= 1) return `${yieldKt.toLocaleString()} kt`
-  return `${(yieldKt * 1000).toLocaleString()} tons TNT`
 }
 
 function describeType(t: Bomb['type']): string {
@@ -105,9 +110,6 @@ export default async function ComparePage({
 
   const cites = createCitations()
 
-  const hiroshimaA = a.yield / HIROSHIMA_YIELD_KT
-  const hiroshimaB = b.yield / HIROSHIMA_YIELD_KT
-
   const otherComparisons = COMPARISONS
     .filter(([x, y]) => `${x}-vs-${y}` !== slug)
     .filter(([x, y]) => x === a.id || y === a.id || x === b.id || y === b.id)
@@ -118,8 +120,8 @@ export default async function ComparePage({
       question: `Is the ${a.name} bigger than the ${b.name}?`,
       answer:
         ratio >= 1
-          ? `Yes. The ${a.name} (${formatYield(a.yield)}) is ${factor.toLocaleString(undefined, { maximumFractionDigits: 1 })}× more powerful than the ${b.name} (${formatYield(b.yield)}) by yield.`
-          : `No. The ${b.name} (${formatYield(b.yield)}) is ${factor.toLocaleString(undefined, { maximumFractionDigits: 1 })}× more powerful than the ${a.name} (${formatYield(a.yield)}) by yield.`,
+          ? `Yes. The ${a.name} (${specLine(a)}) is ${fmtMultiple(factor)}× more powerful than the ${b.name} (${specLine(b)}) by yield.`
+          : `No. The ${b.name} (${specLine(b)}) is ${fmtMultiple(factor)}× more powerful than the ${a.name} (${specLine(a)}) by yield.`,
     },
     ...(rA && rB
       ? [
@@ -135,15 +137,7 @@ export default async function ComparePage({
     {
       question: `How do the ${a.name} and ${b.name} compare to the Hiroshima bomb?`,
       answer:
-        `The ${a.name} is ${
-          hiroshimaA >= 1
-            ? `${hiroshimaA.toLocaleString(undefined, { maximumFractionDigits: 0 })}× more powerful`
-            : `${(1 / hiroshimaA).toFixed(1)}× smaller`
-        } than the Hiroshima bomb (Little Boy, 15 kt). The ${b.name} is ${
-          hiroshimaB >= 1
-            ? `${hiroshimaB.toLocaleString(undefined, { maximumFractionDigits: 0 })}× more powerful`
-            : `${(1 / hiroshimaB).toFixed(1)}× smaller`
-        } than the Hiroshima bomb.`,
+        `The Hiroshima bomb (Little Boy) was about 15 kt. The ${a.name} is ${hiroshimaPhrase(a)}. The ${b.name} is ${hiroshimaPhrase(b)}.`,
     },
   ]
 
@@ -191,7 +185,7 @@ export default async function ComparePage({
             <p className="text-sm text-green-300/80 mb-2">
               {a.country}{a.year ? ` · ${a.year}` : ''} · {describeType(a.type)}
             </p>
-            <p className="text-3xl font-bold text-red-400 mb-2">{formatYield(a.yield)}</p>
+            <p className="text-3xl font-bold text-red-400 mb-2">{specLine(a)}</p>
             <p className="text-sm text-green-300">{a.description}. <Cite c={cites} ids={(a.sources ?? []).join(';')} /></p>
           </div>
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6">
@@ -199,7 +193,7 @@ export default async function ComparePage({
             <p className="text-sm text-green-300/80 mb-2">
               {b.country}{b.year ? ` · ${b.year}` : ''} · {describeType(b.type)}
             </p>
-            <p className="text-3xl font-bold text-red-400 mb-2">{formatYield(b.yield)}</p>
+            <p className="text-3xl font-bold text-red-400 mb-2">{specLine(b)}</p>
             <p className="text-sm text-green-300">{b.description}. <Cite c={cites} ids={(b.sources ?? []).join(';')} /></p>
           </div>
         </section>
@@ -209,11 +203,10 @@ export default async function ComparePage({
           <p className="text-green-300">
             The <strong className="text-yellow-400">{moreP.name}</strong> is{' '}
             <strong className="text-red-400">
-              {factor.toLocaleString(undefined, { maximumFractionDigits: factor < 10 ? 1 : 0 })}× more powerful
+              {fmtMultiple(factor)}× more powerful
             </strong>{' '}
             than the <strong className="text-yellow-400">{lessP.name}</strong> by yield. Both weapons are
-            described below with {showEffects ? 'side-by-side blast and thermal radii (air burst) and ' : ''}
-            historical context.
+            detailed below{showEffects ? ', with side-by-side blast and thermal radii for an air burst' : ''}.
           </p>
         </section>
 
@@ -230,7 +223,7 @@ export default async function ComparePage({
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-green-500/10"><td className="py-2">Yield</td><td className="text-right">{formatYield(a.yield)}</td><td className="text-right">{formatYield(b.yield)}</td></tr>
+                  <tr className="border-b border-green-500/10"><td className="py-2">Yield</td><td className="text-right">{specLine(a)}</td><td className="text-right">{specLine(b)}</td></tr>
                   <tr className="border-b border-green-500/10"><td className="py-2">Fireball radius</td><td className="text-right">{formatRadiusKm(rA.fireball) + ' km'}</td><td className="text-right">{formatRadiusKm(rB.fireball) + ' km'}</td></tr>
                   <tr className="border-b border-green-500/10"><td className="py-2">Severe blast (20 psi)</td><td className="text-right">{formatRadiusKm(rA.overpressure20psi) + ' km'}</td><td className="text-right">{formatRadiusKm(rB.overpressure20psi) + ' km'}</td></tr>
                   <tr className="border-b border-green-500/10"><td className="py-2">Moderate blast (5 psi)</td><td className="text-right">{formatRadiusKm(rA.overpressure5psi) + ' km'}</td><td className="text-right">{formatRadiusKm(rB.overpressure5psi) + ' km'}</td></tr>
@@ -258,18 +251,9 @@ export default async function ComparePage({
         <section className="mb-10">
           <h2 className="text-2xl font-semibold mb-4 text-green-400">Hiroshima reference</h2>
           <p className="text-green-300">
-            The Hiroshima bomb (Little Boy) had a yield of approximately 15 kilotons. <Cite c={cites} ids="us-doe-nevada-operations-office-united-states-nu" /> The {a.name} is{' '}
-            <strong className="text-yellow-400">
-              {hiroshimaA >= 1
-                ? `${hiroshimaA.toLocaleString(undefined, { maximumFractionDigits: 0 })}× more powerful`
-                : `${(1 / hiroshimaA).toFixed(1)}× smaller`}
-            </strong>{' '}
-            than the Hiroshima bomb. The {b.name} is{' '}
-            <strong className="text-yellow-400">
-              {hiroshimaB >= 1
-                ? `${hiroshimaB.toLocaleString(undefined, { maximumFractionDigits: 0 })}× more powerful`
-                : `${(1 / hiroshimaB).toFixed(1)}× smaller`}
-            </strong>.
+            The Hiroshima bomb (Little Boy) had a yield of approximately 15 kilotons. <Cite c={cites} ids="us-doe-nnsa-nevada-field-office-united-states-nu" /> The {a.name} is{' '}
+            <strong className="text-yellow-400">{hiroshimaPhrase(a)}</strong>. The {b.name} is{' '}
+            <strong className="text-yellow-400">{hiroshimaPhrase(b)}</strong>.
           </p>
         </section>
 
@@ -305,7 +289,7 @@ export default async function ComparePage({
                   >
                     <div className="font-semibold text-yellow-400 text-sm">{xb.name} vs {yb.name}</div>
                     <div className="text-xs text-green-300/70">
-                      {formatYield(xb.yield)} vs {formatYield(yb.yield)}
+                      {shortSpec(xb)} vs {shortSpec(yb)}
                     </div>
                   </Link>
                 )

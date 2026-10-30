@@ -2,12 +2,22 @@
 export interface Bomb {
   id: string
   name: string
-  yield: number // kilotons (TNT equivalent for conventional bombs)
+  yield: number // kilotons. For conventional bombs this is the explosive weight
+  // expressed in kt-equivalent (weight_t / 1000) and `measure` says how to show it.
   type: 'fission' | 'fusion' | 'thermonuclear' | 'conventional'
   country: string
   year?: number
   description: string
   sources?: string[] // NBS-005 citation source ids (research/sources.csv)
+  // NBS-016: conventional-bomb presentation. The citation audit found that most
+  // conventional pages stated their explosive FILL weight as if it were a TNT
+  // yield. `measure` distinguishes a bare fill weight (no published TNT
+  // equivalent) from a source-stated TNT equivalent (or a claimed one). `filler`
+  // names the explosive where a source gives it. `kind` marks the Halifax
+  // Explosion as an accidental historical explosion, not a weapon.
+  measure?: 'fill' | 'tnt-equivalent' | 'claimed-tnt'
+  filler?: string
+  kind?: 'weapon' | 'historical-explosion'
 }
 
 export interface Location {

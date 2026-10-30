@@ -16,10 +16,11 @@ export const metadata: Metadata = seoMetadata('/how-it-works')
 // conventional bombs and the custom-yield slot; this equals 29.
 const nuclearCount = bombs.filter((b) => b.type !== 'conventional' && b.id !== 'custom').length
 
-const steps = [
+const steps: { name: string; text: string; sourceIds?: string[] }[] = [
   {
     name: 'Select a Nuclear Weapon',
     text: `Choose from the database of ${nuclearCount} historical and modern nuclear weapons, from the 15-kiloton Little Boy (Hiroshima) to the 50-megaton Tsar Bomba (largest test ever). You can also pick "Custom Yield" to set any explosive power between 1 and 100,000 kilotons.`,
+    sourceIds: ['us-doe-nnsa-nevada-field-office-united-states-nu', 'nuclear-weapon-archive-soviet-atmospheric-tests'],
   },
   {
     name: 'Click on the Map',
@@ -31,7 +32,7 @@ const steps = [
   },
   {
     name: 'Read the Results Panel',
-    text: 'The results panel lists each effect radius for an air burst at optimum height. Radii are computed from published scaling laws (Glasstone & Dolan, "The Effects of Nuclear Weapons"). Casualty and fallout figures are not shown pending a verified model.',
+    text: 'The results panel lists each effect radius for an air burst at optimum height. The fireball uses the Glasstone & Dolan §2.127 relation; blast and thermal-burn radii come from a published scaling-law table (see the methodology page). Casualty and fallout figures are not shown pending a verified model.',
   },
 ]
 
@@ -83,7 +84,7 @@ export default function HowItWorksPage() {
                   </span>
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-yellow-400">{step.name}</h3>
-                    <p className="text-green-300">{step.text}</p>
+                    <p className="text-green-300">{step.text}{step.sourceIds?.length ? <Cite c={cites} ids={step.sourceIds.join(';')} /> : null}</p>
                   </div>
                 </div>
               </li>
@@ -120,14 +121,14 @@ export default function HowItWorksPage() {
               <div className="w-6 h-6 rounded-full mr-3 shrink-0" style={{ backgroundColor: '#808080' }} />
               <div>
                 <span className="font-semibold text-gray-300">Light Blast (1 psi):</span>
-                <span className="text-green-300 ml-2">Windows shatter; flying glass and debris cause injuries.<Cite c={cites} ids="us-congress-office-of-technology-assessment-via" /></span>
+                <span className="text-green-300 ml-2">Windows shatter; flying glass and debris cause injuries.<Cite c={cites} ids="us-congress-office-of-technology-assessment-via;us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-9" /></span>
               </div>
             </div>
             <div className="flex items-center">
               <div className="w-6 h-6 rounded-full mr-3 shrink-0" style={{ backgroundColor: '#ff00ff' }} />
               <div>
                 <span className="font-semibold text-pink-400">3rd Degree Burns:</span>
-                <span className="text-green-300 ml-2">Severe burns that need immediate medical care.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-6" /></span>
+                <span className="text-green-300 ml-2">Full-thickness skin burns; extensive ones need prompt medical treatment.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-6" /></span>
               </div>
             </div>
           </div>

@@ -19,7 +19,7 @@ const faqEntries = [
   {
     question: 'How accurate are the nuclear blast calculations?',
     answer:
-      'The radii come from the scaling laws in The Effects of Nuclear Weapons (Glasstone & Dolan, 1977) and the standard scaling-law table derived from it. They provide estimates based on idealized conditions. Real-world effects vary significantly due to terrain, weather, building construction, and many other factors. These are educational approximations, not precise predictions.',
+      'The radii come from the scaling laws in The Effects of Nuclear Weapons (Glasstone & Dolan, 1977) and a published scaling-law table (Wikipedia, "Effects of nuclear explosions"). They provide estimates based on idealized conditions. Real-world effects vary significantly due to terrain, weather, building construction, and many other factors. These are educational approximations, not precise predictions.',
   },
   {
     question: 'Who can use this nuclear blast simulator?',
@@ -39,7 +39,7 @@ const faqEntries = [
   {
     question: 'How do nuclear weapons cause damage?',
     answer:
-      'Nuclear weapons cause damage through multiple mechanisms. Immediate effects (seconds to about a minute) include the fireball, thermal radiation that causes burns and fires, the blast wave that destroys buildings, initial nuclear radiation, and an electromagnetic pulse that destroys electronics. Delayed effects include radioactive fallout and possible climate effects from soot ("nuclear winter").',
+      'Nuclear weapons cause damage through multiple mechanisms. Immediate effects (seconds to about a minute) include the fireball, thermal radiation that causes burns and fires, the blast wave that destroys buildings, initial nuclear radiation, and an electromagnetic pulse that can cause failures in electrical and electronic equipment. Delayed effects include radioactive fallout and possible climate effects from soot ("nuclear winter").',
   },
   {
     question: 'How long do nuclear weapon effects last?',
@@ -64,7 +64,7 @@ const faqEntries = [
   {
     question: 'Is this nuclear blast simulator dangerous or illegal?',
     answer:
-      'No. The simulator is completely legal and safe. All information is based on publicly available, declassified sources. No classified or sensitive information is disclosed. It cannot be used to build weapons or plan attacks. Educational use of nuclear effects data is protected speech, and similar tools are used in academic and policy research. Misuse for threats, targeting, or planning violence is strictly prohibited.',
+      'No. The simulator is completely legal and safe. All information is based on publicly available, declassified sources. No classified or sensitive information is disclosed. It cannot be used to build weapons or plan attacks, and similar tools are used in academic and policy research. Misuse for threats, targeting, or planning violence is strictly prohibited.',
   },
   {
     question: 'Does the simulator collect data about my simulations?',
@@ -127,7 +127,7 @@ export default function FAQPage() {
                 <h3 className="text-xl font-semibold mb-3 text-yellow-400">How accurate are the calculations?</h3>
                 <p className="text-green-300 mb-3">
                   The radii come from the scaling laws in The Effects of Nuclear Weapons (Glasstone &amp; Dolan, 1977)
-                  and the standard scaling-law table derived from it.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3" /> They provide <em>estimates</em>
+                  and a published scaling-law table (Wikipedia, &ldquo;Effects of nuclear explosions&rdquo;).<Cite c={cites} ids="effects-fireball;effects-blast-thermal" /> They provide <em>estimates</em>
                   based on idealized conditions.
                 </p>
                 <p className="text-green-300">
@@ -164,9 +164,9 @@ export default function FAQPage() {
                     <h4 className="font-semibold text-orange-400 mb-2">Air Burst</h4>
                     <ul className="text-sm text-green-300 space-y-1">
                       <li>• Detonated above ground (optimal altitude)</li>
-                      <li>• Maximum blast damage over wide area</li>
+                      <li>• Maximum blast damage over wide area<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2" /></li>
                       <li>• Minimal radioactive fallout</li>
-                      <li>• Used on Hiroshima and Nagasaki</li>
+                      <li>• Used on Hiroshima and Nagasaki<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3" /></li>
                       <li>• Preferred for maximum destruction</li>
                     </ul>
                   </div>
@@ -175,7 +175,7 @@ export default function FAQPage() {
                     <ul className="text-sm text-green-300 space-y-1">
                       <li>• Detonated at ground level</li>
                       <li>• Shorter blast range than an optimum-height air burst<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2" /></li>
-                      <li>• Heavy local radioactive fallout</li>
+                      <li>• Heavy local radioactive fallout<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e;us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-7" /></li>
                       <li>• Creates large crater</li>
                       <li>• Long-term area contamination</li>
                     </ul>
@@ -211,14 +211,14 @@ export default function FAQPage() {
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#808080' }}></div>
                     <div>
                       <span className="font-semibold text-gray-400">Light Blast (Gray):</span>
-                      <span className="text-green-300 ml-2">1 psi overpressure. Windows shatter.<Cite c={cites} ids="us-congress-office-of-technology-assessment-via" /></span>
+                      <span className="text-green-300 ml-2">1 psi overpressure. Windows shatter.<Cite c={cites} ids="us-congress-office-of-technology-assessment-via;us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-9" /></span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: '#ff00ff' }}></div>
                     <div>
                       <span className="font-semibold text-purple-400">3rd Degree Burns (Magenta):</span>
-                      <span className="text-green-300 ml-2">Severe burns requiring immediate medical care.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-6" /></span>
+                      <span className="text-green-300 ml-2">Full-thickness skin burns; extensive ones need prompt treatment.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-6" /></span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -236,20 +236,20 @@ export default function FAQPage() {
                 <p className="text-green-300 mb-3">Nuclear weapons cause damage through multiple mechanisms:</p>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <h4 className="font-semibold text-orange-400 mb-2">Immediate Effects (seconds to about a minute)<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2" /></h4>
+                    <h4 className="font-semibold text-orange-400 mb-2">Immediate Effects (seconds to about a minute)<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12" /></h4>
                     <ul className="text-sm text-green-300 space-y-1">
                       <li>• <strong>Fireball:</strong> Extreme heat vaporizes nearby material</li>
                       <li>• <strong>Thermal radiation:</strong> Intense heat causes burns and fires</li>
                       <li>• <strong>Blast wave:</strong> Destroys buildings and causes injuries</li>
-                      <li>• <strong>Nuclear radiation:</strong> Immediate lethal doses</li>
-                      <li>• <strong>Electromagnetic pulse (EMP):</strong> Destroys electronics</li>
+                      <li>• <strong>Initial nuclear radiation:</strong> can deliver lethal doses close to ground zero<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-12" /></li>
+                      <li>• <strong>Electromagnetic pulse (EMP):</strong> can cause failures in electrical and electronic equipment<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-4" /></li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-semibold text-red-400 mb-2">Delayed Effects</h4>
                     <ul className="text-sm text-green-300 space-y-1">
-                      <li>• <strong>Radioactive fallout:</strong> Contamination lasting years</li>
-                      <li>• <strong>Nuclear winter:</strong> Climate effects from fires and soot</li>
+                      <li>• <strong>Radioactive fallout:</strong> Contamination lasting years<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e" /></li>
+                      <li>• <strong>Nuclear winter:</strong> Climate effects from fires and soot<Cite c={cites} ids="atmospheric-chemistry-and-physics-robock-oman-st" /></li>
                     </ul>
                   </div>
                 </div>
@@ -264,7 +264,7 @@ export default function FAQPage() {
                   </div>
                   <div>
                     <span className="font-semibold text-orange-400">Residual fallout (hours to years):</span>
-                    <span className="ml-2">Most intense in the first hours and days, then declining over weeks to years<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5" /></span>
+                    <span className="ml-2">Most intense in the first hours and days, then declining over weeks to years<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5;us-dod-erda-the-effects-of-nuclear-weapons-3rd-e" /></span>
                   </div>
                 </div>
               </div>
@@ -285,7 +285,7 @@ export default function FAQPage() {
                 <ul className="list-disc list-inside space-y-1 text-green-300">
                   <li><strong>1 kiloton (kt)</strong> = 1,000 tons of TNT<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5" /></li>
                   <li><strong>1 megaton (Mt)</strong> = 1,000,000 tons of TNT<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-5" /></li>
-                  <li><strong>Hiroshima bomb:</strong> ~15 kt<Cite c={cites} ids="us-doe-nevada-operations-office-united-states-nu" /></li>
+                  <li><strong>Hiroshima bomb:</strong> ~15 kt<Cite c={cites} ids="us-doe-nnsa-nevada-field-office-united-states-nu" /></li>
                   <li><strong>Modern strategic warhead:</strong> about 100-800 kt (a few exceed 1 Mt)<Cite c={cites} ids="federation-of-american-scientists-bulletin-of-th-2;bulletin-of-the-atomic-scientists-fas-russian-nu;bulletin-of-the-atomic-scientists-chinese-nuclea" /></li>
                   <li><strong>Largest ever tested (Tsar Bomba):</strong> 50 Mt<Cite c={cites} ids="nuclear-weapon-archive-the-soviet-weapons-progra" /></li>
                 </ul>
@@ -304,7 +304,7 @@ export default function FAQPage() {
                 </div>
                 <p className="text-green-300 mt-3 text-sm">
                   The fireball relation is from Glasstone &amp; Dolan 1977 §2.127; the scaling table is the
-                  published &ldquo;Effects of nuclear explosions&rdquo; data. Full table on the{' '}
+                  published &ldquo;Effects of nuclear explosions&rdquo; data.<Cite c={cites} ids="effects-fireball;effects-blast-thermal" /> Full table on the{' '}
                   <a href="/methodology" className="text-yellow-400 hover:underline">methodology page</a>.
                 </p>
               </div>
@@ -339,7 +339,6 @@ export default function FAQPage() {
                   <li>All information is based on publicly available, declassified sources</li>
                   <li>No classified or sensitive information is disclosed</li>
                   <li>It cannot be used to build weapons or plan attacks</li>
-                  <li>Educational use of nuclear effects data is protected speech</li>
                   <li>Similar tools exist in academic and policy research</li>
                 </ul>
                 <p className="text-red-300 mt-3">

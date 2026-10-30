@@ -26,12 +26,33 @@ function builtHtml(path: string): string {
 describe('all redirects are one-hop 308 -> 200 (NBS-010)', () => {
   const sources = new Set(all.map((r) => r.source))
 
-  it('expected rule counts (251 scenario + 1 weapon + 142 fold + 1 blog = 395)', () => {
+  it('expected rule counts (251 scenario + 2 weapon + 142 fold + 1 blog = 396)', () => {
     expect(scenarioRedirects.length).toBe(251)
-    expect(weaponRedirects.length).toBe(1)
+    expect(weaponRedirects.length).toBe(2)
     expect(foldRedirects.length).toBe(142)
     expect(blogRedirects.length).toBe(1)
-    expect(all.length).toBe(395)
+    expect(all.length).toBe(396)
+  })
+
+  it('the north-korea-2017-test rename is a one-hop 308 and the old URL is gone (NBS-016)', () => {
+    const rule = all.find((r) => r.source === '/weapons/hwasong-14')
+    expect(rule).toBeTruthy()
+    expect(rule!.destination).toBe('/weapons/north-korea-2017-test')
+    expect(rule!.permanent).toBe(true)
+    // destination is a built page and the old URL is not
+    expect(existsSync(builtHtml('/weapons/north-korea-2017-test'))).toBe(true)
+    expect(existsSync(builtHtml('/weapons/hwasong-14'))).toBe(false)
+    // no built page links to the old URL
+    const offenders: string[] = []
+    const walk = (dir: string) => {
+      for (const e of require('node:fs').readdirSync(dir)) {
+        const p = join(dir, e)
+        if (require('node:fs').statSync(p).isDirectory()) walk(p)
+        else if (e.endsWith('.html') && readFileSync(p, 'utf8').includes('/weapons/hwasong-14')) offenders.push(p.replace(APP, ''))
+      }
+    }
+    walk(APP)
+    expect(offenders).toEqual([])
   })
 
   it('the nuclear-explosion rename is a one-hop 308 and the old URL is gone (NBS-015)', () => {

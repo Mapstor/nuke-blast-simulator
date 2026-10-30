@@ -1757,7 +1757,7 @@
 "halifax explosion yield","30","50","50","Low","KWP-US-2026-10-22-bulk","informational","weapons/halifax-explosion","primary","","auto",""
 "halifax explosion radius","30","-33","-50","Low","KWP-US-2026-10-22-bulk","tool","weapons/halifax-explosion","secondary","","auto",""
 "operation hurricane","390","-84","24","Low","KWP-US-2026-10-22-bulk","informational","weapons/hurricane","primary","","auto",""
-"hwasong 14","","","","","chat-added-entity-name (no KWP data)","informational","weapons/hwasong-14","primary","","auto","entity name added so the page has a primary; no KWP volume"
+"north korea 2017 nuclear test","","","","","chat-added-entity-name (no KWP data)","informational","weapons/north-korea-2017-test","primary","","auto","NBS-016: renamed from hwasong-14; the page describes the 3 Sep 2017 test, not the Hwasong-14 missile"
 "ivy mike","2400","26","26","Low","KWP-US-2026-10-22-bulk","informational","weapons/ivy-mike","primary","","auto",""
 "ivy mike explosion","50","-29","0","Low","KWP-US-2026-10-22-bulk","informational","weapons/ivy-mike","secondary","","auto",""
 "ivy mike 4 location","","","","","KWP-US-2026-10-22-bulk","informational","weapons/ivy-mike","tertiary","","auto",""

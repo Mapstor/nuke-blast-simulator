@@ -38,6 +38,7 @@ for (const m of bombsSrc.matchAll(/\{\s*id:\s*"([^"]+)"[^}]*\}/g)) {
   bombs[field(o, 'id')] = {
     name: field(o, 'name'), yield: field(o, 'yield', true), type: field(o, 'type'),
     country: field(o, 'country'), year: field(o, 'year', true), desc: field(o, 'description'),
+    measure: field(o, 'measure'), filler: field(o, 'filler'),
   }
 }
 const citiesSrc = readFileSync('src/lib/data/cities.ts', 'utf8')
@@ -114,6 +115,15 @@ function yt(kt) {
   if (tons >= 1) return `${Math.round(tons).toLocaleString('en-US')} t TNT`
   return `${Math.round(kt * 1e6).toLocaleString('en-US')} kg TNT`
 }
+// NBS-016: a conventional bomb's compact spec, mirroring shortSpec() in
+// src/lib/data/weaponSpec.ts — fill weight, TNT equivalent, or kt (Halifax).
+function convShort(f) {
+  const t = Number(f.yield) * 1000
+  const fmtT = (x) => (x >= 10 ? `${Math.round(x).toLocaleString('en-US')} t` : `${Number(x.toFixed(2))} t`)
+  if (f.measure === 'fill') return `${fmtT(t)} fill`
+  if (Number(f.yield) >= 1) return `${f.yield} kt`
+  return `${fmtT(t)} TNT`
+}
 function popShort(p) {
   p = Number(p)
   return p >= 1e6 ? `${(p / 1e6).toFixed(1)}M` : p >= 1e3 ? `${Math.round(p / 1e3)}K` : `${p}`
@@ -131,9 +141,9 @@ function noEmDash(s) { return s.replace(/\s*—\s*/g, ', ').replace(/,\s*,/g, ',
 // ── hand-tuned head pages (title/h1/description; any field may be omitted) ──
 const OVERRIDES = {
   '/': { title: 'Nuke Map: Nuclear Bomb Simulator for Any City', h1: 'Nuke Map — Nuclear Bomb Simulator', description: 'Free nuke map. Click any city to see the fireball, blast and thermal-burn radii for 29 nuclear weapons, from Little Boy to Tsar Bomba, on an air burst.' },
-  '/weapons': { title: 'Nuclear Bombs: Every Weapon by Yield and Country', h1: 'Nuclear Bombs Database', description: 'Browse 29 nuclear weapons and tests plus 14 conventional bombs, each with a cited yield, history and blast-radius profile, sortable by yield and country.' },
+  '/weapons': { title: 'Nuclear Bombs: Every Weapon by Yield and Country', h1: 'Nuclear Bombs Database', description: '29 nuclear weapons and tests plus 14 conventional bombs and explosions, each with a cited yield and history; nuclear entries include blast-radius profiles.' },
   '/examples': { title: 'What If a Nuke Hit Your City? 100 Blast Radius Maps', h1: 'What If a Nuke Hit Your City?', description: 'Pick any of 100 world cities and see its nuclear blast radius: population, fireball, blast and thermal rings on an interactive map.' },
-  '/compare': { title: 'Nuclear Bomb Size Comparison: Any Two Weapons', h1: 'Nuclear Bomb Size Comparison', description: 'Compare any two nuclear bombs side by side: yields, fireball, blast and thermal-burn radii for an air burst, with every figure cited.' },
+  '/compare': { title: 'Nuclear Bomb Size Comparison: Any Two Weapons', h1: 'Nuclear Bomb Size Comparison', description: 'Compare nuclear bombs side by side: five featured head-to-head matchups with blast and thermal-burn radii, plus every weapon ranked by yield.' },
   '/nuclear-weapons-by-country': { title: 'Nuclear Weapons by Country: 2026 Arsenals', h1: 'Nuclear Weapons by Country', description: 'How many nuclear weapons each country has as of early 2026: warheads, delivery systems and trends for all nine nuclear powers, every figure cited.' },
   // NBS-011: the blast-radius tool page. Title carries the primary tokens
   // (nuclear/blast/radius); the description's one number is engine-derived
@@ -161,23 +171,46 @@ const OVERRIDES = {
   // NBS-014: the hydrogen-bomb stub upgraded to a full page; "hydrogen bomb" first.
   '/glossary/hydrogen-bomb': { title: 'Hydrogen Bomb: How It Works and Who Has Tested One', h1: 'Hydrogen Bomb', description: 'How a hydrogen bomb works, which countries have tested one, who invented it, and how powerful H-bombs are, from Ivy Mike to Tsar Bomba. Every figure cited.' },
   // Long-tail primaries that title-case into awkward strings: hand-tuned.
-  '/weapons/joe-1': { title: 'Joe-1 (RDS-1) — Blast Radius & Effects', h1: 'Joe-1 (RDS-1)' },
+  // NBS-016: "RDS-1" stays in the <title> to match the "rds 1" query, but no
+  // registered source states that device name, so it is dropped from the H1/body.
+  '/weapons/joe-1': { title: 'Joe-1 (RDS-1) — Blast Radius & Effects', h1: 'Joe-1' },
+  // NBS-016: /weapons/hwasong-14 renamed; the page describes the 2017 test.
+  '/weapons/north-korea-2017-test': { title: "North Korea's 2017 Nuclear Test: 250 kt Yield", h1: "North Korea's 2017 Nuclear Test" },
+  // NBS-016: conventional H1s that the primary keyword title-cased into a
+  // radius/area promise the page cannot keep.
+  '/weapons/gbu-57': { title: 'GBU-57 MOP Bunker Buster: Specs and History', h1: 'GBU-57 MOP (Massive Ordnance Penetrator)' },
+  '/weapons/moab': { title: 'MOAB: GBU-43/B Mother of All Bombs Explained', h1: 'MOAB (GBU-43/B Mother of All Bombs)' },
+  // NBS-016: Halifax is an accidental historical explosion, not a conventional bomb.
+  '/weapons/halifax-explosion': { title: 'Halifax Explosion (1917): Yield and Facts', h1: 'Halifax Explosion (1917)', description: 'Halifax Explosion (1917): about 2.9 kt TNT equivalent, the largest man-made explosion before the atomic bomb. How it compares with nuclear yields.' },
+  // NBS-016: "Daisy Cutter" stays in the <title> for the query; no registered
+  // source states the nickname, so the H1/body use BLU-82.
+  '/weapons/blu-82': { title: 'BLU-82 Daisy Cutter: Specs and History', h1: 'BLU-82' },
   // NBS-009: the two most-searched weapons get name + place titles.
   '/weapons/little-boy': { title: 'Little Boy: Hiroshima Bomb Blast Radius & Effects', h1: 'Little Boy (Hiroshima Bomb) Blast Radius' },
   '/weapons/fat-man': { title: 'Fat Man Bomb: Nagasaki Blast Radius & Effects', h1: 'Fat Man (Nagasaki Bomb) Blast Radius' },
-  // MOAB's full name makes the generic compare description overflow 155 and clamp.
-  '/compare/little-boy-vs-moab': { description: 'Little Boy (15 kt) vs MOAB (11 t TNT): the smallest WWII nuclear bomb against the largest conventional bomb, blast and thermal radii side by side.' },
+  // NBS-016: /compare/little-boy-vs-moab shows no radii (one weapon is
+  // conventional) and MOAB is not the largest conventional bomb (the site's own
+  // FOAB is larger). Title/meta stop promising radii and the superlative.
+  '/compare/little-boy-vs-moab': { title: 'MOAB vs Nuke: Little Boy vs Mother of All Bombs', description: 'Little Boy (15 kt) vs MOAB (11 t of TNT), the most powerful conventional bomb used in combat: their yields side by side, about 1,360 times apart.' },
 }
 
 // ── archetype builders ─────────────────────────────────────────────────────
 function buildWeapon(slug, p) {
   const f = bombs[slug.split('/')[1]] || {}
   const base = tc(p)
-  const title = withQualifier(base, ['Blast Radius & Effects', 'Blast Radius Map', 'Map & Effects', 'Yield & Blast Map', 'Nuclear Weapon'])
-  const kind = f.type === 'conventional' ? 'conventional bomb' : 'nuclear weapon'
   // Avoid a duplicate year when the name already carries one, e.g. "Halifax Explosion (1917)".
   const loc = f.year && !f.name.includes(`(${f.year})`) ? `${f.country}, ${f.year}` : f.country
-  const desc = clampDesc(`${f.name}: ${yt(f.yield)} ${kind} (${loc}). Fireball, blast and thermal-burn radii for an air burst, mapped on any city.`)
+  // NBS-016: conventional bombs are not in the simulator and have no effect
+  // radii, so their titles/metas stop promising a radius or "mapped on any city".
+  // They show the fill or TNT equivalent and are framed as reference pages. (The
+  // token-coverage check is waived for them — see STRUCTURAL/convWeapon below.)
+  if (f.type === 'conventional') {
+    const title = withQualifier(base, ['Specs and History', 'Facts and Figures', 'Bomb Facts', 'Explained'])
+    const desc = clampDesc(`${f.name}: ${convShort(f)} conventional bomb (${loc}). Specs, history and how it compares with nuclear yields.`)
+    return { title, h1: f.name, description: desc }
+  }
+  const title = withQualifier(base, ['Blast Radius & Effects', 'Blast Radius Map', 'Map & Effects', 'Yield & Blast Map', 'Nuclear Weapon'])
+  const desc = clampDesc(`${f.name}: ${yt(f.yield)} nuclear weapon (${loc}). Fireball, blast and thermal-burn radii for an air burst, mapped on any city.`)
   return { title, h1: base, description: desc }
 }
 function buildCity(slug, p) {
@@ -240,6 +273,12 @@ function buildCountry(slug, p) {
 // ── assemble ──────────────────────────────────────────────────────────────
 const STRUCTURAL = new Set(['about', 'methodology', 'sources', 'blog', 'contact', 'faq', 'glossary',
   'how-it-works', 'privacy', 'resources', 'terms'])
+// NBS-016: conventional-weapon pages are reference pages with no effect radii;
+// their titles drop the radius/map promise, so they are waived from the
+// primary-keyword title-token check (mirrored in tests/titles-meta.test.ts).
+const CONV_WEAPON_SLUGS = new Set(
+  Object.entries(bombs).filter(([, f]) => f.type === 'conventional').map(([id]) => `weapons/${id}`),
+)
 
 const result = {}
 const problems = []
@@ -265,7 +304,7 @@ for (const row of pages) {
   if (seo.description.length > 155) problems.push(`${path}: desc ${seo.description.length}>155`)
   if (!seo.h1) problems.push(`${path}: empty h1`)
   const isStructural = STRUCTURAL.has(slug)
-  if (!isStructural && p) {
+  if (!isStructural && !CONV_WEAPON_SLUGS.has(slug) && p) {
     const tset = new Set(tokens(seo.title))
     const missing = nonStop(p).filter((t) => !tset.has(t))
     if (missing.length) problems.push(`${path}: title missing primary tokens [${missing}] ("${p}" -> "${seo.title}")`)

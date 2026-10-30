@@ -1,8 +1,8 @@
 {
   "/": {
-    "hash": "de873b41ef0bf7ba",
+    "hash": "cef4f3b805f982fd",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-28"
+    "dateModified": "2026-10-29"
   },
   "/about": {
     "hash": "b3cc73ee7234b146",
@@ -50,34 +50,34 @@
     "dateModified": "2026-10-28"
   },
   "/compare": {
-    "hash": "c6cbe518075f6af0",
+    "hash": "d5e505fdf5829ffc",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/compare/b83-vs-tsar-bomba": {
-    "hash": "6bba1a0cb44c5e50",
+    "hash": "43bece9d1ba3a144",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/compare/little-boy-vs-fat-man": {
-    "hash": "f4ff3a63e973a367",
+    "hash": "e1637d90988c49f0",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-28"
+    "dateModified": "2026-10-29"
   },
   "/compare/little-boy-vs-moab": {
-    "hash": "a5e4ee1ac441e286",
+    "hash": "eeb9974c3a55a04c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-28"
+    "dateModified": "2026-10-29"
   },
   "/compare/tsar-bomba-vs-castle-bravo": {
-    "hash": "1566266c420c781d",
+    "hash": "476ed96e24e9e8a7",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/compare/tsar-bomba-vs-little-boy": {
-    "hash": "38dd8de5835ab872",
+    "hash": "a30347963f0ff62c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-28"
+    "dateModified": "2026-10-29"
   },
   "/contact": {
     "hash": "f1cc2529ea5521ec",
@@ -90,114 +90,114 @@
     "dateModified": "2026-10-28"
   },
   "/examples/atlanta": {
-    "hash": "f2c0f0ab3a506462",
+    "hash": "c658ad2ce89184b5",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/boston": {
-    "hash": "f20e2f742c9f35fa",
+    "hash": "9361466d0f795957",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/chicago": {
-    "hash": "58966b0a5ece3cfd",
+    "hash": "a7b517031c31646b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/denver": {
-    "hash": "f7dffac75ea9fa13",
+    "hash": "030a2df199d3ff6b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/doha": {
-    "hash": "0e696ae9d8da0d56",
+    "hash": "e3492cf24c1770a1",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/houston": {
-    "hash": "d42478d0726b94fb",
+    "hash": "73cbf2d67bbd4745",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/kyiv": {
-    "hash": "942670713ec08104",
+    "hash": "86f2621088841f2b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/lagos": {
-    "hash": "c0f05a3f3ac884e6",
+    "hash": "77e542f9a7105cab",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/london": {
-    "hash": "c7a050baa56f832a",
+    "hash": "03e6b6702150b11c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/los-angeles": {
-    "hash": "48d6d51b2209ecc9",
+    "hash": "cd5614723680b80b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/moscow": {
-    "hash": "34b950b4d5978844",
+    "hash": "c9090bd86356956d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/new-york": {
-    "hash": "cef74441dad2ade0",
+    "hash": "3f5093fef97cf0ec",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/pyongyang": {
-    "hash": "d717b3518023309c",
+    "hash": "27e2e81d99b0e609",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/san-francisco": {
-    "hash": "c112cf620ce51ffb",
+    "hash": "451a1a0dcd91c520",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/seattle": {
-    "hash": "53cf674997e22287",
+    "hash": "a155564683645baf",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/sydney": {
-    "hash": "0ff50e13b456a4ff",
+    "hash": "ada743aa218498ad",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/tehran": {
-    "hash": "dcdcc49848fc827f",
+    "hash": "502c3260f8bbfafc",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/tel-aviv": {
-    "hash": "ded4bc7b6f3cb97b",
+    "hash": "5269f0500d571f3e",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/tokyo": {
-    "hash": "a9575b0f84843881",
+    "hash": "35db364805e2951a",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/vancouver": {
-    "hash": "30989091e9412192",
+    "hash": "eceaa1df2dd788dc",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/examples/washington-dc": {
-    "hash": "99ec2cbce379516c",
+    "hash": "7f6968d2f2e81efd",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/faq": {
-    "hash": "94308d0e2709a31d",
+    "hash": "24a826c45732816e",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/glossary": {
     "hash": "a7dda92c36097610",
@@ -270,17 +270,17 @@
     "dateModified": "2026-10-21"
   },
   "/how-it-works": {
-    "hash": "ec2f0b8e732b50d0",
+    "hash": "c9bacea15360daa8",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/methodology": {
-    "hash": "5fdf9506297d46de",
+    "hash": "b2848f2a80ed91bd",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/nuclear-blast-radius": {
-    "hash": "d3fe87489834251f",
+    "hash": "c10e9f6adc00b0ba",
     "datePublished": "2026-10-22",
     "dateModified": "2026-10-29"
   },
@@ -340,9 +340,9 @@
     "dateModified": "2026-10-29"
   },
   "/privacy": {
-    "hash": "ddfc2c9f9b586b74",
+    "hash": "2e216bf3c6e2b496",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-15"
+    "dateModified": "2026-10-29"
   },
   "/resources": {
     "hash": "b8c894021c5968cc",
@@ -350,9 +350,9 @@
     "dateModified": "2026-10-22"
   },
   "/sources": {
-    "hash": "7b588c02de84f4dc",
+    "hash": "480af9e6a3b385f2",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-28"
+    "dateModified": "2026-10-29"
   },
   "/terms": {
     "hash": "dd91849ab7156d50",
@@ -360,223 +360,223 @@
     "dateModified": "2026-10-22"
   },
   "/weapons": {
-    "hash": "fabf194483904bed",
+    "hash": "99b7434db301ac49",
     "datePublished": "2025-10-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/596": {
-    "hash": "b0cf07bb8355ac21",
+    "hash": "94d16458f8a4a428",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/b41": {
-    "hash": "4ec43dfbac8715d6",
+    "hash": "65b49a2412b97820",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/b53": {
-    "hash": "40e9582f117593e3",
+    "hash": "e3d57427b26f8509",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/b61": {
-    "hash": "984997e701e842ec",
+    "hash": "e9e6e303a68e8576",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/b83": {
-    "hash": "4896b60dbc6a4a2a",
+    "hash": "74978d3c467fe08d",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/blockbuster": {
-    "hash": "ab9829aa4d848a41",
+    "hash": "ad01c4fceee773ca",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/blu-82": {
-    "hash": "915bb123d567309f",
+    "hash": "4158db2c4f0a1b93",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/canopus": {
-    "hash": "90aa0ffd4e05ef6f",
+    "hash": "5d2c1b1440de3a17",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/castle-bravo": {
-    "hash": "46342c8c0b343d8b",
+    "hash": "9abafb400dcff08c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/castle-yankee": {
-    "hash": "a55b73e39d3082f5",
+    "hash": "e47dcff05067f11e",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/chagai-i": {
-    "hash": "28d885975de711a9",
+    "hash": "00e8b40e5f448408",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/davy-crockett": {
-    "hash": "4c8084854068383b",
+    "hash": "ee68861b8f1cedc1",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/fab-500": {
-    "hash": "21a2ee641e79e44e",
+    "hash": "82c16fbeeafba6e8",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/fab-5000": {
-    "hash": "a4badafd0edd40fc",
+    "hash": "e92e0d384f2934e3",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/fat-man": {
-    "hash": "9304c32a4132674e",
+    "hash": "12698987ffe7ac7f",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-28"
+    "dateModified": "2026-10-29"
   },
   "/weapons/foab": {
-    "hash": "0d516a234e322c2f",
+    "hash": "dd30000718c458b5",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/gbu-28": {
-    "hash": "41dd9f44d6bd9b27",
+    "hash": "c1f351cd137c88de",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/gbu-57": {
-    "hash": "7e38160e142a42cc",
+    "hash": "1becddbf465d1154",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/gerboise-bleue": {
-    "hash": "8127b879e32c12e1",
+    "hash": "219082451e3d87b4",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/grand-slam": {
-    "hash": "af3bb56f203e725c",
+    "hash": "0787657895bd2800",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/halifax-explosion": {
-    "hash": "36bc1e30ff8fb236",
+    "hash": "f7e5c828b58e2484",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/hurricane": {
-    "hash": "5aeeb0a655a7595d",
+    "hash": "6f8e23feb1b89e58",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
-  },
-  "/weapons/hwasong-14": {
-    "hash": "46c654e54d312cf2",
-    "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/ivy-mike": {
-    "hash": "5603c094231c50e6",
+    "hash": "9f84a82cd2fbcedf",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-28"
+    "dateModified": "2026-10-29"
   },
   "/weapons/jdam": {
-    "hash": "e12194c821e76004",
+    "hash": "4306b612fc07bfcb",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/joe-1": {
-    "hash": "8da848b73700781c",
+    "hash": "5b9675b785b0e204",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/little-boy": {
-    "hash": "324aea377a99645b",
+    "hash": "61cbac6920c02a23",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-28"
+    "dateModified": "2026-10-29"
   },
   "/weapons/mark-84": {
-    "hash": "1101173e8e792cf5",
+    "hash": "a417571419a56891",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/mk-82": {
-    "hash": "bbd107ca187936b8",
+    "hash": "f6386e915f93857e",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/moab": {
-    "hash": "e066dddf9daf1556",
+    "hash": "48ba0121733c1cc5",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
+  },
+  "/weapons/north-korea-2017-test": {
+    "hash": "128e9b08914359c0",
+    "datePublished": "2026-04-30",
+    "dateModified": "2026-10-29"
   },
   "/weapons/operation-hardtack-poplar": {
-    "hash": "f842867853ff06ee",
+    "hash": "318f5add924fda74",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/orange-herald": {
-    "hash": "df5333cbf7fe55d4",
+    "hash": "69c53c7fbfe77ca3",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/smiling-buddha": {
-    "hash": "5bf00c4514a4f0fe",
+    "hash": "97018b718ddfd542",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/soviet-test-219": {
-    "hash": "c72a949140c595ba",
+    "hash": "56e57bd0520f8803",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/tallboy": {
-    "hash": "a91c795040bbd2d3",
+    "hash": "061dd49b74eb1500",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-21"
+    "dateModified": "2026-10-29"
   },
   "/weapons/test-no-6": {
-    "hash": "3d5af671d21d95f5",
+    "hash": "14c4fc7964400e50",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/trinity": {
-    "hash": "891f87f3cae20d14",
+    "hash": "22cc8632bed7437e",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/tsar-bomba": {
-    "hash": "d44fdd59fad159ed",
+    "hash": "c0ecd4c5d00e8f9b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-28"
+    "dateModified": "2026-10-29"
   },
   "/weapons/w54": {
-    "hash": "f3d2e7f9f12f60a4",
+    "hash": "d77ec6a2abbff35c",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/w76": {
-    "hash": "5de9e320f748c815",
+    "hash": "82403662a8bd2905",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/w80": {
-    "hash": "ec8d6cd189c5d4b1",
+    "hash": "6933fda8e17791e1",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/w87": {
-    "hash": "a243a61a852e3826",
+    "hash": "11c2971294609d33",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   },
   "/weapons/w88": {
-    "hash": "0b4768fb747c1b2b",
+    "hash": "25bc4f976842745b",
     "datePublished": "2026-04-30",
-    "dateModified": "2026-10-22"
+    "dateModified": "2026-10-29"
   }
 }

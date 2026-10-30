@@ -1,0 +1,7 @@
+=== npx vitest run (summary) ===
+21 files, 118 tests passed, 0 skipped
+
+=== check_ledger.py ===
+RESULT: OK (77 warnings)
+=== check_sources.py ===
+RESULT: OK (2 warnings)

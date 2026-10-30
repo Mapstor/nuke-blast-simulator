@@ -3,6 +3,14 @@ import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 // @ts-expect-error - plain .mjs helper, no type declarations
 import { readCsvObjects } from '../scripts/lib/csv.mjs'
+import { bombs } from '../src/lib/data/bombs'
+
+// NBS-016: conventional-weapon pages are reference pages with no effect radii;
+// their titles drop the radius/map promise, so they are waived from the
+// primary-keyword title-token check (mirrors scripts/build-page-seo.mjs).
+const CONV_WEAPON_SLUGS = new Set(
+  bombs.filter((b) => b.type === 'conventional').map((b) => `weapons/${b.id}`),
+)
 
 // NBS-008: titles and meta descriptions on the live pages, checked on the
 // actual built HTML. Title <=60 and unique; description <=155 and unique; and
@@ -73,7 +81,7 @@ describe('titles and meta descriptions (NBS-008)', () => {
   it('every non-structural title contains all non-stopword tokens of its primary keyword', () => {
     const problems: string[] = []
     for (const p of pages) {
-      if (STRUCTURAL.has(p.slug) || !p.primary) continue
+      if (STRUCTURAL.has(p.slug) || CONV_WEAPON_SLUGS.has(p.slug) || !p.primary) continue
       const h = readFileSync(pageFile(p.path), 'utf8')
       const titleTokens = new Set(tokens(titleOf(h)!))
       const missing = tokens(p.primary).filter((t) => !STOP.has(t) && !titleTokens.has(t))

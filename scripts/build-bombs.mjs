@@ -32,33 +32,48 @@ for (const f of facts) {
 
 // --- hand-checked field overrides (verdict wrong/outdated/correct-minor) ---
 // yield in kilotons (t → kt: divide by 1000).
+// NBS-016 (audit-a): `measure` says how to present a conventional bomb's number
+// — 'fill' = explosive fill weight (no published TNT equivalent), 'tnt-equivalent'
+// = a source-stated TNT equivalent, 'claimed-tnt' = a claimed, disputed one.
+// `filler` names the explosive where a source gives it. `kind:
+// historical-explosion' marks Halifax as an accidental explosion, not a weapon.
+// `id` rename: /weapons/hwasong-14 → /weapons/north-korea-2017-test (the page
+// describes the 3 Sep 2017 test, not the missile). `joe-1`/`blu-82` names drop
+// the "(RDS-1)"/"Daisy Cutter" nicknames no registered source states.
 const OV = {
   b61: { description: 'Variable-yield bomb with strategic and tactical versions' },
   b83: { description: 'Most powerful US weapon still in the stockpile (retirement pending)' },
-  blockbuster: { yield: 0.0014, country: 'UK', year: 1941, description: "British 'cookie' blast bomb (about 1.4 t explosive fill)" },
-  'blu-82': { yield: 0.0057, description: 'Vietnam-era 15,000 lb slurry-explosive blast bomb (about 5.7 t fill)' },
+  blockbuster: { yield: 0.0014, country: 'UK', year: 1941, description: "British 'cookie' blast bomb (about 1.4 t explosive fill)", measure: 'fill' },
+  'blu-82': { yield: 0.0057, name: 'BLU-82', description: 'Vietnam-era 15,000 lb slurry-explosive blast bomb (about 5.7 t fill)', measure: 'fill', filler: 'slurry' },
   'castle-yankee': { description: 'Second-largest US nuclear test' },
   'chagai-i': { description: 'First Pakistani nuclear test; claimed up to 40 kt (seismic estimates about 9 kt)' },
   'davy-crockett': { description: 'One of the smallest US nuclear weapons' },
-  'fab-500': { year: 1954, description: 'Standard 500 kg high-explosive bomb (about 200 kg fill)' },
-  'fab-5000': { yield: 0.0032, country: 'USSR', year: 1943, description: 'Largest Soviet bomb of World War II (about 3.2 t fill)' },
-  foab: { description: 'Russia calls it the most powerful non-nuclear bomb (claimed ~44 t, unverified; thermobaric)' },
-  'gbu-28': { description: 'Deep-penetrating bunker buster (about 0.3 t explosive fill)' },
-  'gbu-57': { yield: 0.0024, year: 2007, description: 'Massive Ordnance Penetrator bunker buster (about 2.4 t fill; in service 2011)' },
-  'grand-slam': { yield: 0.0066, year: 1945, description: 'Largest conventional bomb used in World War II (about 6.6 t TNT equivalent)' },
-  'halifax-explosion': { yield: 2.9, country: 'Canada', year: 1917, description: 'Largest man-made explosion before nuclear weapons (Halifax, Nova Scotia)' },
-  'hwasong-14': { name: 'North Korea 2017 Test', description: 'Device North Korea said was an H-bomb for an ICBM (~250 kt, NORSAR; thermonuclear claimed, unconfirmed)' },
-  jdam: { yield: 0.00043, year: 1997, description: 'GPS-guided 2,000 lb bomb (about 0.43 t explosive fill)' },
-  'mark-84': { yield: 0.00043, year: undefined, description: 'Standard 2,000 lb general-purpose bomb (in service since the 1950s; about 0.43 t fill)' },
-  'mk-82': { yield: 0.00009, year: undefined, description: 'Standard 500 lb general-purpose bomb (in service since the 1950s; about 0.09 t fill)' },
+  'fab-500': { year: 1954, description: 'Standard 500 kg high-explosive bomb (about 200 kg fill)', measure: 'fill' },
+  'fab-5000': { yield: 0.0032, country: 'USSR', year: 1943, description: 'Largest Soviet bomb of World War II (about 3.2 t fill)', measure: 'fill' },
+  foab: { description: 'Russia calls it the most powerful non-nuclear bomb (claimed ~44 t, unverified; thermobaric)', measure: 'claimed-tnt' },
+  'gbu-28': { description: 'Deep-penetrating bunker buster (about 0.3 t explosive fill)', measure: 'fill', filler: 'tritonal' },
+  'gbu-57': { yield: 0.0024, year: 2007, description: 'Massive Ordnance Penetrator bunker buster (about 2.4 t fill; in service 2011)', measure: 'fill' },
+  'ivy-mike': { description: 'First full-scale hydrogen bomb test' },
+  'grand-slam': { yield: 0.0066, year: 1945, description: 'Largest conventional bomb used in World War II (about 6.6 t TNT equivalent)', measure: 'tnt-equivalent' },
+  'halifax-explosion': { yield: 2.9, country: 'Canada', year: 1917, description: 'Largest man-made explosion before nuclear weapons (Halifax, Nova Scotia)', measure: 'tnt-equivalent', kind: 'historical-explosion' },
+  'hwasong-14': { id: 'north-korea-2017-test', name: 'North Korea 2017 Test', description: 'Device North Korea said was an H-bomb for an ICBM (~250 kt, NORSAR; thermonuclear claimed, unconfirmed)' },
+  jdam: { yield: 0.00043, year: 1997, description: 'GPS-guided 2,000 lb bomb (about 0.43 t fill with the Mk 84 warhead)', measure: 'fill', filler: 'Mk 84 warhead' },
+  'joe-1': { name: 'Joe-1' },
+  'mark-84': { yield: 0.00043, year: undefined, description: 'Standard 2,000 lb general-purpose bomb (in service since the 1950s; about 0.43 t fill)', measure: 'fill', filler: 'tritonal' },
+  'mk-82': { yield: 0.00009, year: undefined, description: 'Standard 500 lb general-purpose bomb (in service since the 1950s; about 0.09 t fill)', measure: 'fill', filler: 'tritonal' },
+  moab: { measure: 'tnt-equivalent' },
   'orange-herald': { type: 'fission', year: 1957, description: 'Largest single-stage device ever tested (largest UK test: Grapple Y, about 3 Mt, 1958)' },
   'soviet-test-219': { description: 'Second-largest Soviet nuclear test' },
-  tallboy: { description: 'Deep-penetration earthquake bomb (about 2.4 t Torpex fill)' },
+  tallboy: { description: 'Deep-penetration earthquake bomb (about 2.4 t Torpex fill)', measure: 'fill', filler: 'Torpex' },
   w54: { year: 1964, description: 'Special Atomic Demolition Munition (variable yield up to 1 kt)' },
-  w76: { yield: 90, description: 'Common SLBM warhead (current W76-1 ~90 kt; W76-2 ~8 kt)' },
+  w76: { yield: 90, description: 'Common SLBM warhead (W76-0 from 1978; current W76-1 ~90 kt from 2008; W76-2 ~8 kt)' },
   w80: { yield: 150, year: 1981, description: 'Cruise missile warhead' },
   w88: { yield: 455, description: 'Modern SLBM warhead' },
 }
+
+// Weapons whose data row in facts-verified.csv is still keyed by the pre-rename
+// id, so the sources lookup can survive a second regen (idempotent).
+const FACTS_ID = { 'north-korea-2017-test': 'hwasong-14' }
 
 const out = []
 const removed = []
@@ -67,7 +82,8 @@ for (const b of bombs) {
   const ov = OV[b.id] || {}
   const merged = { ...b, ...ov }
   if ('year' in ov && ov.year === undefined) delete merged.year
-  const sources = srcById[b.id] || []
+  // sources are keyed by the facts-verified id; fall back through any rename
+  const sources = srcById[b.id] || srcById[FACTS_ID[merged.id]] || []
   out.push({ ...merged, sources })
 }
 
@@ -76,6 +92,9 @@ const fieldLines = (b) => {
   const parts = [`id: ${esc(b.id)}`, `name: ${esc(b.name)}`, `yield: ${b.yield}`, `type: ${esc(b.type)}`, `country: ${esc(b.country)}`]
   if (b.year !== undefined) parts.push(`year: ${b.year}`)
   parts.push(`description: ${esc(b.description)}`)
+  if (b.measure) parts.push(`measure: ${esc(b.measure)}`)
+  if (b.filler) parts.push(`filler: ${esc(b.filler)}`)
+  if (b.kind) parts.push(`kind: ${esc(b.kind)}`)
   parts.push(`sources: ${JSON.stringify(b.sources)}`)
   return parts.join(', ')
 }

@@ -145,7 +145,7 @@ export const LIVE_PATHS: string[] = [
   '/weapons/grand-slam',
   '/weapons/halifax-explosion',
   '/weapons/hurricane',
-  '/weapons/hwasong-14',
+  '/weapons/north-korea-2017-test',
   '/weapons/ivy-mike',
   '/weapons/jdam',
   '/weapons/joe-1',

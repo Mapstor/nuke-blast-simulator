@@ -49,7 +49,7 @@ Pages: 136 · keywords owned: 1842 · discarded: 699 · KWP variants folded: 191
   - `/weapons/fab-500` · T2 · live · data · primary: fab 500 bomb · cluster 0/mo
   - `/weapons/gbu-28` · T2 · live · data · primary: gbu 28 · cluster 0/mo
   - `/weapons/grand-slam` · T2 · live · data · primary: grand slam bomb · cluster 0/mo
-  - `/weapons/hwasong-14` · T2 · live · data · primary: hwasong 14 · cluster 0/mo
+  - `/weapons/north-korea-2017-test` · T2 · live · data · primary: north korea 2017 nuclear test · cluster 0/mo
   - `/weapons/jdam` · T2 · live · data · primary: jdam bomb · cluster 0/mo
   - `/weapons/moab` · T2 · live · data · primary: moab area of impact · cluster 0/mo
   - `/weapons/operation-hardtack-poplar` · T2 · live · data · primary: hardtack poplar · cluster 0/mo

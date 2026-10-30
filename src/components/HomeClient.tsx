@@ -12,6 +12,10 @@ import { PopulationIndicator } from '@/components/simulator/PopulationIndicator'
 import { useSimulatorStore } from '@/store/simulatorStore'
 import { bombs } from '@/lib/data/bombs'
 
+// NBS-016: /weapons/hwasong-14 was renamed to /weapons/north-korea-2017-test.
+// Old shared ?bomb= links keep working via this alias.
+const BOMB_ID_ALIASES: Record<string, string> = { 'hwasong-14': 'north-korea-2017-test' }
+
 export default function HomeClient() {
   const { selectedBomb, setSelectedBomb, setEpicenter } = useSimulatorStore()
 
@@ -23,8 +27,9 @@ export default function HomeClient() {
     const lng = params.get('lng')
 
     if (bombId && lat && lng) {
+      const resolvedId = BOMB_ID_ALIASES[bombId] ?? bombId
       // NBS-003: conventional weapons are excluded from the tool.
-      const bomb = bombs.find(b => b.id === bombId && b.type !== 'conventional')
+      const bomb = bombs.find(b => b.id === resolvedId && b.type !== 'conventional')
       if (bomb) {
         setSelectedBomb(bomb)
         setEpicenter({ lat: parseFloat(lat), lng: parseFloat(lng) })

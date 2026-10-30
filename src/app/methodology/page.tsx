@@ -62,9 +62,10 @@ export default function MethodologyPage() {
 
         <section className="mb-12">
           <p className="mb-6 text-green-300">
-            Every effect radius on this site is computed from published scaling laws for an{' '}
-            <strong className="text-yellow-400">air burst at optimum height</strong>. Radius is a function of
-            weapon yield in kilotons (W). The two primary sources are{' '}
+            Every effect radius on this site is computed from published scaling laws for an air burst at the{' '}
+            <strong className="text-yellow-400">table&apos;s scaled burst height</strong> (about 200 m × W<sup>1/3</sup>:
+            roughly 540 m at 20 kt and 2 km at 1 Mt), near the optimum for moderate overpressures. Radius is a
+            function of weapon yield in kilotons (W). The two primary sources are{' '}
             <em>The Effects of Nuclear Weapons</em> (Glasstone &amp; Dolan, 3rd ed., 1977) and the published
             effects scaling table. <Cite c={cites} ids={ENGINE_SOURCE_IDS.join(';')} /> These are the exact
             relations the code runs — the constants below are read directly from the calculation engine.
@@ -87,8 +88,9 @@ export default function MethodologyPage() {
           <div className="bg-black/50 border border-green-500/30 rounded-lg p-6 mb-6">
             <h2 className="text-xl font-semibold mb-3 text-yellow-400">Blast &amp; thermal scaling table</h2>
             <p className="text-green-300 mb-4">
-              Blast overpressure and thermal burn radii are read from this scaling table (optimum-height air
-              bursts) and interpolated for intermediate yields. Radii are in kilometres.
+              Blast overpressure and thermal burn radii are read from this scaling table (air bursts at the
+              table&apos;s scaled burst height, near the optimum for moderate overpressures) and interpolated for
+              intermediate yields. Radii are in kilometres.
             </p>
             <div className="overflow-x-auto">
               <table className="w-full text-green-300 text-sm md:text-base">

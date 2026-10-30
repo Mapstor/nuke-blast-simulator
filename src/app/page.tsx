@@ -20,7 +20,7 @@ const nuclearWeaponCount = bombs.filter((b) => b.type !== 'conventional' && b.id
 
 export const metadata: Metadata = seoMetadata('/')
 
-const homepageFaq = [
+const homepageFaq: { question: string; answer: string; sourceIds?: string[] }[] = [
   {
     question: 'What is the Nuke Blast Simulator?',
     answer:
@@ -29,22 +29,25 @@ const homepageFaq = [
   {
     question: 'Is the Nuke Blast Simulator free to use?',
     answer:
-      'Yes. The simulator is completely free, runs entirely in your browser, requires no account or signup, and never transmits your weapon selections or target locations to any server.',
+      'Yes. The simulator is free, needs no account, and does not store your simulations. Detonations are computed in your browser, so your chosen weapon and coordinates stay in the page. Google Analytics receives only the page path, never the query string that holds them (Consent Mode; analytics is denied by default in Europe), and Mapbox serves the map tiles. See the Privacy page for details.',
   },
   {
     question: 'How accurate is the nuclear blast simulator?',
     answer:
-      'The radii come from the scaling laws in "The Effects of Nuclear Weapons" (Glasstone & Dolan, 1977) and the standard scaling-law table derived from it. Results are educational approximations: real effects depend on terrain, weather, building construction and burst height, which the simulator idealizes.',
+      'The radii come from the scaling laws in "The Effects of Nuclear Weapons" (Glasstone & Dolan, 1977) and a published scaling-law table (Wikipedia, "Effects of nuclear explosions"). Results are educational approximations: real effects depend on terrain, weather, building construction and burst height, which the simulator idealizes.',
+    sourceIds: ['effects-fireball', 'effects-blast-thermal'],
   },
   {
     question: 'Which nuclear weapons can I simulate?',
     answer:
-      'The database includes Little Boy (Hiroshima, 15 kt), Fat Man (Nagasaki, 21 kt), the Soviet Tsar Bomba (50 Mt — largest test ever), Castle Bravo (15 Mt — largest US test), Ivy Mike (the first hydrogen bomb), modern strategic warheads (W88, W76, B61, B83), and conventional comparison bombs. You can also set any custom yield from 1 to 100,000 kilotons.',
+      'The picker includes Little Boy (Hiroshima, 15 kt), Fat Man (Nagasaki, 21 kt), the Soviet Tsar Bomba (50 Mt, the largest test ever), Castle Bravo (15 Mt, the largest US test), Ivy Mike (the first full-scale hydrogen bomb test) and modern strategic warheads (W88, W76, B61, B83). You can also set any custom yield from 1 to 100,000 kilotons. The 14 conventional bombs have reference pages only and are excluded from the simulator.',
+    sourceIds: ['us-doe-nnsa-nevada-field-office-united-states-nu', 'nuclear-weapon-archive-soviet-atmospheric-tests', 'atomic-archive-mike-device-is-tested'],
   },
   {
     question: 'What is the difference between an air burst and a surface burst?',
     answer:
       'An air burst detonates above the ground at optimal altitude, maximizing the area affected by blast and thermal radiation while producing little local fallout. Hiroshima and Nagasaki were both air bursts. A surface burst detonates at ground level; for most overpressures its blast reaches less far than an air burst at the optimum height, and it produces heavy local fallout.',
+    sourceIds: ['us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3', 'us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2', 'us-dod-erda-the-effects-of-nuclear-weapons-3rd-e'],
   },
   {
     question: 'Can I share my nuclear blast simulation?',
@@ -88,8 +91,15 @@ export default function HomePage() {
     ...featuredWeapons.flatMap((b) => b.sources ?? []),
     ...featuredCities.flatMap((c) => c.sourceIds ?? []),
     'us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3',
+    'us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2',
+    'us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-9',
     'us-congress-office-of-technology-assessment-via',
     'us-dod-erda-the-effects-of-nuclear-weapons-3rd-e',
+    // Home FAQ citation sources (NBS-016)
+    'us-doe-nnsa-nevada-field-office-united-states-nu',
+    'nuclear-weapon-archive-soviet-atmospheric-tests',
+    'atomic-archive-mike-device-is-tested',
+    ...homepageFaq.flatMap((q) => q.sourceIds ?? []),
   ])
   return (
     <main>
@@ -315,9 +325,9 @@ export default function HomePage() {
               <div>
                 <h3 className="text-xl font-semibold text-yellow-400 mb-2">Air Blast (Overpressure)</h3>
                 <p>
-                  A shock wave radiates outward at supersonic speeds. The 20 PSI zone destroys reinforced concrete;
-                  5 PSI collapses most residential buildings; 1 PSI shatters windows out to many kilometers.
-                  These radii scale with the cube root of yield. <Cite c={cites} ids="us-congress-office-of-technology-assessment-via" />
+                  A shock wave radiates outward faster than the speed of sound.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2" /> The 20 psi zone levels
+                  reinforced-concrete structures and the 5 psi zone destroys most residential buildings;<Cite c={cites} ids="us-congress-office-of-technology-assessment-via" /> at 1 psi,
+                  windows shatter and flying glass injures people.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-9" /> These radii scale with the cube root of yield.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-2" />
                 </p>
               </div>
               <div>
@@ -332,8 +342,8 @@ export default function HomePage() {
                 <h3 className="text-xl font-semibold text-yellow-400 mb-2">Fallout</h3>
                 <p>
                   Surface bursts can spread heavy radioactive fallout hundreds of kilometers downwind; fallout
-                  from the Castle Bravo test contaminated an area more than 530 km long. Hiroshima and Nagasaki
-                  were air bursts, and fallout injuries there were essentially absent. <Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e" />
+                  from the Castle Bravo test contaminated an area more than 530 km long.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e" /> Hiroshima and Nagasaki
+                  were air bursts, and fallout injuries there were essentially absent.<Cite c={cites} ids="us-dod-erda-the-effects-of-nuclear-weapons-3rd-e-3" />
                 </p>
               </div>
             </div>
@@ -350,7 +360,7 @@ export default function HomePage() {
               {homepageFaq.map((qa) => (
                 <details key={qa.question} className="bg-black/50 border border-green-500/30 rounded-lg p-4">
                   <summary className="font-semibold cursor-pointer text-yellow-400">{qa.question}</summary>
-                  <p className="mt-3">{qa.answer}</p>
+                  <p className="mt-3">{qa.answer}{qa.sourceIds?.length ? <Cite c={cites} ids={qa.sourceIds.join(';')} /> : null}</p>
                 </details>
               ))}
               <p className="text-sm text-green-300/70 mt-4">

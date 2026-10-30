@@ -1,3 +1,4 @@
 [
-  { "source": "/weapons/ofab-5000", "destination": "/weapons", "permanent": true }
+  { "source": "/weapons/ofab-5000", "destination": "/weapons", "permanent": true },
+  { "source": "/weapons/hwasong-14", "destination": "/weapons/north-korea-2017-test", "permanent": true }
 ]

@@ -1,8 +1,9 @@
 'use client'
 
 import Script from 'next/script'
-import { usePathname, useSearchParams } from 'next/navigation'
-import { Suspense, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
+import { useEffect } from 'react'
+import { pageviewPayload } from '@/lib/analytics/pageview'
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-XDZQYKGTE2'
 
@@ -15,18 +16,14 @@ declare global {
 
 function PageviewTracker() {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
 
+  // NBS-016: send the pathname only, never the query string (which carries the
+  // weapon and coordinates). The effect depends on pathname alone, so a query-
+  // only change (e.g. switching weapons on the map) is never reported to GA4.
   useEffect(() => {
     if (!pathname || typeof window === 'undefined' || typeof window.gtag !== 'function') return
-    const query = searchParams?.toString()
-    const url = pathname + (query ? `?${query}` : '')
-    window.gtag('event', 'page_view', {
-      page_path: url,
-      page_location: window.location.href,
-      page_title: document.title,
-    })
-  }, [pathname, searchParams])
+    window.gtag('event', 'page_view', pageviewPayload(pathname, window.location.origin, document.title))
+  }, [pathname])
 
   return null
 }
@@ -65,9 +62,7 @@ export default function Analytics() {
           gtag('config', '${GA_ID}', { send_page_view: false });
         `}
       </Script>
-      <Suspense fallback={null}>
-        <PageviewTracker />
-      </Suspense>
+      <PageviewTracker />
     </>
   )
 }
